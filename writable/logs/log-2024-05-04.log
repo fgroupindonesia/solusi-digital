@@ -1,0 +1,560 @@
+CRITICAL - 2024-05-04 04:16:52 --> ErrorException: Undefined property: App\Controllers\Works::$input
+[Method: GET, Route: view/q]
+in APPPATH\Controllers\Works.php on line 44.
+ 1 APPPATH\Controllers\Works.php(44): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Works::$input', 'C:\\xampp\\htdocs\\snpad-fgroup\\app\\Controllers\\Works.php', 44)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:26:59 --> Error: Call to undefined function App\Controllers\findFile()
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 63.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:29:01 --> Error: Call to undefined function App\Controllers\findFile()
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 63.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:29:06 --> Error: Call to undefined function App\Controllers\findFile()
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 63.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:29:07 --> Error: Call to undefined function App\Controllers\findFile()
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 63.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:30:48 --> Error: Call to undefined function App\Controllers\findFile()
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 74.
+ 1 APPPATH\Controllers\Works.php(52): App\Controllers\Works->findFile('C:\\xampp\\htdocs\\snpad-fgroup\\writable\\uploads/', 'nvGbKGK.snpad')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:30:49 --> Error: Call to undefined function App\Controllers\findFile()
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 74.
+ 1 APPPATH\Controllers\Works.php(52): App\Controllers\Works->findFile('C:\\xampp\\htdocs\\snpad-fgroup\\writable\\uploads/', 'nvGbKGK.snpad')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:31:00 --> ErrorException: Undefined variable $result
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 53.
+ 1 APPPATH\Controllers\Works.php(53): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $result', 'C:\\xampp\\htdocs\\snpad-fgroup\\app\\Controllers\\Works.php', 53)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:31:01 --> ErrorException: Undefined variable $result
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 53.
+ 1 APPPATH\Controllers\Works.php(53): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $result', 'C:\\xampp\\htdocs\\snpad-fgroup\\app\\Controllers\\Works.php', 53)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:31:27 --> ErrorException: Undefined variable $result
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 53.
+ 1 APPPATH\Controllers\Works.php(53): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $result', 'C:\\xampp\\htdocs\\snpad-fgroup\\app\\Controllers\\Works.php', 53)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:32:07 --> Error: Call to undefined function App\Controllers\findFile()
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 74.
+ 1 APPPATH\Controllers\Works.php(52): App\Controllers\Works->findFile('C:\\xampp\\htdocs\\snpad-fgroup\\writable\\uploads/', 'nvGbKGK.snpad')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:33:20 --> Error: Call to undefined function App\Controllers\findFile()
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 74.
+ 1 APPPATH\Controllers\Works.php(52): App\Controllers\Works->findFile('C:\\xampp\\htdocs\\snpad-fgroup\\writable\\uploads/', 'nvGbKGK.snpad')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:33:21 --> Error: Call to undefined function App\Controllers\findFile()
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 74.
+ 1 APPPATH\Controllers\Works.php(52): App\Controllers\Works->findFile('C:\\xampp\\htdocs\\snpad-fgroup\\writable\\uploads/', 'nvGbKGK.snpad')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:33:59 --> Error: Call to undefined function App\Controllers\findFile()
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 74.
+ 1 APPPATH\Controllers\Works.php(52): App\Controllers\Works->findFile('C:\\xampp\\htdocs\\snpad-fgroup\\writable\\uploads/', 'nvGbKGK.snpad')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:34:59 --> Error: Call to undefined method App\Controllers\Works::findFile()
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:41:16 --> ParseError: syntax error, unexpected token "as", expecting ";"
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 59.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\snpad-fgroup\\app\\Controllers\\Works.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Works')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Works')
+ 4 SYSTEMPATH\CodeIgniter.php(887): class_exists('\\App\\Controllers\\Works', true)
+ 5 SYSTEMPATH\CodeIgniter.php(496): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:45:22 --> Error: Class "App\Controllers\Directory" not found
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 56.
+ 1 APPPATH\Controllers\Works.php(50): App\Controllers\Works->findLocation('C:\\xampp\\htdocs\\snpad-fgroup\\writable\\uploads\\', 'nvGbKGK.snpad')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:45:23 --> Error: Class "App\Controllers\Directory" not found
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 56.
+ 1 APPPATH\Controllers\Works.php(50): App\Controllers\Works->findLocation('C:\\xampp\\htdocs\\snpad-fgroup\\writable\\uploads\\', 'nvGbKGK.snpad')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:45:24 --> Error: Class "App\Controllers\Directory" not found
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 56.
+ 1 APPPATH\Controllers\Works.php(50): App\Controllers\Works->findLocation('C:\\xampp\\htdocs\\snpad-fgroup\\writable\\uploads\\', 'nvGbKGK.snpad')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:45:24 --> Error: Class "App\Controllers\Directory" not found
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 56.
+ 1 APPPATH\Controllers\Works.php(50): App\Controllers\Works->findLocation('C:\\xampp\\htdocs\\snpad-fgroup\\writable\\uploads\\', 'nvGbKGK.snpad')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:45:24 --> Error: Class "App\Controllers\Directory" not found
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 56.
+ 1 APPPATH\Controllers\Works.php(50): App\Controllers\Works->findLocation('C:\\xampp\\htdocs\\snpad-fgroup\\writable\\uploads\\', 'nvGbKGK.snpad')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:45:24 --> Error: Class "App\Controllers\Directory" not found
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 56.
+ 1 APPPATH\Controllers\Works.php(50): App\Controllers\Works->findLocation('C:\\xampp\\htdocs\\snpad-fgroup\\writable\\uploads\\', 'nvGbKGK.snpad')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:45:24 --> Error: Class "App\Controllers\Directory" not found
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 56.
+ 1 APPPATH\Controllers\Works.php(50): App\Controllers\Works->findLocation('C:\\xampp\\htdocs\\snpad-fgroup\\writable\\uploads\\', 'nvGbKGK.snpad')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:45:25 --> Error: Class "App\Controllers\Directory" not found
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 56.
+ 1 APPPATH\Controllers\Works.php(50): App\Controllers\Works->findLocation('C:\\xampp\\htdocs\\snpad-fgroup\\writable\\uploads\\', 'nvGbKGK.snpad')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:45:25 --> Error: Class "App\Controllers\Directory" not found
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 56.
+ 1 APPPATH\Controllers\Works.php(50): App\Controllers\Works->findLocation('C:\\xampp\\htdocs\\snpad-fgroup\\writable\\uploads\\', 'nvGbKGK.snpad')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:45:25 --> Error: Class "App\Controllers\Directory" not found
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 56.
+ 1 APPPATH\Controllers\Works.php(50): App\Controllers\Works->findLocation('C:\\xampp\\htdocs\\snpad-fgroup\\writable\\uploads\\', 'nvGbKGK.snpad')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:45:25 --> Error: Class "App\Controllers\Directory" not found
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 56.
+ 1 APPPATH\Controllers\Works.php(50): App\Controllers\Works->findLocation('C:\\xampp\\htdocs\\snpad-fgroup\\writable\\uploads\\', 'nvGbKGK.snpad')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:45:25 --> Error: Class "App\Controllers\Directory" not found
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 56.
+ 1 APPPATH\Controllers\Works.php(50): App\Controllers\Works->findLocation('C:\\xampp\\htdocs\\snpad-fgroup\\writable\\uploads\\', 'nvGbKGK.snpad')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:45:25 --> Error: Class "App\Controllers\Directory" not found
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 56.
+ 1 APPPATH\Controllers\Works.php(50): App\Controllers\Works->findLocation('C:\\xampp\\htdocs\\snpad-fgroup\\writable\\uploads\\', 'nvGbKGK.snpad')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:45:33 --> Error: Class "App\Controllers\Directory" not found
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 56.
+ 1 APPPATH\Controllers\Works.php(50): App\Controllers\Works->findLocation('C:\\xampp\\htdocs\\snpad-fgroup\\writable\\uploads\\', 'nvGbKGK.snpad')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:47:22 --> Error: Call to undefined method App\Controllers\Works::findLocation()
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 50.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:47:22 --> Error: Call to undefined method App\Controllers\Works::findLocation()
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 50.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:47:23 --> Error: Call to undefined method App\Controllers\Works::findLocation()
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 50.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:47:23 --> Error: Call to undefined method App\Controllers\Works::findLocation()
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 50.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:47:23 --> Error: Call to undefined method App\Controllers\Works::findLocation()
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 50.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:47:23 --> Error: Call to undefined method App\Controllers\Works::findLocation()
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 50.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:48:56 --> Error: Call to undefined method App\Controllers\Works::findLocation()
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 50.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:49:08 --> Error: Call to undefined method App\Controllers\Works::findLocation()
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 50.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:50:23 --> Error: Class "App\Controllers\Directory" not found
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 60.
+ 1 APPPATH\Controllers\Works.php(50): App\Controllers\Works->findLocation('C:\\xampp\\htdocs\\snpad-fgroup\\writable\\uploads\\', 'nvGbKGK.snpad')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:51:04 --> Error: Class "CodeIgniter\Files\Directory" not found
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 61.
+ 1 APPPATH\Controllers\Works.php(51): App\Controllers\Works->findLocation('C:\\xampp\\htdocs\\snpad-fgroup\\writable\\uploads\\', 'nvGbKGK.snpad')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:53:32 --> Error: Call to undefined function App\Controllers\find_file()
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 51.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:53:40 --> Error: Call to undefined function App\Controllers\find_file()
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 51.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:53:41 --> Error: Call to undefined function App\Controllers\find_file()
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 51.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:53:46 --> Error: Call to undefined function App\Controllers\find_file()
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 50.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:53:47 --> Error: Call to undefined function App\Controllers\find_file()
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 50.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:53:47 --> Error: Call to undefined function App\Controllers\find_file()
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 50.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:53:48 --> Error: Call to undefined function App\Controllers\find_file()
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 50.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:53:48 --> Error: Call to undefined function App\Controllers\find_file()
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 50.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:53:48 --> Error: Call to undefined function App\Controllers\find_file()
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 50.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:53:49 --> Error: Call to undefined function App\Controllers\find_file()
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 50.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 04:56:03 --> Error: Call to undefined function App\Controllers\findFile()
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 76.
+ 1 APPPATH\Controllers\Works.php(50): App\Controllers\Works->findFile('C:\\xampp\\htdocs\\snpad-fgroup\\writable\\uploads\\', 'nvGbKGK.snpad')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 06:25:09 --> ErrorException: Undefined variable $fd
+[Method: GET, Route: send]
+in APPPATH\Controllers\Home.php on line 24.
+ 1 APPPATH\Controllers\Home.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $fd', 'C:\\xampp\\htdocs\\snpad-fgroup\\app\\Controllers\\Home.php', 24)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->sendData()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 06:32:06 --> ErrorException: Undefined variable $request
+[Method: POST, Route: post]
+in APPPATH\Controllers\Works.php on line 113.
+ 1 APPPATH\Controllers\Works.php(113): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $request', 'C:\\xampp\\htdocs\\snpad-fgroup\\app\\Controllers\\Works.php', 113)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->sendFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 06:44:57 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Builder::first()
+[Method: GET, Route: view]
+in APPPATH\Models\DataModel.php on line 30.
+ 1 APPPATH\Controllers\Works.php(52): App\Models\DataModel->selectData('kUUkwiS.snpad')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 06:47:58 --> Error: Object of type CodeIgniter\Database\MySQLi\Result is not callable
+[Method: GET, Route: view]
+in APPPATH\Models\DataModel.php on line 31.
+ 1 APPPATH\Controllers\Works.php(52): App\Models\DataModel->selectData('kUUkwiS.snpad')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 06:51:24 --> Error: Object of type CodeIgniter\Database\MySQLi\Result is not callable
+[Method: GET, Route: view]
+in APPPATH\Models\DataModel.php on line 31.
+ 1 APPPATH\Controllers\Works.php(52): App\Models\DataModel->selectData('kUUkwiS.snpad')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 06:52:50 --> ErrorException: Undefined variable $query
+[Method: GET, Route: view]
+in APPPATH\Models\DataModel.php on line 32.
+ 1 APPPATH\Models\DataModel.php(32): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $query', 'C:\\xampp\\htdocs\\snpad-fgroup\\app\\Models\\DataModel.php', 32)
+ 2 APPPATH\Controllers\Works.php(52): App\Models\DataModel->selectData('kUUkwiS.snpad')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-04 06:55:40 --> ErrorException: Attempt to read property "folder" on array
+[Method: GET, Route: view]
+in APPPATH\Controllers\Works.php on line 55.
+ 1 APPPATH\Controllers\Works.php(55): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "folder" on array', 'C:\\xampp\\htdocs\\snpad-fgroup\\app\\Controllers\\Works.php', 55)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->displayFile()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

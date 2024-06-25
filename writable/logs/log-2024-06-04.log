@@ -1,0 +1,28 @@
+CRITICAL - 2024-06-04 01:48:51 --> Error: Call to undefined method App\Controllers\Home::respond()
+[Method: GET, Route: test]
+in APPPATH\Controllers\Home.php on line 23.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->random()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-06-04 01:49:11 --> TypeError: json_decode(): Argument #1 ($json) must be of type string, array given
+[Method: GET, Route: test]
+in APPPATH\Controllers\Home.php on line 23.
+ 1 APPPATH\Controllers\Home.php(23): json_decode([...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->random()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-06-04 04:22:58 --> Error: Call to a member function hasMoved() on null
+[Method: POST, Route: post]
+in APPPATH\Controllers\Works.php on line 98.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->sendFile()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

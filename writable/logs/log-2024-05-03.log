@@ -1,0 +1,85 @@
+CRITICAL - 2024-05-03 07:55:48 --> ErrorException: Cannot redeclare env() (previously declared in C:\xampp\htdocs\snpad-fgroup\system\Common.php:375)
+[Method: GET, Route: /]
+in FCPATH\lib\limonade.php on line 541.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-05-03 08:06:34 --> TypeError: App\Controllers\Works::sendFile(): Return value must be of type string, none returned
+[Method: GET, Route: post]
+in APPPATH\Controllers\Works.php on line 10.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->sendFile()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-03 08:07:14 --> TypeError: App\Controllers\Home::contoh(): Return value must be of type string, none returned
+[Method: GET, Route: contoh]
+in APPPATH\Controllers\Home.php on line 15.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->contoh()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-03 08:08:47 --> TypeError: App\Controllers\Home::contoh(): Return value must be of type string, none returned
+[Method: GET, Route: contoh]
+in APPPATH\Controllers\Home.php on line 15.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->contoh()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-03 08:08:47 --> TypeError: App\Controllers\Home::contoh(): Return value must be of type string, none returned
+[Method: GET, Route: contoh]
+in APPPATH\Controllers\Home.php on line 15.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->contoh()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-03 08:08:48 --> TypeError: App\Controllers\Home::contoh(): Return value must be of type string, none returned
+[Method: GET, Route: contoh]
+in APPPATH\Controllers\Home.php on line 15.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->contoh()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-03 08:08:48 --> TypeError: App\Controllers\Home::contoh(): Return value must be of type string, none returned
+[Method: GET, Route: contoh]
+in APPPATH\Controllers\Home.php on line 15.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->contoh()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-03 08:12:19 --> TypeError: App\Controllers\Home::contoh(): Return value must be of type string, none returned
+[Method: GET, Route: contoh]
+in APPPATH\Controllers\Home.php on line 15.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->contoh()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-03 08:16:08 --> TypeError: App\Controllers\Home::index(): Return value must be of type string, none returned
+[Method: GET, Route: /]
+in APPPATH\Controllers\Home.php on line 11.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-03 08:16:43 --> TypeError: App\Controllers\Works::sendFile(): Return value must be of type string, none returned
+[Method: GET, Route: post]
+in APPPATH\Controllers\Works.php on line 10.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->sendFile()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

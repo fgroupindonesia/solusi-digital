@@ -1,0 +1,41 @@
+.link-add, .link-edit, .link-delete {
+  display: inline-block;
+  height: 24px;
+  text-align: right;
+  background-size:  16px;
+  background-position: left;
+  background-repeat: no-repeat;
+    margin-right:   10px;
+}
+
+.link-add:hover, .link-edit:hover, .link-delete:hover {
+    background-color:   yellow;
+}
+
+#check-all {
+  cursor: pointer;
+}
+
+.link-add {
+  background-image: url('../plugins/images/add.png');
+  width: 85px;
+}
+
+.link-edit {
+  background-image: url('../plugins/images/edit.png');
+  width: 50px;
+}
+
+.link-delete {
+  background-image: url('../plugins/images/delete.png');
+  width: 65px;
+
+}
+
+.search-shown {
+  display: inline-block;
+}
+
+.search-hide {
+ display: none !important; 
+}
