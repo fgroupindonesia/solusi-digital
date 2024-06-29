@@ -32,10 +32,25 @@
 
 }
 
+a.disabled {
+  pointer-events: none;
+  color: gray;
+  text-decoration: none;
+  cursor: default;
+}
+
 .search-shown {
   display: inline-block;
 }
 
 .search-hide {
  display: none !important; 
+}
+
+#management-loading, .modal-loading {
+  display: none;
+}
+
+.ct-vertical  {
+  width : 50px !important;
 }

@@ -1,22 +1,52 @@
- <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="/">Home</a></li>
-          <li><a class="nav-link scrollto" id="about-link" href="/#about">Tentang SNPad</a></li>
-          <li><a class="nav-link scrollto" id="services-link" href="#services">Solusi</a></li>
-          <li class="dropdown"><a href="#"><span>Download</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="https://github.com/fgroupindonesia/SNotepad">Source Code</a></li>
-              <li><a href="https://github.com/fgroupindonesia/SNotepad/releases">Installer</a></li>
-            </ul>
-          </li>
-          <li class="dropdown"><a href="#"><span>Tutorial</span> <i class="bi bi-chevron-down"></i></a>
-                <ul>
-                  <li><a href="/tutorial/instalasi">Instalasi Awal</a></li>
-                  <li><a href="/tutorial/penggunaan">Penggunaan Ringkas</a></li>
-                  <li><a href="/tutorial/settings">Settings</a></li>
-                </ul>
-          </li>
-          <li><a class="nav-link scrollto" id="contact-link" href="#contact">Kontak</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+    <aside class="left-sidebar" data-sidebarbg="skin6">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <!-- User Profile-->
+                        <li class="sidebar-item pt-2">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/dashboard"
+                                aria-expanded="false">
+                                <i class="far fa-clock" aria-hidden="true"></i>
+                                <span class="hide-menu">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a data-bs-toggle="modal" data-bs-target="#setting-form-modal" class="sidebar-link waves-effect waves-dark sidebar-link" href="/settings"
+                                aria-expanded="false">
+                                <i class="fa fa-cog" aria-hidden="true"></i>
+                                <span class="hide-menu">Settings</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-apps"
+                                aria-expanded="false">
+                                <i class="fa fa-desktop" aria-hidden="true"></i>
+                                <span class="hide-menu">Management Apps</span>
+                            </a>
+                        </li>
+                        <?php if($role == 'admin'): ?>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-users"
+                                aria-expanded="false">
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                <span class="hide-menu">Management Users</span>
+                            </a>
+                        </li>
+                    <?php endif; ?>
+                      
+                      
+                     
+                        <li class="text-center p-20 upgrade-btn">
+                            <a href="/logout"
+                                class="btn d-grid btn-danger text-white" >
+                                Logout</a>
+                        </li>
+                    </ul>
+
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>

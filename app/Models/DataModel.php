@@ -25,10 +25,17 @@ class DataModel extends Model
     public function isDuplicate($data, $entity){
         $table_na = $this->getEntity($entity);
 
-        $kriteria = array(
-            'username' => $data['username'],
-            'email' => $data['email']
-        );
+        if($entity == 'users'){
+            $kriteria = array(
+                'username' => $data['username'],
+                'email' => $data['email']
+            );
+        }else if($entity == 'apps'){
+            $kriteria = array(
+                'apps_name' => $data['apps_name'],
+                'user_id' => $data['user_id']
+            );
+        }
 
         $res = $this->db->table($table_na)->where($kriteria)->get();
         
@@ -100,13 +107,43 @@ class DataModel extends Model
 
     public function verify_login($data){
 
-     $table_na = $this->getEntity('users');
+        $table_na = $this->getEntity('users');
 
         $res = $this->db->table($table_na)->where($data)->get();
         
         return $res->getResult();   
     }
 	
+    public function requestStatistics($gender, $column, $entity){
+
+
+        $table_na = $this->getEntity($entity);
+        $currentYear = date('Y');
+        $currentMonth = date('m');
+        
+        $dataArray = array();
+
+        for($i=1; $i <= $currentMonth; $i++){
+
+        $filterData = array(
+            $column => $gender,
+            'YEAR(date_created)' => $currentYear,
+            'MONTH(date_created)' => $i
+        );
+
+        $res = $this->db->table($table_na)->where($filterData)->get();
+        
+        $jumlah = count($res->getResult());   
+        $dataArray [] = $jumlah;
+
+        }
+
+        // end result would be a numeric array only
+        // such [2, 5, 2, 6, 2, 5, 2, 4, 2,1, 3, 3];
+        return $dataArray;
+
+    }
+
 }
 
 ?>

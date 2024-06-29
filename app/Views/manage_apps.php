@@ -72,37 +72,7 @@
                 <!-- ============================================================== -->
                 <!-- End Logo -->
                 <!-- ============================================================== -->
-                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
-                   
-                    <!-- ============================================================== -->
-                    <!-- Right side toggle and nav items -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav ms-auto d-flex align-items-center">
-
-                        <!-- ============================================================== -->
-                        <!-- Search -->
-                        <!-- ============================================================== -->
-                        <li class="<?= $search_display ?> in">
-                            <form role="search" class="app-search d-none d-md-block me-3">
-                                <input type="text" placeholder="Search..." class="form-control mt-0">
-                                <a href="" class="active">
-                                    <i class="fa fa-search"></i>
-                                </a>
-                            </form>
-                        </li>
-                        <!-- ============================================================== -->
-                        <!-- User profile and search -->
-                        <!-- ============================================================== -->
-                        <li>
-                            <a class="profile-pic" href="#">
-                                <img src="/assets/plugins/images/users/<?= $propic ?>" alt="user-img" width="36"
-                                    class="img-circle"><span class="text-white font-medium"><?= $username ?></span></a>
-                        </li>
-                        <!-- ============================================================== -->
-                        <!-- User profile and search -->
-                        <!-- ============================================================== -->
-                    </ul>
-                </div>
+               <?php include('nav_top.php'); ?>
             </nav>
         </header>
         <!-- ============================================================== -->
@@ -111,56 +81,7 @@
         <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
-        <aside class="left-sidebar" data-sidebarbg="skin6">
-            <!-- Sidebar scroll-->
-            <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                        <!-- User Profile-->
-                        <li class="sidebar-item pt-2">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/dashboard"
-                                aria-expanded="false">
-                                <i class="far fa-clock" aria-hidden="true"></i>
-                                <span class="hide-menu">Dashboard</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/settings"
-                                aria-expanded="false">
-                                <i class="fa fa-cog" aria-hidden="true"></i>
-                                <span class="hide-menu">Settings</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-apps"
-                                aria-expanded="false">
-                                <i class="fa fa-desktop" aria-hidden="true"></i>
-                                <span class="hide-menu">Management Apps</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-users"
-                                aria-expanded="false">
-                                <i class="fa fa-users" aria-hidden="true"></i>
-                                <span class="hide-menu">Management Users</span>
-                            </a>
-                        </li>
-                      
-                      
-                     
-                        <li class="text-center p-20 upgrade-btn">
-                            <a href="/logout"
-                                class="btn d-grid btn-danger text-white" >
-                                Logout</a>
-                        </li>
-                    </ul>
-
-                </nav>
-                <!-- End Sidebar navigation -->
-            </div>
-            <!-- End Sidebar scroll-->
-        </aside>
+         <?php include('nav_bar.php'); ?>
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
@@ -181,13 +102,7 @@
                             <ol class="breadcrumb ms-auto">
                                 <li></li>
                             </ol>
-                            <ol>
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/logout"
-                                aria-expanded="false">
-                                <i class="fa fa-times" aria-hidden="true"></i>
-                                     <span class="hide-menu">Logout</span>
-                                </a>
-                            </ol>
+                          
                         </div>
                     </div>
                 </div>
@@ -210,11 +125,11 @@
                         <div class="white-box">
                             <div class="d-md-flex mb-3">
                                 <h3 class="box-title mb-0">All Apps (<?= $total_apps ?>)</h3><br>
-                                 
+                                 <img id="management-loading" src="/assets/plugins/images/loading.gif" >
                                 <div class="col-md-4 col-sm-4 col-xs-6 ms-auto">
-                                  <a data-bs-toggle="modal" data-bs-target="#user-form-modal" class="link-add" id="link-add" href="/add-new-user">Add New</a>
-                                    <a class="link-edit" href="/edit-user">Edit</a>
-                                    <a class="link-delete" href="/delete-user">Delete</a>
+                                  <a data-bs-toggle="modal" data-bs-target="#app-form-modal" class="link-add" id="link-add" href="/add-new-user">Add New</a>
+                                    <a class="link-edit" href="/edit-user" data-entity='apps'>Edit</a>
+                                    <a class="link-delete" href="/delete-user" data-entity='apps'>Delete</a>
                                    
                                 </div>
                             </div>
@@ -225,12 +140,15 @@
                                             <th id="check-all" data-state="inactive" class="border-top-0">#</th>
                                             <th class="border-top-0">App Name</th>
                                             <th class="border-top-0">Descriptions</th>
+                                            <?php if($role=='admin'): ?>
+                                              <th class="border-top-0">Username Owned</th>
+                                            <?php endif; ?>
                                             <th class="border-top-0">Status</th>
                                             <th class="border-top-0">Date Created</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                   <?php if (isset($data_apps)): ?>                 
+                   <?php if (count($data_apps) > 0): ?>                 
                   <?php foreach($data_apps as $key): ?>
 
                                         <tr>
@@ -238,6 +156,9 @@
                                             <td class="txt-oflo"> <?= $key->apps_name ?></td>
                                             <td><?= $key->descriptions ?>
                                             </td>
+                                            <?php if($role=='admin'): ?>
+                                              <td><?= $key->username_owned ?></td>
+                                            <?php endif; ?>
                                             <td class="txt-oflo"><?= $key->status ?></td>
                                             <td><span class="text-success"><?= $key->date_created ?></span></td>
                                         </tr>
@@ -251,7 +172,8 @@
                     </div>
                 </div>
              
-                <?php include('modal_form.php'); ?>
+                <?php include('modal_setting_form.php'); ?>
+                <?php include('modal_app_form.php'); ?>
 
             </div>
             <!-- ============================================================== -->

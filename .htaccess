@@ -1,3 +1,4 @@
+
 # Disable directory browsing
 Options -Indexes
 
@@ -10,6 +11,7 @@ Options -Indexes
 <IfModule mod_rewrite.c>
 	Options +FollowSymlinks
 	RewriteEngine On
+
 
 	# If you installed CodeIgniter in a subfolder, you will need to
 	# change the following line to match the subfolder you need.
@@ -28,6 +30,7 @@ Options -Indexes
 
 	# Checks to see if the user is attempting to access a valid file,
 	# such as an image or css document, if this isn't true it sends the
+	RewriteCond $1 !^(index\.php|images|robots\.txt)
 	# request to the front controller, index.php
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d

@@ -93,11 +93,24 @@
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
-                        <li>
-                            <a class="profile-pic" href="#">
-                                <img src="/assets/plugins/images/users/<?= $propic ?>" alt="user-img" width="36"
-                                    class="img-circle"><span class="text-white font-medium"><?= $username ?></span></a>
-                        </li>
+                         <div class="dropdown">
+                          <a class="profile-pic btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                             <img src="/assets/plugins/images/users/<?= $propic ?>" alt="user-img" width="36"
+                                    class="img-circle"><span class="text-white font-medium"><?= $username ?></span>
+                          </a>
+
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li><a data-bs-toggle="modal" data-bs-target="#setting-form-modal" class="dropdown-item" href="/settings">
+                               <i class="fa fa-cog" aria-hidden="true"></i>
+                                     <span class="hide-menu">Settings</span>
+                            </a></li>
+                           <li><a class="dropdown-item" href="/logout">
+                               <i class="fa fa-times" aria-hidden="true"></i>
+                                     <span class="hide-menu">Logout</span>
+                            </a></li>
+
+                          </ul>
+                        </div>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
@@ -111,50 +124,7 @@
         <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
-        <aside class="left-sidebar" data-sidebarbg="skin6">
-            <!-- Sidebar scroll-->
-            <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                        <!-- User Profile-->
-                        <li class="sidebar-item pt-2">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/dashboard"
-                                aria-expanded="false">
-                                <i class="far fa-clock" aria-hidden="true"></i>
-                                <span class="hide-menu">Dashboard</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/settings"
-                                aria-expanded="false">
-                                <i class="fa fa-cog" aria-hidden="true"></i>
-                                <span class="hide-menu">Settings</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-apps"
-                                aria-expanded="false">
-                                <i class="fa fa-desktop" aria-hidden="true"></i>
-                                <span class="hide-menu">Management Apps</span>
-                            </a>
-                        </li>
-                      
-                      
-                      
-                     
-                        <li class="text-center p-20 upgrade-btn">
-                            <a href="/logout"
-                                class="btn d-grid btn-danger text-white" >
-                                Logout</a>
-                        </li>
-                    </ul>
-
-                </nav>
-                <!-- End Sidebar navigation -->
-            </div>
-            <!-- End Sidebar scroll-->
-        </aside>
+          <?php include('nav_bar.php'); ?>
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
@@ -175,13 +145,7 @@
                             <ol class="breadcrumb ms-auto">
                                 <li></li>
                             </ol>
-                            <ol>
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/logout"
-                                aria-expanded="false">
-                                <i class="fa fa-times" aria-hidden="true"></i>
-                                     <span class="hide-menu">Logout</span>
-                                </a>
-                            </ol>
+                           
                         </div>
                     </div>
                 </div>
@@ -251,11 +215,12 @@
                                 <div class="col-md-3 col-sm-4 col-xs-6 ms-auto">
                                  
                                     <select id="date-recent-users" class="form-select shadow-none row border-top">
-                                        <option>March 2021</option>
-                                        <option>April 2021</option>
-                                        <option>May 2021</option>
-                                        <option>June 2021</option>
-                                        <option>July 2021</option>
+                                        <?php if(isset($filter_month)): ?>
+                                            <?php foreach($filter_month as $val): ?>
+                                                <option value="<?= $val; ?>"><?= $val; ?></option>
+                                            <?php endforeach; ?>
+                                        <?php endif; ?>
+                                        <option>All Dates</option>
                                     </select>
                                 </div>
                             </div>
@@ -271,12 +236,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                   <?php if (isset($data_apps)): ?>                 
+                   <?php if (count($data_apps) > 0): ?>                 
                   <?php foreach($data_apps as $key): ?>
 
                                         <tr>
                                             <td>1</td>
-                                            <td class="txt-oflo"> <?= $key->app_name ?></td>
+                                            <td class="txt-oflo"> <?= $key->apps_name ?></td>
                                             <td><?= $key->descriptions ?>
                                             </td>
                                             <td class="txt-oflo"><?= $key->status ?></td>
@@ -358,105 +323,63 @@
                             <div class="card-body">
                                 <ul class="chatonline">
                                     <li>
-                                        <div class="call-chat">
-                                            <button class="btn btn-success text-white btn-circle btn" type="button">
-                                                <i class="fas fa-phone"></i>
-                                            </button>
-                                            <button class="btn btn-info btn-circle btn" type="button">
-                                                <i class="far fa-comments text-white"></i>
-                                            </button>
-                                        </div>
+                                       
                                         <a href="javascript:void(0)" class="d-flex align-items-center"><img
                                                 src="/assets/plugins/images/users/varun.jpg" alt="user-img" class="img-circle">
                                             <div class="ms-2">
-                                                <span class="text-dark">Varun Dhavan <small
-                                                        class="d-block text-success d-block">online</small></span>
+                                                <span class="text-dark">Master Keren <small
+                                                        class="d-block text-success d-block">10 Apps</small></span>
                                             </div>
                                         </a>
                                     </li>
                                     <li>
-                                        <div class="call-chat">
-                                            <button class="btn btn-success text-white btn-circle btn" type="button">
-                                                <i class="fas fa-phone"></i>
-                                            </button>
-                                            <button class="btn btn-info btn-circle btn" type="button">
-                                                <i class="far fa-comments text-white"></i>
-                                            </button>
-                                        </div>
+                                       
                                         <a href="javascript:void(0)" class="d-flex align-items-center"><img
                                                 src="/assets/plugins/images/users/genu.jpg" alt="user-img" class="img-circle">
                                             <div class="ms-2">
-                                                <span class="text-dark">Genelia
-                                                    Deshmukh <small class="d-block text-warning">Away</small></span>
+                                                <span class="text-dark">Neng
+                                                    Kidul <small class="d-block text-warning">1 App</small></span>
                                             </div>
                                         </a>
                                     </li>
                                     <li>
-                                        <div class="call-chat">
-                                            <button class="btn btn-success text-white btn-circle btn" type="button">
-                                                <i class="fas fa-phone"></i>
-                                            </button>
-                                            <button class="btn btn-info btn-circle btn" type="button">
-                                                <i class="far fa-comments text-white"></i>
-                                            </button>
-                                        </div>
+                                        
                                         <a href="javascript:void(0)" class="d-flex align-items-center"><img
                                                 src="/assets/plugins/images/users/ritesh.jpg" alt="user-img" class="img-circle">
                                             <div class="ms-2">
-                                                <span class="text-dark">Ritesh
-                                                    Deshmukh <small class="d-block text-danger">Busy</small></span>
+                                                <span class="text-dark">Gondrong
+                                                    Purnomo <small class="d-block text-danger">0 App</small></span>
                                             </div>
                                         </a>
                                     </li>
                                     <li>
-                                        <div class="call-chat">
-                                            <button class="btn btn-success text-white btn-circle btn" type="button">
-                                                <i class="fas fa-phone"></i>
-                                            </button>
-                                            <button class="btn btn-info btn-circle btn" type="button">
-                                                <i class="far fa-comments text-white"></i>
-                                            </button>
-                                        </div>
+                                       
                                         <a href="javascript:void(0)" class="d-flex align-items-center"><img
                                                 src="/assets/plugins/images/users/arijit.jpg" alt="user-img" class="img-circle">
                                             <div class="ms-2">
-                                                <span class="text-dark">Arijit
-                                                    Sinh <small class="d-block text-muted">Offline</small></span>
+                                                <span class="text-dark">Dewa
+                                                    Sono <small class="d-block text-muted">-</small></span>
                                             </div>
                                         </a>
                                     </li>
                                     <li>
-                                        <div class="call-chat">
-                                            <button class="btn btn-success text-white btn-circle btn" type="button">
-                                                <i class="fas fa-phone"></i>
-                                            </button>
-                                            <button class="btn btn-info btn-circle btn" type="button">
-                                                <i class="far fa-comments text-white"></i>
-                                            </button>
-                                        </div>
+                                      
                                         <a href="javascript:void(0)" class="d-flex align-items-center"><img
                                                 src="/assets/plugins/images/users/govinda.jpg" alt="user-img"
                                                 class="img-circle">
                                             <div class="ms-2">
-                                                <span class="text-dark">Govinda
-                                                    Star <small class="d-block text-success">online</small></span>
+                                                <span class="text-dark">Gogolia
+                                                    Star <small class="d-block text-success">9 Apps</small></span>
                                             </div>
                                         </a>
                                     </li>
                                     <li>
-                                        <div class="call-chat">
-                                            <button class="btn btn-success text-white btn-circle btn" type="button">
-                                                <i class="fas fa-phone"></i>
-                                            </button>
-                                            <button class="btn btn-info btn-circle btn" type="button">
-                                                <i class="far fa-comments text-white"></i>
-                                            </button>
-                                        </div>
+                                    
                                         <a href="javascript:void(0)" class="d-flex align-items-center"><img
                                                 src="/assets/plugins/images/users/hritik.jpg" alt="user-img" class="img-circle">
                                             <div class="ms-2">
-                                                <span class="text-dark">John
-                                                    Abraham<small class="d-block text-success">online</small></span>
+                                                <span class="text-dark">Kentang Goreng
+                                                    <small class="d-block text-success">7 Apps</small></span>
                                             </div>
                                         </a>
                                     </li>
@@ -466,6 +389,9 @@
                     </div>
                     <!-- /.col -->
                 </div>
+
+      <?php include('modal_setting_form.php'); ?>
+
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->

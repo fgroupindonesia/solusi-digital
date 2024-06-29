@@ -4,35 +4,114 @@ Author: Wrappixel
 Email: niravjoshi87@gmail.com
 File: js
 */
-$(function () {
-    "use strict";
-    // ============================================================== 
-    // Newsletter
-    // ============================================================== 
+const MONTHS_LABEL = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
 
-    //ct-visits
-    new Chartist.Line('#ct-visits', {
-        labels: ['2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015'],
+//var dataMale = [2, 5, 2, 6, 2, 5, 2, 4]
+//var dataMale = [2, 5, 2, 6, 2, 5, 2, 4, 2,1, 3, 3];
+//var dataFemale = [2, 5, 2, 7, 1, 9, 1, 6, 2, 5, 2, 4];
+var dataMale = [0];
+var dataFemale = [0];
+var urlNa = "/request-statistics";
+var CALL_ROUTINE = 1;
+
+function getDataStatistic(sex){
+
+let dataIni = {'sex' : sex};
+   
+ $.ajax({
+        url: urlNa,
+        data: dataIni,
+        cache : false,
+        type: 'POST',
+        success: function(data){
+                 
+            if(CALL_ROUTINE == 1){
+              dataMale = JSON.parse(data);
+              
+
+              // continue
+              CALL_ROUTINE++;
+              secondCall();
+
+            }else if(CALL_ROUTINE == 2) {
+                dataFemale = JSON.parse(data);
+
+                // end it
+                CALL_ROUTINE = -1;
+
+                applyAnimationStatistics();
+            }      
+
+                          console.log('we got ' + data);
+
+        }
+    });
+
+}
+
+function firstCall(){
+    getDataStatistic('male');
+}
+
+function secondCall(){
+   getDataStatistic('female');
+}
+
+function getManyData(){
+    let max = 0;
+
+    if(dataMale.length != 0 || dataFemale != 0){
+        if(dataMale.length > dataFemale.length){
+            max = dataMale.length;
+        }else{
+            max = dataFemale.length;
+        }
+    }
+
+    //console.log('total data is ' + max);
+    return max;
+}
+
+function applyAnimationStatistics() {
+    
+ new Chartist.Line('#ct-visits', {
+        labels: MONTHS_LABEL,
         series: [
-            [5, 2, 7, 4, 5, 3, 5, 4]
-            , [2, 5, 2, 6, 2, 5, 2, 4]
+            dataMale
+            , dataFemale
         ]
     }, {
-        top: 0,
-        low: 1,
+        top: getManyData()+1,
+        low: 0,
         showPoint: true,
         fullWidth: true,
         plugins: [
             Chartist.plugins.tooltip()
         ],
         axisY: {
+            onlyInteger : true,
             labelInterpolationFnc: function (value) {
-                return (value / 1) + 'k';
+                if(value > 1){
+                    return value + ' users';
+                }else {
+                    return value + ' user';
+                }   
             }
         },
         showArea: true
     });
 
+
+}
+
+$(function () {
+    "use strict";
+
+    CALL_ROUTINE = 1;
+    setTimeout(firstCall, 1000);
+
+    //ct-visits
+    applyAnimationStatistics();
 
     var chart = [chart];
 

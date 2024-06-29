@@ -8,9 +8,18 @@ body {
     background-attachment: fixed;
 }
 
+#error-msg {
+    text-align: center;
+    width: 100%;
+    display: block;
+    color: red;
+    margin-bottom: 5px;
+}
+
 #logo-fg {
     width: 32px;
     height: 32px;
+  
 }
 
 #title-login{

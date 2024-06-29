@@ -20,12 +20,21 @@ class Home extends BaseController
 
     public function index(): string
     {
-        return "something";
+        return "something  x"  . base_url();
     }
 
 	public function display_login(): string
     {
-        return view('login_portal');
+       $st = $this->request->getGet('status');
+       $data = array();
+
+       if(isset($st)){
+        $data['status'] = 'wrong username or password!';
+       }else{
+        $data['status'] = '';
+       }
+
+        return view('login_portal', $data);
     }
 
     public function display_login_error(): string
@@ -62,8 +71,18 @@ class Home extends BaseController
 
     }
 
+    private function protectLogin(){
+        if($this->isLoggedOn() === false){
+           header("Location: /portal");
+           exit(0);  
+        }
+    }
+
     public function display_dashboard()
     {   
+
+        // for security reasons
+        $this->protectLogin();
 
         $session = session();
         $r = $session->get('role');
@@ -72,6 +91,7 @@ class Home extends BaseController
 
        $data = $this->getDashboardData($r);
        $data['search_display'] = 'search-hide';
+       $data['role'] = $r;
 
         if(!empty($r)){
          
@@ -80,31 +100,35 @@ class Home extends BaseController
                 return view('dashboard_admin', $data);
             }else{
                 //echo "client";
+                $data['filter_month'] = $this->get4QuartalMonths();
                 return view('dashboard_client', $data);
             } 
 
         }
 
-         return redirect()->route('portal');
+
+    }
+
+    private function get4QuartalMonths(){
         
+        $prev_month = array();
+
+        for($i = 1; $i <= 3; $i++){
+            $month = date('F Y', strtotime("-$i month"));
+            $prev_month[] = $month;
+        }
+
+        return $prev_month;
 
     }
 
-    private function getCurrentPropic(){
-            $session = session();
-            $u = $session->get('propic');
-            return $u;
+    private function isLoggedOn(){
+        return $this->getSessionData('role') != null;
     }
 
-    private function getCurrentUsername(){
+    private function getSessionData($key){
             $session = session();
-            $u = $session->get('username');
-            return $u;
-    }
-
-    private function getCurrentRole(){
-            $session = session();
-            $u = $session->get('role');
+            $u = $session->get($key);
             return $u;
     }
 
@@ -114,7 +138,7 @@ class Home extends BaseController
             $data_users = $this->db->selectAllData('users');
             $data_apps = $this->db->selectAllData('apps');
         }else{
-            $u = $this->getCurrentUsername();
+            $u = $this->getSessionData('username');
             $data_users = $this->db->selectAllData('users');
             $data_apps = $this->db->selectAllDataByUsername($u, 'apps');
         }
@@ -132,10 +156,26 @@ class Home extends BaseController
 
         }
 
+        $sex_type = $this->getSessionData('sex');
+
+        if($sex_type == 'male'){
+            $sex_male_radio = "checked";
+            $sex_female_radio = "";
+        }else{
+            $sex_male_radio = "";
+            $sex_female_radio = "checked";
+        }
 
         $data = array(
-            'propic'    => $this->getCurrentPropic(),
-            'username'  => $this->getCurrentUsername(),
+            'user_id'   => $this->getSessionData('user_id'),
+            'propic'    => $this->getSessionData('propic'),
+            'username'  => $this->getSessionData('username'),
+            'pass'  => $this->getSessionData('pass'),
+            'email'  => $this->getSessionData('email'),
+            'occupation'  => $this->getSessionData('occupation'),
+            'whatsapp'  => $this->getSessionData('whatsapp'),
+            'sex_male_radio'  => $sex_male_radio,
+            'sex_female_radio'  => $sex_female_radio,
             'data_users' => $this->formatTimeInData($data_users),
             'data_apps' => $this->formatTimeInData($data_apps),
             'total_users' => $total_users,
@@ -154,16 +194,26 @@ class Home extends BaseController
 
 	public function app_management(): string
     {   
-            $r = $this->getCurrentRole();
+          // for security reasons
+        $this->protectLogin();
+
+            $r = $this->getSessionData('role');
     	    $data = $this->getDashboardData($r);
             $data['search_display'] = 'search-shown';
+            $data['role'] = $r;
+            $data['username'] = $this->getSessionData('username');
+            $data['user_id'] = $this->getSessionData('user_id');
 
         return view('manage_apps', $data);
     }
 
     public function user_management(): string
     {   
-            $r = $this->getCurrentRole();
+
+          // for security reasons
+        $this->protectLogin();
+
+            $r = $this->getSessionData('role');
            $data = $this->getDashboardData($r);
             $data['search_display'] = 'search-shown';
 

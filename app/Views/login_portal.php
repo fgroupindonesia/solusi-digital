@@ -18,6 +18,7 @@
       <img id="logo-fg" src="/assets/plugins/images/fgroupindonesia.jpg" />
     </div>
     <h1 id="title-login">Portal</h1>
+    <span id="error-msg"><?= $status ?></span>
     <form action="/verify" method="post">
       <div class="form-group">
       <label for="username">Username:</label>
@@ -44,7 +45,12 @@
       $("input").blur(function() {
         $(this).css("background-color", "#fff");
       });
+
+     
     });
+
+
+ 
   </script>
 </body>
 </html>

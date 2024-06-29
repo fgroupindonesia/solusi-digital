@@ -16,7 +16,7 @@ class App extends BaseConfig
      *
      * E.g., http://example.com/
      */
-    public string $baseURL = 'http://fgroupindonesia.com/';
+    public string $baseURL = BASE;
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
@@ -29,7 +29,7 @@ class App extends BaseConfig
      *
      * @var list<string>
      */
-    public array $allowedHostnames = ["http://solusi-digital.fgroupindonesia.com"];
+    public array $allowedHostnames = ["http://sd.fgroupindonesia.com"];
 
     /**
      * --------------------------------------------------------------------------
