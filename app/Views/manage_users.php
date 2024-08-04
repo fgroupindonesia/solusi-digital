@@ -143,6 +143,7 @@
                                             <th class="border-top-0">Whatsapp</th>
                                             <th class="border-top-0">Sex</th>
                                             <th class="border-top-0">Date Created</th>
+                                            <th class="border-top-0">Email Activation</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -157,6 +158,10 @@
                                             <td class="txt-oflo"><?= $key->whatsapp ?></td>
                                               <td class="txt-oflo"><?= $key->sex ?></td>
                                             <td><span class="text-success"><?= $key->date_created ?></span></td>
+                                            <td>
+                    <a href="#" data-id="<?= $key->id ?>" class="activation-user-email btn d-grid btn-warning text-white">
+                                Send</a>
+                                            </td>
                                         </tr>
                  <?php endforeach; ?>
                  <?php endif; ?>

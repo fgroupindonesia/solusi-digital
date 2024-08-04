@@ -60,6 +60,7 @@ CREATE TABLE IF NOT EXISTS `table_users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) DEFAULT NULL,
   `pass` varchar(50) DEFAULT NULL,
+  `fullname` varchar(50) DEFAULT NULL,
   `sex` varchar(50) DEFAULT NULL,
   `occupation` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
@@ -68,20 +69,21 @@ CREATE TABLE IF NOT EXISTS `table_users` (
   `whatsapp` varchar(50) DEFAULT NULL,
   `date_created` timestamp NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_fgi_sistem_solusi_digital_v1.table_users: ~8 rows (approximately)
+-- Dumping data for table db_fgi_sistem_solusi_digital_v1.table_users: ~10 rows (approximately)
 DELETE FROM `table_users`;
-INSERT INTO `table_users` (`id`, `username`, `pass`, `sex`, `occupation`, `email`, `propic`, `role`, `whatsapp`, `date_created`) VALUES
-	(2, 'udin', 'udin1234', 'female', 'swastasss', 'udin@home.com', 'default-male.png', 'admin', '1111', '2024-06-25 18:28:29'),
-	(5, 'cinta', 'cintaku1', 'female', 'swasta', 'cinta@hotmail.com', 'default-female.png', 'client', '022-029292', '2024-06-25 18:33:48'),
-	(6, 'korean', 'korean', 'male', 'kerja', 'korean@gmail.com', 'default-male.png', 'client', '028928', '2024-06-26 04:09:10'),
-	(7, 'asdasd', 'sss', 'male', 'ddd', 'ss@yahoo.com', 'default-male.png', 'client', 'ssdas', '2024-06-26 04:11:33'),
-	(8, 'test', 'test', 'male', 'test', 'test', 'default-male.png', 'client', 'test', '2024-06-27 10:01:37'),
-	(9, 'as', 'as', 'male', 'as', 'as', 'default-male.png', 'client', 'as', '2024-06-27 10:01:51'),
-	(10, 'sdsd', 'sdsds', 'male', 'sdsd', 'sdsd@asd.com', 'default-male.png', 'client', 'sdsd', '2024-06-27 10:02:39'),
-	(11, 'cintaxxx', 'asdasd', 'male', 'asdasd', 'asd@gmail.com', 'default-male.png', 'client', '213', '2024-06-27 10:05:07'),
-	(12, 'asdasd', 'asd', 'female', 'asd', 'asd', 'default-female.png', 'client', 'asd', '2024-06-27 10:12:21');
+INSERT INTO `table_users` (`id`, `username`, `pass`, `fullname`, `sex`, `occupation`, `email`, `propic`, `role`, `whatsapp`, `date_created`) VALUES
+	(2, 'udin', 'udin1234', NULL, 'male', 'private sector', 'udin@home.com', 'default-male.png', 'admin', '12354999', '2024-06-25 18:28:29'),
+	(5, 'cinta', 'cintaku1', NULL, 'female', 'swasta', 'cinta@hotmail.com', 'default-female.png', 'client', '022-029292', '2024-06-25 18:33:48'),
+	(6, 'korean', 'korean', NULL, 'male', 'kerja', 'korean@gmail.com', 'default-male.png', 'client', '028928', '2024-06-26 04:09:10'),
+	(7, 'asdasd', 'sss', NULL, 'male', 'ddd', 'ss@yahoo.com', 'default-male.png', 'client', 'ssdas', '2024-06-26 04:11:33'),
+	(8, 'test', 'test', NULL, 'male', 'test', 'test', 'default-male.png', 'client', 'test', '2024-06-27 10:01:37'),
+	(9, 'as', 'as', NULL, 'male', 'as', 'as', 'default-male.png', 'client', 'as', '2024-06-27 10:01:51'),
+	(10, 'sdsd', 'sdsds', NULL, 'male', 'sdsd', 'sdsd@asd.com', 'default-male.png', 'client', 'sdsd', '2024-06-27 10:02:39'),
+	(11, 'cintaxxx', 'asdasd', NULL, 'male', 'asdasd', 'asd@gmail.com', 'default-male.png', 'client', '213', '2024-06-27 10:05:07'),
+	(12, 'asdasd', 'asd', NULL, 'female', 'asd', 'asd', 'default-female.png', 'client', 'asd', '2024-06-27 10:12:21'),
+	(15, 'kuya', 'dju4uoc', 'kuya kuyaan', 'male', 'none', 'kuya@gmail.com', 'default-male.png', 'client', '092929', '2024-07-01 09:10:51');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

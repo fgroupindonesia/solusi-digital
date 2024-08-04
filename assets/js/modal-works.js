@@ -17,6 +17,18 @@ $( document ).ready(function() {
 		messageWA(nowa);
 	});
 
+	// this is for email activation notification 
+	// through email
+	$('.activation-user-email').on('click', function(e){
+		e.preventDefault();
+		var idNa = $(this).data('id');
+		var typeNa = 'activation';
+		var buttonNa = $(this);
+
+		sendEmail(idNa, typeNa, buttonNa);
+
+	});
+
 
     // this is for user form
 	$('#user-form').on('submit', function(e){
@@ -172,6 +184,26 @@ function showLoadingManagement(stat){
 	}
 }
 
+	
+function sendEmail(idNa, typeNa, buttonNa){
+
+console.log('kirim email activation!');
+let urlNa = "/send-email";
+let dataCome = {'id' : idNa, 'type' : typeNa};
+
+	$.ajax({
+        url: urlNa,
+        data: (dataCome),
+        cache : false,
+        type: 'POST',
+        success: function(data){
+        		buttonNa.html("<span>Sent!</span>");
+        		buttonNa.removeClass("btn-warning");
+	       		buttonNa.addClass("btn-info");
+        }
+      });
+
+}
 
 function kirimPost(dataForm, urlNa){
 	
@@ -186,9 +218,11 @@ function kirimPost(dataForm, urlNa){
         	if(urlNa != URL_USER_EDIT && urlNa != URL_APP_EDIT){
         		setTimeout(function(){
         			if(urlNa == URL_SETTINGS_UPDATE){
-        		var dForm = JSON.parse(dataForm);
+        		var dForm = convertIntoJSON(dataForm);
     			var cridential = "username=" + dForm.username+ "&pass=" + dForm.pass;
-        			location.href = "/verify/reloggin=true&" + cridential;
+        			location.href = "/verify-manual?reloggin=true&" + cridential;
+    				//location.replace('l')
+
         			}else{
         			location.reload();
         			}
@@ -256,3 +290,22 @@ function messageWA(nomer){
 	var url = 'https://api.whatsapp.com/send?phone=' + nomer + '&text=' + msg;
 	location.href = url;
 } 
+
+function convertIntoJSON(dataSerialized){
+
+
+var dataArray = dataSerialized.split("&"); // Step 2
+var jsonObject = {}; // Step 3
+
+for (var i = 0; i < dataArray.length; i++) {
+  var keyValue = dataArray[i].split("="); // Split each key-value pair
+  var key = decodeURIComponent(keyValue[0]); // Decode the key
+  var value = decodeURIComponent(keyValue[1]); // Decode the value
+  jsonObject[key] = value; // Assign the key-value pair to the object
+}
+
+var jsonString = JSON.stringify(jsonObject); // Step 4
+
+return jsonObject;
+
+}

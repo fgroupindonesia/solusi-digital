@@ -34,7 +34,23 @@
                                 <span class="hide-menu">Management Users</span>
                             </a>
                         </li>
-                    <?php endif; ?>
+                        <?php endif; ?>
+                          <?php if($role != 'admin'): ?>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/order-jasa"
+                                aria-expanded="false">
+                                <i class="fa fa-edit" aria-hidden="true"></i>
+                                <span class="hide-menu">Order Jasa</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/add-deposit"
+                                aria-expanded="false">
+                                <i class="fa fa-wallet" aria-hidden="true"></i>
+                                <span class="hide-menu">Setor Deposit</span>
+                            </a>
+                        </li>
+                        <?php endif; ?>
                       
                       
                      

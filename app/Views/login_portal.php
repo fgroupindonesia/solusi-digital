@@ -33,9 +33,21 @@
       </div>
     </form>
   </div>
+
+<div class="roller">
+    <span id="rolltext">Solusi Terbaik<br/>
+    Akselerasi Bisnis Anda<br/>
+    Dongkrak Performa<br/>
+    Lejitkan Double Profit<br/>
+    Dengan Asset Digital di <br/>
+    <span id="spare-time">Solusi Digital</span><br/>
 </div>
 
-  <script src="/assets/js/jquery-3.6.0.min.js"></script>
+</div>
+
+
+
+<script src="/assets/js/jquery-3.6.0.min.js"></script>
   <script>
     $(document).ready(function() {
       $(".container").hide().fadeIn(1500);

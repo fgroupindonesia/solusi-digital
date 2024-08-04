@@ -54,3 +54,51 @@ a.disabled {
 .ct-vertical  {
   width : 50px !important;
 }
+
+.social-medias img {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+}
+
+.analytics-info:hover {
+  background-color: yellow;
+  cursor: pointer;
+ box-shadow: 7px 8px 19px -5px rgba(0,0,0,0.43);
+-webkit-box-shadow: 7px 8px 19px -5px rgba(0,0,0,0.43);
+-moz-box-shadow: 7px 8px 19px -5px rgba(0,0,0,0.43);
+border-radius: 46px 46px 46px 46px;
+-webkit-border-radius: 46px 46px 46px 46px;
+-moz-border-radius: 46px 46px 46px 46px;
+}
+
+.round-btn {
+  border-radius: 5px;
+  border-style: ridge;
+  width: 70% !important;
+}
+
+.round-btn img {
+   margin-left: 20px;
+   display:inline-block;
+}
+
+.title-btn {
+  text-align: left;
+  padding-left: 30px;
+  display: inline-block;
+  width: 62%;
+  font-size: 1em;
+}
+
+.warning-text {
+  color: red;
+  font-style: italic;
+  border-style: ridge;
+  border-radius: 6px;
+}
+
+.red-text-bold{
+  font-weight: bold;
+  color: red;
+}

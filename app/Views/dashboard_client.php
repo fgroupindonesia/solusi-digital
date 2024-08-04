@@ -236,11 +236,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                   <?php if (count($data_apps) > 0): ?>                 
+                   <?php if (count($data_apps) > 0): ?>  
+                     <?php $startNum = 1; ?>                  
                   <?php foreach($data_apps as $key): ?>
 
                                         <tr>
-                                            <td>1</td>
+                                             <td><?= $startNum++; ?></td>
                                             <td class="txt-oflo"> <?= $key->apps_name ?></td>
                                             <td><?= $key->descriptions ?>
                                             </td>

@@ -1,0 +1,44 @@
+CRITICAL - 2024-07-05 10:28:23 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Home.php on line 154.
+ 1 APPPATH\Controllers\Home.php(154): count(true)
+ 2 APPPATH\Controllers\Home.php(92): App\Controllers\Home->getDashboardData('admin')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-07-05 10:28:41 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Home.php on line 154.
+ 1 APPPATH\Controllers\Home.php(154): count(true)
+ 2 APPPATH\Controllers\Home.php(92): App\Controllers\Home->getDashboardData('admin')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-07-05 10:30:56 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Home.php on line 154.
+ 1 APPPATH\Controllers\Home.php(154): count(true)
+ 2 APPPATH\Controllers\Home.php(92): App\Controllers\Home->getDashboardData('admin')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-07-05 10:31:36 --> TypeError: count(): Argument #1 ($value) must be of type Countable|array, bool given
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Home.php on line 154.
+ 1 APPPATH\Controllers\Home.php(154): count(true)
+ 2 APPPATH\Controllers\Home.php(92): App\Controllers\Home->getDashboardData('admin')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

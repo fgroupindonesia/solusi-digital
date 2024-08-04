@@ -219,11 +219,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                   <?php if (isset($data_users)): ?>                 
+                   <?php if (isset($data_users)): ?>
+                   <?php $startNum = 1; ?>                 
                   <?php foreach($data_users as $key): ?>
 
                                         <tr>
-                                            <td>1</td>
+                                            <td><?= $startNum++; ?></td>
                                             <td class="txt-oflo"> <?= $key->username ?></td>
                                             <td><?= $key->email ?>
                                             </td>

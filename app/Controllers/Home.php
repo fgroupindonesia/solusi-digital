@@ -18,9 +18,33 @@ class Home extends BaseController
 
     //public $cache = new TempCache();
 
-    public function index(): string
+    public function index()
     {
-        return "something  x"  . base_url();
+       return redirect()->to('http://www.yahoo.com'); 
+        //return "something  x"  . base_url();
+    }
+
+     public function order_jasa(): string
+    {
+        // for security reasons
+        $this->protectLogin();
+
+        $session = session();
+        $r = $session->get('role');
+
+        //echo var_dump($r);
+
+       $data = $this->getDashboardData($r);
+       $data['search_display'] = 'search-hide';
+       $data['role'] = $r;
+
+        if(!empty($r)){
+         
+          //echo "client";
+                $data['filter_month'] = $this->get4QuartalMonths();
+                return view('dashboard_order_jasa', $data);
+           }
+        
     }
 
 	public function display_login(): string
@@ -136,11 +160,15 @@ class Home extends BaseController
 
         if($usage == 'admin'){
             $data_users = $this->db->selectAllData('users');
+            arsort($data_users);
             $data_apps = $this->db->selectAllData('apps');
+            arsort($data_apps);
         }else{
             $u = $this->getSessionData('username');
             $data_users = $this->db->selectAllData('users');
+            arsort($data_users);
             $data_apps = $this->db->selectAllDataByUsername($u, 'apps');
+            arsort($data_apps);
         }
         $total_users = 0;
         $total_apps = 0;
@@ -216,6 +244,7 @@ class Home extends BaseController
             $r = $this->getSessionData('role');
            $data = $this->getDashboardData($r);
             $data['search_display'] = 'search-shown';
+            $data['role'] = $r;
 
     	return view('manage_users', $data);
     }

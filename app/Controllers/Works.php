@@ -19,11 +19,97 @@ class Works extends BaseController
 
     }
 
+    public function send_email($jenis, $id){
+
+        //echo "AAA";
+        //$jenis = $this->request->getPost('type');
+        //   $id = $this->request->getPost('id');
+
+        //echo $id;
+
+        if($jenis == 'activation'){
+            $this->send_activation($id);
+        }else if($jenis == 'registration'){
+            $this->send_registration($id);
+        }else{
+            echo "invalid";
+        }
+
+    }
+
+  public function send_activation($idNa){
+       $dataNa = $this->db->selectData($idNa, 'users');
+
+        // when we found it
+        if(count($dataNa) == 1){
+
+        $username   = $dataNa[0]->username;
+        $email      = $dataNa[0]->email;
+        $pass       = $dataNa[0]->pass;
+
+        $passedData = 'type=activation&email=' . $email . "&username=" . $username . "&pass=" . 
+        urlencode($pass);
+
+        $urlEmailSender = 'https://demo.fgroupindonesia.com/email/sending.php?' . ($passedData);
+            //echo $urlEmailSender . "<br>";
+
+            // call the email sending
+            $this->callURL($urlEmailSender);
+
+            echo "valid";
+
+        }else{
+
+            echo "none";
+
+        }
+ }
+
+    public function send_registration($idNa){
+     
+        $dataNa = $this->db->selectData($idNa, 'users');
+
+        // when we found it
+        if(count($dataNa) == 1){
+
+        $fullname   = $dataNa[0]->fullname;
+        $email      = $dataNa[0]->email;
+
+        $passedData = 'type=registration&email=' . $email . "&fullname=" . urlencode($fullname);
+
+        $urlEmailSender = 'https://demo.fgroupindonesia.com/email/sending.php?' . ($passedData);
+        //echo $urlEmailSender . "<br>";
+
+            // call the email sending
+            $this->callURL($urlEmailSender);
+
+            //echo "valid";
+
+        }else{
+
+            echo "none";
+
+        }
+
+
+
+    }
+
+    private function callURL($urlNa){
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $urlNa);
+curl_setopt($ch, CURLOPT_HEADER, 0);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+$result = curl_exec($ch);
+curl_close($ch);
+
+
+    }
+
     private function getTotalDataByMonth($monthNumeric){
 
         $n = 0;
-
-        
 
         return $n;
 
@@ -88,10 +174,10 @@ class Works extends BaseController
 
     }
 
-    public function verify_login()
-    {
-        $u = $this->request->getPost('username');
-        $p = $this->request->getPost('password');
+    public function verify_login_manual(){
+
+        $u = $this->request->getGet('username');
+        $p = $this->request->getGet('pass');
 
         $data = array(
             'username'=>$u,
@@ -100,7 +186,6 @@ class Works extends BaseController
 
         $rest = $this->db->verify_login($data);
         
-
         if(empty($rest)){
             return redirect()->to('/portal?status=error');
         }
@@ -121,6 +206,44 @@ class Works extends BaseController
 
         return redirect()->to('/dashboard');
 
+    }
+
+    public function verify_user_to_dashboard($data)
+    {
+       
+    }
+
+    public function verify_login()
+    {
+        $u = $this->request->getPost('username');
+        $p = $this->request->getPost('password');
+
+        $data = array(
+            'username'=>$u,
+            'pass'=>$p
+        );
+
+        $rest = $this->db->verify_login($data);
+        
+        if(empty($rest)){
+            return redirect()->to('/portal?status=error');
+        }
+
+        $session = session();
+        //echo var_dump($rest);
+        $session->set('role', $rest[0]->role);
+        $session->set('username', $rest[0]->username);
+        $session->set('pass', $rest[0]->pass);
+        $session->set('email', $rest[0]->email);
+        $session->set('sex', $rest[0]->sex);
+        $session->set('occupation', $rest[0]->occupation);
+        $session->set('whatsapp', $rest[0]->whatsapp);
+        $session->set('propic', $rest[0]->propic);
+        $session->set('user_id', $rest[0]->id);
+
+        echo "processing...";
+
+        return redirect()->to('/dashboard');
 
     }
 
@@ -219,14 +342,14 @@ class Works extends BaseController
 
     public function user_add()
     {
-         $u = $this->request->getPost('username');
-           $p = $this->request->getPost('pass');
-             $e = $this->request->getPost('email');
-               $s = $this->request->getPost('sex');
-                 $o = $this->request->getPost('occupation');
-                   $pro = $this->request->getPost('propic');
-                     $role = $this->request->getPost('role');
-                       $wa = $this->request->getPost('whatsapp');
+        $u = $this->request->getPost('username');
+        $p = $this->request->getPost('pass');
+        $e = $this->request->getPost('email');
+        $s = $this->request->getPost('sex');
+        $o = $this->request->getPost('occupation');
+        $pro = $this->request->getPost('propic');
+        $role = $this->request->getPost('role');
+        $wa = $this->request->getPost('whatsapp');
 
         if(!isset($role)){
             $role = 'client';
@@ -262,6 +385,87 @@ class Works extends BaseController
 
 
     }
+
+    private function getFromEmail($dataEmail){
+
+        $dataNa = explode("@", $dataEmail);
+        $u = $dataNa[0];
+        $d = $dataNa[1];
+
+        if(count($dataNa)==0){
+            return null;
+        }
+        return $u;
+    }
+
+    private function generateRandomPass($manyLength){
+
+        // we dont use 1 number
+        // nor i nor l characters
+    $characters = 'abcdefghjkmnopqrstuvwxyz0123456789';
+    $randomString = '';
+
+    for ($i = 0; $i < $manyLength; $i++) {
+        $randomString .= $characters[rand(0, strlen($characters) - 1)];
+    }
+
+    return $randomString;
+
+    }
+
+    public function user_register()
+    {
+        
+        $p = $this->generateRandomPass(7);
+        $e = $this->request->getGet('email');
+        $f = $this->request->getGet('fullname');
+        $u = $this->getFromEmail($e);
+
+        $s = $this->request->getGet('sex');
+        $o = 'none';
+        $wa = $this->request->getGet('whatsapp');
+
+        if(!isset($role)){
+            $role = 'client';
+        }
+
+        if(!isset($pro)){
+            if($s == 'male')
+            $pro = 'default-male.png';
+
+            if($s == 'female')
+            $pro = 'default-female.png';
+
+        }        
+
+        $data = array(
+            'username'  => $u,
+            'pass'      => $p,
+            'email'     => $e,
+            'sex'       => $s,
+            'occupation' => $o,
+            'propic'    => $pro,
+            'role'      => $role,
+            'fullname'  => $f,
+            'whatsapp'  => $wa
+        );
+
+     $rest = $this->db->insertData($data, 'users');
+
+     
+     if($rest == 0){
+        echo "none";
+     }else {
+        echo "valid";
+        $idUser = $rest;
+
+        $this->send_email('registration', $idUser);
+        return view('wa_call');
+     }
+
+
+    }
+
 
     public function user_update(){
 
