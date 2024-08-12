@@ -1,7 +1,8 @@
 <div class="modal fade" id="jasa-komen-form-modal" tabindex="-1">
-  <form id="jasa-komen-form" action="/update-settings" method="post">
+  <form id="jasa-komen-form" action="/order-new-jasa-comment" method="post">
  <!-- hidden elemental used -->
   <input id="jasa-komen-hidden-id" name="id" type="hidden" value="<?= $user_id ?>" class="form-control">
+  <input id="jasa-komen-hidden-username" name="username" type="hidden" value="<?= $username ?>" class="form-control">
  <!-- hidden elemental used -->
 
   <div class="modal-dialog">
@@ -14,22 +15,22 @@
         
 <!-- the form body started from here -->
 <div class="form-group row">
-    <label for="jasa-komen-sosial-media" class="col-4 col-form-label">Pilih Sosial Media:</label> <div class="col-8">
-        <div class="social-medias round-btn" >
+    <label  class="col-4 col-form-label">Pilih Sosial Media:</label> <div class="col-8">
+        <div class="social-medias round-btn opt-social" data-value="instagram-post">
           <img src="/assets/images/instagram-logo.png" /> <span class="title-btn">Instagram Post</span> </div>
-        <div class="social-medias round-btn" >
+        <div class="social-medias round-btn opt-social" data-value="instagram-live">
           <img src="/assets/images/instagram-logo.png" /> <span class="title-btn">Instagram Live</span> </div>
-        <div class="social-medias round-btn" >
+        <div class="social-medias round-btn opt-social" data-value="tiktok-post">
           <img src="/assets/images/tiktok-logo.png" /> <span class="title-btn">Tiktok Post</span> </div>
-        <div class="social-medias round-btn" >
+        <div class="social-medias round-btn opt-social" data-value="tiktok-live">
           <img src="/assets/images/tiktok-logo.png" /> <span class="title-btn">Tiktok Live</span> </div>
-       <div class="social-medias round-btn" >
+       <div class="social-medias round-btn opt-social" data-value="shopee-live">
           <img src="/assets/images/shopee-logo.png" /> <span class="title-btn">Shopee Live</span> </div>
-     <div class="social-medias round-btn" >
+     <div class="social-medias round-btn opt-social" data-value="youtube-live">
           <img src="/assets/images/youtube-logo.png" /> <span class="title-btn">Youtube Live</span> </div>
-      <div class="social-medias round-btn" >
+      <div class="social-medias round-btn opt-social" data-value="facebook">
           <img src="/assets/images/fb-logo.png" /> <span class="title-btn">Facebook</span> </div>    
-      <div class="social-medias round-btn" >
+      <div class="social-medias round-btn opt-social" data-value="x">
           <img src="/assets/images/twitter-x-logo.png" /> <span class="title-btn">X</span> </div>  
     </div>
   </div>
@@ -49,7 +50,7 @@
   <div class="form-group row">
     <label for="jasa-komen-videokonten"  class="col-4 col-form-label">Judul Video/Konten:</label> 
     <div class="col-8">
-      <input id="jasa-komen-videokonten" placeholder="ketik judul video konten anda" name="videokonten" type="text" value="" class="form-control">
+      <input id="jasa-komen-videokonten" placeholder="ketik judul video konten anda" name="title" type="text" value="" class="form-control">
     </div>
   </div>
 
@@ -57,11 +58,11 @@
     <label class="col-4">Paket</label> 
     <div class="col-8">
       <div class="custom-control custom-radio custom-control-inline">
-        <input name="paket" id="jasa-komen-paket-hemat" type="radio" class="custom-control-input" value="hemat"> 
+        <input name="package" id="jasa-komen-paket-hemat" type="radio" class="custom-control-input" value="hemat"> 
         <label for="jasa-komen-paket-hemat" class="custom-control-label">Hemat</label>
       </div>
       <div class="custom-control custom-radio custom-control-inline">
-        <input name="paket" id="jasa-komen-paket-bisnis" type="radio" class="custom-control-input" value="bisnis"> 
+        <input name="package" id="jasa-komen-paket-bisnis" type="radio" class="custom-control-input" value="bisnis"> 
         <label for="jasa-komen-paket-bisnis" class="custom-control-label">Bisnis</label>
       </div>
     </div>
@@ -71,7 +72,7 @@
     <label for="jasa-komen-gender-member" class="col-4 col-form-label">Gender</label> 
     <div class="col-8">
       <div class="input-group">
-        <select name="gender-member">
+        <select id="jasa-komen-gender-member" name="gender">
           <option value="lelaki">Laki-laki</option>
          <option value="perempuan">Perempuan</option>
         </select>
@@ -83,7 +84,7 @@
     <label class="col-4">Catatan</label> 
     <div class="col-8">
       <div class="custom-control custom-radio custom-control-inline">
-        <textarea rows="10" cols="30" placeholder="Tuliskan catatan bagi komentator tentang jenis atau gaya penyampaian yang ingin disertakan."></textarea>
+        <textarea id="jasa-komen-notes" name="notes" rows="10" cols="30" placeholder="Tuliskan catatan bagi komentator tentang jenis atau gaya penyampaian yang ingin disertakan."></textarea>
       </div>
     </div>
   </div> 

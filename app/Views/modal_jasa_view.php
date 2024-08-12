@@ -1,7 +1,8 @@
 <div class="modal fade" id="jasa-view-form-modal" tabindex="-1">
-  <form id="jasa-view-form" action="/update-settings" method="post">
+    <form id="jasa-view-form" action="/order-new-jasa-view" method="post">
  <!-- hidden elemental used -->
   <input id="jasa-view-hidden-id" name="id" type="hidden" value="<?= $user_id ?>" class="form-control">
+  <input id="jasa-view-hidden-username" name="username" type="hidden" value="<?= $username ?>" class="form-control">
  <!-- hidden elemental used -->
 
   <div class="modal-dialog">
@@ -14,7 +15,20 @@
         
 <!-- the form body started from here -->
 <div class="form-group row">
-    <label for="jasa-view-sosial-media" class="col-4 col-form-label">Keterangan:</label> 
+    <label  class="col-4 col-form-label">Pilih Sosial Media:</label> <div class="col-8">
+   
+        <div class="social-medias round-btn opt-social" data-value="instagram">
+          <img src="/assets/images/instagram-logo.png" /> <span class="title-btn">Instagram</span> </div>
+        <div class="social-medias round-btn opt-social" data-value="tiktok">
+          <img src="/assets/images/tiktok-logo.png" /> <span class="title-btn">Tiktok</span> </div>
+       
+     <div class="social-medias round-btn opt-social" data-value="youtube">
+          <img src="/assets/images/youtube-logo.png" /> <span class="title-btn">Youtube</span> </div>
+   
+    </div>
+  </div>
+<div class="form-group row">
+    <label  class="col-4 col-form-label">Keterangan:</label> 
     <div class="col-8">
        <p class="warning-text"> Advertiser akan memberikan pertanyaan yang ada hubungannya dengan video atau halaman website yang akan dilihat oleh para viewers. Kemudian berikanlah pertanyaan yang sulit untuk dijawab bagi para viewers tersebut. Tujuannya agar para viewers bertahan lama melihat konten videonya. <br/>
        <strong>Contoh : 'berapa dosis obat dalam video tersebut?'</strong> dst... </p>
@@ -36,7 +50,7 @@
   <div class="form-group row">
     <label for="jasa-view-videokonten"  class="col-4 col-form-label">Judul Video/Konten:</label> 
     <div class="col-8">
-      <input id="jasa-view-videokonten" placeholder="ketik judul video konten anda" name="videokonten" type="text" value="" class="form-control">
+      <input id="jasa-view-videokonten" placeholder="ketik judul video konten anda" name="title" type="text" value="" class="form-control">
     </div>
   </div>
 
@@ -44,11 +58,11 @@
     <label class="col-4">Paket</label> 
     <div class="col-8">
       <div class="custom-control custom-radio custom-control-inline">
-        <input name="paket" id="jasa-view-paket-hemat" type="radio" class="custom-control-input" value="hemat"> 
+        <input name="package" id="jasa-view-paket-hemat" type="radio" class="custom-control-input" value="hemat"> 
         <label for="jasa-view-paket-hemat" class="custom-control-label">Hemat</label>
       </div>
       <div class="custom-control custom-radio custom-control-inline">
-        <input name="paket" id="jasa-view-paket-bisnis" type="radio" class="custom-control-input" value="bisnis"> 
+        <input name="package" id="jasa-view-paket-bisnis" type="radio" class="custom-control-input" value="bisnis"> 
         <label for="jasa-view-paket-bisnis" class="custom-control-label">Bisnis</label>
       </div>
     </div>
@@ -58,7 +72,7 @@
     <label for="jasa-view-gender-member" class="col-4 col-form-label">Gender:</label> 
     <div class="col-8">
       <div class="input-group">
-        <select name="gender-member">
+        <select id="jasa-view-gender-member" name="gender">
           <option value="lelaki">Laki-laki</option>
          <option value="perempuan">Perempuan</option>
         </select>
@@ -70,7 +84,7 @@
     <label class="col-4">Pertanyaan:</label> 
     <div class="col-8">
       <div class="custom-control custom-radio custom-control-inline">
-        <textarea rows="4" cols="30" placeholder="Tuliskan pertanyaan disini."></textarea>
+        <textarea name="question" rows="4" cols="30" placeholder="Tuliskan pertanyaan disini."></textarea>
       </div>
     </div>
   </div> 
@@ -79,7 +93,7 @@
     <label class="col-4">Opsi Jawaban A:</label> 
     <div class="col-8">
       <div class="custom-control custom-radio custom-control-inline">
-        <input type="text" placeholder="contoh : Jojon" >
+        <input name="answer_a" type="text" placeholder="contoh : Jojon" >
       </div>
     </div>
   </div> 
@@ -88,7 +102,7 @@
     <label class="col-4">Opsi Jawaban B:</label> 
     <div class="col-8">
       <div class="custom-control custom-radio custom-control-inline">
-        <input type="text" placeholder="contoh : Neni" >
+        <input name="answer_b" type="text" placeholder="contoh : Neni" >
       </div>
     </div>
   </div> 
@@ -97,7 +111,7 @@
     <label class="col-4">Opsi Jawaban C:</label> 
     <div class="col-8">
       <div class="custom-control custom-radio custom-control-inline">
-        <input type="text" placeholder="contoh : Roni" >
+        <input name="answer_c" type="text" placeholder="contoh : Roni" >
       </div>
     </div>
   </div> 
@@ -106,7 +120,7 @@
     <label class="col-4">Opsi Jawaban D:</label> 
     <div class="col-8">
       <div class="custom-control custom-radio custom-control-inline">
-        <input type="text" placeholder="contoh : Buyung" >
+        <input name="answer_d" type="text" placeholder="contoh : Buyung" >
       </div>
     </div>
   </div> 
@@ -115,13 +129,13 @@
     <label class="col-4">Jawaban Yang Benar:</label> 
     <div class="col-8">
       <div class="custom-control custom-radio custom-control-inline">
-        <input name="jawaban-benar" id="jasa-view-jawaban-a" type="radio" class="custom-control-input" value="a"> 
+        <input name="valid_answer" id="jasa-view-jawaban-a" type="radio" class="custom-control-input" value="a"> 
         <label for="jasa-view-jawaban-a" class="custom-control-label">A</label>
-        <input name="jawaban-benar" id="jasa-view-jawaban-b" type="radio" class="custom-control-input" value="b"> 
+        <input name="valid_answer" id="jasa-view-jawaban-b" type="radio" class="custom-control-input" value="b"> 
         <label for="jasa-view-jawaban-b" class="custom-control-label">B</label>
-        <input name="jawaban-benar" id="jasa-view-jawaban-c" type="radio" class="custom-control-input" value="c"> 
+        <input name="valid_answer" id="jasa-view-jawaban-c" type="radio" class="custom-control-input" value="c"> 
         <label for="jasa-view-jawaban-c" class="custom-control-label">C</label>
-        <input name="jawaban-benar" id="jasa-view-jawaban-d" type="radio" class="custom-control-input" value="d"> 
+        <input name="valid_answer" id="jasa-view-jawaban-d" type="radio" class="custom-control-input" value="d"> 
         <label for="jasa-view-jawaban-d" class="custom-control-label">D</label>
       </div>
       

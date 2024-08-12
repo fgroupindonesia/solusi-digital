@@ -8,6 +8,14 @@ class DataModel extends Model
     protected $table_users      = 'table_users';
     protected $table_ticketing  = 'table_ticketing';
     protected $table_apps       = 'table_apps';
+    protected $table_order_jasa       = 'table_order_jasa';
+
+    protected $table_order_comment       = 'table_order_comment';
+    protected $table_order_follow_marketplace       = 'table_order_follow_marketplace';
+    protected $table_order_rating       = 'table_order_rating';
+    protected $table_order_subscriber       = 'table_order_subscriber';
+    protected $table_order_view       = 'table_order_view';
+    protected $table_order_wishlist_marketplace       = 'table_order_wishlist_marketplace';
 
     private function getEntity($entity){
         $table_na = null;
@@ -17,6 +25,20 @@ class DataModel extends Model
             $table_na = $this->table_ticketing;
         }else if($entity == 'apps'){
             $table_na = $this->table_apps;
+        }else if($entity == 'order_jasa'){
+            $table_na = $this->table_order_jasa;
+        }else if($entity == 'order_comment'){
+            $table_na = $this->table_order_comment;
+        }else if($entity == 'order_follow_marketplace'){
+            $table_na = $this->table_order_follow_marketplace;
+        }else if($entity == 'order_wishlist_marketplace'){
+            $table_na = $this->table_order_wishlist_marketplace;
+        }else if($entity == 'order_rating'){
+            $table_na = $this->table_order_rating;
+        }else if($entity == 'order_subscriber'){
+            $table_na = $this->table_order_subscriber;
+        }else if($entity == 'order_view'){
+            $table_na = $this->table_order_view;
         }
 
         return $table_na;
@@ -53,10 +75,18 @@ class DataModel extends Model
     {
         $table_na = $this->getEntity($entity);
 
+        // this is for non-order tables
+        if($entity == 'users' || $entity == 'apps'){
+
         if(!$this->isDuplicate($data, $entity)){
         $this->db->table($table_na)->insert($data);
         return $this->db->insertID();    
         }
+
+    }else{
+        $this->db->table($table_na)->insert($data);
+        return $this->db->insertID();
+    }
 
         return 0;
 
@@ -100,8 +130,12 @@ class DataModel extends Model
     {
         $table_na = $this->getEntity($entity);
 
-        $res = $this->db->table($table_na)->where('username_owned', $username)->get();
-        
+        if($entity != 'order_jasa'){
+           $res = $this->db->table($table_na)->where('username_owned', $username)->get();
+        }else{
+            $res = $this->db->table($table_na)->where('username', $username)->get();
+        }
+
         return $res->getResult();
     }
 

@@ -1,0 +1,393 @@
+ERROR - 2024-08-12 17:25:12 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\solusi-digital\system\Database\MySQLi\Connection.php:187
+Stack trace:
+#0 C:\xampp\htdocs\solusi-digital\system\Database\MySQLi\Connection.php(187): mysqli->real_connect('localhost', 'root', '', 'db_fgi_sistem_s...', 3306, '', 0)
+#1 C:\xampp\htdocs\solusi-digital\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\solusi-digital\system\Database\BaseConnection.php(604): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\solusi-digital\system\Database\BaseBuilder.php(1629): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\solusi-digital\app\Models\DataModel.php(134): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\solusi-digital\app\Controllers\Works.php(226): App\Models\DataModel->verify_login(Array)
+#6 C:\xampp\htdocs\solusi-digital\system\CodeIgniter.php(933): App\Controllers\Works->verify_login()
+#7 C:\xampp\htdocs\solusi-digital\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+#8 C:\xampp\htdocs\solusi-digital\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\solusi-digital\system\Boot.php(312): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\solusi-digital\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\solusi-digital\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\solusi-digital\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\xampp\htdocs\solusi-digital\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\solusi-digital\system\Database\BaseConnection.php(604): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\solusi-digital\system\Database\BaseBuilder.php(1629): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\solusi-digital\app\Models\DataModel.php(134): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\solusi-digital\app\Controllers\Works.php(226): App\Models\DataModel->verify_login(Array)
+#5 C:\xampp\htdocs\solusi-digital\system\CodeIgniter.php(933): App\Controllers\Works->verify_login()
+#6 C:\xampp\htdocs\solusi-digital\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+#7 C:\xampp\htdocs\solusi-digital\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\solusi-digital\system\Boot.php(312): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\solusi-digital\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\solusi-digital\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2024-08-12 17:25:12 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: POST, Route: verify]
+in SYSTEMPATH\Database\BaseConnection.php on line 457.
+ 1 SYSTEMPATH\Database\BaseConnection.php(604): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1629): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `table_users`
+WHERE `username` = :username:
+AND `pass` = :pass:', [...], false)
+ 3 APPPATH\Models\DataModel.php(134): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Controllers\Works.php(226): App\Models\DataModel->verify_login([...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->verify_login()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-08-12 17:25:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 17:25:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 17:25:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 17:25:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 17:55:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 17:55:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 17:55:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 17:58:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 18:30:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 18:35:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 18:36:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 18:38:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 18:38:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 19:15:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-08-12 19:15:35 --> ErrorException: Undefined variable $kriteria
+[Method: POST, Route: order-new-jasa-comment]
+in APPPATH\Models\DataModel.php on line 62.
+ 1 APPPATH\Models\DataModel.php(62): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $kriteria', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Models\\DataModel.php', 62)
+ 2 APPPATH\Models\DataModel.php(78): App\Models\DataModel->isDuplicate([...], 'order_comment')
+ 3 APPPATH\Controllers\Works.php(324): App\Models\DataModel->insertData([...], 'order_comment')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->jasa_comment_order()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-08-12 19:16:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-08-12 19:16:43 --> ErrorException: Undefined variable $kriteria
+[Method: POST, Route: order-new-jasa-comment]
+in APPPATH\Models\DataModel.php on line 62.
+ 1 APPPATH\Models\DataModel.php(62): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $kriteria', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Models\\DataModel.php', 62)
+ 2 APPPATH\Models\DataModel.php(78): App\Models\DataModel->isDuplicate([...], 'order_comment')
+ 3 APPPATH\Controllers\Works.php(324): App\Models\DataModel->insertData([...], 'order_comment')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->jasa_comment_order()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-08-12 19:18:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-08-12 19:18:17 --> ErrorException: Undefined variable $kriteria
+[Method: POST, Route: order-new-jasa-comment]
+in APPPATH\Models\DataModel.php on line 62.
+ 1 APPPATH\Models\DataModel.php(62): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $kriteria', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Models\\DataModel.php', 62)
+ 2 APPPATH\Models\DataModel.php(78): App\Models\DataModel->isDuplicate([...], 'order_comment')
+ 3 APPPATH\Controllers\Works.php(324): App\Models\DataModel->insertData([...], 'order_comment')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->jasa_comment_order()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-08-12 19:19:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-08-12 19:19:17 --> ErrorException: Undefined variable $kriteria
+[Method: POST, Route: order-new-jasa-comment]
+in APPPATH\Models\DataModel.php on line 62.
+ 1 APPPATH\Models\DataModel.php(62): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $kriteria', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Models\\DataModel.php', 62)
+ 2 APPPATH\Models\DataModel.php(78): App\Models\DataModel->isDuplicate([...], 'order_comment')
+ 3 APPPATH\Controllers\Works.php(324): App\Models\DataModel->insertData([...], 'order_comment')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->jasa_comment_order()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-08-12 19:23:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-08-12 19:24:09 --> ErrorException: Undefined variable $rest1
+[Method: POST, Route: order-new-jasa-comment]
+in APPPATH\Controllers\Works.php on line 330.
+ 1 APPPATH\Controllers\Works.php(330): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $rest1', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Controllers\\Works.php', 330)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->jasa_comment_order()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-08-12 19:26:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 19:26:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 19:27:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 19:28:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 19:33:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-08-12 19:33:19 --> ErrorException: Undefined variable $rest1
+[Method: POST, Route: order-new-jasa-comment]
+in APPPATH\Controllers\Works.php on line 330.
+ 1 APPPATH\Controllers\Works.php(330): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $rest1', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Controllers\\Works.php', 330)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->jasa_comment_order()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-08-12 19:33:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-08-12 19:34:03 --> ErrorException: Undefined variable $kriteria
+[Method: POST, Route: order-new-jasa-comment]
+in APPPATH\Models\DataModel.php on line 62.
+ 1 APPPATH\Models\DataModel.php(62): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $kriteria', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Models\\DataModel.php', 62)
+ 2 APPPATH\Models\DataModel.php(78): App\Models\DataModel->isDuplicate([...], 'order_comment')
+ 3 APPPATH\Controllers\Works.php(329): App\Models\DataModel->insertData([...], 'order_comment')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->jasa_comment_order()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-08-12 19:34:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-08-12 19:34:28 --> ErrorException: Undefined variable $kriteria
+[Method: POST, Route: order-new-jasa-comment]
+in APPPATH\Models\DataModel.php on line 62.
+ 1 APPPATH\Models\DataModel.php(62): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $kriteria', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Models\\DataModel.php', 62)
+ 2 APPPATH\Models\DataModel.php(78): App\Models\DataModel->isDuplicate([...], 'order_comment')
+ 3 APPPATH\Controllers\Works.php(329): App\Models\DataModel->insertData([...], 'order_comment')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->jasa_comment_order()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-08-12 19:34:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 19:37:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 19:38:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 19:40:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 19:51:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 19:53:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 19:55:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 19:55:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 19:56:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 19:57:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 19:58:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 19:59:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 20:00:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 20:03:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 20:04:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 20:06:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 20:07:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 20:08:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 20:08:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 20:09:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 20:10:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 20:12:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 20:12:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 20:17:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 20:18:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 20:18:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 20:19:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 20:20:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 20:20:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 20:21:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 20:21:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 20:22:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 20:22:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 20:31:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 20:32:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 20:33:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-08-12 20:33:42 --> mysqli_sql_exception: Column 'social_media' cannot be null in C:\xampp\htdocs\solusi-digital\system\Database\MySQLi\Connection.php:308
+Stack trace:
+#0 C:\xampp\htdocs\solusi-digital\system\Database\MySQLi\Connection.php(308): mysqli->query('INSERT INTO `ta...', 0)
+#1 C:\xampp\htdocs\solusi-digital\system\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ta...')
+#2 C:\xampp\htdocs\solusi-digital\system\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ta...')
+#3 C:\xampp\htdocs\solusi-digital\system\Database\BaseBuilder.php(2325): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ta...', Array, false)
+#4 C:\xampp\htdocs\solusi-digital\app\Models\DataModel.php(87): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\solusi-digital\app\Controllers\Works.php(466): App\Models\DataModel->insertData(Array, 'order_rating')
+#6 C:\xampp\htdocs\solusi-digital\system\CodeIgniter.php(933): App\Controllers\Works->jasa_rating_order()
+#7 C:\xampp\htdocs\solusi-digital\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+#8 C:\xampp\htdocs\solusi-digital\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\solusi-digital\system\Boot.php(312): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\solusi-digital\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\solusi-digital\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2024-08-12 20:33:42 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'social_media' cannot be null
+[Method: POST, Route: order-new-jasa-rating]
+in SYSTEMPATH\Database\BaseConnection.php on line 676.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2325): CodeIgniter\Database\BaseConnection->query('INSERT INTO `table_order_rating` (`social_media`, `url`, `business_name`, `package`, `gender`, `notes`, `username`) VALUES (:social_media:, :url:, :business_name:, :package:, :gender:, :notes:, :username:)', [...], false)
+ 2 APPPATH\Models\DataModel.php(87): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 APPPATH\Controllers\Works.php(466): App\Models\DataModel->insertData([...], 'order_rating')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->jasa_rating_order()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-12 20:33:42 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'social_media' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 313.
+ 1 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `table_order_rating` (`social_media`, `url`, `business_name`, `package`, `gender`, `notes`, `username`) VALUES (NULL, \'asd\', \'asd\', \'hemat\', \'lelaki\', \'asd\', \'udin\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `table_order_rating` (`social_media`, `url`, `business_name`, `package`, `gender`, `notes`, `username`) VALUES (NULL, \'asd\', \'asd\', \'hemat\', \'lelaki\', \'asd\', \'udin\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2325): CodeIgniter\Database\BaseConnection->query('INSERT INTO `table_order_rating` (`social_media`, `url`, `business_name`, `package`, `gender`, `notes`, `username`) VALUES (:social_media:, :url:, :business_name:, :package:, :gender:, :notes:, :username:)', [...], false)
+ 4 APPPATH\Models\DataModel.php(87): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 APPPATH\Controllers\Works.php(466): App\Models\DataModel->insertData([...], 'order_rating')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->jasa_rating_order()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-12 20:33:42 --> [Caused by] mysqli_sql_exception: Column 'social_media' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 308.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(308): mysqli->query('INSERT INTO `table_order_rating` (`social_media`, `url`, `business_name`, `package`, `gender`, `notes`, `username`) VALUES (NULL, \'asd\', \'asd\', \'hemat\', \'lelaki\', \'asd\', \'udin\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `table_order_rating` (`social_media`, `url`, `business_name`, `package`, `gender`, `notes`, `username`) VALUES (NULL, \'asd\', \'asd\', \'hemat\', \'lelaki\', \'asd\', \'udin\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `table_order_rating` (`social_media`, `url`, `business_name`, `package`, `gender`, `notes`, `username`) VALUES (NULL, \'asd\', \'asd\', \'hemat\', \'lelaki\', \'asd\', \'udin\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2325): CodeIgniter\Database\BaseConnection->query('INSERT INTO `table_order_rating` (`social_media`, `url`, `business_name`, `package`, `gender`, `notes`, `username`) VALUES (:social_media:, :url:, :business_name:, :package:, :gender:, :notes:, :username:)', [...], false)
+ 5 APPPATH\Models\DataModel.php(87): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\Works.php(466): App\Models\DataModel->insertData([...], 'order_rating')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->jasa_rating_order()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-08-12 20:34:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 20:34:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 20:35:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 21:18:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 21:19:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 21:23:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-08-12 21:23:59 --> mysqli_sql_exception: Column 'marketplace' cannot be null in C:\xampp\htdocs\solusi-digital\system\Database\MySQLi\Connection.php:308
+Stack trace:
+#0 C:\xampp\htdocs\solusi-digital\system\Database\MySQLi\Connection.php(308): mysqli->query('INSERT INTO `ta...', 0)
+#1 C:\xampp\htdocs\solusi-digital\system\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ta...')
+#2 C:\xampp\htdocs\solusi-digital\system\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ta...')
+#3 C:\xampp\htdocs\solusi-digital\system\Database\BaseBuilder.php(2325): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ta...', Array, false)
+#4 C:\xampp\htdocs\solusi-digital\app\Models\DataModel.php(87): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\solusi-digital\app\Controllers\Works.php(380): App\Models\DataModel->insertData(Array, 'order_follow_ma...')
+#6 C:\xampp\htdocs\solusi-digital\system\CodeIgniter.php(933): App\Controllers\Works->jasa_follow_marketplace_order()
+#7 C:\xampp\htdocs\solusi-digital\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+#8 C:\xampp\htdocs\solusi-digital\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\solusi-digital\system\Boot.php(312): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\solusi-digital\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\solusi-digital\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2024-08-12 21:23:59 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'marketplace' cannot be null
+[Method: POST, Route: order-new-jasa-follow-marketplace]
+in SYSTEMPATH\Database\BaseConnection.php on line 676.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2325): CodeIgniter\Database\BaseConnection->query('INSERT INTO `table_order_follow_marketplace` (`marketplace`, `url`, `shop_name`, `package`, `gender`, `notes`, `username`) VALUES (:marketplace:, :url:, :shop_name:, :package:, :gender:, :notes:, :username:)', [...], false)
+ 2 APPPATH\Models\DataModel.php(87): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 APPPATH\Controllers\Works.php(380): App\Models\DataModel->insertData([...], 'order_follow_marketplace')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->jasa_follow_marketplace_order()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-12 21:23:59 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'marketplace' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 313.
+ 1 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `table_order_follow_marketplace` (`marketplace`, `url`, `shop_name`, `package`, `gender`, `notes`, `username`) VALUES (NULL, \'asdasd\', \'asdasd\', \'bisnis\', \'lelaki\', \'sdasd\', \'udin\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `table_order_follow_marketplace` (`marketplace`, `url`, `shop_name`, `package`, `gender`, `notes`, `username`) VALUES (NULL, \'asdasd\', \'asdasd\', \'bisnis\', \'lelaki\', \'sdasd\', \'udin\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2325): CodeIgniter\Database\BaseConnection->query('INSERT INTO `table_order_follow_marketplace` (`marketplace`, `url`, `shop_name`, `package`, `gender`, `notes`, `username`) VALUES (:marketplace:, :url:, :shop_name:, :package:, :gender:, :notes:, :username:)', [...], false)
+ 4 APPPATH\Models\DataModel.php(87): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 APPPATH\Controllers\Works.php(380): App\Models\DataModel->insertData([...], 'order_follow_marketplace')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->jasa_follow_marketplace_order()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-08-12 21:23:59 --> [Caused by] mysqli_sql_exception: Column 'marketplace' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 308.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(308): mysqli->query('INSERT INTO `table_order_follow_marketplace` (`marketplace`, `url`, `shop_name`, `package`, `gender`, `notes`, `username`) VALUES (NULL, \'asdasd\', \'asdasd\', \'bisnis\', \'lelaki\', \'sdasd\', \'udin\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `table_order_follow_marketplace` (`marketplace`, `url`, `shop_name`, `package`, `gender`, `notes`, `username`) VALUES (NULL, \'asdasd\', \'asdasd\', \'bisnis\', \'lelaki\', \'sdasd\', \'udin\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `table_order_follow_marketplace` (`marketplace`, `url`, `shop_name`, `package`, `gender`, `notes`, `username`) VALUES (NULL, \'asdasd\', \'asdasd\', \'bisnis\', \'lelaki\', \'sdasd\', \'udin\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2325): CodeIgniter\Database\BaseConnection->query('INSERT INTO `table_order_follow_marketplace` (`marketplace`, `url`, `shop_name`, `package`, `gender`, `notes`, `username`) VALUES (:marketplace:, :url:, :shop_name:, :package:, :gender:, :notes:, :username:)', [...], false)
+ 5 APPPATH\Models\DataModel.php(87): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\Works.php(380): App\Models\DataModel->insertData([...], 'order_follow_marketplace')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->jasa_follow_marketplace_order()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-08-12 21:25:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 21:26:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 21:41:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 21:41:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 21:42:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 21:43:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 21:46:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 21:47:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 21:47:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 21:48:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 21:52:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 21:52:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 22:45:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 22:46:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 22:46:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-08-12 22:46:43 --> ErrorException: Undefined variable $total_orders
+[Method: GET, Route: order-jasa]
+in APPPATH\Views\dashboard_order_jasa.php on line 263.
+ 1 APPPATH\Views\dashboard_order_jasa.php(263): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $total_orders', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_order_jasa.php', 263)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_order_jasa.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_order_jasa', [], true)
+ 5 APPPATH\Controllers\Home.php(45): view('dashboard_order_jasa', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->order_jasa()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-08-12 22:47:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 22:47:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 22:47:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 22:47:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-08-12 22:47:45 --> ErrorException: Undefined variable $total_order_jasa
+[Method: GET, Route: manage-order-jasa]
+in APPPATH\Views\manage_order_jasa.php on line 127.
+ 1 APPPATH\Views\manage_order_jasa.php(127): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $total_order_jasa', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\manage_order_jasa.php', 127)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\manage_order_jasa.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('manage_order_jasa', [], true)
+ 5 APPPATH\Controllers\Home.php(261): view('manage_order_jasa', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->order_jasa_management()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-08-12 22:48:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 22:48:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-08-12 22:48:10 --> ErrorException: Undefined variable $total_order_jasa
+[Method: GET, Route: manage-order-jasa]
+in APPPATH\Views\manage_order_jasa.php on line 127.
+ 1 APPPATH\Views\manage_order_jasa.php(127): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $total_order_jasa', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\manage_order_jasa.php', 127)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\manage_order_jasa.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('manage_order_jasa', [], true)
+ 5 APPPATH\Controllers\Home.php(261): view('manage_order_jasa', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->order_jasa_management()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-08-12 22:48:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 22:48:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 23:02:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 23:02:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 23:02:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 23:03:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 23:05:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 23:06:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 23:06:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 23:08:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 23:08:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 23:13:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 23:14:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 23:14:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 23:14:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-08-12 23:17:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

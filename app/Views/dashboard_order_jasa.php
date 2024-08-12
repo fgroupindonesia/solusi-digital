@@ -165,7 +165,7 @@
                 <!-- ============================================================== -->
                 <div class="row justify-content-center">
                     <div class="col-lg-4 col-md-12">
-                        <div class="white-box analytics-info" data-bs-toggle="modal" data-bs-target="#jasa-komen-form-modal">
+                        <div class="order-item white-box analytics-info" data-bs-toggle="modal" data-bs-target="#jasa-komen-form-modal">
                             <center>
                             <div class="social-medias">
                                 <img src="/assets/images/fb-logo.png">
@@ -180,7 +180,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
-                        <div class="white-box analytics-info" data-bs-toggle="modal"
+                        <div class="order-item white-box analytics-info" data-bs-toggle="modal"
                         data-bs-target="#jasa-view-form-modal" >
                             <center>
                             <div class="social-medias">
@@ -194,7 +194,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
-                         <div class="white-box analytics-info" data-bs-toggle="modal"
+                         <div class="order-item white-box analytics-info" data-bs-toggle="modal"
                         data-bs-target="#jasa-rating-form-modal" >
                             <center>
                             <div class="social-medias">
@@ -208,7 +208,7 @@
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-lg-4 col-md-12">
-                        <div data-bs-toggle="modal" data-bs-target="#jasa-follow-marketplace-form-modal" class="white-box analytics-info">
+                        <div data-bs-toggle="modal" data-bs-target="#jasa-follow-marketplace-form-modal" class="order-item white-box analytics-info">
                             <center>
                             <div class="social-medias">
                                 <img src="/assets/images/shopee-logo.png">
@@ -222,7 +222,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
-                        <div data-bs-toggle="modal" data-bs-target="#jasa-wishlist-marketplace-form-modal" class="white-box analytics-info">
+                        <div data-bs-toggle="modal" data-bs-target="#jasa-wishlist-marketplace-form-modal" class="order-item white-box analytics-info">
                             <center>
                             <div class="social-medias">
                                 <img src="/assets/images/shopee-logo.png">
@@ -236,7 +236,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
-                         <div data-bs-toggle="modal" data-bs-target="#jasa-subscriber-form-modal" class="white-box analytics-info">
+                         <div data-bs-toggle="modal" data-bs-target="#jasa-subscriber-form-modal" class="order-item white-box analytics-info">
                             <center>
                             <div class="social-medias">
                                 <img src="/assets/images/youtube-logo.png">
@@ -260,54 +260,30 @@
                     <div class="col-md-12 col-lg-8 col-sm-12">
                         <div class="card white-box p-0">
                             <div class="card-body">
-                                <h3 class="box-title mb-0">Riwayat Transaksi</h3>
+                                <h3 class="box-title mb-0">Riwayat Transaksi (<?= $total_orders ?>)</h3>
                             </div>
                             <div class="comment-widgets">
                                 <!-- Comment Row -->
+                               <?php if (isset($data_orders)): ?>                 
+                                <?php foreach($data_orders as $key): ?>
                                 <div class="d-flex flex-row comment-row p-3 mt-0">
-                                    <div class="p-2"><img src="/assets/images/order-pending-icon.png" alt="user" width="50" class="rounded-circle"></div>
+                                    <?php $namaFileIcon = "order-" . $key->status . "-icon.png"; ?>
+                                    <div class="p-2"><img src="/assets/images/<?= $namaFileIcon; ?>" alt="user" width="50" class="rounded-circle"></div>
                                     <div class="comment-text ps-2 ps-md-3 w-100">
-                                        <h5 class="font-medium">Order ID: #192099</h5>
-                                        <span class="mb-3 d-block">Pemesanan x Komen.</span>
+                                        <h5 class="font-medium">Order ID: #<?= strtoupper($key->order_client_reff); ?></h5>
+                                        <span class="mb-3 d-block">Pemesanan <?= $key->order_type; ?>.</span>
                                         <div class="comment-footer d-md-flex align-items-center">
-                                             <span class="badge bg-primary rounded">Pending</span>
+                                             <span class="badge bg-primary rounded"><?= $key->status; ?></span>
                                              
-                                            <div class="text-muted fs-2 ms-auto mt-2 mt-md-0">April 14, 2021</div>
+                                    <div class="text-muted fs-2 ms-auto mt-2 mt-md-0"><?= $key->date_created; ?></div>
                                         </div>
                                     </div>
                                 </div>
+                                <?php endforeach; ?>
+                                <?php endif; ?>
                                 <!-- Comment Row -->
-                                <div class="d-flex flex-row comment-row p-3">
-                                    <div class="p-2"><img src="/assets/images/order-approved-icon.png" alt="user" width="50" class="rounded-circle"></div>
-                                    <div class="comment-text ps-2 ps-md-3 active w-100">
-                                        <h5 class="font-medium">
-                                            Order ID: #19287
-                                        </h5>
-                                        <span class="mb-3 d-block">Pemesanan x Rating.</span>
-                                        <div class="comment-footer d-md-flex align-items-center">
-
-                                            <span class="badge bg-success rounded">Approved</span>
-                                            
-                                            <div class="text-muted fs-2 ms-auto mt-2 mt-md-0">April 14, 2021</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Comment Row -->
-                                <div class="d-flex flex-row comment-row p-3">
-                                    <div class="p-2"><img src="/assets/images/order-rejected-icon.png" alt="user" width="50" class="rounded-circle"></div>
-                                    <div class="comment-text ps-2 ps-md-3 w-100">
-                                        <h5 class="font-medium">
-                                            Order ID: #19255
-                                        </h5>
-                                        <span class="mb-3 d-block">Pemesanan x Rating. </span>
-                                        <div class="comment-footer d-md-flex align-items-center">
-
-                                            <span class="badge rounded bg-danger">Rejected</span>
-                                            
-                                            <div class="text-muted fs-2 ms-auto mt-2 mt-md-0">April 14, 2021</div>
-                                        </div>
-                                    </div>
-                                </div>
+                               
+                                
                             </div>
                         </div>
                     </div>
@@ -387,12 +363,14 @@
                 </div>
 
       <?php include('modal_setting_form.php'); ?>
-      <?php include('modal_jasa_follow_marketplace.php'); ?>
+      
       <?php include('modal_jasa_komen.php'); ?>
       <?php include('modal_jasa_view.php'); ?>
       <?php include('modal_jasa_rating.php'); ?>
-      <?php include('modal_jasa_subscriber_follower.php'); ?>
+      <?php include('modal_jasa_subscriber.php'); ?>
       <?php include('modal_jasa_wishlist_marketplace.php'); ?>
+      <?php include('modal_jasa_follow_marketplace.php'); ?>
+
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
@@ -426,6 +404,7 @@
     <script src="/assets/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="/assets/js/custom.js"></script>
+    <script src="/assets/js/modal-works.js"></script>
     <!--This page JavaScript -->
  
 </body>

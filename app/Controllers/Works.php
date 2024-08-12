@@ -139,6 +139,27 @@ curl_close($ch);
 
     }
 
+    public function jasa_order_update(){
+
+        $status = $this->request->getPost('status');
+        $id = $this->request->getPost('id');
+
+        $datana = array(
+            'id'     => $id,
+            'status' => $status
+        );
+
+        $res = $this->db->updateData($id, $datana, 'order_jasa');
+
+        if($res > 0){
+            echo "success";
+        }else{
+            echo "none";
+        }
+
+
+    }
+
     public function settings_update(){
 
         $id = $this->request->getPost('id');
@@ -273,6 +294,333 @@ curl_close($ch);
      if($rest == 0){
         echo "none";
      }else {
+        echo "valid";
+     }
+
+    }
+
+    public function jasa_comment_order(){
+
+        $social_media = $this->request->getPost('social_media');
+        // social media probably in array form
+        if(isset($social_media)){
+            $datasocmed = json_decode($social_media, true);
+            $datasocmedString = implode(', ', $datasocmed);
+            $social_media = $datasocmedString;
+        }
+
+       $url = $this->request->getPost('url');
+        $title = $this->request->getPost('title');
+        $package = $this->request->getPost('package');
+        $gender = $this->request->getPost('gender');
+        $notes = $this->request->getPost('notes');
+        $user = $this->request->getPost('username');
+
+           $data1 = array(
+            'social_media'  => $social_media,
+            'url'           => $url,
+            'title'         => $title,
+            'package'       => $package,
+            'gender'        => $gender,
+            'notes'         => $notes,
+            'username'      => $user
+        );
+
+         //  echo var_dump($data1);
+        $rest1 = $this->db->insertData($data1, 'order_comment');
+        $order_id = $rest1;
+        $order_type = 'comment';
+
+        $sixDigitRandomRef = $this->generateRandomPass(6);
+
+          $data2 = array(
+            'order_id'    => $order_id,
+            'order_type'     => $order_type,
+            'order_client_reff'      => $sixDigitRandomRef,
+            'status'         => 'pending',
+            'username'       => $user
+        );
+
+       $rest2 = $this->db->insertData($data2, 'order_jasa');
+     
+     if($rest1 == 0){
+        echo "none";
+     }else if($rest1 != 0 && $rest2 != 0) {
+        echo "valid";
+     }
+
+    }
+
+     public function jasa_follow_marketplace_order(){
+
+      $marketplace = $this->request->getPost('marketplace');
+        // marketplace probably in array form
+        if(isset($marketplace)){
+            $datamarketplace = json_decode($marketplace, true);
+            $datamarketplaceString = implode(', ', $datamarketplace);
+            $marketplace = $datamarketplaceString;
+        }
+
+        $url = $this->request->getPost('url');
+        $shop_name = $this->request->getPost('shop_name');
+        $package = $this->request->getPost('package');
+        $gender = $this->request->getPost('gender');
+        $notes = $this->request->getPost('notes');
+        $user = $this->request->getPost('username');
+
+        // we insert 2 things : into table_order_jasa, order_follow_marketplace
+     
+        $data1 = array(
+            'marketplace'  => $marketplace,
+            'url'           => $url,
+            'shop_name'     => $shop_name,
+            'package'       => $package,
+            'gender'        => $gender,
+            'notes'         => $notes,
+            'username'      => $user
+        );
+
+        $rest1 = $this->db->insertData($data1, 'order_follow_marketplace');
+        $order_id = $rest1;
+        $order_type = 'follow_marketplace';
+
+         $sixDigitRandomRef = $this->generateRandomPass(6);
+
+          $data2 = array(
+            'order_id'    => $order_id,
+            'order_type'     => $order_type,
+            'order_client_reff'      => $sixDigitRandomRef,
+            'status'         => 'pending',
+            'username'       => $user
+        );
+
+       $rest2 = $this->db->insertData($data2, 'order_jasa');
+     
+     if($rest1 == 0){
+        echo "none";
+     }else if($rest1 != 0 && $rest2 != 0) {
+        echo "valid";
+     }
+
+    }
+
+     public function jasa_wishlist_marketplace_order(){
+
+        $marketplace = $this->request->getPost('marketplace');
+        // marketplace probably in array form
+        if(isset($marketplace)){
+            $datamarketplace = json_decode($marketplace, true);
+            $datamarketplaceString = implode(', ', $datamarketplace);
+            $marketplace = $datamarketplaceString;
+        }
+
+        $url = $this->request->getPost('url');
+        $shop_name = $this->request->getPost('shop_name');
+        $package = $this->request->getPost('package');
+        $gender = $this->request->getPost('gender');
+        $notes = $this->request->getPost('notes');
+        $user = $this->request->getPost('username');
+
+        // we insert 2 things : into table_order_jasa, order_wishlist_marketplace
+     
+        $data1 = array(
+            'marketplace'  => $marketplace,
+            'url'           => $url,
+            'shop_name'     => $shop_name,
+            'package'       => $package,
+            'gender'        => $gender,
+            'notes'         => $notes,
+            'username'      => $user
+        );
+
+        $rest1 = $this->db->insertData($data1, 'order_wishlist_marketplace');
+        $order_id = $rest1;
+        $order_type = 'wishlist_marketplace';
+
+        $sixDigitRandomRef = $this->generateRandomPass(6);
+
+          $data2 = array(
+            'order_id'    => $order_id,
+            'order_type'     => $order_type,
+            'order_client_reff'      => $sixDigitRandomRef,
+            'status'         => 'pending',
+            'username'       => $user
+        );
+
+       $rest2 = $this->db->insertData($data2, 'order_jasa');
+     
+     if($rest1 == 0){
+        echo "none";
+     }else if($rest1 != 0 && $rest2 != 0) {
+        echo "valid";
+     }
+
+    }
+
+     public function jasa_rating_order(){
+
+       $social_media = $this->request->getPost('social_media');
+         // social media probably in array form
+        if(isset($social_media)){
+            $datasocmed = json_decode($social_media, true);
+            $datasocmedString = implode(', ', $datasocmed);
+            $social_media = $datasocmedString;
+        }
+
+        $url = $this->request->getPost('url');
+        $business_name = $this->request->getPost('business_name');
+        $package = $this->request->getPost('package');
+        $gender = $this->request->getPost('gender');
+        $notes = $this->request->getPost('notes');
+        $user = $this->request->getPost('username');
+
+        // we insert 2 things : into table_order_jasa, table_order_rating
+     
+        $data1 = array(
+            'social_media'  => $social_media,
+            'url'           => $url,
+            'business_name' => $business_name,
+            'package'       => $package,
+            'gender'        => $gender,
+            'notes'         => $notes,
+            'username'      => $user
+        );
+
+        $rest1 = $this->db->insertData($data1, 'order_rating');
+        $order_id = $rest1;
+        $order_type = 'rating';
+
+      $sixDigitRandomRef = $this->generateRandomPass(6);
+
+          $data2 = array(
+            'order_id'    => $order_id,
+            'order_type'     => $order_type,
+            'order_client_reff'      => $sixDigitRandomRef,
+            'status'         => 'pending',
+            'username'       => $user
+        );
+
+       $rest2 = $this->db->insertData($data2, 'order_jasa');
+     
+     if($rest1 == 0){
+        echo "none";
+     }else if($rest1 != 0 && $rest2 != 0) {
+        echo "valid";
+     }
+
+    }
+
+
+
+     public function jasa_subscriber_order(){
+
+        $social_media = $this->request->getPost('social_media');
+         // social media probably in array form
+        if(isset($social_media)){
+            $datasocmed = json_decode($social_media, true);
+            $datasocmedString = implode(', ', $datasocmed);
+            $social_media = $datasocmedString;
+        }
+
+        $url = $this->request->getPost('url');
+        $account_name = $this->request->getPost('account_name');
+        $package = $this->request->getPost('package');
+        $gender = $this->request->getPost('gender');
+        $user = $this->request->getPost('username');
+
+        // we insert 2 things : into table_order_jasa, table_order_subscriber
+     
+        $data1 = array(
+            'social_media'  => $social_media,
+            'url'           => $url,
+            'account_name' => $account_name,
+            'package'       => $package,
+            'gender'        => $gender,
+            'username'      => $user
+        );
+
+        $rest1 = $this->db->insertData($data1, 'order_subscriber');
+        $order_id = $rest1;
+        $order_type = 'subscriber';
+
+       $sixDigitRandomRef = $this->generateRandomPass(6);
+
+          $data2 = array(
+            'order_id'    => $order_id,
+            'order_type'     => $order_type,
+            'order_client_reff'      => $sixDigitRandomRef,
+            'status'         => 'pending',
+            'username'       => $user
+        );
+
+       $rest2 = $this->db->insertData($data2, 'order_jasa');
+     
+     if($rest1 == 0){
+        echo "none";
+     }else if($rest1 != 0 && $rest2 != 0) {
+        echo "valid";
+     }
+
+    }
+
+     public function jasa_view_order(){
+
+        $social_media = $this->request->getPost('social_media');
+         // social media probably in array form
+        if(isset($social_media)){
+            $datasocmed = json_decode($social_media, true);
+            $datasocmedString = implode(', ', $datasocmed);
+            $social_media = $datasocmedString;
+        }
+
+        $url = $this->request->getPost('url');
+        $title = $this->request->getPost('title');
+        $package = $this->request->getPost('package');
+        $gender = $this->request->getPost('gender');
+        $user = $this->request->getPost('username');
+        $question = $this->request->getPost('question');
+        $valid_answer = $this->request->getPost('valid_answer');
+        $answer_a = $this->request->getPost('answer_a');
+        $answer_b = $this->request->getPost('answer_b');
+        $answer_c = $this->request->getPost('answer_c');
+        $answer_d = $this->request->getPost('answer_d');
+
+        // we insert 2 things : into table_order_jasa, table_order_view
+     
+        $data1 = array(
+            'title'  => $title,
+            'social_media'  => $social_media,
+            'url'    => $url,
+            'question' => $question,
+            'valid_answer' => $valid_answer,
+            'answer_a' => $answer_a,
+            'answer_b' => $answer_b,
+            'answer_c' => $answer_c,
+            'answer_d' => $answer_d,
+            'package'       => $package,
+            'gender'        => $gender,
+            'username'      => $user
+        );
+
+        $rest1 = $this->db->insertData($data1, 'order_view');
+        $order_id = $rest1;
+        $order_type = 'view';
+
+        $sixDigitRandomRef = $this->generateRandomPass(6);
+
+          $data2 = array(
+            'order_id'    => $order_id,
+            'order_type'     => $order_type,
+            'order_client_reff'      => $sixDigitRandomRef,
+            'status'         => 'pending',
+            'username'       => $user
+        );
+
+       $rest2 = $this->db->insertData($data2, 'order_jasa');
+     
+     if($rest1 == 0){
+        echo "none";
+     }else if($rest1 != 0 && $rest2 != 0) {
         echo "valid";
      }
 

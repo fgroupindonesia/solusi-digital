@@ -10,7 +10,13 @@ const URL_SETTINGS_UPDATE = "/update-settings";
 
 
 $( document ).ready(function() {
-    
+   
+  // this is for social media click
+  $('.opt-social').on('click', function(){
+  	//alert('a');
+  	$(this).toggleClass('opt-social-checked');
+  });
+
 	// this is for wa message
 	$('.msg-user-wa').on('click', function(){
 		var nowa = $(this).data('phone');
@@ -76,6 +82,14 @@ $( document ).ready(function() {
 
 	});
 	// settings form done!
+
+	// this is for jasa form that has social media div clicked opt
+	clickOnForm('jasa-komen-form'); 
+	clickOnForm('jasa-view-form'); 
+	clickOnForm('jasa-rating-form'); 
+	clickOnForm('jasa-follow-marketplace-form'); 
+	clickOnForm('jasa-wishlist-marketplace-form'); 
+	clickOnForm('jasa-subscriber-form'); 
 
 
 	// this is for check all checkboxes
@@ -174,6 +188,43 @@ $( document ).ready(function() {
 
 });
 
+function clickOnForm(idFormGiven){
+
+let idGiven = "#" + idFormGiven; 
+
+$(idGiven).on('submit', function(e){
+			e.preventDefault();
+			$('.btn-save').hide();
+			$('.btn-close-custom').hide();
+			$('.modal-loading').fadeIn();
+
+			let datana = $(this).serialize();
+			let socmedselected = [];
+
+			// collect the checked item
+			let idDivChecked = idGiven + " .opt-social-checked";
+			//console.log('wer going to ' + idDivChecked);
+			$(idDivChecked).each(function() {
+				let socmed = $(this).data('value');
+		  	socmedselected.push(socmed);
+		  
+		});
+
+			// embed another one based on different form ID names
+			if(idFormGiven != 'jasa-follow-marketplace-form' && idFormGiven != 'jasa-wishlist-marketplace-form'){
+				datana = datana + "&social_media=" + encodeURIComponent(JSON.stringify(socmedselected));
+			}else{
+				datana = datana + "&marketplace=" + encodeURIComponent(JSON.stringify(socmedselected));
+			}
+
+			let tujuanURL = $(this).attr('action');
+			kirimPost(datana, tujuanURL);
+
+	});
+
+
+}
+
 function showLoadingManagement(stat){
 	if(stat == true){
 		$('#management-loading').show();
@@ -219,12 +270,15 @@ function kirimPost(dataForm, urlNa){
         		setTimeout(function(){
         			if(urlNa == URL_SETTINGS_UPDATE){
         		var dForm = convertIntoJSON(dataForm);
-    			var cridential = "username=" + dForm.username+ "&pass=" + dForm.pass;
+    				var cridential = "username=" + dForm.username+ "&pass=" + dForm.pass;
         			location.href = "/verify-manual?reloggin=true&" + cridential;
     				//location.replace('l')
 
         			}else{
-        			location.reload();
+        				// if the form is comming but not from settings call
+        				//alert(data);
+        				alert('data berhasil dipesan!');
+        			  location.reload();
         			}
         		}, 2000);
             	

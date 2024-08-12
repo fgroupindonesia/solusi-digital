@@ -1,4 +1,4 @@
-.link-add, .link-edit, .link-delete {
+.link-add, .link-edit, .link-delete, .link-approve, .link-cancel {
   display: inline-block;
   height: 24px;
   text-align: right;
@@ -8,12 +8,36 @@
     margin-right:   10px;
 }
 
-.link-add:hover, .link-edit:hover, .link-delete:hover {
+.link-cancel:hover, .link-add:hover, .link-edit:hover, .link-delete:hover, .link-approve:hover {
     background-color:   yellow;
 }
 
 #check-all {
   cursor: pointer;
+}
+
+.text-right{
+  text-align: right;
+}
+
+.opt-social:hover{
+  background-color: yellow;
+  cursor: pointer;
+}
+
+.opt-social-checked {
+  background-color: orange;
+  
+}
+
+.link-cancel {
+  background-image: url('../images/cancel.png');
+  width: 65px;
+}
+
+.link-approve {
+  background-image: url('../images/ok.png');
+  width: 85px;
 }
 
 .link-add {
@@ -61,10 +85,12 @@ a.disabled {
   display: inline-block;
 }
 
-.analytics-info:hover {
+
+
+.order-item:hover {
   background-color: yellow;
   cursor: pointer;
- box-shadow: 7px 8px 19px -5px rgba(0,0,0,0.43);
+  box-shadow: 7px 8px 19px -5px rgba(0,0,0,0.43);
 -webkit-box-shadow: 7px 8px 19px -5px rgba(0,0,0,0.43);
 -moz-box-shadow: 7px 8px 19px -5px rgba(0,0,0,0.43);
 border-radius: 46px 46px 46px 46px;

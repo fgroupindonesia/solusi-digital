@@ -271,48 +271,24 @@
                             </div>
                             <div class="comment-widgets">
                                 <!-- Comment Row -->
+                                  <?php if (isset($data_apps)): ?>                 
+                                <?php foreach($data_apps as $key): ?>
                                 <div class="d-flex flex-row comment-row p-3 mt-0">
                                     <div class="p-2"><img src="/assets/plugins/images/apps-02.png" alt="user" width="50" class="rounded-circle"></div>
                                     <div class="comment-text ps-2 ps-md-3 w-100">
-                                        <h5 class="font-medium">Krupuk Cau</h5>
-                                        <span class="mb-3 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry.It has survived not only five centuries. </span>
+                                        <h5 class="font-medium"><?= $key->apps_name ;?></h5>
+                                        <span class="mb-3 d-block"><?= $key->descriptions ;?> </span>
                                         <div class="comment-footer d-md-flex align-items-center">
-                                             <span class="badge bg-primary rounded">Pending</span>
+                                             <span class="badge bg-primary rounded"><?= $key->status ;?></span>
                                              
-                                            <div class="text-muted fs-2 ms-auto mt-2 mt-md-0">April 14, 2021</div>
+                                            <div class="text-muted fs-2 ms-auto mt-2 mt-md-0"><?= $key->date_created ;?></div>
                                         </div>
                                     </div>
                                 </div>
+                                 <?php endforeach; ?>
+                                <?php endif; ?>
                                 <!-- Comment Row -->
-                                <div class="d-flex flex-row comment-row p-3">
-                                    <div class="p-2"><img src="/assets/plugins/images/apps-03.png" alt="user" width="50" class="rounded-circle"></div>
-                                    <div class="comment-text ps-2 ps-md-3 active w-100">
-                                        <h5 class="font-medium">
-                                            Gudang Garem
-                                        </h5>
-                                        <span class="mb-3 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry.It has survived not only five centuries. </span>
-                                        <div class="comment-footer d-md-flex align-items-center">
-
-                                            <span class="badge bg-success rounded">Approved</span>
-                                            
-                                            <div class="text-muted fs-2 ms-auto mt-2 mt-md-0">April 14, 2021</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Comment Row -->
-                                <div class="d-flex flex-row comment-row p-3">
-                                    <div class="p-2"><img src="/assets/plugins/images/apps-01.png" alt="user" width="50" class="rounded-circle"></div>
-                                    <div class="comment-text ps-2 ps-md-3 w-100">
-                                        <h5 class="font-medium">Dating Gratis</h5>
-                                        <span class="mb-3 d-block">Lorem Ipsum is simply dummy text of the printing and type setting industry.It has survived not only five centuries. </span>
-                                        <div class="comment-footer d-md-flex align-items-center">
-
-                                            <span class="badge rounded bg-danger">Rejected</span>
-                                            
-                                            <div class="text-muted fs-2 ms-auto mt-2 mt-md-0">April 14, 2021</div>
-                                        </div>
-                                    </div>
-                                </div>
+                             
                             </div>
                         </div>
                     </div>

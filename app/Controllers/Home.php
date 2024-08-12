@@ -163,15 +163,20 @@ class Home extends BaseController
             arsort($data_users);
             $data_apps = $this->db->selectAllData('apps');
             arsort($data_apps);
+            $data_orders = $this->db->selectAllData('order_jasa');
+            arsort($data_orders);
         }else{
             $u = $this->getSessionData('username');
             $data_users = $this->db->selectAllData('users');
             arsort($data_users);
             $data_apps = $this->db->selectAllDataByUsername($u, 'apps');
             arsort($data_apps);
+             $data_orders = $this->db->selectAllDataByUsername($u, 'order_jasa');
+            arsort($data_orders);
         }
         $total_users = 0;
         $total_apps = 0;
+        $total_orders = 0;
         $total_apps_published = 0;
 
         if(isset($data_users)){
@@ -182,6 +187,10 @@ class Home extends BaseController
             $total_apps = count($data_apps);
          $total_apps_published =  $this->countPublishedApp($data_apps);
 
+        }
+
+         if(isset($data_orders)){
+            $total_orders = count($data_orders);
         }
 
         $sex_type = $this->getSessionData('sex');
@@ -206,8 +215,10 @@ class Home extends BaseController
             'sex_female_radio'  => $sex_female_radio,
             'data_users' => $this->formatTimeInData($data_users),
             'data_apps' => $this->formatTimeInData($data_apps),
+            'data_orders' => $this->formatTimeInData($data_orders),
             'total_users' => $total_users,
             'total_apps' => $total_apps,
+            'total_orders' => $total_orders,
             'total_apps_published' => $total_apps_published
         );
 
@@ -233,6 +244,21 @@ class Home extends BaseController
             $data['user_id'] = $this->getSessionData('user_id');
 
         return view('manage_apps', $data);
+    }
+
+    public function order_jasa_management(): string
+    {   
+          // for security reasons
+        $this->protectLogin();
+
+            $r = $this->getSessionData('role');
+            $data = $this->getDashboardData($r);
+            $data['search_display'] = 'search-shown';
+            $data['role'] = $r;
+            $data['username'] = $this->getSessionData('username');
+            $data['user_id'] = $this->getSessionData('user_id');
+
+        return view('manage_order_jasa', $data);
     }
 
     public function user_management(): string

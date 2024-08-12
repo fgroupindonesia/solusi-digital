@@ -1,7 +1,8 @@
 <div class="modal fade" id="jasa-rating-form-modal" tabindex="-1">
-  <form id="jasa-rating-form" action="/update-settings" method="post">
+  <form id="jasa-rating-form" action="/order-new-jasa-rating" method="post">
  <!-- hidden elemental used -->
   <input id="jasa-rating-hidden-id" name="id" type="hidden" value="<?= $user_id ?>" class="form-control">
+  <input id="jasa-rating-hidden-username" name="username" type="hidden" value="<?= $username ?>" class="form-control">
  <!-- hidden elemental used -->
 
   <div class="modal-dialog">
@@ -14,9 +15,9 @@
         
 <!-- the form body started from here -->
 <div class="form-group row">
-    <label for="jasa-rating-sosial-media" class="col-4 col-form-label">Sosial Media:</label> <div class="col-8">
+    <label class="col-4 col-form-label">Sosial Media:</label> <div class="col-8">
        
-      <div class="social-medias round-btn" >
+      <div class="social-medias round-btn opt-social" data-value="google-map" >
           <img src="/assets/images/gmaps-logo.png" /> <span class="title-btn">Google Map</span> </div>  
     </div>
   </div>
@@ -36,7 +37,7 @@
   <div class="form-group row">
     <label for="jasa-rating-namabisnis"  class="col-4 col-form-label">Nama Bisnis/Toko:</label> 
     <div class="col-8">
-      <input id="jasa-rating-namabisnis" placeholder="ketik nama bisnis toko anda" name="namabisnis" type="text" value="" class="form-control">
+      <input id="jasa-rating-namabisnis" placeholder="ketik nama bisnis toko anda" name="business_name" type="text" value="" class="form-control">
     </div>
   </div>
 
@@ -44,11 +45,11 @@
     <label class="col-4">Paket</label> 
     <div class="col-8">
       <div class="custom-control custom-radio custom-control-inline">
-        <input name="paket" id="jasa-rating-paket-hemat" type="radio" class="custom-control-input" value="hemat"> 
+        <input name="package" id="jasa-rating-paket-hemat" type="radio" class="custom-control-input" value="hemat"> 
         <label for="jasa-rating-paket-hemat" class="custom-control-label">Hemat</label>
       </div>
       <div class="custom-control custom-radio custom-control-inline">
-        <input name="paket" id="jasa-rating-paket-bisnis" type="radio" class="custom-control-input" value="bisnis"> 
+        <input name="package" id="jasa-rating-paket-bisnis" type="radio" class="custom-control-input" value="bisnis"> 
         <label for="jasa-rating-paket-bisnis" class="custom-control-label">Bisnis</label>
       </div>
     </div>
@@ -58,7 +59,7 @@
     <label for="jasa-rating-gender-member" class="col-4 col-form-label">Gender</label> 
     <div class="col-8">
       <div class="input-group">
-        <select name="gender-member">
+        <select id="jasa-rating-gender-member" name="gender">
           <option value="lelaki">Laki-laki</option>
          <option value="perempuan">Perempuan</option>
         </select>
@@ -70,7 +71,7 @@
     <label class="col-4">Catatan</label> 
     <div class="col-8">
       <div class="custom-control custom-radio custom-control-inline">
-        <textarea rows="10" cols="30" placeholder="Tuliskan catatan bagi komentator tentang jenis atau gaya penyampaian yang ingin mereka tuliskan."></textarea>
+        <textarea name="notes" rows="10" cols="30" placeholder="Tuliskan catatan bagi komentator tentang jenis atau gaya penyampaian yang ingin mereka tuliskan."></textarea>
       </div>
     </div>
   </div> 
