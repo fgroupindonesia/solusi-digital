@@ -368,6 +368,7 @@
                 </div>
 
       <?php include('modal_setting_form.php'); ?>
+       <?php include('modal_add_deposit.php'); ?>
 
             </div>
             <!-- ============================================================== -->

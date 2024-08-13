@@ -102,6 +102,13 @@ class Home extends BaseController
         }
     }
 
+     private function protectAdminAccess(){
+        if($this->isAdminAccess() === false){
+           header("Location: /portal");
+           exit(0);  
+        }
+    }
+
     public function display_dashboard()
     {   
 
@@ -148,6 +155,10 @@ class Home extends BaseController
 
     private function isLoggedOn(){
         return $this->getSessionData('role') != null;
+    }
+
+    private function isAdminAccess(){
+        return $this->getSessionData('role') == 'admin';
     }
 
     private function getSessionData($key){
@@ -236,6 +247,7 @@ class Home extends BaseController
           // for security reasons
         $this->protectLogin();
 
+
             $r = $this->getSessionData('role');
     	    $data = $this->getDashboardData($r);
             $data['search_display'] = 'search-shown';
@@ -250,6 +262,7 @@ class Home extends BaseController
     {   
           // for security reasons
         $this->protectLogin();
+         $this->protectAdminAccess();
 
             $r = $this->getSessionData('role');
             $data = $this->getDashboardData($r);

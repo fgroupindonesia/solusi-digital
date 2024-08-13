@@ -51,7 +51,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/add-deposit"
+                            <a data-bs-toggle="modal" data-bs-target="#add-deposit-form-modal" class="sidebar-link waves-effect waves-dark sidebar-link" href="/add-deposit"
                                 aria-expanded="false">
                                 <i class="fa fa-wallet" aria-hidden="true"></i>
                                 <span class="hide-menu">Setor Deposit</span>

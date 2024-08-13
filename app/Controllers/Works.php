@@ -657,6 +657,22 @@ curl_close($ch);
 
     }
 
+    public function jasa_order_delete()
+    {
+
+         $id = $this->request->getPost('id');
+
+          $rest = $this->db->deleteData($id, 'order_jasa');
+     
+         if($rest != 0){
+            echo "valid";
+         }else{
+            echo "none";
+         }
+
+
+    }
+
 	public function app_delete()
     {
 

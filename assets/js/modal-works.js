@@ -2,15 +2,38 @@ const URL_USER_ADD = "/add-new-user";
 const URL_APP_ADD = "/add-new-app";
 const URL_USER_DELETE = "/delete-user";
 const URL_APP_DELETE = "/delete-app";
+const URL_ORDER_DELETE = "/delete-jasa-order";
 const URL_USER_EDIT = "/edit-user";
 const URL_APP_EDIT = "/edit-app";
 const URL_USER_UPDATE = "/update-user";
+const URL_ORDER_UPDATE = "/update-jasa-order";
 const URL_APP_UPDATE = "/update-app";
 const URL_SETTINGS_UPDATE = "/update-settings";
 
 
 $( document ).ready(function() {
    
+   // this is for approve click
+  $('.link-approve').on('click', function(e){
+  		e.preventDefault();
+  		let entitiNa = $(this).data('entity');
+
+  		postOrderStatus(entitiNa, 'approved');
+
+  });
+
+   // this is for cancel click
+  $('.link-cancel').on('click', function(e){
+  		e.preventDefault();
+  		let entitiNa = $(this).data('entity');
+
+  		postOrderStatus(entitiNa, 'cancel');
+
+  });
+
+   
+
+
   // this is for social media click
   $('.opt-social').on('click', function(){
   	//alert('a');
@@ -145,8 +168,10 @@ $( document ).ready(function() {
 
 		 	if(gawe == 'users'){
 		 		kirimPost(dataNa, URL_USER_DELETE);
-			}else {
+			}else if(gawe == 'apps') {
 				kirimPost(dataNa, URL_APP_DELETE);
+			}else if(gawe == 'orders') {
+				kirimPost(dataNa, URL_ORDER_DELETE);
 			}
 
 		 });
@@ -187,6 +212,32 @@ $( document ).ready(function() {
 
 
 });
+
+function postOrderStatus(entityNa, stat){
+
+
+		//alert('gawean' + gawe);
+		showLoadingManagement(true);
+
+	 	// grab  the id
+		 var idCollected = [];
+		 $('input[type="checkbox"]:checked').each(function(){
+		 	var number = $(this).data('id');
+		 	idCollected.push(number);
+		 }); 
+
+		 console.log('we got ' + idCollected.length);
+
+		 idCollected.forEach(function(el){
+		 	let dataNa = {id : el, status: stat};
+
+		 	if(entityNa == 'orders'){
+				kirimPost(dataNa, URL_ORDER_UPDATE);
+			}
+
+		});
+
+}
 
 function clickOnForm(idFormGiven){
 
@@ -277,8 +328,13 @@ function kirimPost(dataForm, urlNa){
         			}else{
         				// if the form is comming but not from settings call
         				//alert(data);
-        				alert('data berhasil dipesan!');
-        			  location.reload();
+        				if(URL_ORDER_DELETE == urlNa || urlNa == URL_ORDER_UPDATE){
+        				 alert('data berhasil terupdate!');
+	        			}else{
+	        				alert('data berhasil dipesan!');
+  	       			}
+         			location.reload();
+
         			}
         		}, 2000);
             	

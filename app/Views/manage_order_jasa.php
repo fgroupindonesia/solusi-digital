@@ -127,10 +127,10 @@
                                 <h3 class="box-title mb-0">All Orders (<?= $total_orders ?>)</h3><br>
                                  <img id="management-loading" src="/assets/plugins/images/loading.gif" >
                                 <div class="col-md-5 col-sm-4 col-xs-6 ms-auto text-right">
-                                  <a data-bs-toggle="modal" data-bs-target="#app-form-modal" class="link-approve" id="link-approve" href="/approve-order">Approve</a>
-                                    <a data-bs-toggle="modal" data-bs-target="#app-form-modal" class="link-cancel" id="link-cancel" href="/cancel-order">Cancel</a>
-                                    <a class="link-edit" href="/edit-order" data-entity='apps'>Edit</a>
-                                    <a class="link-delete" href="/delete-order" data-entity='apps'>Delete</a>
+                        <a  class="link-approve" id="link-approve" href="/approve-order" data-entity='orders'>Approve</a>
+                        <a class="link-cancel" id="link-cancel" href="/cancel-order" data-entity='orders'>Cancel</a>
+                        <a class="link-edit" href="/edit-order" data-entity='orders'>Edit</a>
+                        <a class="link-delete" href="/delete-order" data-entity='orders'>Delete</a>
                                    
                                 </div>
                             </div>
