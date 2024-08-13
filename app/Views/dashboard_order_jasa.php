@@ -145,7 +145,7 @@
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <div class="d-md-flex">
                             <ol class="breadcrumb ms-auto">
-                                <li></li>
+                                <li>Saldo Anda : Rp.<strong><?= $balance; ?></strong></li>
                             </ol>
                            
                         </div>
@@ -397,9 +397,8 @@
     <!-- Bootstrap tether Core JavaScript -->
     <script src="/assets/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/app-style-switcher.js"></script>
-    <script src="/assets/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
-    <!--Wave Effects -->
-    <script src="/assets/js/waves.js"></script>
+   
+   
     <!--Menu sidebar -->
     <script src="/assets/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->

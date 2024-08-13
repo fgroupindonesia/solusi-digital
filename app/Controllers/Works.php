@@ -253,6 +253,7 @@ curl_close($ch);
         $session = session();
         //echo var_dump($rest);
         $session->set('role', $rest[0]->role);
+        $session->set('balance', $rest[0]->balance);
         $session->set('username', $rest[0]->username);
         $session->set('pass', $rest[0]->pass);
         $session->set('email', $rest[0]->email);
@@ -298,6 +299,32 @@ curl_close($ch);
      }
 
     }
+
+    public function deposit_update()
+    {
+        
+      $id = $this->request->getPost('id');
+        
+      $u = $this->request->getPost('username');
+      $s = $this->request->getPost('status');
+      $a = $this->request->getPost('amount');
+        
+        $data = array(
+            'username'  => $u,
+            'status' => $s,
+            'amount'     => $a
+        );
+
+     $rest = $this->db->updateData($id, $data, 'deposits');
+     
+     if($rest == 0){
+        echo "none";
+     }else {
+        echo "valid";
+     }
+
+    }
+
 
     public function jasa_comment_order(){
 
@@ -657,6 +684,53 @@ curl_close($ch);
 
     }
 
+    private function updateUserBalance($amount, $user){
+       $dataUser = $this->db->selectAllDataByUsername($user, 'users');
+
+        $currentBalance = $dataUser[0]->balance;
+        $currentBalance += $amount;
+
+        $user_id = $dataUser[0]->id;
+
+        $data = array(
+            'balance' => $currentBalance
+        );
+
+        $this->db->updateData($user_id, $data, 'users');
+    }
+
+    public function deposit_add()
+    {
+        $u = $this->request->getPost('username');
+        $stat = $this->request->getPost('status');
+
+        if(!isset($stat)){
+            $stat = 'pending';
+        }
+
+        $a = $this->request->getPost('amount');
+        
+        $data = array(
+            'username'    => $u,
+            'status'      => $stat,
+            'amount'      => $a
+        );
+
+     $rest = $this->db->insertData($data, 'deposits');
+     
+     if($stat == 'purchased'){
+        // insert the balance into user account
+        $this->updateUserBalance($a, $u);
+     }
+
+     if($rest == 0){
+        echo "none";
+     }else {
+        echo "valid";
+     }
+
+    }
+
     public function jasa_order_delete()
     {
 
@@ -689,12 +763,43 @@ curl_close($ch);
 
     }
 
+    public function deposit_delete()
+    {
+
+         $id = $this->request->getPost('id');
+
+          $rest = $this->db->deleteData($id, 'deposits');
+     
+         if($rest != 0){
+            echo "valid";
+         }else{
+            echo "none";
+         }
+
+
+    }
+
 	public function app_edit()
     {
         $id = $this->request->getPost('id');
         //$id = 5;
 
           $rest = $this->db->selectData($id, 'apps');
+        
+        if(count($rest)==0){
+            // no value
+            echo "none";
+        }else{
+            echo json_encode($rest[0]);
+        }
+    }
+
+    public function deposit_edit()
+    {
+        $id = $this->request->getPost('id');
+        //$id = 5;
+
+          $rest = $this->db->selectData($id, 'deposits');
         
         if(count($rest)==0){
             // no value

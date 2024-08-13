@@ -259,6 +259,8 @@
                         </div>
                     </div>
                 </div>
+                <div class="chartist-tooltip" style="display:none;">
+                </div>
                 <!-- ============================================================== -->
                 <!-- Recent Comments -->
                 <!-- ============================================================== -->
@@ -368,7 +370,7 @@
                 </div>
 
       <?php include('modal_setting_form.php'); ?>
-       <?php include('modal_add_deposit.php'); ?>
+       <?php include('modal_add_deposit_client.php'); ?>
 
             </div>
             <!-- ============================================================== -->
@@ -403,6 +405,7 @@
     <script src="/assets/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="/assets/js/custom.js"></script>
+     <script src="/assets/js/modal-works.js"></script>
     <!--This page JavaScript -->
     <!--chartis chart-->
     <script src="/assets/plugins/bower_components/chartist/dist/chartist.min.js"></script>

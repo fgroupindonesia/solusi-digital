@@ -41,6 +41,13 @@
                                 <span class="hide-menu">Management Order Jasa</span>
                             </a>
                         </li>
+                         <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-deposits"
+                                aria-expanded="false">
+                                <i class="fa fa-edit" aria-hidden="true"></i>
+                                <span class="hide-menu">Management Deposits</span>
+                            </a>
+                        </li>
                         <?php endif; ?>
                           <?php if($role != 'admin'): ?>
                         <li class="sidebar-item">

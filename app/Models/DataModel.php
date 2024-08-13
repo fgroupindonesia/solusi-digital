@@ -8,6 +8,7 @@ class DataModel extends Model
     protected $table_users      = 'table_users';
     protected $table_ticketing  = 'table_ticketing';
     protected $table_apps       = 'table_apps';
+    protected $table_deposits       = 'table_deposits';
     protected $table_order_jasa       = 'table_order_jasa';
 
     protected $table_order_comment       = 'table_order_comment';
@@ -25,6 +26,8 @@ class DataModel extends Model
             $table_na = $this->table_ticketing;
         }else if($entity == 'apps'){
             $table_na = $this->table_apps;
+        }else if($entity == 'deposits'){
+            $table_na = $this->table_deposits;
         }else if($entity == 'order_jasa'){
             $table_na = $this->table_order_jasa;
         }else if($entity == 'order_comment'){
@@ -92,6 +95,7 @@ class DataModel extends Model
 
     }
 
+
     public function updateData($id, $data, $entity)
     {
         $table_na = $this->getEntity($entity);
@@ -130,7 +134,7 @@ class DataModel extends Model
     {
         $table_na = $this->getEntity($entity);
 
-        if($entity != 'order_jasa'){
+        if($entity === 'apps'){
            $res = $this->db->table($table_na)->where('username_owned', $username)->get();
         }else{
             $res = $this->db->table($table_na)->where('username', $username)->get();

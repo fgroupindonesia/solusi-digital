@@ -176,6 +176,8 @@ class Home extends BaseController
             arsort($data_apps);
             $data_orders = $this->db->selectAllData('order_jasa');
             arsort($data_orders);
+             $data_deposits = $this->db->selectAllData('deposits');
+            arsort($data_deposits);
         }else{
             $u = $this->getSessionData('username');
             $data_users = $this->db->selectAllData('users');
@@ -188,9 +190,14 @@ class Home extends BaseController
         $total_users = 0;
         $total_apps = 0;
         $total_orders = 0;
+        $total_deposits = 0;
         $total_apps_published = 0;
 
-        if(isset($data_users)){
+        if(isset($data_deposits)){
+            $total_deposits = count($data_deposits);
+        }
+
+         if(isset($data_users)){
             $total_users = count($data_users);
         }
 
@@ -217,6 +224,7 @@ class Home extends BaseController
         $data = array(
             'user_id'   => $this->getSessionData('user_id'),
             'propic'    => $this->getSessionData('propic'),
+            'balance'    => $this->getSessionData('balance'),
             'username'  => $this->getSessionData('username'),
             'pass'  => $this->getSessionData('pass'),
             'email'  => $this->getSessionData('email'),
@@ -227,7 +235,9 @@ class Home extends BaseController
             'data_users' => $this->formatTimeInData($data_users),
             'data_apps' => $this->formatTimeInData($data_apps),
             'data_orders' => $this->formatTimeInData($data_orders),
+            'data_deposits' => $this->formatTimeInData($data_deposits),
             'total_users' => $total_users,
+             'total_deposits' => $total_deposits,
             'total_apps' => $total_apps,
             'total_orders' => $total_orders,
             'total_apps_published' => $total_apps_published
@@ -258,6 +268,22 @@ class Home extends BaseController
         return view('manage_apps', $data);
     }
 
+    public function deposit_management(): string
+    {   
+          // for security reasons
+        $this->protectLogin();
+
+
+            $r = $this->getSessionData('role');
+            $data = $this->getDashboardData($r);
+            $data['search_display'] = 'search-shown';
+            $data['role'] = $r;
+            $data['username'] = $this->getSessionData('username');
+            $data['user_id'] = $this->getSessionData('user_id');
+
+        return view('manage_deposits', $data);
+    }
+
     public function order_jasa_management(): string
     {   
           // for security reasons
@@ -270,6 +296,7 @@ class Home extends BaseController
             $data['role'] = $r;
             $data['username'] = $this->getSessionData('username');
             $data['user_id'] = $this->getSessionData('user_id');
+            $data['balance'] = $this->getSessionData('balance');
 
         return view('manage_order_jasa', $data);
     }

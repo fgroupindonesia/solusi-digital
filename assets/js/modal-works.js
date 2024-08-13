@@ -1,14 +1,23 @@
 const URL_USER_ADD = "/add-new-user";
 const URL_APP_ADD = "/add-new-app";
+const URL_DEPOSIT_ADD = "/add-new-deposit";
+
 const URL_USER_DELETE = "/delete-user";
 const URL_APP_DELETE = "/delete-app";
+const URL_DEPOSIT_DELETE = "/delete-deposit";
 const URL_ORDER_DELETE = "/delete-jasa-order";
+
 const URL_USER_EDIT = "/edit-user";
 const URL_APP_EDIT = "/edit-app";
+const URL_DEPOSIT_EDIT = "/edit-deposit";
+
 const URL_USER_UPDATE = "/update-user";
 const URL_ORDER_UPDATE = "/update-jasa-order";
 const URL_APP_UPDATE = "/update-app";
+const URL_DEPOSIT_UPDATE = "/update-deposit";
+
 const URL_SETTINGS_UPDATE = "/update-settings";
+var jumlahData = 0;
 
 
 $( document ).ready(function() {
@@ -30,9 +39,6 @@ $( document ).ready(function() {
   		postOrderStatus(entitiNa, 'cancel');
 
   });
-
-   
-
 
   // this is for social media click
   $('.opt-social').on('click', function(){
@@ -73,6 +79,36 @@ $( document ).ready(function() {
 
 	});
 	// user form done!
+
+ // this is for deposit form (for client)
+	$('#add-deposit-form').on('submit', function(e){
+			e.preventDefault();
+			$('.btn-save').hide();
+			$('.btn-close-custom').hide();
+			$('.modal-loading').fadeIn();
+
+			let datana = $(this).serialize();
+
+			let tujuanURL = $(this).attr('action');
+			kirimPost(datana, tujuanURL);
+
+	});
+	//  deposit form done!
+
+	// this is for deposit form (for admin)
+	$('#add-deposit-admin-form').on('submit', function(e){
+			e.preventDefault();
+			$('.btn-save').hide();
+			$('.btn-close-custom').hide();
+			$('.modal-loading').fadeIn();
+
+			let datana = $(this).serialize();
+
+			let tujuanURL = $(this).attr('action');
+			kirimPost(datana, tujuanURL);
+
+	});
+	//  deposit form done!
 
 
     // this is for app form
@@ -162,6 +198,8 @@ $( document ).ready(function() {
 		 }); 
 
 		 console.log('we got ' + idCollected.length);
+		 // helping the number of data for popup message
+		 jumlahData = idCollected.length;
 
 		 idCollected.forEach(function(el){
 		 	let dataNa = {id : el};
@@ -172,6 +210,8 @@ $( document ).ready(function() {
 				kirimPost(dataNa, URL_APP_DELETE);
 			}else if(gawe == 'orders') {
 				kirimPost(dataNa, URL_ORDER_DELETE);
+			}else if(gawe == 'deposits') {
+				kirimPost(dataNa, URL_DEPOSIT_DELETE);
 			}
 
 		 });
@@ -203,8 +243,12 @@ $( document ).ready(function() {
 
 		 	if(gawe == 'users'){
 		 		kirimPost(dataNa, URL_USER_EDIT);
-		 	}else{
+		 	}else if(gawe == 'apps'){
 		 		kirimPost(dataNa, URL_APP_EDIT);
+		 	}else if(gawe == 'deposits'){
+		 		kirimPost(dataNa, URL_DEPOSIT_EDIT);
+		 	}else if(gawe == 'orders'){
+		 		kirimPost(dataNa, URL_ORDER_EDIT);
 		 	}
 			
 	});
@@ -309,7 +353,7 @@ let dataCome = {'id' : idNa, 'type' : typeNa};
 
 function kirimPost(dataForm, urlNa){
 	
-	console.log('kirim ' + JSON.stringify(dataForm));
+	console.log('kirim ke '+ urlNa +' ' + JSON.stringify(dataForm));
 
 	 $.ajax({
         url: urlNa,
@@ -317,7 +361,7 @@ function kirimPost(dataForm, urlNa){
         cache : false,
         type: 'POST',
         success: function(data){
-        	if(urlNa != URL_USER_EDIT && urlNa != URL_APP_EDIT){
+        	if(urlNa != URL_USER_EDIT && urlNa != URL_APP_EDIT && urlNa != URL_DEPOSIT_EDIT){
         		setTimeout(function(){
         			if(urlNa == URL_SETTINGS_UPDATE){
         		var dForm = convertIntoJSON(dataForm);
@@ -329,9 +373,13 @@ function kirimPost(dataForm, urlNa){
         				// if the form is comming but not from settings call
         				//alert(data);
         				if(URL_ORDER_DELETE == urlNa || urlNa == URL_ORDER_UPDATE){
+        					if(jumlahData<5)
         				 alert('data berhasil terupdate!');
 	        			}else{
+
+	        				if(jumlahData<5)
 	        				alert('data berhasil dipesan!');
+
   	       			}
          			location.reload();
 
@@ -347,6 +395,9 @@ function kirimPost(dataForm, urlNa){
             		}else if(urlNa == URL_APP_EDIT){
             			$('#app-form-modal').modal('show'); 
             			extractAppData(data);
+            		}else if(urlNa == URL_DEPOSIT_EDIT){
+            			$('#add-deposit-admin-form-modal').modal('show'); 
+            			extractDepositData(data);
             		}
             	}
             }
@@ -374,6 +425,32 @@ function extractUserData(argument) {
 
 	// we changed the destination form to update user form
 	formNa.find('#user-form').attr('action', URL_USER_UPDATE);
+
+
+}
+
+function extractDepositData(argument) {
+	
+	let data = JSON.parse(argument);
+	let formNa = $('#add-deposit-admin-form-modal');
+	formNa.find('#add-deposit-admin-username').val(data.username);
+	formNa.find('#add-deposit-admin-status').val(data.status);
+	formNa.find('#add-deposit-admin-user-hidden-id').val(data.id);
+
+	if(data.amount == 50){
+		formNa.find('#add-deposit-admin-50').prop('checked', true);		
+	}else if(data.amount == 100){
+		formNa.find('#add-deposit-admin-100').prop('checked', true);		
+	}else if(data.amount == 200){
+		formNa.find('#add-deposit-admin-200').prop('checked', true);		
+	}else if(data.amount == 500){
+		formNa.find('#add-deposit-admin-500').prop('checked', true);		
+	}else if(data.amount == 1000){
+		formNa.find('#add-deposit-admin-1000').prop('checked', true);		
+	}
+
+	// we changed the destination form to update deposit form
+	formNa.find('#add-deposit-admin-form').attr('action', URL_DEPOSIT_UPDATE);
 
 
 }

@@ -13,6 +13,7 @@ var dataMale = [0];
 var dataFemale = [0];
 var urlNa = "/request-statistics";
 var CALL_ROUTINE = 1;
+var chartExist = document.getElementById('ct-visits');
 
 function getDataStatistic(sex){
 
@@ -38,8 +39,9 @@ let dataIni = {'sex' : sex};
 
                 // end it
                 CALL_ROUTINE = -1;
-
+                if(chartExist){
                 applyAnimationStatistics();
+                    }
             }      
 
                           console.log('we got ' + data);
@@ -111,7 +113,9 @@ $(function () {
     setTimeout(firstCall, 1000);
 
     //ct-visits
-    applyAnimationStatistics();
+       if(chartExist){
+                applyAnimationStatistics();
+                    }
 
     var chart = [chart];
 
