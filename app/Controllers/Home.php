@@ -20,8 +20,13 @@ class Home extends BaseController
 
     public function index()
     {
-       return redirect()->to('http://www.yahoo.com'); 
+       return redirect()->to('http://fgroupindonesia.com/pelayanan/solusi-digital'); 
         //return "something  x"  . base_url();
+        //$cond = array(
+        //    'username' => 'cinta'
+        //);
+
+        //$this->getDBData('balance', $cond, 'users');
     }
 
      public function order_jasa(): string
@@ -167,26 +172,48 @@ class Home extends BaseController
             return $u;
     }
 
+    private function getDBData($targetKey, $condition, $entity){
+            
+            $result = '';
+            $u = $condition['username'];
+
+            $raw = $this->db->selectAllDataByUsername($u, $entity);
+            
+            if(count($raw)>0){
+            $result = $raw[0]->$targetKey;
+            }
+
+            return $result;
+    }
+
+
     private function getDashboardData($usage){
 
-        if($usage == 'admin'){
             $data_users = $this->db->selectAllData('users');
             arsort($data_users);
+
+            $u = $this->getSessionData('username');
+
+        if($usage == 'admin'){
+           
             $data_apps = $this->db->selectAllData('apps');
             arsort($data_apps);
             $data_orders = $this->db->selectAllData('order_jasa');
             arsort($data_orders);
-             $data_deposits = $this->db->selectAllData('deposits');
+            $data_deposits = $this->db->selectAllData('deposits');
             arsort($data_deposits);
+           
         }else{
-            $u = $this->getSessionData('username');
-            $data_users = $this->db->selectAllData('users');
-            arsort($data_users);
+         
+            
             $data_apps = $this->db->selectAllDataByUsername($u, 'apps');
             arsort($data_apps);
              $data_orders = $this->db->selectAllDataByUsername($u, 'order_jasa');
             arsort($data_orders);
+              $data_deposits = $this->db->selectAllDataByUsername($u, 'deposits');
+            arsort($data_deposits);
         }
+
         $total_users = 0;
         $total_apps = 0;
         $total_orders = 0;
@@ -221,10 +248,14 @@ class Home extends BaseController
             $sex_female_radio = "checked";
         }
 
+        $cond = array(
+            'username' => $u
+        );
+
         $data = array(
             'user_id'   => $this->getSessionData('user_id'),
             'propic'    => $this->getSessionData('propic'),
-            'balance'    => $this->getSessionData('balance'),
+            'balance'    => $this->getDBData('balance', $cond, 'users'),
             'username'  => $this->getSessionData('username'),
             'pass'  => $this->getSessionData('pass'),
             'email'  => $this->getSessionData('email'),
@@ -237,7 +268,7 @@ class Home extends BaseController
             'data_orders' => $this->formatTimeInData($data_orders),
             'data_deposits' => $this->formatTimeInData($data_deposits),
             'total_users' => $total_users,
-             'total_deposits' => $total_deposits,
+            'total_deposits' => $total_deposits,
             'total_apps' => $total_apps,
             'total_orders' => $total_orders,
             'total_apps_published' => $total_apps_published

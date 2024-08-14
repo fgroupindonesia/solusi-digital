@@ -317,6 +317,11 @@ curl_close($ch);
 
      $rest = $this->db->updateData($id, $data, 'deposits');
      
+    if($s == 'purchased'){
+     // insert the balance into user account
+     $this->updateUserBalance($a, $u);
+    }
+
      if($rest == 0){
         echo "none";
      }else {

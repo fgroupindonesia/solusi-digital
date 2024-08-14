@@ -290,68 +290,31 @@
                     <div class="col-lg-4 col-md-12 col-sm-12">
                         <div class="card white-box p-0">
                             <div class="card-heading">
-                                <h3 class="box-title mb-0">Top Users</h3>
+                                <h3 class="box-title mb-0">Riwayat Deposit (<?= $total_deposits ;?>)</h3>
                             </div>
                             <div class="card-body">
                                 <ul class="chatonline">
-                                    <li>
-                                       
-                                        <a href="javascript:void(0)" class="d-flex align-items-center"><img
-                                                src="/assets/plugins/images/users/varun.jpg" alt="user-img" class="img-circle">
-                                            <div class="ms-2">
-                                                <span class="text-dark">Master Keren <small
-                                                        class="d-block text-success d-block">10 Apps</small></span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                       
-                                        <a href="javascript:void(0)" class="d-flex align-items-center"><img
-                                                src="/assets/plugins/images/users/genu.jpg" alt="user-img" class="img-circle">
-                                            <div class="ms-2">
-                                                <span class="text-dark">Neng
-                                                    Kidul <small class="d-block text-warning">1 App</small></span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        
-                                        <a href="javascript:void(0)" class="d-flex align-items-center"><img
-                                                src="/assets/plugins/images/users/ritesh.jpg" alt="user-img" class="img-circle">
-                                            <div class="ms-2">
-                                                <span class="text-dark">Gondrong
-                                                    Purnomo <small class="d-block text-danger">0 App</small></span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                       
-                                        <a href="javascript:void(0)" class="d-flex align-items-center"><img
-                                                src="/assets/plugins/images/users/arijit.jpg" alt="user-img" class="img-circle">
-                                            <div class="ms-2">
-                                                <span class="text-dark">Dewa
-                                                    Sono <small class="d-block text-muted">-</small></span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                      
-                                        <a href="javascript:void(0)" class="d-flex align-items-center"><img
-                                                src="/assets/plugins/images/users/govinda.jpg" alt="user-img"
-                                                class="img-circle">
-                                            <div class="ms-2">
-                                                <span class="text-dark">Gogolia
-                                                    Star <small class="d-block text-success">9 Apps</small></span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
+                                      <?php if (isset($data_deposits)): ?>                 
+                                    <?php foreach($data_deposits as $key): ?>
+                                    <?php  $fileCash = "cash-" . $key->status . ".png"; ?>
                                     
-                                        <a href="javascript:void(0)" class="d-flex align-items-center"><img
-                                                src="/assets/plugins/images/users/hritik.jpg" alt="user-img" class="img-circle">
+                                    <li>
+                                        <a href="#" class="d-flex align-items-center">
+                                            <img src="/assets/images/<?= $fileCash ;?>" alt="user-img" class="img-circle">
                                             <div class="ms-2">
-                                                <span class="text-dark">Kentang Goreng
-                                                    <small class="d-block text-success">7 Apps</small></span>
+                                                <span class="text-dark">Rp. <?= $key->amount; ?> <small
+                                                        class="d-block text-success d-block"><?= $key->status; ?></small></span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <?php endforeach; ?>
+                                    <?php endif; ?>
+                                    <li>
+                                        <a href="#" id="wa-help" data-phone="6285795569337"  class="msg-user-wa d-flex align-items-center"><img
+                                                src="/assets/images/wa.png" alt="user-img" class="img-circle">
+                                            <div class="ms-2">
+                                                <span class="text-dark">Contact Admin
+                                                    <small class="d-block text-success">Technical Issue</small></span>
                                             </div>
                                         </a>
                                     </li>
@@ -363,7 +326,7 @@
                 </div>
 
       <?php include('modal_setting_form.php'); ?>
-      
+         <?php include('modal_add_deposit_client.php'); ?>
       <?php include('modal_jasa_komen.php'); ?>
       <?php include('modal_jasa_view.php'); ?>
       <?php include('modal_jasa_rating.php'); ?>
