@@ -16,12 +16,31 @@ const URL_ORDER_UPDATE = "/update-jasa-order";
 const URL_APP_UPDATE = "/update-app";
 const URL_DEPOSIT_UPDATE = "/update-deposit";
 
+const URL_ORDER_REQUEST_DETAIL = "/request-detail-jasa-order";
+
 const URL_SETTINGS_UPDATE = "/update-settings";
 var jumlahData = 0;
 
 
 $( document ).ready(function() {
    
+
+
+ // this is for detail-order-link click
+  $('.detail-order-link').on('click', function(e){
+  		e.preventDefault();
+
+  		$('.modal-loading').show();
+  		let jenisNa = $(this).data('ordertype');
+  		let idNa = $(this).data('orderid');
+
+  		let dataOrder = {order_type : jenisNa, order_id: idNa};
+
+  		kirimPost(dataOrder, URL_ORDER_REQUEST_DETAIL);
+
+  });
+
+
    // this is for approve click
   $('.link-approve').on('click', function(e){
   		e.preventDefault();
@@ -355,13 +374,20 @@ function kirimPost(dataForm, urlNa){
 	
 	console.log('kirim ke '+ urlNa +' ' + JSON.stringify(dataForm));
 
+
 	 $.ajax({
         url: urlNa,
         data: (dataForm),
         cache : false,
         type: 'POST',
         success: function(data){
-        	if(urlNa != URL_USER_EDIT && urlNa != URL_APP_EDIT && urlNa != URL_DEPOSIT_EDIT){
+
+        	 if(urlNa == URL_ORDER_REQUEST_DETAIL){
+        	 		let dataNa = JSON.parse(data);
+        	 		console.log(dataNa.data);
+        	 			
+            			extractOrderDetailData(dataNa.data, dataForm.order_type);
+           }else if(urlNa != URL_USER_EDIT && urlNa != URL_APP_EDIT && urlNa != URL_DEPOSIT_EDIT){
         		setTimeout(function(){
         			if(urlNa == URL_SETTINGS_UPDATE){
         		var dForm = convertIntoJSON(dataForm);
@@ -373,11 +399,11 @@ function kirimPost(dataForm, urlNa){
         				// if the form is comming but not from settings call
         				//alert(data);
         				if(URL_ORDER_DELETE == urlNa || urlNa == URL_ORDER_UPDATE){
-        					if(jumlahData<5)
+        					if(jumlahData<=1)
         				 alert('data berhasil terupdate!');
 	        			}else{
 
-	        				if(jumlahData<5)
+	        				if(jumlahData<=1)
 	        				alert('data berhasil dipesan!');
 
   	       			}
@@ -404,6 +430,78 @@ function kirimPost(dataForm, urlNa){
         }
     });
 
+}
+
+function extractOrderDetailData(argument, order_type) {
+	
+	let data = (argument);
+	let formNa = $('#detail-order-form');
+
+	let idSectionNa = '#detail-order-' + order_type.replace("_","-");
+
+	console.log('memunculkan ' + idSectionNa);
+
+	let sectionNa = $(idSectionNa);
+	formNa.find('section').hide();
+	
+	setTimeout(function(){
+		$('.modal-loading').hide();
+		sectionNa.show();	
+	},4000);
+	
+		$("#detail-order-username").val(data.username);
+		$("#detail-order-date-created").val(data.date_created);
+
+	if(order_type == 'comment'){
+		$(idSectionNa + "-title").val(data.title);
+		$(idSectionNa + "-url").val(data.url);
+		$(idSectionNa + "-social-media").val(data.social_media);
+		$(idSectionNa + "-package").val(data.package);
+		$(idSectionNa + "-notes").val(data.notes);
+	} else if(order_type == 'follow_marketplace'){
+		$(idSectionNa + "-marketplace").val(data.marketplace);
+		$(idSectionNa + "-url").val(data.url);
+		$(idSectionNa + "-shop-name").val(data.shop_name);
+		$(idSectionNa + "-gender").val(data.gender);
+		$(idSectionNa + "-package").val(data.package);
+		$(idSectionNa + "-notes").val(data.notes);
+	} else if(order_type == 'wishlist_marketplace'){
+		$(idSectionNa + "-marketplace").val(data.marketplace);
+		$(idSectionNa + "-url").val(data.url);
+		$(idSectionNa + "-shop-name").val(data.shop_name);
+		$(idSectionNa + "-gender").val(data.gender);
+		$(idSectionNa + "-package").val(data.package);
+		$(idSectionNa + "-notes").val(data.notes);
+	} else if(order_type == 'rating'){
+		$(idSectionNa + "-social-media").val(data.social_media);
+		$(idSectionNa + "-url").val(data.url);
+		$(idSectionNa + "-business-name").val(data.business_name);
+		$(idSectionNa + "-gender").val(data.gender);
+		$(idSectionNa + "-package").val(data.package);
+		$(idSectionNa + "-notes").val(data.notes);
+	} else if(order_type == 'subscriber'){
+		$(idSectionNa + "-social-media").val(data.social_media);
+		$(idSectionNa + "-url").val(data.url);
+		$(idSectionNa + "-account-name").val(data.account_name);
+		$(idSectionNa + "-gender").val(data.gender);
+		$(idSectionNa + "-package").val(data.package);
+	} else if(order_type == 'view'){
+		$(idSectionNa + "-social-media").val(data.social_media);
+		$(idSectionNa + "-url").val(data.url);
+		$(idSectionNa + "-title").val(data.title);
+		$(idSectionNa + "-gender").val(data.gender);
+		$(idSectionNa + "-package").val(data.package);
+		$(idSectionNa + "-question").val(data.question);
+		$(idSectionNa + "-valid-answer").val(data.valid_answer);
+
+		let allanswer = "A : " + data.answer_a + "\n";
+		allanswer += "B : " + data.answer_b + "\n";
+		allanswer += "C : " + data.answer_c + "\n";
+		allanswer += "D : " + data.answer_d + "\n";
+		
+		$(idSectionNa + "-answers").val(allanswer);
+	}
+	
 }
 
 function extractUserData(argument) {

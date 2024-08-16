@@ -1,3 +1,7 @@
+#detail-order-form section {
+  display: none;
+}
+
 .link-add, .link-edit, .link-delete, .link-approve, .link-cancel {
   display: inline-block;
   height: 24px;

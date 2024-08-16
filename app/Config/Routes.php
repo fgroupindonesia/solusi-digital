@@ -48,4 +48,5 @@ $routes->post('/update-settings', 'Works::settings_update');
 $routes->post('/update-jasa-order', 'Works::jasa_order_update');
 $routes->post('/update-deposit', 'Works::deposit_update');
 $routes->post('/request-statistics', 'Works::statistics_data');
+$routes->post('/request-detail-jasa-order', 'Works::jasa_order_data');
 $routes->post('/send-email', 'Works::send_email');

@@ -115,6 +115,34 @@ curl_close($ch);
 
     }
 
+    public function jasa_order_data(){
+
+         $id = $this->request->getPost('order_id');
+         $o_type = $this->request->getPost('order_type');
+         $datana = null;
+
+
+         if(isset($o_type)){
+            $entityName = 'order_' . $o_type;
+            $datana = $this->db->selectData($id, $entityName);
+         }
+
+         $result = array(
+            'status'=> 'success',
+            'data' => $datana[0]
+         );
+
+         if(empty($datana)){
+            
+            $result['status'] = 'none';
+            $result['data'] = null;
+            
+         }
+
+         echo json_encode($result);
+
+    }
+
     public function statistics_data(){
 
          $gender = $this->request->getPost('sex');

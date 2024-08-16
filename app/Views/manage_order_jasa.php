@@ -129,7 +129,7 @@
                                 <div class="col-md-5 col-sm-4 col-xs-6 ms-auto text-right">
                         <a  class="link-approve" id="link-approve" href="/approve-order" data-entity='orders'>Approve</a>
                         <a class="link-cancel" id="link-cancel" href="/cancel-order" data-entity='orders'>Cancel</a>
-                        <a class="link-edit" href="/edit-order" data-entity='orders'>Edit</a>
+                      
                         <a class="link-delete" href="/delete-order" data-entity='orders'>Delete</a>
                                    
                                 </div>
@@ -142,6 +142,7 @@
                                             <th class="border-top-0">Order Type</th>
                                             <th class="border-top-0">Status</th>
                                             <th class="border-top-0">Username</th>
+                                              <th class="border-top-0">Detail</th>
                                             <th class="border-top-0">Date Created</th>
                                         </tr>
                                     </thead>
@@ -156,6 +157,11 @@
                                         </td>
                                         <td class="txt-oflo"><?= $key->username ?>
                                         </td>
+                                        <td class="txt-oflo">
+                                <a href="#"
+                                data-ordertype="<?= $key->order_type ;?>" class="detail-order-link" data-bs-toggle="modal" data-bs-target="#detail-order-form-modal" data-orderid="<?= $key->order_id ;?>"> view
+                                </a> 
+                                        </td>
                                         <td><span class="text-success"><?= $key->date_created ?></span>
                                         </td>
                                         </tr>
@@ -168,8 +174,10 @@
                         </div>
                     </div>
                 </div>
-             
+                
+
                 <?php include('modal_setting_form.php'); ?>
+                  <?php include('modal_detail_order_form.php'); ?>
                 
             </div>
             <!-- ============================================================== -->
