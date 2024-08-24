@@ -30,6 +30,8 @@
       </div>
       <div class="form-group">
         <input type="submit" value="Login" class="btn">
+        <br> <br>
+        <span id="version">Rev : v1.2</span>
       </div>
     </form>
   </div>

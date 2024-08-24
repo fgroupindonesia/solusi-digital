@@ -11,6 +11,14 @@
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/codeigniter4/CodeIgniter4/pulls)
 <br>
 
+## Update Logs:
+v1.2 - New Features: 21-aug-2024 
+- adding Order Jasa Management
+- adding Payment Form + Functionality
+- implementing New Dashboard for client
+
+
+
 ## What is SNotepad Server ?
 
 As we already know, SNotepad is actually a secured layer of notepad used in desktop platform. 
