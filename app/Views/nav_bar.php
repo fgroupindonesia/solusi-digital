@@ -26,6 +26,13 @@
                                 <span class="hide-menu">Management Apps</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-virtualvisitors"
+                                aria-expanded="false">
+                                <i class="fa fa-desktop" aria-hidden="true"></i>
+                                <span class="hide-menu">Management V.Visitors</span>
+                            </a>
+                        </li>
                         <?php if($role == 'admin'): ?>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-users"

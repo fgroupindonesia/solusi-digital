@@ -1,0 +1,79 @@
+.vvisitors-theme-default {
+display: 	block	;
+	width: 	300px;
+	height: 	56px;
+	border-style: 	ridge	;
+	border-radius: 	10px;
+	text-align: 	center;
+}
+
+.vvisitors-theme-snowy {
+    background: rgb(247,255,254);background: linear-gradient(180deg, rgba(247,255,254,1) 4%, rgba(92,249,231,1) 24%, rgba(245,225,163,1) 64%, rgba(252,252,252,1) 100%);
+	display: 	block	;
+	width: 	300px;
+	height: 	56px;
+	border-style: 	ridge	;
+	border-radius: 	20px;
+	text-align: 	center;
+}
+
+.vvisitors-theme-hotspring {
+	background: rgb(255,0,0);background: linear-gradient(180deg, rgba(255,0,0,1) 4%, rgba(249,128,92,1) 24%, rgba(245,225,163,1) 64%, rgba(246,233,167,1) 100%);
+	height: 	56px;
+	width: 	300px;
+	border-style: 	ridge	;
+	border-radius: 	15px;
+	text-align: 	center;
+	color: black;
+}
+
+
+.vvisitors-theme-rainy {
+	background: rgb(249,255,208);background: linear-gradient(180deg, rgba(249,255,208,1) 0%, rgba(163,245,234,1) 35%, rgba(167,246,246,1) 100%);width: 	300px;
+	height: 	56px;
+	width: 	300px;
+	border-style: 	ridge	;
+	border-radius: 	15px;
+	text-align: 	center;
+	color: red;
+}
+
+.vvisitors-theme-summer {
+	background: rgb(2,0,36);background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(210,240,2,1) 35%, rgba(255,149,0,1) 100%);display: 	block	;
+	width: 	300px;
+	height: 	56px;
+	border-style: 	ridge	;
+	border-radius: 	15px;
+	text-align: 	center;
+	color: red;
+}
+
+
+.vvisitors-theme-winter {
+	background: rgb(2,0,36);background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+	display: 	block	;
+	width: 	300px;
+	height: 	56px;
+	border-style: 	ridge	;
+	border-radius: 	5px;
+	text-align: 	center;
+	color: white;
+}
+
+.vvisitors-theme-winter a{
+	text-decoration: none;
+	color: white;
+	font-style: bold;
+}
+
+.virtualvisitors-container p {
+	display: inline-block;
+	vertical-align: middle;
+	height: 43px;
+}
+
+.theme-left-icon{
+	display: inline-block;
+	width: 32px;
+	height: 32px;	
+}

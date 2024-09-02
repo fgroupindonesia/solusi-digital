@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use CodeIgniter\Files\File;
 use App\Models\DataModel;
+use App\Libraries\XLSXReader;
 
 class Works extends BaseController
 {
@@ -16,6 +17,108 @@ class Works extends BaseController
 
         $this->db = new DataModel();
         //echo var_dump($this->db);
+
+    }
+
+    public function testing(){
+        return view('popup');
+    }
+
+    public function upload_data_virtualvisitors(){
+
+       
+        
+        $validated = $this->validate([
+            'virtualvisitorsfile' => [
+                'uploaded[virtualvisitorsfile]',
+                'ext_in[virtualvisitorsfile,xls,xlsx]',
+                'max_size[virtualvisitorsfile,2024]',
+            ],
+        ]);
+
+
+        //echo var_dump( $validated);
+
+        if ($validated) {
+
+            $docs = $this->request->getFile('virtualvisitorsfile');
+
+            // create folder by date
+          
+
+             $dname = explode(".", $_FILES['virtualvisitorsfile']['name']);
+            $ext = end($dname);
+
+              $folderName = date('ymd');
+            $folderPath = WRITEPATH . 'uploads/' . $folderName;
+            $newName = date('ymdhis') . '_vvisitors.' . $ext;
+
+            echo 'moved';
+
+             if (!file_exists($folderPath)) {
+                mkdir($folderPath, 0777, true);
+            }
+
+             $docs->move($folderPath, $newName);
+
+             $this->readExtractToDB($folderPath, $newName);   
+
+        }
+
+       
+        //echo var_dump($data);
+    }
+
+
+    private function readExtractToDB($folderPath, $newName){
+
+        $theme  = 'default';
+        $u      = $this->request->getPost('username');
+        $order_id = $this->request->getPost('order_id');    
+
+        $file = $folderPath .'/'. $newName;
+        // echo $file;
+        
+        $coba = new XLSXReader($file);
+        
+        $sheets = $coba->getSheetNames();
+
+        // this xlsx didnt have array 0
+        $sh1 = $sheets[1];
+
+        $lembar = $coba->getSheet($sh1);
+
+        $data = $lembar->getData();
+        
+
+        if($data != false){
+            // there is an array
+            $index = 0;
+            foreach( $data as $key){
+                if($index!=0){
+                   
+                   $n = 0;
+                            
+                        $dataVisitors = array(
+                            'order_id'      => $order_id,
+                            'client_name'   => $key[$n+1],
+                            'gender'        => $key[$n+2],
+                            'city'          => $key[$n+3],
+                            'product_bought'=> $key[$n+4],
+                            'product_url'   => $key[$n+5],
+                            'username'      => $u,
+                            'theme_display' => $theme
+                        );
+
+                        //echo var_dump(  $dataVisitors  );
+                        if(!is_null($key[$n+1])) 
+                        $this->db->insertData($dataVisitors, 'data_virtualvisitors');
+
+                        }
+                $index++;
+            }
+        }
+        
 
     }
 
@@ -140,6 +243,20 @@ curl_close($ch);
          }
 
          echo json_encode($result);
+
+    }
+
+    public function campaign_data(){
+
+        $u = $this->request->getPost('username');
+
+        $datana = $this->db->selectAllDataByUsername($u, 'campaign_virtualvisitors');
+
+        if($datana != false){
+            echo json_encode($datana);
+        }else{
+            echo "none";
+        }
 
     }
 
@@ -353,6 +470,159 @@ curl_close($ch);
      if($rest == 0){
         echo "none";
      }else {
+        echo "valid";
+     }
+
+    }
+
+
+    public function jasa_upgrade_fituraplikasi_order(){
+
+        $app_base = $this->request->getPost('app_base');
+        // app_base probably in array form
+        if(isset($app_base)){
+            $dataappbase = json_decode($app_base, true);
+            $dataappbaseString = implode(', ', $dataappbase);
+            $app_base = $dataappbaseString;
+        }
+
+        $url = $this->request->getPost('url');
+        $title = $this->request->getPost('title');
+        $package = $this->request->getPost('package');
+        $notes = $this->request->getPost('notes');
+        $user = $this->request->getPost('username');
+
+           $data1 = array(
+            'app_base'  => $app_base,
+            'url'           => $url,
+            'title'         => $title,
+            'package'       => $package,
+            'notes'         => $notes,
+            'username'      => $user
+        );
+
+         //  echo var_dump($data1);
+        $rest1 = $this->db->insertData($data1, 'order_upgrade_fituraplikasi');
+        $order_id = $rest1;
+        $order_type = 'upgrade_fituraplikasi';
+
+        $sixDigitRandomRef = $this->generateRandomPass(6);
+
+          $data2 = array(
+            'order_id'              => $order_id,
+            'order_type'            => $order_type,
+            'order_client_reff'     => $sixDigitRandomRef,
+            'status'                => 'pending',
+            'username'              => $user
+        );
+
+       $rest2 = $this->db->insertData($data2, 'order_jasa');
+     
+     if($rest1 == 0){
+        echo "none";
+     }else if($rest1 != 0 && $rest2 != 0) {
+        echo "valid";
+     }
+
+    }
+
+
+    public function jasa_virtualvisitors_order(){
+
+        $website = $this->request->getPost('website');
+        // website probably in array form
+        if(isset($website)){
+            $dataappbase = json_decode($website, true);
+            $dataappbaseString = implode(', ', $dataappbase);
+            $website = $dataappbaseString;
+        }
+
+        $url = $this->request->getPost('url');
+        $business_name = $this->request->getPost('business_name');
+        $package = $this->request->getPost('package');
+        $gender = $this->request->getPost('gender');
+      
+        $user = $this->request->getPost('username');
+
+           $data1 = array(
+            'website'       => $website,
+            'url'           => $url,
+            'business_name' => $business_name,
+            'package'       => $package,
+            'gender'        => $gender,
+            'username'      => $user
+        );
+
+         //  echo var_dump($data1);
+        $rest1 = $this->db->insertData($data1, 'order_virtualvisitors');
+        $order_id = $rest1;
+        $order_type = 'virtualvisitors';
+
+        $sixDigitRandomRef = $this->generateRandomPass(6);
+
+          $data2 = array(
+            'order_id'              => $order_id,
+            'order_type'            => $order_type,
+            'order_client_reff'     => $sixDigitRandomRef,
+            'status'                => 'pending',
+            'username'              => $user
+        );
+
+       $rest2 = $this->db->insertData($data2, 'order_jasa');
+     
+     if($rest1 == 0){
+        echo "none";
+     }else if($rest1 != 0 && $rest2 != 0) {
+        echo "valid";
+     }
+
+    }
+
+
+ public function jasa_pembuatanaplikasi_order(){
+
+        $app_base = $this->request->getPost('app_base');
+        // website probably in array form
+        if(isset($app_base)){
+            $dataappbase = json_decode($app_base, true);
+            $dataappbaseString = implode(', ', $dataappbase);
+            $app_base = $dataappbaseString;
+        }
+
+        $title = $this->request->getPost('title');
+        $notes = $this->request->getPost('notes');
+        $package = $this->request->getPost('package');
+      
+        $user = $this->request->getPost('username');
+
+           $data1 = array(
+            'app_base'       => $app_base,
+            'title'           => $title,
+            'package'       => $package,
+            'notes'       => $notes,
+            'username'      => $user
+        );
+
+         //  echo var_dump($data1);
+        $rest1 = $this->db->insertData($data1, 'order_pembuatanaplikasi');
+        $order_id = $rest1;
+        $order_type = 'pembuatanaplikasi';
+
+        $sixDigitRandomRef = $this->generateRandomPass(6);
+
+          $data2 = array(
+            'order_id'              => $order_id,
+            'order_type'            => $order_type,
+            'order_client_reff'     => $sixDigitRandomRef,
+            'status'                => 'pending',
+            'username'              => $user
+        );
+
+       $rest2 = $this->db->insertData($data2, 'order_jasa');
+     
+     if($rest1 == 0){
+        echo "none";
+     }else if($rest1 != 0 && $rest2 != 0) {
         echo "valid";
      }
 
@@ -686,15 +956,35 @@ curl_close($ch);
 
     }
 
+    public function campaign_add(){
+
+        $n = $this->request->getPost('name');
+        $u = $this->request->getPost('username');
+
+        $datana = array(
+            'name'=> $n,
+            'username'=> $u
+        );
+
+       $rest = $this->db->insertData($datana, 'campaign_virtualvisitors');
+
+         if($rest == 0){
+            echo "none";
+         }else {
+            echo "valid";
+         }
+
+    }
+
 	public function app_add()
     {
-        $u = $this->request->getPost('username_owned');
-        $u_id = $this->request->getPost('user_id');
+        $u      = $this->request->getPost('username_owned');
+        $u_id   = $this->request->getPost('user_id');
         $a_name = $this->request->getPost('apps_name');
-        $d = $this->request->getPost('descriptions');
-        $i = $this->request->getPost('icon');
-        $b_s = $this->request->getPost('best_screenshot');
-        $p_u = $this->request->getPost('privacy_url');
+        $d      = $this->request->getPost('descriptions');
+        $i      = $this->request->getPost('icon');
+        $b_s    = $this->request->getPost('best_screenshot');
+        $p_u    = $this->request->getPost('privacy_url');
         
         $data = array(
             'username_owned'    => $u,
@@ -768,11 +1058,25 @@ curl_close($ch);
     {
 
          $id = $this->request->getPost('id');
+         $order_type    = $this->request->getPost('order_type');
+         
+         $data_jasa = $this->db->selectData($id, 'order_jasa');
 
-          $rest = $this->db->deleteData($id, 'order_jasa');
+        $order_id = 0;
+
+         if($data_jasa != false){
+            $order_id = $data_jasa[0]->order_id;
+         }
+
+         
+         $rest         = $this->db->deleteData($id, 'order_jasa');
      
          if($rest != 0){
             echo "valid";
+
+            $ordername = "order_" . $order_type;
+            $rest = $this->db->deleteData($order_id, $ordername);
+
          }else{
             echo "none";
          }

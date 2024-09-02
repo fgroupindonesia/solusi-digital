@@ -8,9 +8,13 @@ class DataModel extends Model
     protected $table_users      = 'table_users';
     protected $table_ticketing  = 'table_ticketing';
     protected $table_apps       = 'table_apps';
+    protected $table_data_virtualvisitors       = 'table_data_virtualvisitors';
+    protected $table_campaign_virtualvisitors       = 'table_campaign_virtualvisitors';
     protected $table_deposits       = 'table_deposits';
     protected $table_order_jasa       = 'table_order_jasa';
-
+    protected $table_order_upgrade_fituraplikasi = 'table_order_upgrade_fituraplikasi';
+    protected $table_order_pembuatanaplikasi     = 'table_order_pembuatanaplikasi';
+    protected $table_order_virtualvisitors       = 'table_order_virtualvisitors';
     protected $table_order_comment       = 'table_order_comment';
     protected $table_order_follow_marketplace       = 'table_order_follow_marketplace';
     protected $table_order_rating       = 'table_order_rating';
@@ -24,22 +28,46 @@ class DataModel extends Model
             $table_na = $this->table_users;
         }else if($entity == 'ticketing'){
             $table_na = $this->table_ticketing;
+
         }else if($entity == 'apps'){
             $table_na = $this->table_apps;
+
         }else if($entity == 'deposits'){
             $table_na = $this->table_deposits;
+
+        }else if($entity == 'data_virtualvisitors'){
+            $table_na = $this->table_data_virtualvisitors;
+
+        }else if($entity == 'campaign_virtualvisitors'){
+            $table_na = $this->table_campaign_virtualvisitors;
+
         }else if($entity == 'order_jasa'){
             $table_na = $this->table_order_jasa;
+
+        }else if($entity == 'order_virtualvisitors'){
+            $table_na = $this->table_order_virtualvisitors;
+
+        }else if($entity == 'order_upgrade_fituraplikasi'){
+            $table_na = $this->table_order_upgrade_fituraplikasi;
+
+        }else if($entity == 'order_pembuatanaplikasi'){
+            $table_na = $this->table_order_pembuatanaplikasi;
+
         }else if($entity == 'order_comment'){
             $table_na = $this->table_order_comment;
+
         }else if($entity == 'order_follow_marketplace'){
             $table_na = $this->table_order_follow_marketplace;
+
         }else if($entity == 'order_wishlist_marketplace'){
             $table_na = $this->table_order_wishlist_marketplace;
+
         }else if($entity == 'order_rating'){
             $table_na = $this->table_order_rating;
+
         }else if($entity == 'order_subscriber'){
             $table_na = $this->table_order_subscriber;
+
         }else if($entity == 'order_view'){
             $table_na = $this->table_order_view;
         }
@@ -112,6 +140,15 @@ class DataModel extends Model
         return $this->db->affectedRows();
     }
 	
+    public function selectSingleLastData($arrayFilter, $entity)
+    {
+        $table_na = $this->getEntity($entity);
+
+        $res = $this->db->table($table_na)->where($arrayFilter)->get();
+        
+        return $res->getResult();
+    }
+
     public function selectData($id, $entity)
     {
         $table_na = $this->getEntity($entity);

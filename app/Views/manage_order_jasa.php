@@ -151,7 +151,11 @@
                   <?php foreach($data_orders as $key): ?>
 
                                         <tr>
-                                        <td><input type="checkbox" class="user-checked" data-id="<?= $key->id ?>" /></td>
+                                        <td><input type="checkbox" 
+                                            class="user-checked" 
+                                            data-id="<?= $key->id ?>"
+                                            data-order-type="<?= $key->order_type ?>"
+                                             /></td>
                                         <td class="txt-oflo"> <?= $key->order_type ?></td>
                                         <td><?= $key->status ?>
                                         </td>

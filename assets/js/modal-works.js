@@ -1,6 +1,7 @@
 const URL_USER_ADD = "/add-new-user";
 const URL_APP_ADD = "/add-new-app";
 const URL_DEPOSIT_ADD = "/add-new-deposit";
+const URL_CAMPAIGN_ADD = "/add-new-campaign";
 
 const URL_USER_DELETE = "/delete-user";
 const URL_APP_DELETE = "/delete-app";
@@ -16,15 +17,70 @@ const URL_ORDER_UPDATE = "/update-jasa-order";
 const URL_APP_UPDATE = "/update-app";
 const URL_DEPOSIT_UPDATE = "/update-deposit";
 
+const URL_DATA_VIRTUALVISITORS = "/upload-data-virtualvisitors";
+//const URL_DATA_VIRTUALVISITORS = "/test";
 const URL_ORDER_REQUEST_DETAIL = "/request-detail-jasa-order";
+const URL_CAMPAIGN_REQUEST = "/request-campaign";
 
 const URL_SETTINGS_UPDATE = "/update-settings";
 var jumlahData = 0;
 
 
 $( document ).ready(function() {
-   
 
+// this is for uploading data vvisitors into campaign
+$('#existing-campaign').on('change', function(){
+	let hasil = $(this).val();
+
+	if(hasil == 'new'){
+		// show the new campaign
+		$('#new-campaign').show();
+		$('#existing-campaign').fadeOut();
+	}else{
+		// hide the new campaign
+		$('#new-campaign').fadeOut();
+		$('#existing-campaign').show();
+	}
+
+});
+
+// this is for uplading data vvisitors into campaign
+$('#save-campaign').on('click', function(e){
+
+		e.preventDefault();
+
+		let u = $('#upload-virtualvisitors-hidden-username').val();
+		let namana = $('#name-campaign').val();
+
+		let datana = {name: namana, username : u};
+
+		if(namana.length>0){
+			kirimPost(datana, URL_CAMPAIGN_ADD);
+		}
+
+		showLoading('virtualvisitors', true);
+
+
+});
+   
+// this is for uploading data as the virtualvisitors usage
+$('#upload-virtualvisitors-attachment').on('change', function(){
+
+	let orderidna = $('#upload-virtualvisitors-hidden-order-id').val();
+	let usernamena = $('#upload-virtualvisitors-hidden-username').val();
+   let filena = $('#upload-virtualvisitors-attachment').prop('files')[0]; 
+
+	//console.log('orderna ' + orderidna);
+	//console.log('usernamena ' + usernamena);
+
+	var formData = new FormData();
+	formData.append('virtualvisitorsfile', filena);
+	formData.append('order_id', orderidna);
+	formData.append('username', usernamena);
+
+	kirimPostUpload(formData, URL_DATA_VIRTUALVISITORS);	
+
+});
 
  // this is for detail-order-link click
   $('.detail-order-link').on('click', function(e){
@@ -64,6 +120,13 @@ $( document ).ready(function() {
   	//alert('a');
   	$(this).toggleClass('opt-social-checked');
   });
+
+  // this is for appbase click
+  $('.opt-appbase').on('click', function(){
+  	//alert('a');
+  	$(this).toggleClass('opt-appbase-checked');
+  });
+
 
 	// this is for wa message
 	$('.msg-user-wa').on('click', function(){
@@ -168,7 +231,9 @@ $( document ).ready(function() {
 	clickOnForm('jasa-follow-marketplace-form'); 
 	clickOnForm('jasa-wishlist-marketplace-form'); 
 	clickOnForm('jasa-subscriber-form'); 
-
+	clickOnForm('jasa-upgrade-fituraplikasi-form'); 
+	clickOnForm('jasa-virtualvisitors-form'); 
+	clickOnForm('jasa-pembuatanaplikasi-form'); 
 
 	// this is for check all checkboxes
 	$('#check-all').on('click', function(){
@@ -211,17 +276,29 @@ $( document ).ready(function() {
 
 	 	// grab  the id
 		 var idCollected = [];
+		 var ordertype = [];
+
 		 $('input[type="checkbox"]:checked').each(function(){
 		 	var number = $(this).data('id');
+		 	var otype =  $(this).data('order-type');
+
 		 	idCollected.push(number);
+		 	ordertype.push(otype);
+
 		 }); 
 
 		 console.log('we got ' + idCollected.length);
 		 // helping the number of data for popup message
 		 jumlahData = idCollected.length;
 
-		 idCollected.forEach(function(el){
-		 	let dataNa = {id : el};
+		 
+		 let i=0;
+		 for(i=0; i<idCollected.length; i++){
+
+		 	let idna = idCollected[i];
+		 	let otypena = ordertype[i];
+
+		 	let dataNa = {id : idna, order_type: otypena};
 
 		 	if(gawe == 'users'){
 		 		kirimPost(dataNa, URL_USER_DELETE);
@@ -233,7 +310,8 @@ $( document ).ready(function() {
 				kirimPost(dataNa, URL_DEPOSIT_DELETE);
 			}
 
-		 });
+			} // end of the loop
+
 		 
 		
 	});
@@ -276,6 +354,26 @@ $( document ).ready(function() {
 
 });
 
+function showLoading(entityname, boolstat){
+	let containerna = entityname + "-progress";
+	let loadingna = "status-"+ entityname+ "-loading";
+	
+	let namana = '#' + containerna;
+	if(boolstat==true)
+	$(namana).show();
+
+	if(boolstat==false)
+	$(namana).hide();
+	
+	namana = '#' + loadingna;
+	if(boolstat==true){
+		$(namana).show();
+	}else{
+		$(namana).hide();
+	}
+
+}
+
 function postOrderStatus(entityNa, stat){
 
 
@@ -314,6 +412,7 @@ $(idGiven).on('submit', function(e){
 
 			let datana = $(this).serialize();
 			let socmedselected = [];
+			let appbaseselected = [];
 
 			// collect the checked item
 			let idDivChecked = idGiven + " .opt-social-checked";
@@ -322,10 +421,24 @@ $(idGiven).on('submit', function(e){
 				let socmed = $(this).data('value');
 		  	socmedselected.push(socmed);
 		  
-		});
+			});
+
+			// collect another item similar purpose
+			idDivChecked = idGiven + " .opt-appbase-checked";
+			//console.log('wer going to ' + idDivChecked);
+			$(idDivChecked).each(function() {
+				let socmed = $(this).data('value');
+		  	appbaseselected.push(socmed);
+		  
+			});
+
 
 			// embed another one based on different form ID names
-			if(idFormGiven != 'jasa-follow-marketplace-form' && idFormGiven != 'jasa-wishlist-marketplace-form'){
+			if(idFormGiven == 'jasa-virtualvisitors-form'){
+				datana = datana + "&website=" + encodeURIComponent(JSON.stringify(appbaseselected));
+			}else if(idFormGiven == 'jasa-upgrade-fituraplikasi-form' || idFormGiven == 'jasa-pembuatanaplikasi-form'){
+				datana = datana + "&app_base=" + encodeURIComponent(JSON.stringify(appbaseselected));
+			}else if(idFormGiven != 'jasa-follow-marketplace-form' && idFormGiven != 'jasa-wishlist-marketplace-form'){
 				datana = datana + "&social_media=" + encodeURIComponent(JSON.stringify(socmedselected));
 			}else{
 				datana = datana + "&marketplace=" + encodeURIComponent(JSON.stringify(socmedselected));
@@ -382,7 +495,29 @@ function kirimPost(dataForm, urlNa){
         type: 'POST',
         success: function(data){
 
-        	 if(urlNa == URL_ORDER_REQUEST_DETAIL){
+        	 if(urlNa == URL_CAMPAIGN_REQUEST){
+        	 		
+        	 		let datain = JSON.parse(data);
+        	 		let elemenBaru = "";
+        	 		let elemenAkhir = "<option value='new'>Buat Baru</option>";
+
+        	 		// the name is array format
+        	 		for (const item of datain) {
+					  		elemenBaru += "<option value='" + item.name + "'>" + item.name + "</option>";
+					}
+
+					elemenBaru += elemenAkhir;
+
+        	 		$('#existing-campaign').html(elemenBaru);
+        	 		$('#existing-campaign').show();
+        	 		$('#new-campaign').hide();
+
+           }else if(urlNa == URL_CAMPAIGN_ADD){
+        	 		
+        	 		showLoading('virtualvisitors', false);
+        	 		kirimPost(dataForm, URL_CAMPAIGN_REQUEST);
+
+           }else if(urlNa == URL_ORDER_REQUEST_DETAIL){
         	 		let dataNa = JSON.parse(data);
         	 		console.log(dataNa.data);
         	 			
@@ -452,7 +587,24 @@ function extractOrderDetailData(argument, order_type) {
 		$("#detail-order-username").val(data.username);
 		$("#detail-order-date-created").val(data.date_created);
 
-	if(order_type == 'comment'){
+ if(order_type == 'pembuatanaplikasi' || order_type == 'upgrade_fituraplikasi'){
+		$(idSectionNa + "-appbase").val(data.app_base);
+		$(idSectionNa + "-title").val(data.title);
+		$(idSectionNa + "-package").val(data.package);
+		$(idSectionNa + "-notes").val(data.notes);
+
+		if(order_type == 'upgrade_fituraplikasi'){
+				$(idSectionNa + "-url").val(data.url);
+		}
+
+
+	}else if(order_type == 'virtualvisitors'){
+		$(idSectionNa + "-website").val(data.website);
+		$(idSectionNa + "-url").val(data.url);
+		$(idSectionNa + "-business-name").val(data.business_name);
+		$(idSectionNa + "-package").val(data.package);
+		$(idSectionNa + "-gender").val(data.gender);
+	}else if(order_type == 'comment'){
 		$(idSectionNa + "-title").val(data.title);
 		$(idSectionNa + "-url").val(data.url);
 		$(idSectionNa + "-social-media").val(data.social_media);
@@ -575,6 +727,46 @@ function messageWA(nomer){
 	var url = 'https://api.whatsapp.com/send?phone=' + nomer + '&text=' + msg;
 	location.href = url;
 } 
+
+function kirimPostUpload(datana, urlna){
+
+$('#virtualvisitors-progress').show();
+$('#status-virtualvisitors-loading').show();
+
+//console.log('mau kirim ');
+
+//for (var pair of datana.entries()) {
+//  console.log(pair[0] + ': ');
+//}
+//console.table(datana.entries);
+
+
+$.ajax({
+  url: urlna,
+   type: 'post',
+   data: datana,
+   cache: false,
+   processData: false,
+   contentType: false,
+  success: function(response) {
+    console.log(response);
+    $('#status-virtualvisitors-error').hide();
+    $('#status-virtualvisitors-loading').hide();
+
+		$('#virtualvisitors-progress').hide();
+
+  },
+  error: function(e,f,g){
+  	console.log(e + ' ' + f + ' ' + g);
+  	$('#status-virtualvisitors-loading').hide();
+  	$('#status-virtualvisitors-error').show();
+  }
+
+});
+
+
+
+}
 
 function convertIntoJSON(dataSerialized){
 

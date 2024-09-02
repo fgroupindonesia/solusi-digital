@@ -2,7 +2,11 @@
   display: none;
 }
 
-.link-add, .link-edit, .link-delete, .link-approve, .link-cancel {
+#new-campaign {
+  display: none;
+}
+
+.link-virtualvisitors-code, .link-apply-theme, .link-add, .link-upload, .link-edit, .link-delete, .link-approve, .link-cancel {
   display: inline-block;
   height: 24px;
   text-align: right;
@@ -10,10 +14,19 @@
   background-position: left;
   background-repeat: no-repeat;
     margin-right:   10px;
+    cursor : pointer;
 }
 
-.link-cancel:hover, .link-add:hover, .link-edit:hover, .link-delete:hover, .link-approve:hover {
+#code-virtualvisitors-form-modal > .modal-dialog{
+  max-width: 1000px !important;
+}
+
+.link-cancel:hover, .link-apply-theme:hover, .link-virtualvisitors-code:hover, .link-upload:hover, .link-add:hover, .link-edit:hover, .link-delete:hover, .link-approve:hover {
     background-color:   yellow;
+}
+
+#status-virtualvisitors-loading, #virtualvisitors-progress, #status-virtualvisitors-error{
+  display:none;
 }
 
 #check-all {
@@ -24,12 +37,12 @@
   text-align: right;
 }
 
-.opt-social:hover{
+.opt-social:hover, .opt-web:hover , .opt-appbase:hover{
   background-color: yellow;
   cursor: pointer;
 }
 
-.opt-social-checked {
+.opt-social-checked, .opt-web-checked, .opt-appbase-checked {
   background-color: orange;
   
 }
@@ -47,6 +60,16 @@
 .link-add {
   background-image: url('../plugins/images/add.png');
   width: 85px;
+}
+
+.link-virtualvisitors-code{
+   background-image: url('/assets/images/code.png');
+  width: 50px;
+}
+
+.link-upload{
+  background-image: url('/assets/images/upload.png');
+  width: 75px;
 }
 
 .link-edit {

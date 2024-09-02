@@ -43,6 +43,225 @@
     </div>
   </div>
 
+
+<section id="detail-order-pembuatanaplikasi">
+    <h3>Pembuatan Aplikasi</h3>
+     <!-- single part started -->
+   
+
+    <div class="form-group row">
+    <label for="detail-order-pembuatanaplikasi-appbase" class="col-4 col-form-label">Basis Aplikasi</label> 
+    <div class="col-8">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <i ></i>
+          </div>
+        </div> 
+        <input readonly id="detail-order-pembuatanaplikasi-appbase" type="text" class="form-control">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="detail-order-pembuatanaplikasi-title" class="col-4 col-form-label">Title</label> 
+    <div class="col-8">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <i ></i>
+          </div>
+        </div> 
+        <input readonly id="detail-order-pembuatanaplikasi-title" type="text" class="form-control">
+      </div>
+    </div>
+  </div>
+
+  
+   <div class="form-group row">
+    <label for="detail-order-pembuatanaplikasi-package" class="col-4 col-form-label">Package</label> 
+    <div class="col-8">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <i ></i>
+          </div>
+        </div> 
+        <input readonly id="detail-order-pembuatanaplikasi-package" type="text" class="form-control">
+      </div>
+    </div>
+  </div>
+
+   <div class="form-group row">
+    <label for="detail-order-pembuatanaplikasi-notes" class="col-4 col-form-label">Notes</label> 
+    <div class="col-8">
+      <div class="input-group">
+       
+         <input readonly id="detail-order-pembuatanaplikasi-notes" type="text" class="form-control">
+       
+      </div>
+    </div>
+  </div>
+
+  <!-- single part ended -->
+
+  </section>
+
+
+  <section id="detail-order-upgrade-fituraplikasi">
+    <h3>Upgrade Fitur Aplikasi</h3>
+     <!-- single part started -->
+   
+
+    <div class="form-group row">
+    <label for="detail-order-upgrade-fituraplikasi-appbase" class="col-4 col-form-label">Basis Aplikasi</label> 
+    <div class="col-8">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <i ></i>
+          </div>
+        </div> 
+        <input readonly id="detail-order-upgrade-fituraplikasi-appbase" type="text" class="form-control">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="detail-order-upgrade-fituraplikasi-title" class="col-4 col-form-label">Title</label> 
+    <div class="col-8">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <i ></i>
+          </div>
+        </div> 
+        <input readonly id="detail-order-upgrade-fituraplikasi-title" type="text" class="form-control">
+      </div>
+    </div>
+  </div>
+
+<div class="form-group row">
+    <label for="detail-order-upgrade-fituraplikasi-url" class="col-4 col-form-label">URL</label> 
+    <div class="col-8">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <i ></i>
+          </div>
+        </div> 
+        <input readonly id="detail-order-upgrade-fituraplikasi-url" type="text" class="form-control">
+      </div>
+    </div>
+  </div>
+
+  
+   <div class="form-group row">
+    <label for="detail-order-upgrade-fituraplikasi-package" class="col-4 col-form-label">Package</label> 
+    <div class="col-8">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <i ></i>
+          </div>
+        </div> 
+        <input readonly id="detail-order-upgrade-fituraplikasi-package" type="text" class="form-control">
+      </div>
+    </div>
+  </div>
+
+   <div class="form-group row">
+    <label for="detail-order-upgrade-fituraplikasi-notes" class="col-4 col-form-label">Notes</label> 
+    <div class="col-8">
+      <div class="input-group">
+       
+         <input readonly id="detail-order-upgrade-fituraplikasi-notes" type="text" class="form-control">
+       
+      </div>
+    </div>
+  </div>
+
+  <!-- single part ended -->
+
+  </section>
+
+ <section id="detail-order-virtualvisitors">
+    <h3>Virtual Visitors</h3>
+     <!-- single part started -->
+   
+
+    <div class="form-group row">
+    <label for="detail-order-virtualvisitors-website" class="col-4 col-form-label">Website</label> 
+    <div class="col-8">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <i ></i>
+          </div>
+        </div> 
+        <input readonly id="detail-order-virtualvisitors-website" type="text" class="form-control">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="detail-order-virtualvisitors-url" class="col-4 col-form-label">URL</label> 
+    <div class="col-8">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <i ></i>
+          </div>
+        </div> 
+        <input readonly id="detail-order-virtualvisitors-url" type="text" class="form-control">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="detail-order-virtualvisitors-business-name" class="col-4 col-form-label">
+    Business Name</label> 
+    <div class="col-8">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <i ></i>
+          </div>
+        </div> 
+        <input readonly id="detail-order-virtualvisitors-business-name" type="text" class="form-control">
+      </div>
+    </div>
+  </div>
+
+   <div class="form-group row">
+    <label for="detail-order-virtualvisitors-package" class="col-4 col-form-label">Package</label> 
+    <div class="col-8">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <i ></i>
+          </div>
+        </div> 
+        <input readonly id="detail-order-virtualvisitors-package" type="text" class="form-control">
+      </div>
+    </div>
+  </div>
+
+   <div class="form-group row">
+    <label for="detail-order-virtualvisitors-gender" class="col-4 col-form-label">Gender</label> 
+    <div class="col-8">
+      <div class="input-group">
+       
+         <input readonly id="detail-order-virtualvisitors-gender" type="text" class="form-control">
+       
+      </div>
+    </div>
+  </div>
+
+  <!-- single part ended -->
+
+  </section>
+
   <section id="detail-order-comment">
     <h3>Comment</h3>
      <!-- single part started -->

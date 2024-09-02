@@ -251,6 +251,58 @@
                     </div>
                 </div>
               
+              <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-12">
+                        <div data-bs-toggle="modal" data-bs-target="#jasa-pembuatanaplikasi-form-modal" class="order-item white-box analytics-info">
+                            <center>
+                            <div class="social-medias">
+                               <img src="/assets/images/java-logo.png">
+                                <img src="/assets/images/js-logo.png">
+                                <img src="/assets/images/cpp-logo.png">
+                                <img src="/assets/images/csharp-logo.png">
+                                <img src="/assets/images/vb-logo.png">
+                                <img src="/assets/images/web-logo.png">
+                                 <img src="/assets/images/others-logo.png">
+                            </div>
+                            <h3 class="box-title">Jasa Pembuatan Aplikasi</h3>
+                            <h5>Rp. -</h5>
+                            </center>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div data-bs-toggle="modal" data-bs-target="#jasa-upgrade-fituraplikasi-form-modal" class="order-item white-box analytics-info">
+                            <center>
+                            <div class="social-medias">
+                                <img src="/assets/images/java-logo.png">
+                                <img src="/assets/images/js-logo.png">
+                                <img src="/assets/images/cpp-logo.png">
+                                <img src="/assets/images/csharp-logo.png">
+                                <img src="/assets/images/vb-logo.png">
+                                <img src="/assets/images/web-logo.png">
+                                  <img src="/assets/images/others-logo.png">                                
+                            </div>
+                            <h3 class="box-title">Jasa Upgrade Fitur Aplikasi</h3>
+                            <h5>Rp. 100.000-,/1 paket</h5>
+                            </center>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                         <div data-bs-toggle="modal" data-bs-target="#jasa-virtualvisitors-form-modal" class="order-item white-box analytics-info">
+                            <center>
+                            <div class="social-medias">
+                                 <img src="/assets/images/wp-logo.png">
+                                 <img src="/assets/images/joomla-logo.png">
+                                 <img src="/assets/images/drupal-logo.png">
+                                 <img src="/assets/images/laravel-logo.png">
+                            <img src="/assets/images/codeigniter-logo.png">    
+                                   <img src="/assets/images/globe-logo.png">
+                            </div>
+                            <h3 class="box-title">Jasa Virtual Visitors</h3>
+                            <h5>Rp. 200-,/1 visitor</h5>
+                            </center>
+                        </div>
+                    </div>
+                </div>
               
                 <!-- ============================================================== -->
                 <!-- Recent Comments -->
@@ -333,7 +385,9 @@
       <?php include('modal_jasa_subscriber.php'); ?>
       <?php include('modal_jasa_wishlist_marketplace.php'); ?>
       <?php include('modal_jasa_follow_marketplace.php'); ?>
-
+      <?php include('modal_jasa_virtualvisitors.php'); ?>
+      <?php include('modal_jasa_upgrade_fituraplikasi.php'); ?>
+       <?php include('modal_jasa_pembuatanaplikasi.php'); ?>
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->

@@ -202,6 +202,8 @@ class Home extends BaseController
             arsort($data_orders);
             $data_deposits = $this->db->selectAllData('deposits');
             arsort($data_deposits);
+            $data_vvisitors = $this->db->selectAllData('data_virtualvisitors');
+            arsort($data_vvisitors);
            
         }else{
          
@@ -212,12 +214,15 @@ class Home extends BaseController
             arsort($data_orders);
               $data_deposits = $this->db->selectAllDataByUsername($u, 'deposits');
             arsort($data_deposits);
+              $data_vvisitors = $this->db->selectAllDataByUsername($u, 'data_virtualvisitors');
+            arsort($data_vvisitors);
         }
 
         $total_users = 0;
         $total_apps = 0;
         $total_orders = 0;
         $total_deposits = 0;
+        $total_vvisitors = 0;
         $total_apps_published = 0;
 
         if(isset($data_deposits)){
@@ -226,6 +231,10 @@ class Home extends BaseController
 
          if(isset($data_users)){
             $total_users = count($data_users);
+        }
+
+          if(isset($data_vvisitors)){
+            $total_vvisitors = count($data_vvisitors);
         }
 
         if(isset($data_apps)){
@@ -267,7 +276,9 @@ class Home extends BaseController
             'data_apps' => $this->formatTimeInData($data_apps),
             'data_orders' => $this->formatTimeInData($data_orders),
             'data_deposits' => $this->formatTimeInData($data_deposits),
+            'data_vvisitors' => $this->formatTimeInData($data_vvisitors),
             'total_users' => $total_users,
+             'total_vvisitors' => $total_vvisitors,
             'total_deposits' => $total_deposits,
             'total_apps' => $total_apps,
             'total_orders' => $total_orders,
@@ -297,6 +308,44 @@ class Home extends BaseController
             $data['user_id'] = $this->getSessionData('user_id');
 
         return view('manage_apps', $data);
+    }
+
+    public function virtualvisitors_management(): string
+    {   
+          // for security reasons
+        $this->protectLogin();
+
+            $u = $this->getSessionData('username');
+            $r = $this->getSessionData('role');
+            $data = $this->getDashboardData($r);
+
+            // we tried to make a default value
+            $data['order_id'] = '-1';
+
+            // then we search for the real order_id of virtualvisitors
+            // with an approved status last (DESC order) for this user;
+            $dataFilter = array(
+                'status'=> 'approved',
+                'username' => $u,
+                'order_type' => 'virtualvisitors'
+            );
+
+            $data_campaign = $this->db->selectAllDataByUsername($u, 'campaign_virtualvisitors');
+
+            $dataOrderJasaFound = $this->db->selectSingleLastData($dataFilter, 'order_jasa');
+
+            // we then update the orderid once it's found here
+            if($dataOrderJasaFound != false){
+                $data['order_id'] = $dataOrderJasaFound->order_id;
+            }
+
+            $data['data_campaign'] = $data_campaign;
+            $data['search_display'] = 'search-shown';
+            $data['role'] = $r;
+            $data['username'] = $u;
+            $data['user_id'] = $this->getSessionData('user_id');
+
+        return view('manage_virtualvisitors', $data);
     }
 
     public function deposit_management(): string
