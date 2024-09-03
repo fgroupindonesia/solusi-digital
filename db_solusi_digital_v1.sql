@@ -16,10 +16,12 @@
 
 
 -- Dumping database structure for db_fgi_sistem_solusi_digital_v1
-
-USE `fgroupin_solusi_digital_v1`;
+DROP DATABASE IF EXISTS `db_fgi_sistem_solusi_digital_v1`;
+CREATE DATABASE IF NOT EXISTS `db_fgi_sistem_solusi_digital_v1` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `db_fgi_sistem_solusi_digital_v1`;
 
 -- Dumping structure for table db_fgi_sistem_solusi_digital_v1.table_apps
+DROP TABLE IF EXISTS `table_apps`;
 CREATE TABLE IF NOT EXISTS `table_apps` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username_owned` varchar(50) DEFAULT NULL,
@@ -37,7 +39,62 @@ CREATE TABLE IF NOT EXISTS `table_apps` (
 -- Dumping data for table db_fgi_sistem_solusi_digital_v1.table_apps: ~0 rows (approximately)
 DELETE FROM `table_apps`;
 
+-- Dumping structure for table db_fgi_sistem_solusi_digital_v1.table_campaign_virtualvisitors
+DROP TABLE IF EXISTS `table_campaign_virtualvisitors`;
+CREATE TABLE IF NOT EXISTS `table_campaign_virtualvisitors` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL,
+  `username` varchar(50) DEFAULT NULL,
+  `date_created` timestamp NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table db_fgi_sistem_solusi_digital_v1.table_campaign_virtualvisitors: ~3 rows (approximately)
+DELETE FROM `table_campaign_virtualvisitors`;
+INSERT INTO `table_campaign_virtualvisitors` (`id`, `name`, `username`, `date_created`) VALUES
+	(1, 'ketoprak', 'cinta', '2024-09-02 15:31:57'),
+	(2, 'kentang', 'cinta', '2024-09-02 15:38:08'),
+	(3, 'asss', 'cinta', '2024-09-02 15:42:55'),
+	(4, 'sss', 'cinta', '2024-09-02 15:43:47');
+
+-- Dumping structure for table db_fgi_sistem_solusi_digital_v1.table_data_virtualvisitors
+DROP TABLE IF EXISTS `table_data_virtualvisitors`;
+CREATE TABLE IF NOT EXISTS `table_data_virtualvisitors` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) DEFAULT NULL,
+  `campaign_id` int(11) DEFAULT NULL,
+  `client_name` varchar(50) DEFAULT NULL,
+  `gender` varchar(50) DEFAULT NULL,
+  `city` varchar(50) DEFAULT NULL,
+  `product_bought` varchar(50) DEFAULT NULL,
+  `product_url` text DEFAULT NULL,
+  `username` varchar(50) DEFAULT NULL,
+  `theme_display` varchar(50) DEFAULT NULL,
+  `date_created` timestamp NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table db_fgi_sistem_solusi_digital_v1.table_data_virtualvisitors: ~13 rows (approximately)
+DELETE FROM `table_data_virtualvisitors`;
+INSERT INTO `table_data_virtualvisitors` (`id`, `order_id`, `campaign_id`, `client_name`, `gender`, `city`, `product_bought`, `product_url`, `username`, `theme_display`, `date_created`) VALUES
+	(51, -1, NULL, 'Sandiono', 'Lelaki', 'Bandung', 'Kerupuk', 'http://www.kerupuk.com', 'cinta', 'default', '2024-09-01 08:30:23'),
+	(52, -1, NULL, 'Eko', 'Lelaki', 'Bandung', 'Kerupuk', 'http://www.kerupuk.com', 'cinta', 'default', '2024-09-01 08:30:23'),
+	(53, -1, NULL, 'Budi', 'Lelaki', 'Bandung', 'Kerupuk', 'http://www.kerupuk.com', 'cinta', 'default', '2024-09-01 08:30:23'),
+	(54, -1, NULL, 'Didin', 'Lelaki', 'Bandung', 'Kerupuk', 'http://www.kerupuk.com', 'cinta', 'default', '2024-09-01 08:30:23'),
+	(55, -1, NULL, 'Ujang', 'Lelaki', 'Bandung', 'Kerupuk', 'http://www.kerupuk.com', 'cinta', 'default', '2024-09-01 08:30:23'),
+	(56, -1, NULL, 'Sandiono', 'Lelaki', 'Bandung', 'Kerupuk', 'http://www.kerupuk.com', 'cinta', 'default', '2024-09-01 08:51:06'),
+	(57, -1, NULL, 'Eko', 'Lelaki', 'Bandung', 'Kerupuk', 'http://www.kerupuk.com', 'cinta', 'default', '2024-09-01 08:51:07'),
+	(58, -1, NULL, 'Budi', 'Lelaki', 'Bandung', 'Kerupuk', 'http://www.kerupuk.com', 'cinta', 'default', '2024-09-01 08:51:07'),
+	(59, -1, NULL, 'Didin', 'Lelaki', 'Bandung', 'Kerupuk', 'http://www.kerupuk.com', 'cinta', 'default', '2024-09-01 08:51:07'),
+	(60, -1, NULL, 'Ujang', 'Lelaki', 'Bandung', 'Kerupuk', 'http://www.kerupuk.com', 'cinta', 'default', '2024-09-01 08:51:07'),
+	(61, -1, NULL, 'Sandiono', 'Lelaki', 'Bandung', 'Kerupuk', 'http://www.kerupuk.com', 'cinta', 'default', '2024-09-01 08:52:22'),
+	(62, -1, NULL, 'Eko', 'Lelaki', 'Bandung', 'Kerupuk', 'http://www.kerupuk.com', 'cinta', 'default', '2024-09-01 08:52:22'),
+	(63, -1, NULL, 'Budi', 'Lelaki', 'Bandung', 'Kerupuk', 'http://www.kerupuk.com', 'cinta', 'default', '2024-09-01 08:52:22'),
+	(64, -1, NULL, 'Didin', 'Lelaki', 'Bandung', 'Kerupuk', 'http://www.kerupuk.com', 'cinta', 'default', '2024-09-01 08:52:22'),
+	(65, -1, NULL, 'Ujang', 'Lelaki', 'Bandung', 'Kerupuk', 'http://www.kerupuk.com', 'cinta', 'default', '2024-09-01 08:52:22');
+
 -- Dumping structure for table db_fgi_sistem_solusi_digital_v1.table_deposits
+DROP TABLE IF EXISTS `table_deposits`;
 CREATE TABLE IF NOT EXISTS `table_deposits` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) DEFAULT NULL,
@@ -58,6 +115,7 @@ INSERT INTO `table_deposits` (`id`, `username`, `status`, `amount`, `date_create
 	(23, 'cinta', 'purchased', 200, '2024-08-14 01:33:52');
 
 -- Dumping structure for table db_fgi_sistem_solusi_digital_v1.table_order_comment
+DROP TABLE IF EXISTS `table_order_comment`;
 CREATE TABLE IF NOT EXISTS `table_order_comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `social_media` varchar(50) NOT NULL DEFAULT '0',
@@ -71,16 +129,11 @@ CREATE TABLE IF NOT EXISTS `table_order_comment` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_fgi_sistem_solusi_digital_v1.table_order_comment: ~4 rows (approximately)
+-- Dumping data for table db_fgi_sistem_solusi_digital_v1.table_order_comment: ~0 rows (approximately)
 DELETE FROM `table_order_comment`;
-INSERT INTO `table_order_comment` (`id`, `social_media`, `url`, `title`, `package`, `gender`, `notes`, `username`, `date_created`) VALUES
-	(1, 'instagram-post', 'sd', 'sd', 'bisnis', 'lelaki', 'sd', 'udin', '2024-08-12 19:37:30'),
-	(2, '', 'sd', 'sdd', 'hemat', 'lelaki', 'gggg', 'udin', '2024-08-12 19:38:31'),
-	(3, 'instagram-post, instagram-live', 'asd', 'asd', 'hemat', 'lelaki', 'asd', 'udin', '2024-08-12 20:09:59'),
-	(4, 'instagram-live, tiktok-live', 'asd', 'asd', 'hemat', 'lelaki', 'asdasd', 'udin', '2024-08-12 22:46:02'),
-	(5, 'shopee-live', 'asd', 'asd', 'hemat', 'lelaki', 'asd', 'cinta', '2024-08-14 00:55:07');
 
 -- Dumping structure for table db_fgi_sistem_solusi_digital_v1.table_order_follow_marketplace
+DROP TABLE IF EXISTS `table_order_follow_marketplace`;
 CREATE TABLE IF NOT EXISTS `table_order_follow_marketplace` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `marketplace` varchar(50) NOT NULL DEFAULT '0',
@@ -96,11 +149,9 @@ CREATE TABLE IF NOT EXISTS `table_order_follow_marketplace` (
 
 -- Dumping data for table db_fgi_sistem_solusi_digital_v1.table_order_follow_marketplace: ~0 rows (approximately)
 DELETE FROM `table_order_follow_marketplace`;
-INSERT INTO `table_order_follow_marketplace` (`id`, `marketplace`, `url`, `shop_name`, `package`, `gender`, `notes`, `username`, `date_created`) VALUES
-	(1, 'bukalapak', 'sadasd', 'asdasd', 'hemat', 'lelaki', 'asdasd', 'udin', '2024-08-12 21:25:57'),
-	(2, 'bukalapak, blibli', 'ssss', 'sss', 'bisnis', 'lelaki', 'sss', 'cinta', '2024-08-16 01:00:18');
 
 -- Dumping structure for table db_fgi_sistem_solusi_digital_v1.table_order_jasa
+DROP TABLE IF EXISTS `table_order_jasa`;
 CREATE TABLE IF NOT EXISTS `table_order_jasa` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `order_id` int(11) DEFAULT NULL,
@@ -110,15 +161,31 @@ CREATE TABLE IF NOT EXISTS `table_order_jasa` (
   `username` varchar(50) DEFAULT NULL,
   `date_created` timestamp NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_fgi_sistem_solusi_digital_v1.table_order_jasa: ~3 rows (approximately)
+-- Dumping data for table db_fgi_sistem_solusi_digital_v1.table_order_jasa: ~0 rows (approximately)
 DELETE FROM `table_order_jasa`;
 INSERT INTO `table_order_jasa` (`id`, `order_id`, `order_client_reff`, `order_type`, `status`, `username`, `date_created`) VALUES
-	(19, 5, 'kaco9g', 'comment', 'pending', 'cinta', '2024-08-14 00:55:07'),
-	(24, 3, '2x7ce4', 'subscriber', 'pending', 'cinta', '2024-08-16 01:05:25');
+	(33, 4, 'c26m63', 'virtualvisitors', 'cancel', 'cinta', '2024-09-01 03:43:59');
+
+-- Dumping structure for table db_fgi_sistem_solusi_digital_v1.table_order_pembuatanaplikasi
+DROP TABLE IF EXISTS `table_order_pembuatanaplikasi`;
+CREATE TABLE IF NOT EXISTS `table_order_pembuatanaplikasi` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `app_base` varchar(50) DEFAULT NULL,
+  `title` varchar(50) DEFAULT NULL,
+  `package` varchar(50) DEFAULT NULL,
+  `notes` text DEFAULT NULL,
+  `username` varchar(50) DEFAULT NULL,
+  `date_created` timestamp NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table db_fgi_sistem_solusi_digital_v1.table_order_pembuatanaplikasi: ~0 rows (approximately)
+DELETE FROM `table_order_pembuatanaplikasi`;
 
 -- Dumping structure for table db_fgi_sistem_solusi_digital_v1.table_order_rating
+DROP TABLE IF EXISTS `table_order_rating`;
 CREATE TABLE IF NOT EXISTS `table_order_rating` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `social_media` varchar(50) NOT NULL DEFAULT '0',
@@ -134,11 +201,9 @@ CREATE TABLE IF NOT EXISTS `table_order_rating` (
 
 -- Dumping data for table db_fgi_sistem_solusi_digital_v1.table_order_rating: ~0 rows (approximately)
 DELETE FROM `table_order_rating`;
-INSERT INTO `table_order_rating` (`id`, `social_media`, `url`, `business_name`, `package`, `gender`, `notes`, `username`, `date_created`) VALUES
-	(1, 'google-map', 'asdasd', 'asd', 'bisnis', 'lelaki', 'asdasd', 'udin', '2024-08-12 20:35:05'),
-	(2, 'google-map', 'ssss', 'dddd', 'bisnis', 'lelaki', 'dsdasdsad', 'cinta', '2024-08-16 00:57:06');
 
 -- Dumping structure for table db_fgi_sistem_solusi_digital_v1.table_order_subscriber
+DROP TABLE IF EXISTS `table_order_subscriber`;
 CREATE TABLE IF NOT EXISTS `table_order_subscriber` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `social_media` varchar(50) DEFAULT NULL,
@@ -157,7 +222,25 @@ INSERT INTO `table_order_subscriber` (`id`, `social_media`, `url`, `account_name
 	(2, 'tiktok, youtube', 'asd', 'asd', 'hemat', 'lelaki', 'udin', '2024-08-12 21:48:06'),
 	(3, 'instagram', 'sss', 'sss', 'bisnis', 'perempuan', 'cinta', '2024-08-16 01:05:25');
 
+-- Dumping structure for table db_fgi_sistem_solusi_digital_v1.table_order_upgrade_fituraplikasi
+DROP TABLE IF EXISTS `table_order_upgrade_fituraplikasi`;
+CREATE TABLE IF NOT EXISTS `table_order_upgrade_fituraplikasi` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `app_base` varchar(50) DEFAULT NULL,
+  `url` text DEFAULT NULL,
+  `title` varchar(50) DEFAULT NULL,
+  `package` varchar(50) DEFAULT NULL,
+  `notes` text DEFAULT NULL,
+  `username` varchar(50) DEFAULT NULL,
+  `date_created` timestamp NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table db_fgi_sistem_solusi_digital_v1.table_order_upgrade_fituraplikasi: ~0 rows (approximately)
+DELETE FROM `table_order_upgrade_fituraplikasi`;
+
 -- Dumping structure for table db_fgi_sistem_solusi_digital_v1.table_order_view
+DROP TABLE IF EXISTS `table_order_view`;
 CREATE TABLE IF NOT EXISTS `table_order_view` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `social_media` varchar(50) DEFAULT NULL,
@@ -176,13 +259,30 @@ CREATE TABLE IF NOT EXISTS `table_order_view` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_fgi_sistem_solusi_digital_v1.table_order_view: ~1 rows (approximately)
+-- Dumping data for table db_fgi_sistem_solusi_digital_v1.table_order_view: ~0 rows (approximately)
 DELETE FROM `table_order_view`;
-INSERT INTO `table_order_view` (`id`, `social_media`, `url`, `title`, `package`, `gender`, `question`, `valid_answer`, `answer_a`, `answer_b`, `answer_c`, `answer_d`, `username`, `date_created`) VALUES
-	(8, 'tiktok, youtube', 'asd', 'asd', 'hemat', 'lelaki', 'asd', 'a', 'asd', 'asd', 'asd', 'asd', 'udin', '2024-08-12 20:22:35'),
-	(9, 'youtube', 'dddd', 'ssss', 'bisnis', 'lelaki', 'dsdsd', 'c', 'a', 'b', 'c', 'd', 'cinta', '2024-08-16 00:40:02');
+
+-- Dumping structure for table db_fgi_sistem_solusi_digital_v1.table_order_virtualvisitors
+DROP TABLE IF EXISTS `table_order_virtualvisitors`;
+CREATE TABLE IF NOT EXISTS `table_order_virtualvisitors` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `website` varchar(50) DEFAULT NULL,
+  `url` text DEFAULT NULL,
+  `business_name` varchar(75) DEFAULT NULL,
+  `package` varchar(50) DEFAULT NULL,
+  `gender` varchar(50) DEFAULT NULL,
+  `username` varchar(50) DEFAULT NULL,
+  `date_created` timestamp NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table db_fgi_sistem_solusi_digital_v1.table_order_virtualvisitors: ~0 rows (approximately)
+DELETE FROM `table_order_virtualvisitors`;
+INSERT INTO `table_order_virtualvisitors` (`id`, `website`, `url`, `business_name`, `package`, `gender`, `username`, `date_created`) VALUES
+	(4, 'joomla, drupal, laravel', 'aasdasd', 'asdasd', 'bisnis', 'lelaki', 'cinta', '2024-09-01 03:43:59');
 
 -- Dumping structure for table db_fgi_sistem_solusi_digital_v1.table_order_wishlist_marketplace
+DROP TABLE IF EXISTS `table_order_wishlist_marketplace`;
 CREATE TABLE IF NOT EXISTS `table_order_wishlist_marketplace` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `marketplace` varchar(50) DEFAULT NULL,
@@ -196,14 +296,11 @@ CREATE TABLE IF NOT EXISTS `table_order_wishlist_marketplace` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_fgi_sistem_solusi_digital_v1.table_order_wishlist_marketplace: ~2 rows (approximately)
+-- Dumping data for table db_fgi_sistem_solusi_digital_v1.table_order_wishlist_marketplace: ~0 rows (approximately)
 DELETE FROM `table_order_wishlist_marketplace`;
-INSERT INTO `table_order_wishlist_marketplace` (`id`, `marketplace`, `url`, `shop_name`, `package`, `gender`, `notes`, `username`, `date_created`) VALUES
-	(2, 'blibli', 'asd', 'asd', 'hemat', 'lelaki', 'asd', 'udin', '2024-08-12 21:42:58'),
-	(3, 'lazada', 'asd', 'asd', 'hemat', 'lelaki', 'asd', 'udin', '2024-08-12 21:52:54'),
-	(4, 'bukalapak, tokopedia', 'sss', 'sss', 'hemat', 'lelaki', 'ssss', 'cinta', '2024-08-16 01:03:18');
 
 -- Dumping structure for table db_fgi_sistem_solusi_digital_v1.table_ticketing
+DROP TABLE IF EXISTS `table_ticketing`;
 CREATE TABLE IF NOT EXISTS `table_ticketing` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(50) DEFAULT NULL,
@@ -220,6 +317,7 @@ CREATE TABLE IF NOT EXISTS `table_ticketing` (
 DELETE FROM `table_ticketing`;
 
 -- Dumping structure for table db_fgi_sistem_solusi_digital_v1.table_users
+DROP TABLE IF EXISTS `table_users`;
 CREATE TABLE IF NOT EXISTS `table_users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) DEFAULT NULL,

@@ -75,6 +75,7 @@ class Works extends BaseController
         $theme  = 'default';
         $u      = $this->request->getPost('username');
         $order_id = $this->request->getPost('order_id');    
+        $campaign_id = $this->request->getPost('campaign_id');    
 
         $file = $folderPath .'/'. $newName;
         // echo $file;
@@ -101,6 +102,7 @@ class Works extends BaseController
                             
                         $dataVisitors = array(
                             'order_id'      => $order_id,
+                            'campaign_id'   => $campaign_id,
                             'client_name'   => $key[$n+1],
                             'gender'        => $key[$n+2],
                             'city'          => $key[$n+3],
@@ -259,6 +261,27 @@ curl_close($ch);
         }
 
     }
+
+
+     public function campaign_single_data(){
+
+        $n = $this->request->getPost('name');
+
+        $param = array(
+            'name' => $n
+        );
+
+        $datana = $this->db->selectSingleLastData($param, 'campaign_virtualvisitors');
+
+        if($datana != false){
+            echo json_encode($datana[0]);
+        }else{
+            echo "none";
+        }
+
+    }
+
+    
 
     public function statistics_data(){
 
@@ -1077,6 +1100,28 @@ curl_close($ch);
             $ordername = "order_" . $order_type;
             $rest = $this->db->deleteData($order_id, $ordername);
 
+         }else{
+            echo "none";
+         }
+
+
+    }
+
+    public function campaign_delete()
+    {
+
+         $n = $this->request->getPost('name');
+         $u = $this->request->getPost('username');
+
+         $dataFilter = array(
+            'name' => $n,
+            'username' => $u
+         );
+
+          $rest = $this->db->deleteDataBy($dataFilter, 'campaign_virtualvisitors');
+     
+         if($rest != 0){
+            echo "valid";
          }else{
             echo "none";
          }

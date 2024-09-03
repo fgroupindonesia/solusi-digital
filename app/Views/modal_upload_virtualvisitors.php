@@ -4,6 +4,8 @@
   <input id="upload-virtualvisitors-hidden-id" name="id" type="hidden" value="<?= $user_id; ?>" class="form-control">
   <input id="upload-virtualvisitors-hidden-username" name="username" type="hidden" value="<?= $username; ?>" class="form-control">
   <input id="upload-virtualvisitors-hidden-order-id" name="order-id" type="hidden" value="<?= $order_id; ?>" class="form-control">
+  <input id="upload-virtualvisitors-hidden-campaign-id" name="campaign-id" type="hidden" value="<?= $campaign_id; ?>" class="form-control">
+  
  <!-- hidden elemental used -->
 
   <div class="modal-dialog">
@@ -34,7 +36,9 @@
     <label for="upload-virtualvisitors-attachment" class="col-4 col-form-label">2.Choose a Campaign</label> 
     <div class="col-8">
       <div class="input-group">
-          <select id="existing-campaign">
+          <div id="existing-campaign">
+          
+          <select>
             <?php if(!empty($data_campaign)): ?>
             <?php foreach($data_campaign as $datac): ?>
             <option value="<?= $datac->name ;?>"><?= $datac->name ;?></option>
@@ -42,9 +46,14 @@
             <?php endif; ?>
             <option value="new">Buat Baru</option>
           </select>
+          <a id="delete-campaign" href="" >Delete</a>
+
+          </div>
+
           <div id="new-campaign">
             <input id="name-campaign" type="text" placeholder="berikan nama campaign anda!" >
-            <a id="save-campaign" href="" >Save</a>
+            <a id="save-campaign" href="" >Save</a> | 
+            <a id="cancel-campaign" href="" >Cancel</a>
           </div>
 
       </div>

@@ -7,6 +7,7 @@ const URL_USER_DELETE = "/delete-user";
 const URL_APP_DELETE = "/delete-app";
 const URL_DEPOSIT_DELETE = "/delete-deposit";
 const URL_ORDER_DELETE = "/delete-jasa-order";
+const URL_CAMPAIGN_DELETE = "/delete-campaign";
 
 const URL_USER_EDIT = "/edit-user";
 const URL_APP_EDIT = "/edit-app";
@@ -21,6 +22,7 @@ const URL_DATA_VIRTUALVISITORS = "/upload-data-virtualvisitors";
 //const URL_DATA_VIRTUALVISITORS = "/test";
 const URL_ORDER_REQUEST_DETAIL = "/request-detail-jasa-order";
 const URL_CAMPAIGN_REQUEST = "/request-campaign";
+const URL_CAMPAIGN_SINGLE_REQUEST = "/request-single-campaign";
 
 const URL_SETTINGS_UPDATE = "/update-settings";
 var jumlahData = 0;
@@ -29,18 +31,49 @@ var jumlahData = 0;
 $( document ).ready(function() {
 
 // this is for uploading data vvisitors into campaign
-$('#existing-campaign').on('change', function(){
+$('#existing-campaign select').on('change', function(){
 	let hasil = $(this).val();
 
 	if(hasil == 'new'){
 		// show the new campaign
 		$('#new-campaign').show();
 		$('#existing-campaign').fadeOut();
+
+		$(this).prop('selectedIndex', 0);
 	}else{
 		// hide the new campaign
 		$('#new-campaign').fadeOut();
 		$('#existing-campaign').show();
+
+
+		let datana = {name : hasil};
+		// ask the server to get the detail (id needed only)
+		kirimPost(datana, URL_CAMPAIGN_SINGLE_REQUEST);
+
 	}
+
+});
+
+$('#delete-campaign').on('click', function(e){
+		e.preventDefault();
+		let kapilih = $('#existing-campaign select').val();
+
+		let u 		= $('#upload-virtualvisitors-hidden-username').val();
+		let namana 	= $('#existing-campaign select').val();
+
+		let datana = {name: namana, username : u};
+
+		if(namana.length>0){
+			kirimPost(datana, URL_CAMPAIGN_DELETE);
+		}
+
+});
+
+$('#cancel-campaign').on('click', function(e){
+
+	e.preventDefault();
+	$('#existing-campaign').show();
+	$('#new-campaign').hide();
 
 });
 
@@ -66,19 +99,34 @@ $('#save-campaign').on('click', function(e){
 // this is for uploading data as the virtualvisitors usage
 $('#upload-virtualvisitors-attachment').on('change', function(){
 
-	let orderidna = $('#upload-virtualvisitors-hidden-order-id').val();
-	let usernamena = $('#upload-virtualvisitors-hidden-username').val();
-   let filena = $('#upload-virtualvisitors-attachment').prop('files')[0]; 
+	var file = $(this).val();
 
-	//console.log('orderna ' + orderidna);
-	//console.log('usernamena ' + usernamena);
+    if (file !== '') {
 
-	var formData = new FormData();
-	formData.append('virtualvisitorsfile', filena);
-	formData.append('order_id', orderidna);
-	formData.append('username', usernamena);
+    var extension = file.split('.').pop().toLowerCase();
+    if (extension === 'xlsx') {
 
-	kirimPostUpload(formData, URL_DATA_VIRTUALVISITORS);	
+			let orderidna = $('#upload-virtualvisitors-hidden-order-id').val();
+			let campaignidna = $('#upload-virtualvisitors-hidden-campaign-id').val();
+			let usernamena = $('#upload-virtualvisitors-hidden-username').val();
+		   let filena = $('#upload-virtualvisitors-attachment').prop('files')[0]; 
+
+			//console.log('orderna ' + orderidna);
+			//console.log('usernamena ' + usernamena);
+
+			var formData = new FormData();
+			formData.append('virtualvisitorsfile', filena);
+			formData.append('order_id', orderidna);
+			formData.append('campaign_id', campaignidna);
+			formData.append('username', usernamena);
+
+			kirimPostUpload(formData, URL_DATA_VIRTUALVISITORS);	
+
+	}else {
+		alert('invalid file template!');
+	}
+
+	} 
 
 });
 
@@ -495,7 +543,21 @@ function kirimPost(dataForm, urlNa){
         type: 'POST',
         success: function(data){
 
-        	 if(urlNa == URL_CAMPAIGN_REQUEST){
+        	if(urlNa == URL_CAMPAIGN_SINGLE_REQUEST){
+
+        		// set the id of campaign selected
+        		let json = JSON.parse(data);
+        		let idcampaigna = json.id;
+				$('#upload-virtualvisitors-hidden-campaign-id').val(idcampaigna);
+
+        	}else if(urlNa == URL_CAMPAIGN_DELETE){
+
+					showLoading('virtualvisitors', false);
+        	 		kirimPost(dataForm, URL_CAMPAIGN_REQUEST);
+
+        	 		alert(dataForm.name + ' is deleted!');
+
+        	 	} else if(urlNa == URL_CAMPAIGN_REQUEST){
         	 		
         	 		let datain = JSON.parse(data);
         	 		let elemenBaru = "";
@@ -508,9 +570,14 @@ function kirimPost(dataForm, urlNa){
 
 					elemenBaru += elemenAkhir;
 
-        	 		$('#existing-campaign').html(elemenBaru);
+        	 		$('#existing-campaign select').html(elemenBaru);
         	 		$('#existing-campaign').show();
         	 		$('#new-campaign').hide();
+
+        	 		let hasil = $('#existing-campaign select').val();	
+        	 		let datana = {name : hasil};
+        	 		// get the id of this selected campaign
+        	 		kirimPost(datana, URL_CAMPAIGN_SINGLE_REQUEST);
 
            }else if(urlNa == URL_CAMPAIGN_ADD){
         	 		

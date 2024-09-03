@@ -139,6 +139,14 @@ class DataModel extends Model
         $this->db->table($table_na)->where('id', $id)->delete();
         return $this->db->affectedRows();
     }
+
+      public function deleteDataBy($whereFilter, $entity)
+    {
+        $table_na = $this->getEntity($entity);
+
+        $this->db->table($table_na)->where($whereFilter)->delete();
+        return $this->db->affectedRows();
+    }
 	
     public function selectSingleLastData($arrayFilter, $entity)
     {

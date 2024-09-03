@@ -321,6 +321,7 @@ class Home extends BaseController
 
             // we tried to make a default value
             $data['order_id'] = '-1';
+            $data['campaign_id'] = 0;
 
             // then we search for the real order_id of virtualvisitors
             // with an approved status last (DESC order) for this user;
@@ -331,12 +332,14 @@ class Home extends BaseController
             );
 
             $data_campaign = $this->db->selectAllDataByUsername($u, 'campaign_virtualvisitors');
-
             $dataOrderJasaFound = $this->db->selectSingleLastData($dataFilter, 'order_jasa');
 
+            
             // we then update the orderid once it's found here
             if($dataOrderJasaFound != false){
                 $data['order_id'] = $dataOrderJasaFound->order_id;
+                // we get the 1st campaign data only
+                $data['campaign_id'] = $data_campaign[0]->id;
             }
 
             $data['data_campaign'] = $data_campaign;
