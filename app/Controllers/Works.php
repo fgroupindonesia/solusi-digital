@@ -986,7 +986,8 @@ curl_close($ch);
 
         $datana = array(
             'name'=> $n,
-            'username'=> $u
+            'username'=> $u,
+            'code'=> strtoupper($this->generateRandomPass(4))
         );
 
        $rest = $this->db->insertData($datana, 'campaign_virtualvisitors');

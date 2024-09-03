@@ -1,5 +1,5 @@
 <div class="modal fade" id="upload-virtualvisitors-form-modal" tabindex="-1">
-  <form id="upload-virtualvisitors-form" action="/update-settings" method="post">
+  <form id="upload-virtualvisitors-form"  >
  <!-- hidden elemental used -->
   <input id="upload-virtualvisitors-hidden-id" name="id" type="hidden" value="<?= $user_id; ?>" class="form-control">
   <input id="upload-virtualvisitors-hidden-username" name="username" type="hidden" value="<?= $username; ?>" class="form-control">
@@ -43,10 +43,13 @@
             <?php foreach($data_campaign as $datac): ?>
             <option value="<?= $datac->name ;?>"><?= $datac->name ;?></option>
           <?php endforeach; ?>
+           <?php else : ?>
+            <option value=''> </option>
             <?php endif; ?>
-            <option value="new">Buat Baru</option>
+            <option value="new">buat baru</option>
           </select>
-          <a id="delete-campaign" href="" >Delete</a>
+
+          <a id="delete-campaign" style="<?=$s = (empty($data_campaign)) ? 'display:none' : '' ;?>" href="" >Delete</a>
 
           </div>
 

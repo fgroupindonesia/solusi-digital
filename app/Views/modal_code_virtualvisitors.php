@@ -20,9 +20,23 @@
   </div>
  
 <div class="form-group row">
-    <label  class="col-form-label">2. Copy (Javascript) link :</label> 
+    <label >2. Pick an active campaign: 
+      <div id="existing-campaign-code">
+        <select >
+          <?php if(!empty($data_campaign)): ?>
+            <?php foreach($data_campaign as $datac): ?>
+            <option value="<?= $datac->name ;?>"><?= $datac->name ;?></option>
+          <?php endforeach; ?>
+           <?php else : ?>
+            <option value=''> </option>
+            <?php endif; ?> 
+      </select>
+    </div>
+      </label>
+    <label  class="col-form-label">3. Copy (Javascript) link :</label> 
+
     <br>
-    <textarea rows="3" cols="25"><script src="https://cdn.fgroupindonesia.com/virtualvisitors/js?id=12391"></script></textarea>
+    <textarea id="code-js-virtualvisitors" rows="3" cols="25"><script src="https://cdn.fgroupindonesia.com/virtualvisitors/js?id=12391"></script></textarea>
          
   </div>
 

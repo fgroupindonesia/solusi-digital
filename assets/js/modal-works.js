@@ -25,10 +25,35 @@ const URL_CAMPAIGN_REQUEST = "/request-campaign";
 const URL_CAMPAIGN_SINGLE_REQUEST = "/request-single-campaign";
 
 const URL_SETTINGS_UPDATE = "/update-settings";
+
+const URL_ENTRY_JS_ENDPOINT = "https://cdn.fgroupindonesia.com/virtualvisitors/js?";
 var jumlahData = 0;
 
 
 $( document ).ready(function() {
+
+// this is for campaign creation of modal popup Upload data
+	//  when the user press button Enter
+	// inside a form
+$('#upload-virtualvisitors-form').on('submit', function(e){
+	e.preventDefault();
+
+		let namana = $('#name-campaign').val();
+		if(namana.length>0){
+			$('#save-campaign').click();
+		}
+
+})
+
+// this is for code js vvisitors selected campaign
+$('#existing-campaign-code select').on('change', function(){
+	let hasil = $(this).val();
+
+	let datana = {name : hasil};
+		// ask the server to get the detail (id needed only)
+	kirimPost(datana, URL_CAMPAIGN_SINGLE_REQUEST);
+
+});
 
 // this is for uploading data vvisitors into campaign
 $('#existing-campaign select').on('change', function(){
@@ -89,6 +114,8 @@ $('#save-campaign').on('click', function(e){
 
 		if(namana.length>0){
 			kirimPost(datana, URL_CAMPAIGN_ADD);
+			// clear up
+			$('#name-campaign').val('');
 		}
 
 		showLoading('virtualvisitors', true);
@@ -531,6 +558,18 @@ let dataCome = {'id' : idNa, 'type' : typeNa};
 
 }
 
+function fillDefaultCampaign(){
+						let elemenBaru = "<option value=''></option> <option value='new'>buat baru</option>";
+						$('#existing-campaign select').html(elemenBaru);
+        	 			$('#existing-campaign').show();
+        	 			$('#delete-campaign').hide();
+        	 			$('#new-campaign').hide();
+
+        	 			elemenBaru = "<option value=''></option>";
+						$('#existing-campaign-code select').html(elemenBaru);
+        	 			$('#existing-campaign-code').show();
+}
+
 function kirimPost(dataForm, urlNa){
 	
 	console.log('kirim ke '+ urlNa +' ' + JSON.stringify(dataForm));
@@ -546,9 +585,21 @@ function kirimPost(dataForm, urlNa){
         	if(urlNa == URL_CAMPAIGN_SINGLE_REQUEST){
 
         		// set the id of campaign selected
-        		let json = JSON.parse(data);
-        		let idcampaigna = json.id;
-				$('#upload-virtualvisitors-hidden-campaign-id').val(idcampaigna);
+        		try {
+        			let json = JSON.parse(data);
+        			let idcampaigna = json.id;
+					$('#upload-virtualvisitors-hidden-campaign-id').val(idcampaigna);
+
+					// generate the code 
+					// for the js link
+					let link = URL_ENTRY_JS_ENDPOINT + "id=" + json.code;
+					let endCode = '<script src="' + link + '"></script>';
+					$('#code-js-virtualvisitors').text(endCode);
+
+				} catch (error){
+						fillDefaultCampaign();
+						$('#code-js-virtualvisitors').html('');
+				}
 
         	}else if(urlNa == URL_CAMPAIGN_DELETE){
 
@@ -559,25 +610,26 @@ function kirimPost(dataForm, urlNa){
 
         	 	} else if(urlNa == URL_CAMPAIGN_REQUEST){
         	 		
-        	 		let datain = JSON.parse(data);
-        	 		let elemenBaru = "";
-        	 		let elemenAkhir = "<option value='new'>Buat Baru</option>";
+        	 		try{
+	        	 		let datain = JSON.parse(data);
+	        	 		
+	        	 		renderDataCampaign(datain, '#existing-campaign');
+	        	 		$('#delete-campaign').show();
+	        	 		$('#new-campaign').hide();
 
-        	 		// the name is array format
-        	 		for (const item of datain) {
-					  		elemenBaru += "<option value='" + item.name + "'>" + item.name + "</option>";
-					}
 
-					elemenBaru += elemenAkhir;
+	        	 		// this is for code data for selected campaign
+	        	 		renderDataCampaign(datain, '#existing-campaign-code')
 
-        	 		$('#existing-campaign select').html(elemenBaru);
-        	 		$('#existing-campaign').show();
-        	 		$('#new-campaign').hide();
+	        	 		let hasil = $('#existing-campaign select').val();	
+	        	 		let datana = {name : hasil};
+	        	 		// get the id of this selected campaign
+	        	 		kirimPost(datana, URL_CAMPAIGN_SINGLE_REQUEST);
 
-        	 		let hasil = $('#existing-campaign select').val();	
-        	 		let datana = {name : hasil};
-        	 		// get the id of this selected campaign
-        	 		kirimPost(datana, URL_CAMPAIGN_SINGLE_REQUEST);
+        	 		} catch (error){
+        	 			alert(error);
+        	 			fillDefaultCampaign();
+        	 		}
 
            }else if(urlNa == URL_CAMPAIGN_ADD){
         	 		
@@ -631,6 +683,25 @@ function kirimPost(dataForm, urlNa){
             }
         }
     });
+
+}
+
+function renderDataCampaign(jsonIn, idSelector){
+
+						let elemenBaru = "";
+	        	 		// this is for uploading data for campaign
+	        	 		let elemenAkhir = "<option value='new'>buat baru</option>";
+
+	        	 		// the name is array format
+	        	 		for (const item of jsonIn) {
+						  		elemenBaru += "<option value='" + item.name + "'>" + item.name + "</option>";
+						}
+
+						if(!idSelector.includes('code'))
+						elemenBaru += elemenAkhir;
+
+	        	 		$(idSelector + ' select').html(elemenBaru);
+	        	 		$(idSelector).show();
 
 }
 
