@@ -2,11 +2,19 @@
   display: none;
 }
 
+.inline-title{
+  display: inline-block;
+}
+
 #new-campaign {
   display: none;
 }
 
-.link-virtualvisitors-code, .link-apply-theme, .link-add, .link-upload, .link-edit, .link-delete, .link-approve, .link-cancel {
+.table-responsive{
+  min-height: 430px;
+}
+
+.link-virtualvisitors-code, .link-apply-theme, .link-all, .link-add, .link-upload, .link-edit, .link-delete, .link-approve, .link-cancel {
   display: inline-block;
   height: 24px;
   text-align: right;
@@ -45,6 +53,11 @@
 .opt-social-checked, .opt-web-checked, .opt-appbase-checked {
   background-color: orange;
   
+}
+
+.link-all {
+  background-image: url('../images/select-all.png');
+  width: 85px;
 }
 
 .link-cancel {

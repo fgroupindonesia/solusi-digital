@@ -1,22 +1,26 @@
-const URL_USER_ADD = "/add-new-user";
-const URL_APP_ADD = "/add-new-app";
-const URL_DEPOSIT_ADD = "/add-new-deposit";
-const URL_CAMPAIGN_ADD = "/add-new-campaign";
+const URL_USER_ADD 		= "/add-new-user";
+const URL_PACKAGE_ADD 	= "/add-new-package";
+const URL_APP_ADD 		= "/add-new-app";
+const URL_DEPOSIT_ADD 	= "/add-new-deposit";
+const URL_CAMPAIGN_ADD 	= "/add-new-campaign";
 
-const URL_USER_DELETE = "/delete-user";
-const URL_APP_DELETE = "/delete-app";
-const URL_DEPOSIT_DELETE = "/delete-deposit";
-const URL_ORDER_DELETE = "/delete-jasa-order";
-const URL_CAMPAIGN_DELETE = "/delete-campaign";
+const URL_USER_DELETE 		= "/delete-user";
+const URL_PACKAGE_DELETE 	= "/delete-package";
+const URL_APP_DELETE 		= "/delete-app";
+const URL_DEPOSIT_DELETE 	= "/delete-deposit";
+const URL_ORDER_DELETE 		= "/delete-jasa-order";
+const URL_CAMPAIGN_DELETE 	= "/delete-campaign";
 
-const URL_USER_EDIT = "/edit-user";
-const URL_APP_EDIT = "/edit-app";
-const URL_DEPOSIT_EDIT = "/edit-deposit";
+const URL_USER_EDIT 		= "/edit-user";
+const URL_PACKAGE_EDIT 		= "/edit-package";
+const URL_APP_EDIT 			= "/edit-app";
+const URL_DEPOSIT_EDIT 		= "/edit-deposit";
 
-const URL_USER_UPDATE = "/update-user";
-const URL_ORDER_UPDATE = "/update-jasa-order";
-const URL_APP_UPDATE = "/update-app";
-const URL_DEPOSIT_UPDATE = "/update-deposit";
+const URL_USER_UPDATE 		= "/update-user";
+const URL_PACKAGE_UPDATE 	= "/update-package";
+const URL_ORDER_UPDATE 		= "/update-jasa-order";
+const URL_APP_UPDATE 		= "/update-app";
+const URL_DEPOSIT_UPDATE 	= "/update-deposit";
 
 const URL_DATA_VIRTUALVISITORS = "/upload-data-virtualvisitors";
 //const URL_DATA_VIRTUALVISITORS = "/test";
@@ -31,6 +35,42 @@ var jumlahData = 0;
 
 
 $( document ).ready(function() {
+
+
+// this is for checked all and uncheck them directly!
+$('.link-all').on('click', function(e){
+	e.preventDefault();
+
+	$('input[class="package-checked"]').prop('checked', function() {
+    return !$(this).prop('checked');
+  	});
+
+	let tulisan = $(this).text();
+	if(tulisan == "Select All"){
+		$(this).text("Unselect All");
+	}else{
+		$(this).text("Select All");
+	}
+
+});
+
+
+// this is for package form modal popup
+$('#base_price_package').keyup(function(e){
+
+	hitungTotalPricePackage();
+	//alert('a');
+
+});
+
+$('#quota_package').keyup(function(e){
+
+	hitungTotalPricePackage();
+	//alert('a');
+
+});
+
+// package-form modal done
 
 // this is for campaign creation of modal popup Upload data
 	//  when the user press button Enter
@@ -222,6 +262,26 @@ $('#upload-virtualvisitors-attachment').on('change', function(){
 	});
 
 
+	 // this is for package form
+	$('#package-form').on('submit', function(e){
+			e.preventDefault();
+			$('.btn-save').hide();
+			$('.btn-close-custom').hide();
+			$('.modal-loading').fadeIn();
+
+			// change back the rupiahs
+			let tharga = $('#total_price_package').val();
+			let hargaOnly = clearAllCurrency(tharga);
+			$('#total_price_package').val(hargaOnly);
+
+			let datana = $(this).serialize();
+			
+
+			let tujuanURL = $(this).attr('action');
+			kirimPost(datana, tujuanURL);
+	});
+	// package form done!
+
     // this is for user form
 	$('#user-form').on('submit', function(e){
 			e.preventDefault();
@@ -383,6 +443,8 @@ $('#upload-virtualvisitors-attachment').on('change', function(){
 				kirimPost(dataNa, URL_ORDER_DELETE);
 			}else if(gawe == 'deposits') {
 				kirimPost(dataNa, URL_DEPOSIT_DELETE);
+			}else if(gawe == 'packages') {
+				kirimPost(dataNa, URL_PACKAGE_DELETE);
 			}
 
 			} // end of the loop
@@ -421,6 +483,8 @@ $('#upload-virtualvisitors-attachment').on('change', function(){
 		 		kirimPost(dataNa, URL_DEPOSIT_EDIT);
 		 	}else if(gawe == 'orders'){
 		 		kirimPost(dataNa, URL_ORDER_EDIT);
+		 	}else if(gawe == 'packages'){
+		 		kirimPost(dataNa, URL_PACKAGE_EDIT);
 		 	}
 			
 	});
@@ -428,6 +492,22 @@ $('#upload-virtualvisitors-attachment').on('change', function(){
 
 
 });
+
+function hitungTotalPricePackage(){
+
+	let q = $('#quota_package').val();
+	let bp = $('#base_price_package').val();
+	let totalElement = $('#total_price_package');
+
+	if(q.length != 0 || bp.length != 0){
+		let total = q*bp;
+		totalElement.val(asRupiah(total));
+	}else{
+		totalElement.val('0');
+	}
+
+
+}
 
 function showLoading(entityname, boolstat){
 	let containerna = entityname + "-progress";
@@ -641,7 +721,7 @@ function kirimPost(dataForm, urlNa){
         	 		console.log(dataNa.data);
         	 			
             			extractOrderDetailData(dataNa.data, dataForm.order_type);
-           }else if(urlNa != URL_USER_EDIT && urlNa != URL_APP_EDIT && urlNa != URL_DEPOSIT_EDIT){
+           }else if(urlNa != URL_PACKAGE_EDIT && urlNa != URL_USER_EDIT && urlNa != URL_APP_EDIT && urlNa != URL_DEPOSIT_EDIT){
         		setTimeout(function(){
         			if(urlNa == URL_SETTINGS_UPDATE){
         		var dForm = convertIntoJSON(dataForm);
@@ -678,6 +758,9 @@ function kirimPost(dataForm, urlNa){
             		}else if(urlNa == URL_DEPOSIT_EDIT){
             			$('#add-deposit-admin-form-modal').modal('show'); 
             			extractDepositData(data);
+            		}else if(urlNa == URL_PACKAGE_EDIT){
+            			$('#package-form-modal').modal('show'); 
+            			extractPackageData(data);
             		}
             	}
             }
@@ -817,6 +900,21 @@ function extractUserData(argument) {
 
 }
 
+function extractPackageData(argument) {
+	
+	let data = JSON.parse(argument);
+	let formNa = $('#package-form-modal');
+	formNa.find('#package-form-admin-username').val(data.username);
+	formNa.find('#add-deposit-admin-status').val(data.status);
+	formNa.find('#add-deposit-admin-user-hidden-id').val(data.id);
+
+
+	// we changed the destination form to update deposit form
+	formNa.find('#package-form').attr('action', URL_PACKAGE_UPDATE);
+
+
+}
+
 function extractDepositData(argument) {
 	
 	let data = JSON.parse(argument);
@@ -904,6 +1002,23 @@ $.ajax({
 
 
 
+}
+
+function asRupiah(number){
+
+const formattedNumber = new Intl.NumberFormat('id-ID', {
+  style: 'currency',
+  currency: 'IDR',
+}).format(number);
+
+
+// without last decimal
+return formattedNumber.replace(/,(\d{2})$/, '');
+
+}
+
+function clearAllCurrency(number){
+	return number.replaceAll(".", "").replace("Rp ","");
 }
 
 function convertIntoJSON(dataSerialized){

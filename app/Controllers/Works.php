@@ -1318,6 +1318,35 @@ curl_close($ch);
 
     }
 
+    public function package_add()
+    {
+        
+        $n = $this->request->getPost('name');
+        $q = $this->request->getPost('quota');
+        $bp = $this->request->getPost('base_price');
+        $tp = $this->request->getPost('total_price');
+        $ot = $this->request->getPost('order_type');
+        
+        $data = array(
+            'name'          => $n,
+            'quota'         => $q,
+            'base_price'    => $bp,
+            'total_price'   => $tp,
+            'order_type'    => $ot
+        );
+
+     $rest = $this->db->insertData($data, 'packages');
+
+     
+     if($rest == 0){
+        echo "none";
+     }else {
+        echo "valid";
+     }
+
+
+    }
+
 
     public function user_update(){
 
@@ -1366,6 +1395,49 @@ curl_close($ch);
 
     }
 
+    public function package_update(){
+
+        $id = $this->request->getPost('id');
+        
+        $n = $this->request->getPost('name');
+        $q = $this->request->getPost('quota');
+        $bp = $this->request->getPost('base_price');
+        $tp = $this->request->getPost('total_price');
+        $ot = $this->request->getPost('order_type');
+        
+        $data = array(
+            'name'          => $n,
+            'quota'         => $q,
+            'base_price'    => $bp,
+            'total_price'   => $tp,
+            'order_type'    => $ot
+        );
+
+
+     $rest = $this->db->updateData($id, $data, 'packages');
+     
+     if($rest == 0){
+        echo "none";
+     }else {
+        echo "valid";
+     }
+
+    }
+
+     public function package_delete()
+    {
+         $id = $this->request->getPost('id');
+
+          $rest = $this->db->deleteData($id, 'packages');
+     
+         if($rest != 0){
+            echo "valid";
+         }else{
+            echo "none";
+         }
+
+    }
+
     public function user_delete()
     {
          $id = $this->request->getPost('id');
@@ -1386,6 +1458,22 @@ curl_close($ch);
         //$id = 5;
 
           $rest = $this->db->selectData($id, 'users');
+        
+        if(count($rest)==0){
+            // no value
+            echo "none";
+        }else{
+            echo json_encode($rest[0]);
+        }
+
+    }
+
+    public function package_edit()
+    {
+        $id = $this->request->getPost('id');
+        //$id = 5;
+
+          $rest = $this->db->selectData($id, 'packages');
         
         if(count($rest)==0){
             // no value

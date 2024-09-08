@@ -29,7 +29,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-virtualvisitors"
                                 aria-expanded="false">
-                                <i class="fa fa-desktop" aria-hidden="true"></i>
+                                <i class="fa fa-laptop" aria-hidden="true"></i>
                                 <span class="hide-menu">Management V.Visitors</span>
                             </a>
                         </li>
@@ -39,6 +39,13 @@
                                 aria-expanded="false">
                                 <i class="fa fa-users" aria-hidden="true"></i>
                                 <span class="hide-menu">Management Users</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-packages"
+                                aria-expanded="false">
+                                <i class="fa fa-box" aria-hidden="true"></i>
+                                <span class="hide-menu">Management Packages</span>
                             </a>
                         </li>
                          <li class="sidebar-item">
@@ -51,7 +58,7 @@
                          <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-deposits"
                                 aria-expanded="false">
-                                <i class="fa fa-edit" aria-hidden="true"></i>
+                                <i class="fa fa-wallet" aria-hidden="true"></i>
                                 <span class="hide-menu">Management Deposits</span>
                             </a>
                         </li>

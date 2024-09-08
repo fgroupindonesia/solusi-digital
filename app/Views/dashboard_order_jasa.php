@@ -175,7 +175,7 @@
                                 <img src="/assets/images/tiktok-logo.png">
                             </div>
                             <h3 class="box-title">Jasa Komen</h3>
-                            <h5>Rp. 2000-,/1komen</h5>
+                            <h5><?= $base_price_comment;?>,/1 komen</h5>
                             </center>
                         </div>
                     </div>
@@ -189,7 +189,7 @@
                                 <img src="/assets/images/tiktok-logo.png">
                             </div>
                             <h3 class="box-title">Jasa View</h3>
-                            <h5>Rp. 400-,/1view</h5>
+                            <h5><?= $base_price_view;?>,/1 view</h5>
                             </center>
                         </div>
                     </div>
@@ -201,7 +201,7 @@
                                 <img src="/assets/images/gmaps-logo.png">
                             </div>
                             <h3 class="box-title">Jasa Rating &amp; Review</h3>
-                            <h5>Rp. 2000-,/1rating</h5>
+                            <h5><?= $base_price_rating;?>,/1 rating</h5>
                             </center>
                         </div>
                     </div>
@@ -217,7 +217,7 @@
                                 <img src="/assets/images/blibli-logo.png">
                             </div>
                             <h3 class="box-title">Jasa Marketplace Follow</h3>
-                            <h5>Rp. 300-,/1 olshop</h5>
+                            <h5><?= $base_price_follow_marketplace;?>,/1 olshop</h5>
                             </center>
                         </div>
                     </div>
@@ -231,7 +231,7 @@
                                 <img src="/assets/images/blibli-logo.png">
                             </div>
                             <h3 class="box-title">Jasa Marketplace Wishlist</h3>
-                            <h5>Rp. 300-,/1 olshop</h5>
+                            <h5><?= $base_price_wishlist_marketplace;?>,/1 olshop</h5>
                             </center>
                         </div>
                     </div>
@@ -245,7 +245,7 @@
                                    <img src="/assets/images/tiktok-logo.png">
                             </div>
                             <h3 class="box-title">Jasa Subscriber &amp; Follower</h3>
-                            <h5>Rp. 600-,/1 subscriber</h5>
+                            <h5><?= $base_price_subscriber;?>,/1 subscriber</h5>
                             </center>
                         </div>
                     </div>
@@ -265,7 +265,7 @@
                                  <img src="/assets/images/others-logo.png">
                             </div>
                             <h3 class="box-title">Jasa Pembuatan Aplikasi</h3>
-                            <h5>Rp. -</h5>
+                            <h5><?= $base_price_pembuatanaplikasi;?>,/1 aplikasi</h5>
                             </center>
                         </div>
                     </div>
@@ -282,7 +282,7 @@
                                   <img src="/assets/images/others-logo.png">                                
                             </div>
                             <h3 class="box-title">Jasa Upgrade Fitur Aplikasi</h3>
-                            <h5>Rp. 100.000-,/1 paket</h5>
+                            <h5><?= $base_price_upgrade_fituraplikasi;?>,/1 paket</h5>
                             </center>
                         </div>
                     </div>
@@ -298,7 +298,7 @@
                                    <img src="/assets/images/globe-logo.png">
                             </div>
                             <h3 class="box-title">Jasa Virtual Visitors</h3>
-                            <h5>Rp. 200-,/1 visitor</h5>
+                            <h5><?= $base_price_virtualvisitors;?>,/1 visitor</h5>
                             </center>
                         </div>
                     </div>

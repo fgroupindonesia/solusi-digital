@@ -186,6 +186,28 @@ class Home extends BaseController
             return $result;
     }
 
+    
+
+    public function changeAllNumberIntoCurrency($dataArray){
+   
+
+    foreach($dataArray as $obj){
+        foreach($obj as $n => $v){
+            if(is_numeric($obj->$n)){
+               $rp = $this->asRupiah($obj->$n);
+               $obj->$n = $rp;
+            }    
+        }
+    }
+
+    return ($dataArray);
+
+    }
+
+    private function asRupiah($number) {
+        $formattedNumber = number_format($number, 0, ',', '.');
+        return 'Rp ' . $formattedNumber;
+    }
 
     private function getDashboardData($usage){
 
@@ -196,13 +218,15 @@ class Home extends BaseController
 
         if($usage == 'admin'){
            
-            $data_apps = $this->db->selectAllData('apps');
+        $data_apps = $this->db->selectAllData('apps');
             arsort($data_apps);
-            $data_orders = $this->db->selectAllData('order_jasa');
+        $data_packages = $this->db->selectAllData('packages');
+            arsort($data_packages);
+        $data_orders = $this->db->selectAllData('order_jasa');
             arsort($data_orders);
-            $data_deposits = $this->db->selectAllData('deposits');
+        $data_deposits = $this->db->selectAllData('deposits');
             arsort($data_deposits);
-            $data_vvisitors = $this->db->selectAllData('data_virtualvisitors');
+        $data_vvisitors = $this->db->selectAllData('data_virtualvisitors');
             arsort($data_vvisitors);
            
         }else{
@@ -218,7 +242,29 @@ class Home extends BaseController
             arsort($data_vvisitors);
         }
 
+        $bpc = $this->db->getLowestBasePricePackage('comment');
+        $bpv = $this->db->getLowestBasePricePackage('view');
+        $bpfm = $this->db->getLowestBasePricePackage('follow_marketplace');
+        $bpp = $this->db->getLowestBasePricePackage('pembuatanaplikasi');
+        $bpr = $this->db->getLowestBasePricePackage('rating');
+        $bps = $this->db->getLowestBasePricePackage('subscriber');
+        $bpuf = $this->db->getLowestBasePricePackage('upgrade_fituraplikasi');
+        $bpvv = $this->db->getLowestBasePricePackage('virtualvisitors');
+        $bpwm = $this->db->getLowestBasePricePackage('wishlist_marketplace');
+
+
+        $base_price_comment = $this->asRupiah($bpc);
+        $base_price_view = $this->asRupiah($bpv);
+        $base_price_follow_marketplace = $this->asRupiah($bpfm);
+        $base_price_pembuatanaplikasi = $this->asRupiah($bpp);
+        $base_price_rating = $this->asRupiah($bpr);
+        $base_price_subscriber = $this->asRupiah($bps);
+        $base_price_upgrade_fituraplikasi = $this->asRupiah($bpuf);
+        $base_price_virtualvisitors = $this->asRupiah($bpvv);
+        $base_price_wishlist_marketplace = $this->asRupiah($bpwm);
+
         $total_users = 0;
+        $total_packages = 0;
         $total_apps = 0;
         $total_orders = 0;
         $total_deposits = 0;
@@ -231,6 +277,10 @@ class Home extends BaseController
 
          if(isset($data_users)){
             $total_users = count($data_users);
+        }
+
+         if(isset($data_packages)){
+            $total_packages = count($data_packages);
         }
 
           if(isset($data_vvisitors)){
@@ -273,17 +323,32 @@ class Home extends BaseController
             'sex_male_radio'  => $sex_male_radio,
             'sex_female_radio'  => $sex_female_radio,
             'data_users' => $this->formatTimeInData($data_users),
+           
             'data_apps' => $this->formatTimeInData($data_apps),
             'data_orders' => $this->formatTimeInData($data_orders),
             'data_deposits' => $this->formatTimeInData($data_deposits),
             'data_vvisitors' => $this->formatTimeInData($data_vvisitors),
             'total_users' => $total_users,
+            'total_packages' => $total_packages,
              'total_vvisitors' => $total_vvisitors,
             'total_deposits' => $total_deposits,
             'total_apps' => $total_apps,
             'total_orders' => $total_orders,
-            'total_apps_published' => $total_apps_published
+            'total_apps_published' => $total_apps_published,
+            'base_price_comment' => $base_price_comment,
+            'base_price_subscriber' => $base_price_subscriber,
+            'base_price_follow_marketplace' => $base_price_follow_marketplace,
+            'base_price_pembuatanaplikasi' => $base_price_pembuatanaplikasi,
+            'base_price_rating' => $base_price_rating,
+            'base_price_upgrade_fituraplikasi' => $base_price_upgrade_fituraplikasi,
+            'base_price_view' => $base_price_view,
+            'base_price_virtualvisitors' => $base_price_virtualvisitors,
+            'base_price_wishlist_marketplace' => $base_price_wishlist_marketplace
         );
+
+        if($usage == 'admin'){
+             $data['data_packages'] = $this->formatTimeInData($data_packages);
+        }
 
         return $data;
     }
@@ -396,6 +461,20 @@ class Home extends BaseController
             $data['role'] = $r;
 
     	return view('manage_users', $data);
+    }
+
+    public function package_management(): string
+    {   
+
+          // for security reasons
+            $this->protectLogin();
+
+            $r = $this->getSessionData('role');
+            $data = $this->getDashboardData($r);
+            $data['search_display'] = 'search-shown';
+            $data['role'] = $r;
+
+        return view('manage_packages', $data);
     }
 
     public function app_add(): string

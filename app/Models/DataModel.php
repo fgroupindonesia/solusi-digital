@@ -6,6 +6,7 @@ use CodeIgniter\Model;
 class DataModel extends Model
 {
     protected $table_users      = 'table_users';
+    protected $table_packages      = 'table_packages';
     protected $table_ticketing  = 'table_ticketing';
     protected $table_apps       = 'table_apps';
     protected $table_data_virtualvisitors       = 'table_data_virtualvisitors';
@@ -26,6 +27,10 @@ class DataModel extends Model
         $table_na = null;
         if($entity == 'users'){
             $table_na = $this->table_users;
+            
+        }else if($entity == 'packages'){
+            $table_na = $this->table_packages;
+
         }else if($entity == 'ticketing'){
             $table_na = $this->table_ticketing;
 
@@ -197,6 +202,24 @@ class DataModel extends Model
         return $res->getResult();   
     }
 	
+    public function getLowestBasePricePackage($ordertype){
+
+        $table_na = $this->getEntity('packages');        
+
+        $filterData = array(
+            'order_type' => $ordertype
+        );
+
+         $res = $this->db->table($table_na)->where($filterData)->orderBy('base_price','asc')->limit(0)->get();
+        
+        $hasil = $res->getResult();   
+
+        if($hasil != false){
+            return $res->getRow()->base_price;   
+        }
+
+    }
+
     public function requestStatistics($gender, $column, $entity){
 
 

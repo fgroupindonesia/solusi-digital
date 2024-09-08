@@ -7,6 +7,7 @@ use CodeIgniter\Router\RouteCollection;
  */
 
 $routes->get('/', 'Home::index');
+$routes->get('/test', 'Home::test');
 $routes->post('/upload-data-virtualvisitors', 'Works::upload_data_virtualvisitors');
 $routes->get('/portal', 'Home::display_login');
 $routes->get('/testing', 'Works::testing');
@@ -24,6 +25,7 @@ $routes->get('/jasa-subscriber-follower', 'Home::form_jasa_subscriber_follower')
 $routes->get('/manage-virtualvisitors', 'Home::virtualvisitors_management');
 $routes->get('/manage-users', 'Home::user_management');
 $routes->get('/manage-apps', 'Home::app_management');
+$routes->get('/manage-packages', 'Home::package_management');
 $routes->get('/manage-order-jasa', 'Home::order_jasa_management');
 $routes->get('/manage-deposits', 'Home::deposit_management');
 $routes->get('/logout', 'Works::logout');
@@ -40,18 +42,22 @@ $routes->post('/order-new-jasa-subscriber', 'Works::jasa_subscriber_order');
 $routes->post('/add-new-app', 'Works::app_add');
 $routes->post('/add-new-campaign', 'Works::campaign_add');
 $routes->post('/add-new-user', 'Works::user_add');
+$routes->post('/add-new-package', 'Works::package_add');
 $routes->post('/add-new-deposit', 'Works::deposit_add');
 $routes->get('/register-new-user', 'Works::user_register');
 $routes->post('/delete-app', 'Works::app_delete');
 $routes->post('/delete-campaign', 'Works::campaign_delete');
 $routes->post('/delete-user', 'Works::user_delete');
+$routes->post('/delete-package', 'Works::package_delete');
 $routes->post('/delete-jasa-order', 'Works::jasa_order_delete');
 $routes->post('/delete-deposit', 'Works::deposit_delete');
 $routes->post('/edit-app', 'Works::app_edit');
 $routes->post('/edit-user', 'Works::user_edit');
+$routes->post('/edit-package', 'Works::package_edit');
 $routes->post('/edit-deposit', 'Works::deposit_edit');
 $routes->post('/update-app', 'Works::app_update');
 $routes->post('/update-user', 'Works::user_update');
+$routes->post('/update-package', 'Works::package_update');
 $routes->post('/update-settings', 'Works::settings_update');
 $routes->post('/update-jasa-order', 'Works::jasa_order_update');
 $routes->post('/update-deposit', 'Works::deposit_update');
