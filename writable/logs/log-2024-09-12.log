@@ -1,0 +1,43 @@
+INFO - 2024-09-12 09:15:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-12 09:15:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-12 09:15:40 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Controllers\Home.php on line 210.
+ 1 APPPATH\Controllers\Home.php(210): number_format(null, 0, ',', '.')
+ 2 APPPATH\Controllers\Home.php(267): App\Controllers\Home->asRupiah(null)
+ 3 APPPATH\Controllers\Home.php(128): App\Controllers\Home->getDashboardData('admin')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2024-09-12 09:15:40 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Controllers\Home.php on line 210.
+ 1 APPPATH\Controllers\Home.php(210): number_format(null, 0, ',', '.')
+ 2 APPPATH\Controllers\Home.php(270): App\Controllers\Home->asRupiah(null)
+ 3 APPPATH\Controllers\Home.php(128): App\Controllers\Home->getDashboardData('admin')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-12 09:21:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-12 09:21:38 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Controllers\Home.php on line 210.
+ 1 APPPATH\Controllers\Home.php(210): number_format(null, 0, ',', '.')
+ 2 APPPATH\Controllers\Home.php(267): App\Controllers\Home->asRupiah(null)
+ 3 APPPATH\Controllers\Home.php(405): App\Controllers\Home->getDashboardData('admin')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->virtualvisitors_management()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2024-09-12 09:21:38 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Controllers\Home.php on line 210.
+ 1 APPPATH\Controllers\Home.php(210): number_format(null, 0, ',', '.')
+ 2 APPPATH\Controllers\Home.php(270): App\Controllers\Home->asRupiah(null)
+ 3 APPPATH\Controllers\Home.php(405): App\Controllers\Home->getDashboardData('admin')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->virtualvisitors_management()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

@@ -35,28 +35,39 @@
             <i class="fa fa-globe"></i>
           </div>
         </div> 
-        <input id="jasa-subscriber-url" name="url" placeholder="contoh : http://www.facebook.com/mypage" value="" type="text" class="form-control">
+        <input required id="jasa-subscriber-url" name="url" placeholder="contoh : http://www.facebook.com/mypage" value="" type="text" class="form-control">
       </div>
     </div>
   </div>
   <div class="form-group row">
     <label for="jasa-subscriber-namaakun"  class="col-4 col-form-label">Nama Akun:</label> 
     <div class="col-8">
-      <input id="jasa-subscriber-namaakun" placeholder="ketik nama akun anda" name="account_name" type="text" value="" class="form-control">
+      <input required id="jasa-subscriber-namaakun" placeholder="ketik nama akun anda" name="account_name" type="text" value="" class="form-control">
     </div>
   </div>
 
  <div class="form-group row">
     <label class="col-4">Paket</label> 
     <div class="col-8">
+      
+      <?php if($total_packages !=0 ): ?>
+      <?php foreach($data_packages as $data_p): ?>
       <div class="custom-control custom-radio custom-control-inline">
-        <input name="package" id="jasa-subscriber-paket-hemat" type="radio" class="custom-control-input" value="hemat"> 
-        <label for="jasa-subscriber-paket-hemat" class="custom-control-label">Hemat</label>
+        <?php if($data_p->order_type== 'subscriber'): ?>
+        <input required name="package" id="jasa-subscriber-paket-<?= $data_p->name; ?>" type="radio" class="custom-control-input" value="<?= $data_p->name; ?>"> 
+        <label for="jasa-subscriber-paket-<?= $data_p->name; ?>" class="custom-control-label"><?= $data_p->name; ?></label>
+        <?php endif;?>
       </div>
+      <?php endforeach; ?>
+      <?php endif; ?>
+
+      <!-- this is the sample layout
       <div class="custom-control custom-radio custom-control-inline">
         <input name="package" id="jasa-subscriber-paket-bisnis" type="radio" class="custom-control-input" value="bisnis"> 
         <label for="jasa-subscriber-paket-bisnis" class="custom-control-label">Bisnis</label>
       </div>
+      end of sample layout -->
+
     </div>
   </div> 
 

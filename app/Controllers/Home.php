@@ -194,8 +194,10 @@ class Home extends BaseController
     foreach($dataArray as $obj){
         foreach($obj as $n => $v){
             if(is_numeric($obj->$n)){
+                if($n != 'id'){
                $rp = $this->asRupiah($obj->$n);
                $obj->$n = $rp;
+               }
             }    
         }
     }
@@ -226,6 +228,8 @@ class Home extends BaseController
             arsort($data_orders);
         $data_deposits = $this->db->selectAllData('deposits');
             arsort($data_deposits);
+            $data_deposits = $this->changeAllNumberIntoCurrency($data_deposits);
+
         $data_vvisitors = $this->db->selectAllData('data_virtualvisitors');
             arsort($data_vvisitors);
            
@@ -234,6 +238,10 @@ class Home extends BaseController
             
             $data_apps = $this->db->selectAllDataByUsername($u, 'apps');
             arsort($data_apps);
+
+        $data_packages = $this->db->selectAllData('packages');
+            arsort($data_packages);
+
              $data_orders = $this->db->selectAllDataByUsername($u, 'order_jasa');
             arsort($data_orders);
               $data_deposits = $this->db->selectAllDataByUsername($u, 'deposits');
@@ -263,19 +271,23 @@ class Home extends BaseController
         $base_price_virtualvisitors = $this->asRupiah($bpvv);
         $base_price_wishlist_marketplace = $this->asRupiah($bpwm);
 
-        $total_users = 0;
-        $total_packages = 0;
-        $total_apps = 0;
-        $total_orders = 0;
-        $total_deposits = 0;
-        $total_vvisitors = 0;
+        $m_balance          = $this->db->getTotalAmountDepositsThisMonth();
+        $monthly_balance    = $this->asRupiah($m_balance);
+
+        $total_users        = 0;
+        $total_packages     = 0;
+        $total_apps         = 0;
+        $total_orders       = 0;
+        $total_deposits     = 0;
+        $total_vvisitors    = 0;
         $total_apps_published = 0;
+
 
         if(isset($data_deposits)){
             $total_deposits = count($data_deposits);
         }
 
-         if(isset($data_users)){
+        if(isset($data_users)){
             $total_users = count($data_users);
         }
 
@@ -289,8 +301,7 @@ class Home extends BaseController
 
         if(isset($data_apps)){
             $total_apps = count($data_apps);
-         $total_apps_published =  $this->countPublishedApp($data_apps);
-
+            $total_apps_published =  $this->countPublishedApp($data_apps);
         }
 
          if(isset($data_orders)){
@@ -311,10 +322,12 @@ class Home extends BaseController
             'username' => $u
         );
 
+        $cash = $this->getDBData('balance', $cond, 'users');
+
         $data = array(
             'user_id'   => $this->getSessionData('user_id'),
             'propic'    => $this->getSessionData('propic'),
-            'balance'    => $this->getDBData('balance', $cond, 'users'),
+            'balance'    => $this->asRupiah($cash),
             'username'  => $this->getSessionData('username'),
             'pass'  => $this->getSessionData('pass'),
             'email'  => $this->getSessionData('email'),
@@ -328,6 +341,7 @@ class Home extends BaseController
             'data_orders' => $this->formatTimeInData($data_orders),
             'data_deposits' => $this->formatTimeInData($data_deposits),
             'data_vvisitors' => $this->formatTimeInData($data_vvisitors),
+            
             'total_users' => $total_users,
             'total_packages' => $total_packages,
              'total_vvisitors' => $total_vvisitors,
@@ -335,6 +349,7 @@ class Home extends BaseController
             'total_apps' => $total_apps,
             'total_orders' => $total_orders,
             'total_apps_published' => $total_apps_published,
+
             'base_price_comment' => $base_price_comment,
             'base_price_subscriber' => $base_price_subscriber,
             'base_price_follow_marketplace' => $base_price_follow_marketplace,
@@ -348,6 +363,11 @@ class Home extends BaseController
 
         if($usage == 'admin'){
              $data['data_packages'] = $this->formatTimeInData($data_packages);
+             $data['monthly_balance'] = $monthly_balance;
+        }else{
+            // for non admin
+            // we just need the data as casual
+             $data['data_packages'] = $data_packages;
         }
 
         return $data;

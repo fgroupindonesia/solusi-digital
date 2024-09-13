@@ -10,11 +10,13 @@ const URL_APP_DELETE 		= "/delete-app";
 const URL_DEPOSIT_DELETE 	= "/delete-deposit";
 const URL_ORDER_DELETE 		= "/delete-jasa-order";
 const URL_CAMPAIGN_DELETE 	= "/delete-campaign";
+const URL_VIRTUALVISITORS_DELETE 	= "/delete-virtualvisitors";
 
 const URL_USER_EDIT 		= "/edit-user";
 const URL_PACKAGE_EDIT 		= "/edit-package";
 const URL_APP_EDIT 			= "/edit-app";
 const URL_DEPOSIT_EDIT 		= "/edit-deposit";
+const URL_VIRTUALVISITORS_EDIT 		= "/edit-virtualvisitors";
 
 const URL_USER_UPDATE 		= "/update-user";
 const URL_PACKAGE_UPDATE 	= "/update-package";
@@ -35,6 +37,19 @@ var jumlahData = 0;
 
 
 $( document ).ready(function() {
+
+
+// these parts below are for enabling the save button of each modals
+	displaySubmitFor('jasa-upgrade-fituraplikasi-form');
+	displaySubmitFor('jasa-pembuatanaplikasi-form');
+	displaySubmitFor('jasa-virtualvisitors-form');
+	displaySubmitFor('jasa-subscriber-form');
+	displaySubmitFor('jasa-rating-form');
+	displaySubmitFor('jasa-komen-form');
+	displaySubmitFor('jasa-view-form');
+	displaySubmitFor('jasa-follow-marketplace-form');
+	displaySubmitFor('jasa-wishlist-marketplace-form');
+
 
 
 // this is for checked all and uncheck them directly!
@@ -445,6 +460,8 @@ $('#upload-virtualvisitors-attachment').on('change', function(){
 				kirimPost(dataNa, URL_DEPOSIT_DELETE);
 			}else if(gawe == 'packages') {
 				kirimPost(dataNa, URL_PACKAGE_DELETE);
+			}else if(gawe == 'virtualvisitors') {
+				kirimPost(dataNa, URL_VIRTUALVISITORS_DELETE);
 			}
 
 			} // end of the loop
@@ -485,6 +502,8 @@ $('#upload-virtualvisitors-attachment').on('change', function(){
 		 		kirimPost(dataNa, URL_ORDER_EDIT);
 		 	}else if(gawe == 'packages'){
 		 		kirimPost(dataNa, URL_PACKAGE_EDIT);
+		 	}else if(gawe == 'virtualvisitors'){
+		 		kirimPost(dataNa, URL_VIRTUALVISITORS_EDIT);
 		 	}
 			
 	});
@@ -492,6 +511,31 @@ $('#upload-virtualvisitors-attachment').on('change', function(){
 
 
 });
+
+function displaySubmitFor(idDiv){
+
+let idna = '#' + idDiv;
+let idnaSocmed = idna + ' .social-medias';
+
+$(idnaSocmed).on('click', function(){
+
+	// does it has package available?
+	// if so then show the button
+	var display = $(idna).find('input[name="package"]:visible').length > 0;
+
+	if(display){
+		$(idna).find('input[type="submit"]').show();
+	}else{
+		$(idna).find('input[type="submit"]').hide();
+	}
+
+});
+
+
+
+
+
+}
 
 function hitungTotalPricePackage(){
 
@@ -761,6 +805,9 @@ function kirimPost(dataForm, urlNa){
             		}else if(urlNa == URL_PACKAGE_EDIT){
             			$('#package-form-modal').modal('show'); 
             			extractPackageData(data);
+            		}else if(urlNa == URL_VIRTUALVISITORS_EDIT){
+            			$('#data-virtualvisitors-form-modal').modal('show'); 
+            			extractVirtualVisitorsData(data);
             		}
             	}
             }
@@ -877,6 +924,35 @@ function extractOrderDetailData(argument, order_type) {
 	
 }
 
+
+function extractVirtualVisitorsData(argument) {
+	
+	let data = JSON.parse(argument);
+	let formNa = $('#data-virtualvisitors-form-modal');
+	formNa.find('#client_name').val(data.client_name);
+	formNa.find('#city').val(data.city);
+	formNa.find('#product_bought').val(data.product_bought);
+	formNa.find('#product_url').val(data.product_url);	
+	formNa.find('#theme_display').val(data.theme_display);
+
+	let theme_dis = data.theme_display.split(" ");
+	
+
+	formNa.find('#virtualvisitors-hidden-username').val(data.username);
+	formNa.find('#virtualvisitors-hidden-id').val(data.id);
+
+	if(data.gender == 'lelaki'){
+		formNa.find('#data_virtualvisitors_gender_male').prop('checked', true);		
+	}else{
+		formNa.find('#data_virtualvisitors_gender_female').prop('checked', true);
+	}
+
+	// we changed the destination form to update user form
+	formNa.find('#data-virtualvisitors-form').attr('action', URL_USER_UPDATE);
+
+
+}
+
 function extractUserData(argument) {
 	
 	let data = JSON.parse(argument);
@@ -923,15 +999,15 @@ function extractDepositData(argument) {
 	formNa.find('#add-deposit-admin-status').val(data.status);
 	formNa.find('#add-deposit-admin-user-hidden-id').val(data.id);
 
-	if(data.amount == 50){
+	if(data.amount == 50000){
 		formNa.find('#add-deposit-admin-50').prop('checked', true);		
-	}else if(data.amount == 100){
+	}else if(data.amount == 100000){
 		formNa.find('#add-deposit-admin-100').prop('checked', true);		
-	}else if(data.amount == 200){
+	}else if(data.amount == 200000){
 		formNa.find('#add-deposit-admin-200').prop('checked', true);		
-	}else if(data.amount == 500){
+	}else if(data.amount == 500000){
 		formNa.find('#add-deposit-admin-500').prop('checked', true);		
-	}else if(data.amount == 1000){
+	}else if(data.amount == 1000000){
 		formNa.find('#add-deposit-admin-1000').prop('checked', true);		
 	}
 

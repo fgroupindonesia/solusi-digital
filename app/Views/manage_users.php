@@ -19,6 +19,7 @@
     <link href="/assets/plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
     <!-- Custom CSS -->
+    <link href="/assets/css/datatables.min.css" rel="stylesheet">    
     <link href="/assets/css/style.min.css" rel="stylesheet">
     <link href="/assets/css/style-custom.css" rel="stylesheet" >
 </head>
@@ -134,7 +135,7 @@
                                 </div>
                             </div>
                             <div class="table-responsive">
-                                <table class="table no-wrap">
+                                <table id="table-users" class="table no-wrap">
                                     <thead>
                                         <tr>
                                             <th id="check-all" data-state="inactive" class="border-top-0">#</th>
@@ -207,6 +208,7 @@
     <script src="/assets/js/waves.js"></script>
     <!--Menu sidebar -->
     <script src="/assets/js/sidebarmenu.js"></script>
+    <script src="/assets/js/datatables.min.js"></script>
     <!--Custom JavaScript -->
     <script src="/assets/js/custom.js"></script>
     <!--This page JavaScript -->

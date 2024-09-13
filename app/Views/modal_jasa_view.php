@@ -43,28 +43,39 @@
             <i class="fa fa-globe"></i>
           </div>
         </div> 
-        <input id="jasa-view-url" name="url" placeholder="contoh : http://www.facebook.com/v/v1238" value="" type="text" class="form-control">
+        <input required id="jasa-view-url" name="url" placeholder="contoh : http://www.facebook.com/v/v1238" value="" type="text" class="form-control">
       </div>
     </div>
   </div>
   <div class="form-group row">
     <label for="jasa-view-videokonten"  class="col-4 col-form-label">Judul Video/Konten:</label> 
     <div class="col-8">
-      <input id="jasa-view-videokonten" placeholder="ketik judul video konten anda" name="title" type="text" value="" class="form-control">
+      <input required id="jasa-view-videokonten" placeholder="ketik judul video konten anda" name="title" type="text" value="" class="form-control">
     </div>
   </div>
 
  <div class="form-group row">
     <label class="col-4">Paket</label> 
     <div class="col-8">
+      
+    <?php if($total_packages !=0 ): ?>
+      <?php foreach($data_packages as $data_p): ?>
       <div class="custom-control custom-radio custom-control-inline">
-        <input name="package" id="jasa-view-paket-hemat" type="radio" class="custom-control-input" value="hemat"> 
-        <label for="jasa-view-paket-hemat" class="custom-control-label">Hemat</label>
+        <?php if($data_p->order_type== 'view'): ?>
+        <input required name="package" id="jasa-view-paket-<?= $data_p->name; ?>" type="radio" class="custom-control-input" value="<?= $data_p->name; ?>"> 
+        <label for="jasa-view-paket-<?= $data_p->name; ?>" class="custom-control-label"><?= $data_p->name; ?></label>
+        <?php endif;?>
       </div>
+      <?php endforeach; ?>
+      <?php endif; ?>
+
+      <!-- this is sample item layout 
       <div class="custom-control custom-radio custom-control-inline">
         <input name="package" id="jasa-view-paket-bisnis" type="radio" class="custom-control-input" value="bisnis"> 
         <label for="jasa-view-paket-bisnis" class="custom-control-label">Bisnis</label>
       </div>
+      end of sample item layout -->
+
     </div>
   </div> 
 
@@ -84,7 +95,7 @@
     <label class="col-4">Pertanyaan:</label> 
     <div class="col-8">
       <div class="custom-control custom-radio custom-control-inline">
-        <textarea name="question" rows="4" cols="30" placeholder="Tuliskan pertanyaan disini."></textarea>
+        <textarea required name="question" rows="4" cols="30" placeholder="Tuliskan pertanyaan disini."></textarea>
       </div>
     </div>
   </div> 
@@ -93,7 +104,7 @@
     <label class="col-4">Opsi Jawaban A:</label> 
     <div class="col-8">
       <div class="custom-control custom-radio custom-control-inline">
-        <input name="answer_a" type="text" placeholder="contoh : Jojon" >
+        <input required name="answer_a" type="text" placeholder="contoh : Jojon" >
       </div>
     </div>
   </div> 
@@ -102,7 +113,7 @@
     <label class="col-4">Opsi Jawaban B:</label> 
     <div class="col-8">
       <div class="custom-control custom-radio custom-control-inline">
-        <input name="answer_b" type="text" placeholder="contoh : Neni" >
+        <input required name="answer_b" type="text" placeholder="contoh : Neni" >
       </div>
     </div>
   </div> 
@@ -111,7 +122,7 @@
     <label class="col-4">Opsi Jawaban C:</label> 
     <div class="col-8">
       <div class="custom-control custom-radio custom-control-inline">
-        <input name="answer_c" type="text" placeholder="contoh : Roni" >
+        <input required name="answer_c" type="text" placeholder="contoh : Roni" >
       </div>
     </div>
   </div> 
@@ -120,7 +131,7 @@
     <label class="col-4">Opsi Jawaban D:</label> 
     <div class="col-8">
       <div class="custom-control custom-radio custom-control-inline">
-        <input name="answer_d" type="text" placeholder="contoh : Buyung" >
+        <input required name="answer_d" type="text" placeholder="contoh : Buyung" >
       </div>
     </div>
   </div> 
@@ -129,14 +140,14 @@
     <label class="col-4">Jawaban Yang Benar:</label> 
     <div class="col-8">
       <div class="custom-control custom-radio custom-control-inline">
-        <input name="valid_answer" id="jasa-view-jawaban-a" type="radio" class="custom-control-input" value="a"> 
+        <input required name="valid_answer" id="jasa-view-jawaban-a" type="radio" class="custom-control-input" value="a"> 
         <label for="jasa-view-jawaban-a" class="custom-control-label">A</label>
-        <input name="valid_answer" id="jasa-view-jawaban-b" type="radio" class="custom-control-input" value="b"> 
+        <input required name="valid_answer" id="jasa-view-jawaban-b" type="radio" class="custom-control-input" value="b"> 
         <label for="jasa-view-jawaban-b" class="custom-control-label">B</label>
-        <input name="valid_answer" id="jasa-view-jawaban-c" type="radio" class="custom-control-input" value="c"> 
+        <input required name="valid_answer" id="jasa-view-jawaban-c" type="radio" class="custom-control-input" value="c"> 
         <label for="jasa-view-jawaban-c" class="custom-control-label">C</label>
-        <input name="valid_answer" id="jasa-view-jawaban-d" type="radio" class="custom-control-input" value="d"> 
-        <label for="jasa-view-jawaban-d" class="custom-control-label">D</label>
+        <input required name="valid_answer" id="jasa-view-jawaban-d" type="radio" class="custom-control-input" value="d"> 
+        <label required for="jasa-view-jawaban-d" class="custom-control-label">D</label>
       </div>
       
     </div>

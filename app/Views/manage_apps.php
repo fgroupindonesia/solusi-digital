@@ -19,8 +19,10 @@
     <link href="/assets/plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
     <!-- Custom CSS -->
+    <link href="/assets/css/datatables.min.css" rel="stylesheet">
     <link href="/assets/css/style.min.css" rel="stylesheet">
     <link href="/assets/css/style-custom.css" rel="stylesheet" >
+   
 </head>
 
 <body>
@@ -134,7 +136,7 @@
                                 </div>
                             </div>
                             <div class="table-responsive">
-                                <table class="table no-wrap">
+                                <table id="table-apps" class="table no-wrap">
                                     <thead>
                                         <tr>
                                             <th id="check-all" data-state="inactive" class="border-top-0">#</th>
@@ -197,7 +199,7 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="/assets/plugins/bower_components/jquery/dist/jquery.min.js"></script>
+     <script src="/assets/js/jquery-3.7.1.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="/assets/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/app-style-switcher.js"></script>
@@ -206,6 +208,7 @@
     <script src="/assets/js/waves.js"></script>
     <!--Menu sidebar -->
     <script src="/assets/js/sidebarmenu.js"></script>
+    <script src="/assets/js/datatables.min.js"></script>
     <!--Custom JavaScript -->
     <script src="/assets/js/custom.js"></script>
     <!--This page JavaScript -->

@@ -32,4 +32,19 @@ $(function() {
     $(window).ready(setsidebartype);
     $(window).on("resize", setsidebartype);
 
+
+
+});
+
+
+$( document ).ready(function() {
+
+    new DataTable('#table-visitors');
+    new DataTable('#table-apps');
+    new DataTable('#table-deposits');
+    new DataTable('#table-order-jasa');
+    new DataTable('#table-users');
+    
+
+
 });

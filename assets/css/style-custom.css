@@ -1,3 +1,15 @@
+#jasa-pembuatanaplikasi-form input[type="submit"],
+#jasa-upgrade-fituraplikasi-form input[type="submit"],
+#jasa-virtualvisitors-form input[type="submit"],
+#jasa-subscriber-form input[type="submit"],
+#jasa-view-form input[type="submit"],
+#jasa-komen-form input[type="submit"],
+#jasa-rating-form input[type="submit"],
+#jasa-follow-marketplace-form input[type="submit"],
+#jasa-wishlist-marketplace-form input[type="submit"] {
+  display: none;
+}
+
 #detail-order-form section {
   display: none;
 }

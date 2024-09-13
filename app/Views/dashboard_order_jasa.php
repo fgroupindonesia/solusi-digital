@@ -145,7 +145,7 @@
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <div class="d-md-flex">
                             <ol class="breadcrumb ms-auto">
-                                <li>Saldo Anda : Rp.<strong><?= $balance; ?></strong></li>
+                                <li>Saldo Anda : <strong><?= $balance; ?></strong></li>
                             </ol>
                            
                         </div>

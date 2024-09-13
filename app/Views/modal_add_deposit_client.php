@@ -20,23 +20,23 @@
     <label class="col-4">Paket Pengisian</label> 
     <div class="col-8">
       <div class="custom-control custom-radio custom-control-inline">
-        <input name="amount" id="add-deposit-50" type="radio" class="custom-control-input" value="50"> 
+        <input name="amount" id="add-deposit-50" type="radio" class="custom-control-input" value="50000"> 
         <label for="add-deposit-50" class="custom-control-label">50rb</label>
       </div>
       <div class="custom-control custom-radio custom-control-inline">
-        <input name="amount" id="add-deposit-100" type="radio" class="custom-control-input" value="100"> 
+        <input name="amount" id="add-deposit-100" type="radio" class="custom-control-input" value="100000"> 
         <label for="add-deposit-100" class="custom-control-label">100rb</label>
       </div>
     <div class="custom-control custom-radio custom-control-inline">
-        <input name="amount" id="add-deposit-200" type="radio" class="custom-control-input" value="200"> 
+        <input name="amount" id="add-deposit-200" type="radio" class="custom-control-input" value="200000"> 
         <label for="add-deposit-200" class="custom-control-label">200rb</label>
       </div>
     <div class="custom-control custom-radio custom-control-inline">
-        <input name="amount" id="add-deposit-500" type="radio" class="custom-control-input" value="500"> 
+        <input name="amount" id="add-deposit-500" type="radio" class="custom-control-input" value="500000"> 
         <label for="add-deposit-500" class="custom-control-label">500rb</label>
       </div>
     <div class="custom-control custom-radio custom-control-inline">
-        <input name="amount" id="add-deposit-1000" type="radio" class="custom-control-input" value="1000"> 
+        <input name="amount" id="add-deposit-1000" type="radio" class="custom-control-input" value="1000000"> 
         <label for="add-deposit-1000" class="custom-control-label">1juta</label>
       </div>
     </div>

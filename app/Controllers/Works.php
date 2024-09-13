@@ -1130,6 +1130,22 @@ curl_close($ch);
 
     }
 
+    public function virtualvisitors_delete()
+    {
+
+         $id = $this->request->getPost('id');
+
+          $rest = $this->db->deleteData($id, 'data_virtualvisitors');
+     
+         if($rest != 0){
+            echo "valid";
+         }else{
+            echo "none";
+         }
+
+
+    }
+
 	public function app_delete()
     {
 
@@ -1452,7 +1468,23 @@ curl_close($ch);
 
     }
 
-    public function user_edit()
+    public function virtualvisitors_edit()
+    {
+        $id = $this->request->getPost('id');
+        //$id = 5;
+
+          $rest = $this->db->selectData($id, 'data_virtualvisitors');
+        
+        if(count($rest)==0){
+            // no value
+            echo "none";
+        }else{
+            echo json_encode($rest[0]);
+        }
+
+    }
+
+     public function user_edit()
     {
         $id = $this->request->getPost('id');
         //$id = 5;

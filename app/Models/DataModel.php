@@ -107,6 +107,30 @@ class DataModel extends Model
         
     }
 
+    public function getTotalAmountDepositsThisMonth(){
+
+        $table_na = $this->getEntity('deposits');
+
+        $filter = array(
+        'MONTH(date_created) = ' => date('m'),
+        'YEAR(date_created) = ' => date('Y')
+        );
+
+    $builder = $this->db->table($table_na);
+    $builder->selectSum('amount')->where($filter);
+
+    $result = $builder->get();
+
+    //echo $this->db->getLastQuery()->getQuery();
+
+    if ($result->getResult() != false) {
+         return $result->getRow()->amount;
+    } else {
+        return 0; // or some default value
+    }
+
+    }
+
     public function insertData($data, $entity)
     {
         $table_na = $this->getEntity($entity);
