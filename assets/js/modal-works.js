@@ -38,6 +38,25 @@ var jumlahData = 0;
 
 $( document ).ready(function() {
 
+// these parts for format os modal work
+$('#format-os-contact-person-type-self').on('change', function(){
+
+	// take the hidden data
+	// into the form
+	let myname = $('')
+
+	$('#format-os-contact-person-name').val(myname);
+	$('#format-os-contact-person-wa').val(mywa);	
+	
+});
+
+$('#format-os-contact-person-type-other').on('change', function(){
+
+	$('#format-os-contact-person-name').val('');
+	$('#format-os-contact-person-wa').val('');
+	
+});
+
 
 // these parts below are for enabling the save button of each modals
 	displaySubmitFor('jasa-upgrade-fituraplikasi-form');

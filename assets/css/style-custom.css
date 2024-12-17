@@ -18,6 +18,11 @@
   display: inline-block;
 }
 
+.logo-icon img{
+  width: 64px;
+  height: 64px;
+}
+
 #new-campaign {
   display: none;
 }

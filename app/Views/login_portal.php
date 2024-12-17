@@ -4,7 +4,7 @@
   <title>Portal Login - Solusi Digital</title>
   
 <link rel="stylesheet" type="text/css" href="/assets/css/login-style.css">
- <link rel="icon" type="image/png" sizes="16x16" href="/assets/plugins/images/favicon.png">
+ <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/solusi-digital-logo.png">
 
 </head>   
 <body>
@@ -18,6 +18,7 @@
       <img id="logo-fg" src="/assets/plugins/images/fgroupindonesia.jpg" />
     </div>
     <h1 id="title-login">Portal</h1>
+       
     <span id="error-msg"><?= $status ?></span>
     <form action="/verify" method="post">
       <div class="form-group">
@@ -31,7 +32,9 @@
       <div class="form-group">
         <input type="submit" value="Login" class="btn">
         <br> <br>
-        <span id="version">Rev : v1.2</span>
+        <a href="register"> Register New Account </a>
+        <hr>
+         <span id="version">Rev : v1.2</span>
       </div>
     </form>
   </div>

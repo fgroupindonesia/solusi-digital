@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\DataModel;
+use App\Libraries\CurrencyHelper;
 
 class Home extends BaseController
 {
@@ -20,13 +21,8 @@ class Home extends BaseController
 
     public function index()
     {
-       return redirect()->to('http://fgroupindonesia.com/pelayanan/solusi-digital'); 
-        //return "something  x"  . base_url();
-        //$cond = array(
-        //    'username' => 'cinta'
-        //);
-
-        //$this->getDBData('balance', $cond, 'users');
+       //return redirect()->to('http://fgroupindonesia.com/pelayanan/solusi-digital'); 
+         return view('landing_page');
     }
 
      public function order_jasa(): string
@@ -43,6 +39,10 @@ class Home extends BaseController
        $data['search_display'] = 'search-hide';
        $data['role'] = $r;
 
+       // we pass the library to help
+       // the view in rendering cash value
+       $data['currency_helper'] = new CurrencyHelper();
+
         if(!empty($r)){
          
           //echo "client";
@@ -50,6 +50,12 @@ class Home extends BaseController
                 return view('dashboard_order_jasa', $data);
            }
         
+    }
+
+    public function display_registration(): string {
+
+         return view('registration');
+
     }
 
 	public function display_login(): string
@@ -260,6 +266,10 @@ class Home extends BaseController
         $bpvv = $this->db->getLowestBasePricePackage('virtualvisitors');
         $bpwm = $this->db->getLowestBasePricePackage('wishlist_marketplace');
 
+        $bfos = $this->db->getLowestBasePricePackage('format_os');
+        $bkdoc = $this->db->getLowestBasePricePackage('ketik_document');
+        $buap = $this->db->getLowestBasePricePackage('upload_aplikasi');
+
 
         $base_price_comment = $this->asRupiah($bpc);
         $base_price_view = $this->asRupiah($bpv);
@@ -270,6 +280,10 @@ class Home extends BaseController
         $base_price_upgrade_fituraplikasi = $this->asRupiah($bpuf);
         $base_price_virtualvisitors = $this->asRupiah($bpvv);
         $base_price_wishlist_marketplace = $this->asRupiah($bpwm);
+
+        $base_price_format_os = $this->asRupiah($bfos);
+        $base_price_ketik_document = $this->asRupiah($bkdoc);
+        $base_price_upload_aplikasi = $this->asRupiah($buap);
 
         $m_balance          = $this->db->getTotalAmountDepositsThisMonth();
         $monthly_balance    = $this->asRupiah($m_balance);
@@ -329,6 +343,7 @@ class Home extends BaseController
             'propic'    => $this->getSessionData('propic'),
             'balance'    => $this->asRupiah($cash),
             'username'  => $this->getSessionData('username'),
+            'fullname'  => $this->getSessionData('fullname'),
             'pass'  => $this->getSessionData('pass'),
             'email'  => $this->getSessionData('email'),
             'occupation'  => $this->getSessionData('occupation'),
@@ -358,7 +373,11 @@ class Home extends BaseController
             'base_price_upgrade_fituraplikasi' => $base_price_upgrade_fituraplikasi,
             'base_price_view' => $base_price_view,
             'base_price_virtualvisitors' => $base_price_virtualvisitors,
-            'base_price_wishlist_marketplace' => $base_price_wishlist_marketplace
+            'base_price_wishlist_marketplace' => $base_price_wishlist_marketplace,
+
+            'base_price_upload_aplikasi' => $base_price_upload_aplikasi,
+            'base_price_format_os' => $base_price_format_os,
+            'base_price_ketik_document' => $base_price_ketik_document
         );
 
         if($usage == 'admin'){

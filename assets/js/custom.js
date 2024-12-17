@@ -39,12 +39,21 @@ $(function() {
 
 $( document ).ready(function() {
 
-    new DataTable('#table-visitors');
-    new DataTable('#table-apps');
-    new DataTable('#table-deposits');
-    new DataTable('#table-order-jasa');
-    new DataTable('#table-users');
+    prepareDataTable('table-visitors');
+    prepareDataTable('table-apps');
+    prepareDataTable('table-deposits');
+    prepareDataTable('table-order-jasa');
+    prepareDataTable('table-users');
     
-
-
 });
+
+function prepareDataTable(idCome){
+
+    let el = '#' + idCome;
+    let element = $(el);
+
+    if(element.length>0){
+        new DataTable(el);
+    }
+
+}

@@ -383,6 +383,7 @@ curl_close($ch);
         //echo var_dump($rest);
         $session->set('role', $rest[0]->role);
         $session->set('username', $rest[0]->username);
+        $session->set('fullname', $rest[0]->fullname);
         $session->set('pass', $rest[0]->pass);
         $session->set('email', $rest[0]->email);
         $session->set('sex', $rest[0]->sex);
@@ -423,6 +424,7 @@ curl_close($ch);
         $session->set('role', $rest[0]->role);
         $session->set('balance', $rest[0]->balance);
         $session->set('username', $rest[0]->username);
+        $session->set('fullname', $rest[0]->fullname);
         $session->set('pass', $rest[0]->pass);
         $session->set('email', $rest[0]->email);
         $session->set('sex', $rest[0]->sex);
@@ -1208,10 +1210,33 @@ curl_close($ch);
         }
     }
 
+    public function user_email_check(){
+
+        $e = $this->request->getPost('email');
+        $u = $this->request->getPost('username');
+
+        $data = array(
+            'username'  => $u,
+            'email'     => $e
+        );
+
+        $hasil = $this->db->isDuplicate($data, 'users');
+
+        if($hasil != false){
+            // duplicate
+            echo "error";
+        }else {
+            // this user can be used to be registered
+            echo "valid";
+        }
+
+    }
+
     public function user_add()
     {
         $u = $this->request->getPost('username');
         $p = $this->request->getPost('pass');
+        $f = $this->request->getPost('fullname');
         $e = $this->request->getPost('email');
         $s = $this->request->getPost('sex');
         $o = $this->request->getPost('occupation');
@@ -1223,6 +1248,7 @@ curl_close($ch);
             $role = 'client';
         }
 
+       
         if(!isset($pro)){
             if($s == 'male')
             $pro = 'default-male.png';
@@ -1234,6 +1260,7 @@ curl_close($ch);
 
         $data = array(
             'username'  => $u,
+            'fullname'  => $f,
             'pass'      => $p,
             'email'     => $e,
             'sex'       => $s,

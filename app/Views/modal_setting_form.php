@@ -14,6 +14,15 @@
         
 <!-- the form body started from here -->
 
+<div class="form-group row">
+    <label for="setting-fullname" class="col-4 col-form-label">Fullname</label> 
+    <div class="col-8">
+      <div class="input-group">
+         
+        <input id="setting-fullname" name="fullname" value="<?= $fullname ?>" type="text" class="form-control">
+      </div>
+    </div>
+  </div>
  <div class="form-group row">
     <label for="setting-username" class="col-4 col-form-label">Username</label> 
     <div class="col-8">

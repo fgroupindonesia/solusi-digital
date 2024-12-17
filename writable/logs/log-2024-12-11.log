@@ -1,0 +1,15 @@
+CRITICAL - 2024-12-11 01:48:59 --> ErrorException: Undefined variable $role
+[Method: GET, Route: /]
+in APPPATH\Views\nav_bar.php on line 36.
+ 1 APPPATH\Views\nav_bar.php(36): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $role', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\nav_bar.php', 36)
+ 2 APPPATH\Views\landing_page.php(43): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\nav_bar.php')
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\landing_page.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('landing_page', [], true)
+ 6 APPPATH\Controllers\Home.php(25): view('landing_page')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

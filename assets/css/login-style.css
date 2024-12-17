@@ -10,10 +10,12 @@ body {
 
 #error-msg {
     text-align: center;
-    width: 100%;
+    width: 75%;
+    margin: auto;
     display: block;
     color: red;
     margin-bottom: 5px;
+    background-color: yellow;
 }
 
 #logo-fg {
@@ -135,7 +137,8 @@ label {
       font-weight: bold;
       margin-bottom: 5px;
 }
-    
+
+input[type="email"],    
 input[type="text"],
 input[type="password"] {
       width: 95%;

@@ -11,10 +11,10 @@
     <meta name="description"
         content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>Order Jasa</title>
+    <title>Order Jasa - Solusi Digital</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/plugins/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/solusi-digital-logo.png">
     <!-- Custom CSS -->
     <link href="/assets/plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
@@ -43,81 +43,13 @@
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
-        <header class="topbar" data-navbarbg="skin5">
+         <header class="topbar" data-navbarbg="skin5">
             <nav class="navbar top-navbar navbar-expand-md navbar-dark">
-                <div class="navbar-header" data-logobg="skin6">
-                    <!-- ============================================================== -->
-                    <!-- Logo -->
-                    <!-- ============================================================== -->
-                    <a class="navbar-brand" href="/dashboard">
-                        <!-- Logo icon -->
-                        <b class="logo-icon">
-                            <!-- Dark Logo icon -->
-                            <img src="/assets/plugins/images/logo-icon.png" alt="homepage" />
-                        </b>
-                        <!--End Logo icon -->
-                        <!-- Logo text -->
-                        <span class="logo-text">
-                            <!-- dark Logo text -->
-                            <img src="/assets/plugins/images/logo-text.png" alt="homepage" />
-                        </span>
-                    </a>
-                    <!-- ============================================================== -->
-                    <!-- End Logo -->
-                    <!-- ============================================================== -->
-                    <!-- ============================================================== -->
-                    <!-- toggle and nav items -->
-                    <!-- ============================================================== -->
-                    <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none"
-                        href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
-                </div>
+                <?php include('nav_header.php'); ?>
                 <!-- ============================================================== -->
                 <!-- End Logo -->
                 <!-- ============================================================== -->
-                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
-                   
-                    <!-- ============================================================== -->
-                    <!-- Right side toggle and nav items -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav ms-auto d-flex align-items-center">
-
-                        <!-- ============================================================== -->
-                        <!-- Search -->
-                        <!-- ============================================================== -->
-                        <li class="<?= $search_display ?> in">
-                            <form role="search" class="app-search d-none d-md-block me-3">
-                                <input type="text" placeholder="Search..." class="form-control mt-0">
-                                <a href="" class="active">
-                                    <i class="fa fa-search"></i>
-                                </a>
-                            </form>
-                        </li>
-                        <!-- ============================================================== -->
-                        <!-- User profile and search -->
-                        <!-- ============================================================== -->
-                         <div class="dropdown">
-                          <a class="profile-pic btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                             <img src="/assets/plugins/images/users/<?= $propic ?>" alt="user-img" width="36"
-                                    class="img-circle"><span class="text-white font-medium"><?= $username ?></span>
-                          </a>
-
-                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li><a data-bs-toggle="modal" data-bs-target="#setting-form-modal" class="dropdown-item" href="/settings">
-                               <i class="fa fa-cog" aria-hidden="true"></i>
-                                     <span class="hide-menu">Settings</span>
-                            </a></li>
-                           <li><a class="dropdown-item" href="/logout">
-                               <i class="fa fa-times" aria-hidden="true"></i>
-                                     <span class="hide-menu">Logout</span>
-                            </a></li>
-
-                          </ul>
-                        </div>
-                        <!-- ============================================================== -->
-                        <!-- User profile and search -->
-                        <!-- ============================================================== -->
-                    </ul>
-                </div>
+              <?php include('nav_top.php'); ?>
             </nav>
         </header>
         <!-- ============================================================== -->
@@ -303,6 +235,44 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-12">
+                        <div data-bs-toggle="modal" data-bs-target="#format-os-form-modal" class="order-item white-box analytics-info">
+                            <center>
+                            <div class="social-medias">
+                               <img src="/assets/images/win-logo.png">
+                               <img src="/assets/images/linux-logo.png">
+                            </div>
+                            <h3 class="box-title">Jasa Format OS</h3>
+                            <h5><?= $base_price_format_os;?>,/pc </h5>
+                            </center>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div data-bs-toggle="modal" data-bs-target="#jasa-upload-aplikasi-form-modal" class="order-item white-box analytics-info">
+                            <center>
+                            <div class="social-medias">
+                                <img src="/assets/images/android-logo.png">
+                            </div>
+                            <h3 class="box-title">Jasa Upload Aplikasi</h3>
+                            <h5><?= $base_price_upload_aplikasi;?>,/1 app</h5>
+                            </center>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                         <div data-bs-toggle="modal" data-bs-target="#jasa-ketik-document-form-modal" class="order-item white-box analytics-info">
+                            <center>
+                            <div class="social-medias">
+                                 <img src="/assets/images/english-logo.png">
+                                 <img src="/assets/images/document-logo.png">
+                            </div>
+                            <h3 class="box-title">Jasa Ketik Document</h3>
+                            <h5><?= $base_price_ketik_document;?>,/1 paket</h5>
+                            </center>
+                        </div>
+                    </div>
+                </div>
               
                 <!-- ============================================================== -->
                 <!-- Recent Comments -->
@@ -354,7 +324,7 @@
                                         <a href="#" class="d-flex align-items-center">
                                             <img src="/assets/images/<?= $fileCash ;?>" alt="user-img" class="img-circle">
                                             <div class="ms-2">
-                                                <span class="text-dark">Rp. <?= $key->amount; ?> <small
+                                                <span class="text-dark"><?= $currency_helper->asCurrency($key->amount); ?> <small
                                                         class="d-block text-success d-block"><?= $key->status; ?></small></span>
                                             </div>
                                         </a>
@@ -378,7 +348,7 @@
                 </div>
 
       <?php include('modal_setting_form.php'); ?>
-         <?php include('modal_add_deposit_client.php'); ?>
+      <?php include('modal_add_deposit_client.php'); ?>
       <?php include('modal_jasa_komen.php'); ?>
       <?php include('modal_jasa_view.php'); ?>
       <?php include('modal_jasa_rating.php'); ?>
@@ -387,7 +357,8 @@
       <?php include('modal_jasa_follow_marketplace.php'); ?>
       <?php include('modal_jasa_virtualvisitors.php'); ?>
       <?php include('modal_jasa_upgrade_fituraplikasi.php'); ?>
-       <?php include('modal_jasa_pembuatanaplikasi.php'); ?>
+      <?php include('modal_jasa_pembuatanaplikasi.php'); ?>
+      <?php include('modal_format_os.php'); ?>
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
@@ -410,7 +381,7 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="/assets/plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/assets/js/jquery-3.7.1.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="/assets/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/app-style-switcher.js"></script>
