@@ -11,6 +11,16 @@ $( document ).ready(function() {
 
 	});
 
+	$('body').on('click', '.wa-link-pelayanan', function(e){
+
+		let pelayanan = $(this).find('h3').text();
+		e.preventDefault();
+
+		let pesan = "Hello *Admin*, saya ingin *" + pelayanan + "* segera nih, boleh?";
+		kirimWA(encodeURIComponent(pesan));
+
+	});
+
 	$('body').on('submit', '.php-email-form', function(e){
 
 		$('button[type="submit"]').hide();

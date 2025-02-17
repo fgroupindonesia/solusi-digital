@@ -37,14 +37,26 @@ $(function() {
 });
 
 
+const portalURL = "http://sd.fgroupindonesia.com/portal";
+const homeURL = "http://sd.fgroupindonesia.com/";
+
 $( document ).ready(function() {
+
+    // for portal usage
+    const currentURL = window.location.href;
+
+    if (currentURL === portalURL) {
 
     prepareDataTable('table-visitors');
     prepareDataTable('table-apps');
     prepareDataTable('table-deposits');
     prepareDataTable('table-order-jasa');
     prepareDataTable('table-users');
+
+    } 
     
+    animateText();
+
 });
 
 function prepareDataTable(idCome){
@@ -55,5 +67,29 @@ function prepareDataTable(idCome){
     if(element.length>0){
         new DataTable(el);
     }
+
+}
+
+
+function animateText(){
+
+            const $element = $('.animate_typing');
+            const text = $element.text(); // Get the existing text inside the <p>
+            const speed = 100; // Speed in milliseconds for each character
+
+            $element.text(''); // Clear the text initially
+            let index = 0;
+
+            // Function to type one character at a time
+            function typeEffect() {
+                if (index < text.length) {
+                    $element.append(text[index]); // Add the next character
+                    index++;
+                    setTimeout(typeEffect, speed); // Call the function again
+                }
+            }
+
+            // Start the typing effect
+            typeEffect();
 
 }

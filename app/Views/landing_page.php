@@ -44,28 +44,17 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="#hero" class="active">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#team">Team</a></li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li><a href="#intro">Intro</a></li>
+          <li><a href="#pelayanan">Pelayanan</a></li>
+          <li><a href="#keutamaan">Keutamaan</a></li>
+          <li><a href="#testimony">Testimony</a></li>
+          <li class="dropdown"><a href="#"><span>Login Portal</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
+              <li><a href="#">Pelanggan</a></li>
+              <li><a href="#">Staff</a></li>
             </ul>
           </li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact">Kontak</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -83,27 +72,28 @@
         <!-- Slide 1 -->
         <div class="carousel-item active">
           <div class="carousel-container">
-            <h2 class="animate__animated animate__fadeInDown">Selamat datang <span>!</span></h2>
-            <p class="animate__animated animate__fadeInUp">Kami hadir untuk memastikan kebutuhan Anda dalam Sesi Konsultasi IT, Format Komputer, Jasa Pembuatan Software, Upload Aplikasi Android, hingga Desain Poster dan Logo teratasi dengan baik dan profesional. Bersama kami, wujudkan kemudahan dan hasil terbaik untuk semua kebutuhan digital Anda!.</p>
-            <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+
+            <div class="row">
+              <div class="col-md">
+                  <h2 class="animate__animated animate__fadeInDown">Selamat datang !</h2>
+                  <p class="animate__animated animate__fadeInUp animate_typing">Kami hadir untuk membantu Anda mampu mewujudkan pencapaian bisnis dengan kemudahan dan hasil terbaik untuk dunia digital!</p>
+              </div>
+              <div class="col-lg">
+                <img src="/assets/images/female-hijab-welcome.png" alt="welcome to Solusi Digital Online Platform"/>
+              </div>
+            </div>
+           
           </div>
         </div>
 
-        <!-- Slide 2 -->
-        <div class="carousel-item">
-          <div class="carousel-container">
-            <h2 class="animate__animated animate__fadeInDown">Solusi Terbaik &amp; Terukur</h2>
-            <p class="animate__animated animate__fadeInUp">Disini semua fasilitas telah dirancang untuk menunjang kebutuhan bisnis Anda, mulai dari IT konsultasi, pembuatan software, hingga desain branding yang memperkuat identitas usaha Anda.</p>
-            <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
-          </div>
-        </div>
+      
 
         <!-- Slide 3 -->
         <div class="carousel-item">
           <div class="carousel-container">
-            <h2 class="animate__animated animate__fadeInDown">Hawainya Corporate</h2>
+            <h2 class="animate__animated animate__fadeInDown">Syurganya Corporate</h2>
             <p class="animate__animated animate__fadeInUp">Dengan solusi IT praktis seperti format komputer dan pembuatan software, kami bantu Anda membawa usaha ke level berikutnya tanpa perlu repot-repot.</p>
-            <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+           
           </div>
         </div>
 
@@ -135,7 +125,7 @@
     </section><!-- /Hero Section -->
 
     <!-- About Section -->
-    <section id="about" class="about section">
+    <section id="intro" class="about section">
 
       <div class="container">
 
@@ -144,9 +134,9 @@
           <div class="col-lg-7 about-img" data-aos="zoom-out" data-aos-delay="200"><img src="assets/images/person-arm-closed2.jpg"></div>
 
           <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
-            <h2 class="inner-title">Solusi Digital</h2>
+          
             <div class="our-story">
-              <h4>Permulaan</h4>
+              <h4>Intro</h4>
               <hr>
               <p>Platform ini lahir dari kebutuhan yang nyata di masyarakat akan solusi IT yang praktis, profesional, dan terukur. Di era digital ini, banyak individu maupun bisnis kecil hingga menengah menghadapi tantangan untuk mengoptimalkan teknologi dalam operasional mereka, baik itu dalam pengelolaan data, pengembangan aplikasi, maupun branding visual. Fokus utamanya : </p>
               <ul>
@@ -229,7 +219,7 @@
     </section><!-- /Clients Section -->
 
     <!-- Features 2 Section -->
-    <section id="features-2" class="features section features-2">
+    <section id="keutamaan" class="features section features-2">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -285,7 +275,7 @@
     </section><!-- /Features 2 Section -->
 
     <!-- Services Section -->
-    <section id="services" class="services section">
+    <section id="pelayanan" class="services section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -302,7 +292,7 @@
               <div class="icon">
                 <i class="bi bi-person-fill-gear"></i>
               </div>
-              <a href="service-details.html" class="stretched-link">
+              <a href="#" class="wa-link-pelayanan stretched-link">
                 <h3>Konsultasi IT</h3>
               </a>
               <p>Sesi yang disedikan bagi Anda agar dapat menemukan solusi tepat guna, mulai dari pengembangan perangkat lunak hingga optimasi sistem bisnis Anda berjalan lebih efisien dan efektif.</p>
@@ -314,7 +304,7 @@
               <div class="icon">
                 <i class="bi bi-pc-display-horizontal"></i>
               </div>
-              <a href="service-details.html" class="stretched-link">
+             <a href="#" class="wa-link-pelayanan stretched-link">
                 <h3>Format Komputer</h3>
               </a>
               <p>Jadikan perangkat Anda berfungsi optimal, termasuk instalasi ulang sistem operasi, pengaturan ulang perangkat lunak, dan perlindungan data penting.</p>
@@ -326,7 +316,7 @@
               <div class="icon">
                 <i class="bi bi-menu-button-fill"></i>
               </div>
-              <a href="service-details.html" class="stretched-link">
+             <a href="#" class="wa-link-pelayanan stretched-link">
                 <h3>Pembuatan Software</h3>
               </a>
               <p>Software custom yang dirancang khusus untuk memenuhi kebutuhan bisnis Anda, dengan fokus pada solusi efisien, fungsionalitas yang handal, dan pengembangan yang dapat disesuaikan platform target Anda.</p>
@@ -338,11 +328,11 @@
               <div class="icon">
                 <i class="bi bi-google-play"></i>
               </div>
-              <a href="service-details.html" class="stretched-link">
+              <a href="#" class="wa-link-pelayanan stretched-link">
                 <h3>Upload Aplikasi Android</h3>
               </a>
               <p>Seluruh persiapan akun, pengaturan metadata, dan proses verifikasi, untuk memastikan aplikasi Anda dapat diakses oleh pengguna dengan mudah dan aman di Google Playstore.</p>
-              <a href="service-details.html" class="stretched-link"></a>
+             
             </div>
           </div><!-- End Service Item -->
 
@@ -351,11 +341,11 @@
               <div class="icon">
                 <i class="bi bi-palette2"></i>
               </div>
-              <a href="service-details.html" class="stretched-link">
+                <a href="#" class="wa-link-pelayanan stretched-link">
                 <h3>Desain Poster &amp; Logo</h3>
               </a>
               <p>Pembuatan logo dan poster kreatif yang dirancang untuk mencerminkan identitas unik bisnis Anda, dengan desain yang menarik, profesional, dan mudah dikenali, guna meningkatkan daya tarik visual dan memperkuat brand Anda.</p>
-              <a href="service-details.html" class="stretched-link"></a>
+             
             </div>
           </div><!-- End Service Item -->
 
@@ -364,11 +354,11 @@
               <div class="icon">
                 <i class="bi bi-journal-text"></i>
               </div>
-              <a href="service-details.html" class="stretched-link">
+               <a href="#" class="wa-link-pelayanan stretched-link">
                 <h3>Digital E-Book</h3>
               </a>
               <p>Dengan teknologi keamanan canggih yang mencegah duplikasi, memastikan konten Anda tetap eksklusif dan terlindungi, serta memberikan pengalaman membaca yang aman dan nyaman bagi pembaca.</p>
-              <a href="service-details.html" class="stretched-link"></a>
+            
             </div>
           </div><!-- End Service Item -->
 
@@ -485,7 +475,7 @@
     </section><!-- /Gallery Section -->
 
  <!-- Team Section -->
-    <section id="team" class="team section">
+    <section id="testimony" class="team section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -631,6 +621,34 @@
                 <span>Desain Web</span>
                 <p>
                   Penggunaan layout responsive untuk penjualan produk di dunia digital dengan kemudahan website.
+                </p>
+               
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="member">
+              <img src="assets/images/testimony/wa_11.jpg" class="img-fluid" alt="">
+              <div class="member-content">
+                <h4>Group Whatsapp</h4>
+                <span>Khusus Konsultasi IT</span>
+                <p>
+                  Mendapatkan kesempatan langsung diskusi penanganan tiap hal yang dihadapi dikantor dan dipecahkan langsung oleh tim ahli.
+                </p>
+               
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+
+           <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="member">
+              <img src="assets/images/testimony/wa_12.jpg" class="img-fluid" alt="">
+              <div class="member-content">
+                <h4>Group Whatsapp</h4>
+                <span>Khusus Konsultasi IT</span>
+                <p>
+                  Bonus life-time access!
                 </p>
                
               </div>
@@ -895,6 +913,7 @@
   <script src="assets/js/jquery-3.7.1.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/wa-konsul.js"></script>
+  <script src="assets/js/custom.js"></script>
 
 </body>
 
