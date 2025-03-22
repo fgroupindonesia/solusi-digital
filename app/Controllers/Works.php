@@ -20,14 +20,210 @@ class Works extends BaseController
 
     }
 
+    public function generate_js(){
+
+        $code = $this->request->getGet('code');
+        $debug = $this->request->getGet('debug');
+
+        $identifier = "#btn_ok";
+        $phone = "6285795569337";
+        $message = "hello!";
+
+        $jqueryScript = null;
+        $jsSmart = null;
+
+        $result = array(
+            'status' => 'invalid'
+        );
+
+        $filter = array(
+            'order_client_reff' => $code
+        );
+
+        // check first existance
+        $datana = $this->db->selectDataBy($filter, 'order_jasa');
+
+        if(!empty($datana)){
+
+            $filter2 = array(
+                'id' => $datana->order_id
+            );
+
+            $filter3 = array(
+                'order_id' => $datana->order_id
+            );
+
+            $data_wa_chat = $this->db->selectDataBy($filter2, 'order_wa_chat_rotator');
+            $data_cs = $this->db->selectAllDataBy($filter3, 'cs_wa_chat_rotator');
+
+            $phones_cs = $this->getPhoneNumbersOnly($data_cs);
+
+            $rotator_mode = $data_wa_chat->rotator_mode;
+            $message = $data_wa_chat->message;
+            $id_mode = $data_wa_chat->identifier_mode;
+            $id_tag = $data_wa_chat->identifier_tag;
+
+            // default
+            $identifier_chosen = '';
+
+            if(!empty($id_mode)){
+                if($id_mode == 'manual'){
+                    $identifier_chosen = "[" . $id_tag . "]";
+                }else if($id_mode == 'all links'){
+                    $identifier_chosen = "a";
+                }else if($id_mode == 'all buttons'){
+                    $identifier_chosen = "button";
+                }else if($id_mode == 'button contains'){
+                    $identifier_chosen = "button:contains('" . $id_tag . "')";
+                }else if($id_mode == 'link contains'){
+                    $identifier_chosen = "a:contains('" . $id_tag . "')";
+                }
+            }
+
+                $file0 = FCPATH . 'assets/js/sweetalert2@11.js';
+                $file1 = FCPATH . 'assets/js/jquery-3.6.0.min.js';
+                $file2 = null;
+
+
+                
+            $file2 = FCPATH . 'assets/js/js-smart/wa-chat-rotator-' . $rotator_mode . '.js';
+                
+                if (file_exists($file1)) {
+
+                $jsweet =       file_get_contents($file0);                  
+                $jqueryScript = file_get_contents($file1);
+                $jsSmart = file_get_contents($file2);
+
+                if($rotator_mode == 'schedule')
+            $jsSmart = $this->generate_js_for_schedule($jsSmart, $code, $datana->order_id, $message, $identifier_chosen);
+
+
+                if($rotator_mode == 'order')
+            $jsSmart = $this->generate_js_for_order($jsSmart, $code, $datana->order_id, $message, $identifier_chosen);
+
+                if($rotator_mode == 'random')
+                $jsSmart = $this->generate_js_for_random($jsSmart, $phones_cs, $message, $identifier_chosen);
+
+                if($rotator_mode == 'device'){
+
+                    $cari_iphone = array('client_target_device'=>'iphone', 'order_id' => $datana->order_id);
+                    $cari_android = array('client_target_device'=>'android', 'order_id' => $datana->order_id);
+                    $cari_laptop = array('client_target_device'=>'laptop', 'order_id' => $datana->order_id);
+                    $cari_generic = array('client_target_device'=>'all', 'order_id' => $datana->order_id);
+
+             $cs_iphone = $this->db->selectAllDataBy($cari_iphone, 'cs_wa_chat_rotator');
+             $cs_iphone = $this->getPhoneNumbersOnly($cs_iphone);
+
+             $cs_generic = $this->db->selectAllDataBy($cari_generic, 'cs_wa_chat_rotator');
+             $cs_generic = $this->getPhoneNumbersOnly($cs_generic);
+
+             $cs_android = $this->db->selectAllDataBy($cari_android, 'cs_wa_chat_rotator');
+             $cs_android = $this->getPhoneNumbersOnly($cs_android);
+
+             $cs_laptop = $this->db->selectAllDataBy($cari_laptop, 'cs_wa_chat_rotator');
+             $cs_laptop = $this->getPhoneNumbersOnly($cs_laptop);
+
+            $jsSmart = $this->generate_js_for_device($jsSmart, $cs_generic, $cs_iphone, $cs_android, $cs_laptop, $message, $identifier_chosen);
+
+                }
+
+                $result['data'] = $jqueryScript . " " . $jsweet . " " . $jsSmart;
+
+                }
+        }
+
+
+        if($debug == 1){
+            print_r($result);
+            exit();
+        }
+
+       
+        return    $this->response
+            ->setContentType('application/javascript')
+             ->setBody($jqueryScript . " " . $jsweet . " " . $jsSmart);
+       
+
+    }
+
+    private function getPhoneNumbersOnly($data_result){
+
+        $data = array();
+
+        foreach($data_result as $k){
+
+
+           $data[] = $k->cs_number;
+
+        }
+
+        return $data;
+
+    }
+
+
+    private function generate_js_for_schedule($jsContent, $data_code, $data_order_id, $data_message, $identifier_chosen){
+
+        $data_baru = str_replace('_code_', $data_code, $jsContent);
+        $data_baru = str_replace('_orderid_', $data_order_id, $data_baru);
+        $data_baru = str_replace('_message_', $data_message, $data_baru);
+        $data_baru = str_replace('_identifier_', $identifier_chosen, $data_baru);
+
+        return $data_baru;
+
+    }
+
+    private function generate_js_for_order($jsContent, $data_code, $data_order_id, $data_message, $identifier_chosen){
+
+        $data_baru = str_replace('_code_', $data_code, $jsContent);
+        $data_baru = str_replace('_orderid_', $data_order_id, $data_baru);
+        $data_baru = str_replace('_message_', $data_message, $data_baru);
+        $data_baru = str_replace('_identifier_', $identifier_chosen, $data_baru);
+
+        return $data_baru;
+
+    }
+
+    private function generate_js_for_random($jsContent, $data_phone, $data_message, $identifier_chosen){
+
+        // replace the number as an array
+        $json = json_encode($data_phone);
+        $data_baru = str_replace('_phone_', $json, $jsContent);
+        $data_baru = str_replace('_message_', $data_message, $data_baru);
+        $data_baru = str_replace('_max_', sizeof($data_phone), $data_baru);
+        $data_baru = str_replace('_identifier_', $identifier_chosen, $data_baru);
+
+        return $data_baru;
+
+    }
+
+    private function generate_js_for_device($jsContent, $data_generic, $data_phone_iphone, $data_phone_android, $data_laptop, $data_message, $identifier_chosen){
+
+        // replace the number as an array
+        $json_generic = json_encode($data_generic);
+        $json_p_iphone = json_encode($data_phone_iphone);
+        $json_p_android = json_encode($data_phone_android);
+        $json_laptop = json_encode($data_laptop);
+
+        $data_baru = str_replace('_phoneandroid_', $json_p_android, $jsContent);
+        $data_baru = str_replace('_phoneiphone_', $json_p_iphone, $data_baru);
+        $data_baru = str_replace('_phonegeneric_', $json_generic, $data_baru);
+        $data_baru = str_replace('_phonelaptop_', $json_laptop, $data_baru);
+
+        $data_baru = str_replace('_message_', $data_message, $data_baru);
+        
+        $data_baru = str_replace('_identifier_', $identifier_chosen, $data_baru);
+
+        return $data_baru;
+
+    }
+
     public function testing(){
         return view('popup');
     }
 
     public function upload_data_virtualvisitors(){
 
-       
-        
         $validated = $this->validate([
             'virtualvisitorsfile' => [
                 'uploaded[virtualvisitorsfile]',
@@ -69,6 +265,51 @@ class Works extends BaseController
         //echo var_dump($data);
     }
 
+     public function upload_data_layananmanual(){
+
+        $validated = $this->validate([
+            'lampiran' => [
+                'uploaded[lampiran]',
+                'ext_in[lampiran,jpg,jpeg,png,xls,xlsx,doc,docx,pdf,mp3,zip,rar]',
+                'max_size[lampiran,2024]',
+            ],
+        ]);
+
+
+        //echo var_dump( $validated);
+
+        if ($validated) {
+
+            $docs = $this->request->getFile('lampiran');
+
+            // create folder by date
+          
+
+             $dname = explode(".", $_FILES['lampiran']['name']);
+            $ext = end($dname);
+
+            $folderWaktu = date('ymd');
+              $folderName = 'layananmanual/' . $folderWaktu;
+            $folderPath = WRITEPATH . 'uploads/' . $folderName;
+            $newName = date('ymdhis') . '_layananmanual.' . $ext;
+
+            //echo 'moved';
+
+             if (!file_exists($folderPath)) {
+                mkdir($folderPath, 0777, true);
+            }
+
+             $docs->move($folderPath, $newName);
+
+            
+             return $nama_lengkap = $folderWaktu . '/' . $newName;
+        }
+
+       
+        //echo var_dump($data);
+        return null;
+        
+    }
 
     private function readExtractToDB($folderPath, $newName){
 
@@ -271,7 +512,7 @@ curl_close($ch);
             'name' => $n
         );
 
-        $datana = $this->db->selectSingleLastData($param, 'campaign_virtualvisitors');
+        $datana = $this->db->selectAllDataBy($param, 'campaign_virtualvisitors');
 
         if($datana != false){
             echo json_encode($datana[0]);
@@ -500,6 +741,41 @@ curl_close($ch);
 
     }
 
+
+     public function wa_chat_rotator(){
+
+        $package = $this->request->getPost('package');
+        $user = $this->request->getPost('username');
+       
+        
+          $data1 = array(
+            'package'  => $package,
+            'username' => $user
+        );
+
+           $rest1 = $this->db->insertData($data1, 'order_wa_chat_rotator');
+            $order_id = $rest1;
+            $order_type = 'wa_chat_rotator';
+
+        $sixDigitRandomRef = $this->generateRandomPass(6);
+
+          $data2 = array(
+            'order_id'              => $order_id,
+            'order_type'            => $order_type,
+            'order_client_reff'     => $sixDigitRandomRef,
+            'status'                => 'pending',
+            'username'              => $user
+        );
+
+       $rest2 = $this->db->insertData($data2, 'order_jasa');
+     
+     if($rest1 == 0){
+        echo "none";
+     }else if($rest1 != 0 && $rest2 != 0) {
+        echo "valid";
+     }
+
+    }
 
     public function jasa_upgrade_fituraplikasi_order(){
 
@@ -866,6 +1142,27 @@ curl_close($ch);
     }
 
 
+    public function wa_chat_rotator_script_ready()
+    {
+        
+       $c =  $this->request->getPost('code');
+
+       $end_result = array(
+        'status' => 'invalid',
+        'message' => null
+       );
+
+       // i need a message error if not ready
+       $data = $this->db->isWAChatRotatorReady($c, true);
+
+       if(!empty($data)){
+            $end_result['status'] = 'valid';
+            $end_result['message'] = $data;
+       }
+
+       echo json_encode($end_result);
+
+    }
 
      public function jasa_subscriber_order(){
 
@@ -1232,6 +1529,50 @@ curl_close($ch);
 
     }
 
+    public function layananmanual_delete()
+    {
+         $id = $this->request->getPost('id');
+
+          $rest = $this->db->deleteData($id, 'layananmanual');
+     
+         if($rest != 0){
+            echo "valid";
+         }else{
+            echo "none";
+         }
+
+    }
+
+     public function layananmanual_add()
+    {
+        $u = $this->request->getPost('username_owned');
+        $ui = $this->request->getPost('user_id');
+        $j = $this->request->getPost('jenis_layanan');
+        $q = $this->request->getPost('quantity');
+        
+        $data = array(
+            'username_owned'    => $u,
+            'user_id'           => $ui,
+            'jenis_layanan'     => $j,
+            'quantity'     => $q,
+            'status' => 'pending'
+        );
+
+       
+            $nama = $this->upload_data_layananmanual();
+            $data['attachment'] = $nama;
+      
+
+     $rest = $this->db->insertData($data, 'layananmanual');
+     
+     if($rest == 0){
+        echo "none";
+     }else {
+        echo "valid";
+     }
+
+    }
+
     public function user_add()
     {
         $u = $this->request->getPost('username');
@@ -1390,19 +1731,388 @@ curl_close($ch);
 
     }
 
+     public function layananmanual_update(){
+
+            $id = $this->request->getPost('id');
+        
+            $u = $this->request->getPost('username_owned');
+            $ui = $this->request->getPost('user_id');
+            $q = $this->request->getPost('quantity');
+            $j = $this->request->getPost('jenis_layanan');
+            
+        $data = array(
+            'username_owned'  => $u,
+            'user_id'      => $ui,
+            'jenis_layanan'     => $j,
+            'quantity'       => $q
+        );
+
+     $rest = $this->db->updateData($id, $data, 'layananmanual');
+     
+     if($rest == 0){
+        echo "none";
+     }else {
+        echo "valid";
+     }
+
+    }
+
+    
+    public function wa_chat_rotator_cs_schedule_edit(){
+
+        $order_id       = $this->request->getPost('order_id');
+        $cs_num         = $this->request->getPost('cs_number');
+
+        $filter = array(
+            'order_id'  => $order_id,
+            'cs_number' => $cs_num
+        );
+
+        $datana = $this->db->selectDataBy($filter, 'cs_schedule_wa_chat_rotator');
+
+        $end_result = array(
+            'status'    => 'invalid',
+            'data'      => null
+        );
+
+        if(!empty($datana)){
+            $end_result['data'] = $datana;
+        }
+
+
+        echo json_encode($end_result);
+
+    }
+
+    public function wa_chat_rotator_cs_schedule_update(){
+
+        $updated = false;
+
+        $cs_number = $this->request->getPost('cs_number');
+        $cs_days_selected = $this->request->getPost('cs_days_selected');
+        $cs_day_mode = $this->request->getPost('cs_day_mode');
+        $hour_closed = $this->request->getPost('hour_closed');
+        $hour_open = $this->request->getPost('hour_open');
+
+        $order_id = $this->request->getPost('order_id');
+
+        $cari1 = array(
+            'order_id' => $order_id,
+            'cs_number' => $cs_number
+        );
+
+        $data_baru = array(
+            'day_mode' => $cs_day_mode,
+            'days_selected' => json_encode($cs_days_selected),
+            'hour_open' => $hour_open,
+            'hour_closed' => $hour_closed,
+            'cs_number' => $cs_number,
+            'order_id' => $order_id
+        );
+
+        $found = $this->db->isDuplicate($cari1, 'cs_schedule_wa_chat_rotator');
+
+        if($found){
+            //updating
+            $this->db->updateDataBy($cari1, $data_baru, 'cs_schedule_wa_chat_rotator');
+        }else{
+            $this->db->insertData($data_baru, 'cs_schedule_wa_chat_rotator');
+        }
+
+        $updated = true;
+
+         if(!$updated){
+                echo "none";
+             }else {
+                echo "valid";
+             }
+
+    }
+
+    public function wa_chat_rotator_cs_region_update(){
+
+        $updated = false;
+
+
+        $o = $this->request->getPost('order_id');
+        $cs_no = $this->request->getPost('cs_number');
+        $country = $this->request->getPost('country');
+        $region = $this->request->getPost('region');
+        $city = $this->request->getPost('city');
+
+        $cari = array(
+            'order_id' => $o,
+            'cs_number' => $cs_no
+        );
+
+        $data_baru = array(
+            'order_id' => $o,
+            'cs_number' => $cs_no,
+            'country' => $country,
+            'region' => $region,
+            'city' => $city
+        );
+
+
+        $ketemu = $this->db->isDuplicate($cari, 'cs_map_wa_chat_rotator');
+
+        if($ketemu){
+            // do updates
+            $this->db->updateDataBy($cari, $data_baru, 'cs_map_wa_chat_rotator');
+            $updated = true;
+        }else {
+            // do insert
+            $this->db->insertData($data_baru, 'cs_map_wa_chat_rotator');
+            $updated = true;
+        }
+
+         if(!$updated){
+                echo "none";
+             }else {
+                echo "valid";
+             }
+
+    }
+
+    public function wa_chat_rotator_update(){
+
+        $updated = false;
+
+            $id = $this->request->getPost('id');
+        
+            $r = $this->request->getPost('rotator_mode');
+            $c = $this->request->getPost('custom_name');
+            $it = $this->request->getPost('identifier_tag');
+            $im = $this->request->getPost('identifier_mode');
+            $m = $this->request->getPost('message');
+
+            $nomor_wa_cs = $this->request->getPost('nomor_wa_cs');
+           
+            $web_url = $this->request->getPost('web_url');
+
+            $client_target_device = $this->request->getPost('client_target_device');
+
+
+            if(!empty($nomor_wa_cs)){
+
+                // clear first then re-add
+                $orderna = array(
+                    'order_id' => $id
+                );
+
+                $this->db->deleteDataBy($orderna, 'cs_wa_chat_rotator');
+
+                $urut=0;
+                foreach($nomor_wa_cs as $no){
+
+                        $datana = array(
+                        'cs_number' => $no,
+                        'order_id' => $id,
+                        'client_target_device' => $client_target_device[$urut]
+                        );
+
+                        if(!empty($no))
+                        $this->db->insertData($datana, 'cs_wa_chat_rotator');
+
+                    $updated = true;
+
+                $urut++;
+
+                }
+
+                // now we add record for order mode
+                if($r == 'order'){
+                   $stat = $this->db->isDuplicate($orderna, 'cs_record_wa_chat_rotator');
+                   $data_baru = array(
+                        'order_id' => $id,
+                        'total_cs_numbers' => sizeof($nomor_wa_cs),
+                        'last_index' => 0
+                   );
+
+                   if($stat){
+                    $this->db->updateDataBy($orderna, $data_baru, 'cs_record_wa_chat_rotator');
+                   }else{
+                    $this->db->insertData($data_baru, 'cs_record_wa_chat_rotator');
+                   }
+
+                }
+
+            }
+
+            if(!empty($web_url)){
+
+                // clear first then re-add
+                $orderna = array(
+                    'order_id' => $id
+                );
+
+                $this->db->deleteDataBy($orderna, 'web_wa_chat_rotator');
+
+                foreach($web_url as $url){
+                    $datana = array(
+                    'url' => $url,
+                    'order_id' => $id
+                    );
+
+                    if(!empty($url))
+                    $this->db->insertData($datana, 'web_wa_chat_rotator');
+
+                $updated = true;
+                }
+
+            }
+            
+            
+        $data = array(
+            'rotator_mode'  => $r,
+            'custom_name'      => $c,
+            'identifier_tag' => $it,
+            'identifier_mode' => $im,
+            'message' => $m
+
+        );
+
+     $rest = $this->db->updateData($id, $data, 'order_wa_chat_rotator');
+
+     if(!empty($rest)){
+        $updated = true;
+     }
+     
+     if(!$updated){
+        echo "none";
+     }else {
+        echo "valid";
+     }
+
+    }
+
+    public function wa_chat_rotator_next_schedule_cs(){
+
+         $end_result = array(
+            'data' => null,
+            'status' => 'invalid'
+        );
+
+        $order_id = $this->request->getPost('order_id');
+        $code = $this->request->getPost('code');
+
+           // time is 24 hour format ie : 01:30, 23:00
+        // day is english based format : sunday, monday, etc...
+        $client_time = $this->request->getPost('time');
+        $client_day = $this->request->getPost('day');
+
+        $filter1 = array(
+            'order_id'      => $order_id,
+            'order_time'    => $client_time,
+            'order_day'     => $this->change_to_bahasa($client_day)
+        );
+
+        $filter0 = array(
+            'order_id' => $order_id,
+            'order_client_reff' => $code
+        );
+
+        $data_ordered = $this->db->selectAllDataBy($filter0, 'order_jasa');
+
+        if(!empty($data_ordered)){
+        
+                $data_cs = $this->db->getNextScheduleCSNumberBy($filter1);
+
+                if(!empty($data_cs)){
+                    $end_result['data'] = $data_cs;
+                    $end_result['status'] = 'valid';
+                }
+
+        }
+
+        
+        echo json_encode($end_result);
+
+    }
+
+    private function change_to_bahasa($english_day) {
+    $days = [
+        'sunday'    => 'minggu',
+        'monday'    => 'senin',
+        'tuesday'   => 'selasa',
+        'wednesday' => 'rabu',
+        'thursday'  => 'kamis',
+        'friday'    => 'jumat',
+        'saturday'  => 'sabtu'
+    ];
+
+    $short_days = [
+        'sun' => 'sunday',
+        'mon' => 'monday',
+        'tue' => 'tuesday',
+        'wed' => 'wednesday',
+        'thu' => 'thursday',
+        'fri' => 'friday',
+        'sat' => 'saturday'
+    ];
+
+    $english_day = strtolower($english_day); // Ensure lowercase
+
+    // Check if input is a 3-letter day and convert to full name
+    if (isset($short_days[$english_day])) {
+        $english_day = $short_days[$english_day];
+    }
+
+    return $days[$english_day] ?? $english_day; // Return translated day or original if not found
+}
+
+
+    public function wa_chat_rotator_next_cs(){
+
+
+        $end_result = array(
+            'data' => null,
+            'status' => 'invalid'
+        );
+
+        $order_id = $this->request->getPost('order_id');
+        $code = $this->request->getPost('code');
+
+     
+
+        $filter1 = array(
+            'order_id' => $order_id
+        );
+
+        $filter0 = array(
+            'order_id' => $order_id,
+            'order_client_reff' => $code
+        );
+
+        $data_ordered = $this->db->selectAllDataBy($filter0, 'order_jasa');
+
+        if(!empty($data_ordered)){
+        
+                $data_cs = $this->db->getNextCSNumberBy($filter1);
+
+                $end_result['data'] = $data_cs;
+                $end_result['status'] = 'valid';
+
+        }
+
+        
+        echo json_encode($end_result);
+
+
+    }
 
     public function user_update(){
 
             $id = $this->request->getPost('id');
         
-            $u = $this->request->getPost('username');
-           $p = $this->request->getPost('pass');
-             $e = $this->request->getPost('email');
-               $s = $this->request->getPost('sex');
-                 $o = $this->request->getPost('occupation');
-                   $pro = $this->request->getPost('propic');
-                     $role = $this->request->getPost('role');
-                       $wa = $this->request->getPost('whatsapp');
+        $u = $this->request->getPost('username');
+        $p = $this->request->getPost('pass');
+        $e = $this->request->getPost('email');
+        $s = $this->request->getPost('sex');
+        $o = $this->request->getPost('occupation');
+        $pro = $this->request->getPost('propic');
+        $role = $this->request->getPost('role');
+        $wa = $this->request->getPost('whatsapp');
 
         if(!isset($role)){
             $role = 'client';
@@ -1495,12 +2205,89 @@ curl_close($ch);
 
     }
 
+     public function wa_chat_rotator_delete()
+    {
+         $id = $this->request->getPost('id');
+
+          $rest = $this->db->deleteData($id, 'order_wa_chat_rotator');
+
+          // delete any related data
+          $id2 = array(
+            'order_id' => $id
+          );
+
+          $rest2 = $this->db->deleteDataBy($id2, 'order_jasa');
+          $rest3 = $this->db->deleteDataBy($id2, 'cs_wa_chat_rotator');
+          $rest4 = $this->db->deleteDataBy($id2, 'web_wa_chat_rotator');
+     
+         if($rest != 0){
+            echo "valid";
+         }else{
+            echo "none";
+         }
+
+    }
+
     public function virtualvisitors_edit()
     {
         $id = $this->request->getPost('id');
         //$id = 5;
 
           $rest = $this->db->selectData($id, 'data_virtualvisitors');
+        
+        if(count($rest)==0){
+            // no value
+            echo "none";
+        }else{
+            echo json_encode($rest[0]);
+        }
+
+    }
+
+     public function wa_chat_rotator_edit()
+    {
+        $id = $this->request->getPost('id');
+        //$id = 5;
+
+          $rest = $this->db->selectData($id, 'order_wa_chat_rotator');
+          $data_result = array();
+
+          if(!empty($rest)){
+            
+            $filter = array(
+                'order_id' => $id
+            );
+
+            $rest2 = $this->db->selectAllDataBy($filter, 'cs_wa_chat_rotator');
+            $rest3 = $this->db->selectAllDataBy($filter, 'web_wa_chat_rotator');
+
+          // because all is object based 
+            // we transform them into associative array
+            $rest_array = json_decode(json_encode($rest[0]), true);
+
+            $data_sisipan = array();
+          $data_sisipan['data_web'] = $rest3;
+          $data_sisipan['data_cs'] = $rest2;
+
+            $data_result =  array_merge($data_sisipan, $rest_array);
+
+          }
+        
+        if(count($rest)==0){
+            // no value
+            echo "none";
+        }else{
+            echo json_encode($data_result);
+        }
+
+    }
+
+     public function layananmanual_edit()
+    {
+        $id = $this->request->getPost('id');
+        //$id = 5;
+
+          $rest = $this->db->selectData($id, 'layananmanual');
         
         if(count($rest)==0){
             // no value

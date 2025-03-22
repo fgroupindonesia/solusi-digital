@@ -15,7 +15,7 @@
         
 <!-- the form body started from here -->
 
-
+<section id="deposit-option">
  <div class="form-group row">
     <label class="col-4">Paket Pengisian</label> 
     <div class="col-8">
@@ -41,8 +41,18 @@
       </div>
     </div>
   </div> 
+</section>
 
 <!-- this is end of form body -->
+<section id="payment-method">
+    <h5>Catatan :</h5>
+    <label for="payment-method" class="custom-control-label">Pembayaran via (salah satu) : Bank Transfer/Go Pay/ShopeePay </label>
+    <label for="payment-method" class="custom-control-label">Screenshot bukti pembayaran ke whatsapp admin untuk diproses lebih lanjut.</label>
+    <iframe id="payment-method-doc" src="<?= base_url(); ?>/assets/docs/payment_method_all.pdf" width="100%" height="100%">
+
+    </iframe>
+</section>
+
 
       </div> 
       <div class="modal-footer">

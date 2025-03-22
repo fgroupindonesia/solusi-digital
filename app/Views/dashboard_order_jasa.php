@@ -273,6 +273,37 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-12">
+                        <div data-bs-toggle="modal" data-bs-target="#wa-chat-rotator-modal" class="order-item white-box analytics-info">
+                            <center>
+                            <div class="social-medias">
+                               <img src="/assets/images/wa.png">
+                            </div>
+                            <h3 class="box-title">Jasa WA Chat Rotator</h3>
+                            <h5><?= $base_price_wa_chat_rotator;?>,/1 akun</h5>
+                            </center>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div data-bs-toggle="modal" data-bs-target="#landing-page-modal" class="order-item white-box analytics-info">
+                            <center>
+                            <div class="social-medias">
+                                <img src="/assets/images/wp-logo.png">
+                                 <img src="/assets/images/joomla-logo.png">
+                                 <img src="/assets/images/drupal-logo.png">
+                                 <img src="/assets/images/laravel-logo.png">
+                                 <img src="/assets/images/codeigniter-logo.png">    
+                                 
+                            </div>
+                            <h3 class="box-title">Jasa Landing Page</h3>
+                            <h5><?= $base_price_landing_page;?>,/1 akun</h5>
+                            </center>
+                        </div>
+                    </div>
+                    
+                </div>
               
                 <!-- ============================================================== -->
                 <!-- Recent Comments -->
@@ -359,6 +390,8 @@
       <?php include('modal_jasa_upgrade_fituraplikasi.php'); ?>
       <?php include('modal_jasa_pembuatanaplikasi.php'); ?>
       <?php include('modal_format_os.php'); ?>
+      <?php include('modal_wa_chat_rotator.php'); ?>
+      <?php include('modal_landing_page.php'); ?>
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->

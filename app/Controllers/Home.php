@@ -17,6 +17,12 @@ class Home extends BaseController
 
     }
 
+    public function test(){
+        
+        return view('testing_wa_chat_rotator');
+
+    }
+
     //public $cache = new TempCache();
 
     public function index()
@@ -224,6 +230,8 @@ class Home extends BaseController
 
             $u = $this->getSessionData('username');
 
+           
+
         if($usage == 'admin'){
            
         $data_apps = $this->db->selectAllData('apps');
@@ -238,14 +246,31 @@ class Home extends BaseController
 
         $data_vvisitors = $this->db->selectAllData('data_virtualvisitors');
             arsort($data_vvisitors);
+
+             $data_layananmanual = $this->db->selectAllData('layananmanual');
+            arsort($data_layananmanual);
            
+        $data_wa_chat_rotator = $this->db->getWAChatRotatorManagementData();
+            arsort($data_wa_chat_rotator);
+
+        $kategori1 = array('order_type'=>'wa_chat_rotator', 'status'=>'pending');
+        $kategori2 = array('order_type'=>'wa_chat_rotator', 'status'=>'success');
+
+        $data_wa_chat_rotator_pending = $this->db->selectAllDataBy($kategori1, 'order_jasa');    
+        $data_wa_chat_rotator_success = $this->db->selectAllDataBy($kategori2, 'order_jasa');
+        $data_no_cs_chat_rotator = $this->db->selectAllData('cs_wa_chat_rotator');
+
         }else{
+
+             $data_wa_chat_rotator = $this->db->getWAChatRotatorManagementData($u);
+            arsort($data_wa_chat_rotator);
          
+             $data_layananmanual = $this->db->selectAllDataByUsername($u, 'layananmanual');
             
             $data_apps = $this->db->selectAllDataByUsername($u, 'apps');
             arsort($data_apps);
 
-        $data_packages = $this->db->selectAllData('packages');
+            $data_packages = $this->db->selectAllData('packages');
             arsort($data_packages);
 
              $data_orders = $this->db->selectAllDataByUsername($u, 'order_jasa');
@@ -254,6 +279,16 @@ class Home extends BaseController
             arsort($data_deposits);
               $data_vvisitors = $this->db->selectAllDataByUsername($u, 'data_virtualvisitors');
             arsort($data_vvisitors);
+
+            $kategori1 = array('order_type'=>'wa_chat_rotator', 'status'=>'pending', 'username'=>$u);
+            $kategori2 = array('order_type'=>'wa_chat_rotator', 'status'=>'success', 'username'=>$u);
+
+        $data_wa_chat_rotator_pending = $this->db->selectAllDataBy($kategori1, 'order_jasa');    
+        $data_wa_chat_rotator_success = $this->db->selectAllDataBy($kategori2, 'order_jasa');
+
+            // get all phonenumbers for this user
+        $data_no_cs_chat_rotator = $this->db->selectAllCSNumberWAChatRotatorByUsername($u, 'cs_wa_chat_rotator');
+
         }
 
         $bpc = $this->db->getLowestBasePricePackage('comment');
@@ -270,6 +305,8 @@ class Home extends BaseController
         $bkdoc = $this->db->getLowestBasePricePackage('ketik_document');
         $buap = $this->db->getLowestBasePricePackage('upload_aplikasi');
 
+        $bwacr = $this->db->getLowestBasePricePackage('wa_chat_rotator');
+        $blp = $this->db->getLowestBasePricePackage('landing_page');
 
         $base_price_comment = $this->asRupiah($bpc);
         $base_price_view = $this->asRupiah($bpv);
@@ -285,6 +322,9 @@ class Home extends BaseController
         $base_price_ketik_document = $this->asRupiah($bkdoc);
         $base_price_upload_aplikasi = $this->asRupiah($buap);
 
+        $base_price_wa_chat_rotator = $this->asRupiah($bwacr);
+        $base_price_landing_page = $this->asRupiah($blp);
+
         $m_balance          = $this->db->getTotalAmountDepositsThisMonth();
         $monthly_balance    = $this->asRupiah($m_balance);
 
@@ -295,6 +335,31 @@ class Home extends BaseController
         $total_deposits     = 0;
         $total_vvisitors    = 0;
         $total_apps_published = 0;
+        $total_layananmanual = 0;
+        $total_wa_chat_rotator = 0;
+        $total_order_pending_wa_chat_rotator = 0;
+        $total_order_success_wa_chat_rotator = 0;
+        $total_no_cs_wa_chat_rotator = 0;
+
+        if(isset($data_no_cs_chat_rotator)){
+            $total_no_cs_wa_chat_rotator = count($data_no_cs_chat_rotator);
+        }
+
+        if(isset($data_wa_chat_rotator_pending)){
+            $total_order_pending_wa_chat_rotator = count($data_wa_chat_rotator_pending);
+        }
+
+        if(isset($data_wa_chat_rotator_success)){
+            $total_order_success_wa_chat_rotator = count($data_wa_chat_rotator_success);
+        }
+
+        if(isset($data_layananmanual)){
+            $total_layananmanual = count($data_layananmanual);
+        }
+
+        if(isset($data_wa_chat_rotator)){
+            $total_wa_chat_rotator = count($data_wa_chat_rotator);
+        }
 
 
         if(isset($data_deposits)){
@@ -356,6 +421,8 @@ class Home extends BaseController
             'data_orders' => $this->formatTimeInData($data_orders),
             'data_deposits' => $this->formatTimeInData($data_deposits),
             'data_vvisitors' => $this->formatTimeInData($data_vvisitors),
+            'data_layananmanual' => $this->formatTimeInData($data_layananmanual),
+            'data_wa_chat_rotator' => $this->formatTimeInData($data_wa_chat_rotator),
             
             'total_users' => $total_users,
             'total_packages' => $total_packages,
@@ -364,6 +431,11 @@ class Home extends BaseController
             'total_apps' => $total_apps,
             'total_orders' => $total_orders,
             'total_apps_published' => $total_apps_published,
+            'total_layananmanual' => $total_layananmanual,
+            'total_wa_chat_rotator' => $total_wa_chat_rotator,
+            'total_no_cs_wa_chat_rotator' => $total_no_cs_wa_chat_rotator,
+            'total_order_pending_wa_chat_rotator' => $total_order_pending_wa_chat_rotator,
+            'total_order_success_wa_chat_rotator' => $total_order_success_wa_chat_rotator,
 
             'base_price_comment' => $base_price_comment,
             'base_price_subscriber' => $base_price_subscriber,
@@ -377,7 +449,10 @@ class Home extends BaseController
 
             'base_price_upload_aplikasi' => $base_price_upload_aplikasi,
             'base_price_format_os' => $base_price_format_os,
-            'base_price_ketik_document' => $base_price_ketik_document
+            'base_price_ketik_document' => $base_price_ketik_document,
+
+            'base_price_wa_chat_rotator' => $base_price_wa_chat_rotator,
+            'base_price_landing_page' => $base_price_landing_page
         );
 
         if($usage == 'admin'){
@@ -436,7 +511,7 @@ class Home extends BaseController
             );
 
             $data_campaign = $this->db->selectAllDataByUsername($u, 'campaign_virtualvisitors');
-            $dataOrderJasaFound = $this->db->selectSingleLastData($dataFilter, 'order_jasa');
+            $dataOrderJasaFound = $this->db->selectAllDataBy($dataFilter, 'order_jasa');
 
             
             // we then update the orderid once it's found here
@@ -500,6 +575,48 @@ class Home extends BaseController
             $data['role'] = $r;
 
     	return view('manage_users', $data);
+    }
+
+    public function layananmanual_management(): string
+    {   
+
+          // for security reasons
+        $this->protectLogin();
+
+            $r = $this->getSessionData('role');
+           $data = $this->getDashboardData($r);
+            $data['search_display'] = 'search-shown';
+            $data['role'] = $r;
+
+        return view('manage_layananmanual', $data);
+    }
+
+     public function socialmedia_management(): string
+    {   
+
+          // for security reasons
+        $this->protectLogin();
+
+            $r = $this->getSessionData('role');
+            $data = $this->getDashboardData($r);
+            $data['search_display'] = 'search-shown';
+            $data['role'] = $r;
+
+        return view('manage_socialmedia', $data);
+    }
+
+      public function wa_chat_rotator_management(): string
+    {   
+
+          // for security reasons
+        $this->protectLogin();
+
+            $r = $this->getSessionData('role');
+           $data = $this->getDashboardData($r);
+            $data['search_display'] = 'search-shown';
+            $data['role'] = $r;
+
+        return view('manage_wa_chat_rotator', $data);
     }
 
     public function package_management(): string

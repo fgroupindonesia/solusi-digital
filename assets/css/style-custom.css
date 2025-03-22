@@ -10,6 +10,70 @@
   display: none;
 }
 
+.add_input, .delete_input, .add_schedule, .add_region{
+  cursor : pointer;
+}
+
+#identifier_tag {
+  display : none;
+}
+
+#nomor_wa_cs select {
+  width: 100px;
+  display: inline-block;
+}
+
+.add_region, .device_wa {
+  
+}
+
+
+#nomor_wa_cs input[type=text]{
+  width: 200px !important;
+  display: inline-block;
+}
+
+.web_url, .nomor_wa_cs {
+  width: 250px !important;
+}
+
+#deskripsi-gratis, #deskripsi-bisnis, #deskripsi-developer, #deskripsi-vip {
+  display: none;
+}
+
+.widget-user-header{
+  padding: 12px;
+}
+
+#wa-chat-rotator-script-model{
+  width: 100%;
+}
+
+.tersedia ul, .coret ul {
+    list-style: none; 
+    padding-left: 0;
+}
+
+.tersedia li::before {
+    content: "✔"; 
+    color: green; 
+    font-weight: bold;
+
+}
+
+.coret li::before {
+    content: "🗴"; 
+    color: red; 
+    font-weight: bold;
+
+}
+
+.tersedia li,  .coret li{
+    position: relative;
+    padding-left: 5px; 
+    list-style: none; 
+}
+
 #detail-order-form section {
   display: none;
 }
@@ -184,4 +248,35 @@ border-radius: 46px 46px 46px 46px;
 .red-text-bold{
   font-weight: bold;
   color: red;
+}
+
+#add-deposit-form-modal iframe {
+  height: 400px;
+}
+
+#payment-method-doc {
+  display:none;
+}
+
+/* for the default one is back to small */
+.sidebar-item{
+      width: 75px;
+  }
+
+
+/* for the full screen */
+@media screen and (min-width: 800px) {
+    .sidebar-item{
+      width: 240px;
+  }
+}
+
+
+
+@media (min-width: 576px) {
+
+.modal-dialog {
+  max-width: 700px !important;
+}
+
 }

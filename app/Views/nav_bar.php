@@ -23,14 +23,28 @@
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-apps"
                                 aria-expanded="false">
                                 <i class="fa fa-desktop" aria-hidden="true"></i>
-                                <span class="hide-menu">Management Apps</span>
+                                <span class="hide-menu">Manage Apps</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-virtualvisitors"
                                 aria-expanded="false">
                                 <i class="fa fa-laptop" aria-hidden="true"></i>
-                                <span class="hide-menu">Management V.Visitors</span>
+                                <span class="hide-menu">Manage V.Visitors</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-socialmedia"
+                                aria-expanded="false">
+                                <i class="fa fa-laptop" aria-hidden="true"></i>
+                                <span class="hide-menu">Manage Social Media</span>
+                            </a>
+                        </li>
+                          <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-layananmanual"
+                                aria-expanded="false">
+                                <i class="fa fa-laptop" aria-hidden="true"></i>
+                                <span class="hide-menu">Manage Layanan Manual</span>
                             </a>
                         </li>
                         <?php if($role == 'admin'): ?>
@@ -38,28 +52,28 @@
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-users"
                                 aria-expanded="false">
                                 <i class="fa fa-users" aria-hidden="true"></i>
-                                <span class="hide-menu">Management Users</span>
+                                <span class="hide-menu">Manage Users</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-packages"
                                 aria-expanded="false">
                                 <i class="fa fa-box" aria-hidden="true"></i>
-                                <span class="hide-menu">Management Packages</span>
+                                <span class="hide-menu">Manage Packages</span>
                             </a>
                         </li>
                          <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-order-jasa"
                                 aria-expanded="false">
                                 <i class="fa fa-edit" aria-hidden="true"></i>
-                                <span class="hide-menu">Management Order Jasa</span>
+                                <span class="hide-menu">Manage Order Jasa</span>
                             </a>
                         </li>
                          <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-deposits"
                                 aria-expanded="false">
                                 <i class="fa fa-wallet" aria-hidden="true"></i>
-                                <span class="hide-menu">Management Deposits</span>
+                                <span class="hide-menu">Manage Deposits</span>
                             </a>
                         </li>
                         <?php endif; ?>

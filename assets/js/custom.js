@@ -57,6 +57,8 @@ $( document ).ready(function() {
     
     animateText();
 
+    toggleByLoginLink();
+
 });
 
 function prepareDataTable(idCome){
@@ -91,5 +93,30 @@ function animateText(){
 
             // Start the typing effect
             typeEffect();
+
+}
+
+function toggleByLoginLink(){
+
+
+$(".dropdown > a").click(function (event) {
+    event.preventDefault(); // Prevent default link behavior
+    $(this).next("ul").slideToggle(200); // Toggle dropdown with animation
+
+    let mobile_check = $('body').hasClass('mobile-nav-active');
+
+    if(!mobile_check){
+        $('body').addClass('mobile-nav-active');
+    }
+    
+  });
+
+$(".dropdown ul").click(function (event) {
+    event.stopPropagation();
+
+
+  });
+
+
 
 }

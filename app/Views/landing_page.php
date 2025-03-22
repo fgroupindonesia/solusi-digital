@@ -50,7 +50,7 @@
           <li><a href="#testimony">Testimony</a></li>
           <li class="dropdown"><a href="#"><span>Login Portal</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li><a href="#">Pelanggan</a></li>
+              <li><a href="/portal">Pelanggan</a></li>
               <li><a href="#">Staff</a></li>
             </ul>
           </li>
