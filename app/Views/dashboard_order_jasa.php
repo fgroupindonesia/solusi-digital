@@ -287,7 +287,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
-                        <div data-bs-toggle="modal" data-bs-target="#landing-page-modal" class="order-item white-box analytics-info">
+                        <div data-bs-toggle="modal" data-bs-target="#landingpage-form-modal" class="order-item white-box analytics-info">
                             <center>
                             <div class="social-medias">
                                 <img src="/assets/images/wp-logo.png">
@@ -391,7 +391,7 @@
       <?php include('modal_jasa_pembuatanaplikasi.php'); ?>
       <?php include('modal_format_os.php'); ?>
       <?php include('modal_wa_chat_rotator.php'); ?>
-      <?php include('modal_landing_page.php'); ?>
+      <?php include('modal_jasa_landingpage.php'); ?>
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->

@@ -15,7 +15,8 @@
         
 <!-- the form body started from here -->
 <div class="form-group row">
-    <label class="col-4 col-form-label">Basis Aplikasi:</label> <div class="col-8">
+    <label class="col-4 col-form-label">Basis Aplikasi:</label> 
+    <div class="col-8">
        
       <div class="social-medias round-btn opt-appbase" data-value="java" >
           <img src="/assets/images/java-logo.png" /> <span class="title-btn">Java</span> 

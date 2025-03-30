@@ -51,7 +51,7 @@
         <select id="order_type" name="order_type" type="text" class="form-control">
           
           <option value="wa_chat_rotator">WA Chat Rotator</option>
-          <option value="landing_page">Landing Page</option>
+          <option value="landingpage">Landing Page</option>
           <option value="virtualvisitors">Virtual Visitors</option>
           <option value="view">View</option>
           <option value="follow_marketplace">Follow Marketplace</option>

@@ -17,6 +17,64 @@ class Home extends BaseController
 
     }
 
+    public function testing_post(){
+
+         $validated = $this->validate([
+            'file_preview' => [
+                'uploaded[file_preview]',
+                'ext_in[file_preview,jpg,jpeg,png]',
+                'max_size[file_preview,2024]',
+            ],
+        ]);
+
+
+        //echo var_dump( $validated);
+
+        if ($validated) {
+
+            $docs = $this->request->getFile('file_preview');
+
+            // create folder by date
+          
+
+             $dname = explode(".", $_FILES['file_preview']['name']);
+            $ext = end($dname);
+
+            $folderWaktu = date('ymd');
+              $folderName = 'themes/' . $folderWaktu;
+            $folderPath = WRITEPATH . 'uploads/' . $folderName;
+            $newName = date('ymdhis') . '_themes.' . $ext;
+
+            //echo 'moved';
+
+             if (!file_exists($folderPath)) {
+                mkdir($folderPath, 0777, true);
+            }
+
+             $docs->move($folderPath, $newName);
+
+             sleep(3);
+
+             // how to continue this part for resizing?
+             $nama_lengkap = $folderPath . '/' . $newName;
+             resizeImage($nama_lengkap, $nama_lengkap);
+            
+             return $nama_lengkap;
+        }
+
+       
+        //echo var_dump($data);
+        return null;
+
+    }
+
+
+    public function testing_library(){
+
+        return view('testing_library');
+
+    }
+
     public function test(){
         
         return view('testing_wa_chat_rotator');
@@ -230,10 +288,14 @@ class Home extends BaseController
 
             $u = $this->getSessionData('username');
 
+            $data_themeslp = $this->db->selectAllData('themes_landingpage');
+            arsort($data_themeslp);
            
 
         if($usage == 'admin'){
-           
+        
+
+
         $data_apps = $this->db->selectAllData('apps');
             arsort($data_apps);
         $data_packages = $this->db->selectAllData('packages');
@@ -306,7 +368,7 @@ class Home extends BaseController
         $buap = $this->db->getLowestBasePricePackage('upload_aplikasi');
 
         $bwacr = $this->db->getLowestBasePricePackage('wa_chat_rotator');
-        $blp = $this->db->getLowestBasePricePackage('landing_page');
+        $blp = $this->db->getLowestBasePricePackage('landingpage');
 
         $base_price_comment = $this->asRupiah($bpc);
         $base_price_view = $this->asRupiah($bpv);
@@ -340,6 +402,11 @@ class Home extends BaseController
         $total_order_pending_wa_chat_rotator = 0;
         $total_order_success_wa_chat_rotator = 0;
         $total_no_cs_wa_chat_rotator = 0;
+        $total_themes_landingpage = 0;
+
+        if(isset($data_themeslp)){
+            $total_themes_landingpage = count($data_themeslp);
+        }
 
         if(isset($data_no_cs_chat_rotator)){
             $total_no_cs_wa_chat_rotator = count($data_no_cs_chat_rotator);
@@ -418,6 +485,7 @@ class Home extends BaseController
             'data_users' => $this->formatTimeInData($data_users),
            
             'data_apps' => $this->formatTimeInData($data_apps),
+            'data_themeslp' => $this->formatTimeInData($data_themeslp),
             'data_orders' => $this->formatTimeInData($data_orders),
             'data_deposits' => $this->formatTimeInData($data_deposits),
             'data_vvisitors' => $this->formatTimeInData($data_vvisitors),
@@ -425,6 +493,7 @@ class Home extends BaseController
             'data_wa_chat_rotator' => $this->formatTimeInData($data_wa_chat_rotator),
             
             'total_users' => $total_users,
+            'total_themes_landingpage' => $total_themes_landingpage,
             'total_packages' => $total_packages,
              'total_vvisitors' => $total_vvisitors,
             'total_deposits' => $total_deposits,
@@ -575,6 +644,20 @@ class Home extends BaseController
             $data['role'] = $r;
 
     	return view('manage_users', $data);
+    }
+
+    public function themes_management(): string
+    {   
+
+          // for security reasons
+        $this->protectLogin();
+
+            $r = $this->getSessionData('role');
+           $data = $this->getDashboardData($r);
+            $data['search_display'] = 'search-shown';
+            $data['role'] = $r;
+
+        return view('manage_themes', $data);
     }
 
     public function layananmanual_management(): string

@@ -17,7 +17,8 @@ class DataModel extends Model
     protected $table_cs_schedule_wa_chat_rotator  = 'table_cs_schedule_wa_chat_rotator';
     protected $table_web_wa_chat_rotator       = 'table_web_wa_chat_rotator';
 
-
+    
+    protected $table_themes_landingpage       = 'table_themes_landingpage';
     protected $table_data_virtualvisitors       = 'table_data_virtualvisitors';
     protected $table_campaign_virtualvisitors       = 'table_campaign_virtualvisitors';
     protected $table_deposits       = 'table_deposits';
@@ -41,6 +42,9 @@ class DataModel extends Model
             
         }else if($entity == 'packages'){
             $table_na = $this->table_packages;
+
+        }else if($entity == 'themes_landingpage'){
+            $table_na = $this->table_themes_landingpage;
 
         }else if($entity == 'ticketing'){
             $table_na = $this->table_ticketing;

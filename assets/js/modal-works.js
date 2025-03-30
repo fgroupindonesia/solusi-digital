@@ -5,6 +5,7 @@ const URL_DEPOSIT_ADD 	= "/add-new-deposit";
 const URL_CAMPAIGN_ADD 	= "/add-new-campaign";
 const URL_LAYANANMANUAL_ADD 	= "/add-new-layananmanual";
 const URL_SOCIALMEDIA_ADD 	= "/add-new-socialmedia";
+const URL_THEME_LANDINGPAGE_ADD 	= "/add-new-theme-landingpage";
 
 const URL_USER_DELETE 		= "/delete-user";
 const URL_PACKAGE_DELETE 	= "/delete-package";
@@ -16,6 +17,7 @@ const URL_VIRTUALVISITORS_DELETE 	= "/delete-virtualvisitors";
 const URL_LAYANANMANUAL_DELETE 	= "/delete-layananmanual";
 const URL_SOCIALMEDIA_DELETE 	= "/delete-socialmedia";
 const URL_WA_CHAT_ROTATOR_DELETE 	= "/delete-wa-chat-rotator";
+const URL_THEME_LANDINGPAGE_DELETE 	= "/delete-theme-landingpage";
 
 const URL_USER_EDIT 		= "/edit-user";
 const URL_PACKAGE_EDIT 		= "/edit-package";
@@ -26,8 +28,10 @@ const URL_LAYANANMANUAL_EDIT 		= "/edit-layananmanual";
 const URL_SOCIALMEDIA_EDIT 		= "/edit-socialmedia";
 const URL_WA_CHAT_ROTATOR_EDIT 		= "/edit-wa-chat-rotator";
 const URL_CS_SCHEDULE_WA_CHAT_ROTATOR_EDIT 		= "/edit-wa-chat-rotator-cs-schedule";
+const URL_THEME_LANDINGPAGE_EDIT	= "/edit-theme-landingpage";
 
 const URL_USER_UPDATE 		= "/update-user";
+const URL_THEME_LANDINGPAGE_UPDATE	= "/update-theme-landingpage";
 const URL_PACKAGE_UPDATE 	= "/update-package";
 const URL_ORDER_UPDATE 		= "/update-jasa-order";
 const URL_APP_UPDATE 		= "/update-app";
@@ -392,6 +396,7 @@ $('#format-os-contact-person-type-other').on('change', function(){
 	displaySubmitFor('wa-chat-rotator-form');
 	displaySubmitFor('wa-chat-rotator-custom-form');
 	displaySubmitFor('wa-chat-rotator-schedule-form');
+	displaySubmitFor('theme-landingpage-form');
 
 
 
@@ -696,6 +701,21 @@ $('#upload-virtualvisitors-attachment').on('change', function(){
 	});
 	// user form done!
 
+	  // this is for theme landingpage form
+	$('#theme-landingpage-form').on('submit', function(e){
+			e.preventDefault();
+			$('.btn-save').hide();
+			$('.btn-close-custom').hide();
+			$('.modal-loading').fadeIn();
+
+			let datana = new FormData($(this)[0]);
+
+			let tujuanURL = $(this).attr('action');
+			kirimPostUpload(datana, tujuanURL);
+
+	});
+	// theme landingpage form done!
+
 	 // this is for layananmanual form
 	$('#layananmanual-form').on('submit', function(e){
 			e.preventDefault();
@@ -921,6 +941,8 @@ $('#upload-virtualvisitors-attachment').on('change', function(){
 				kirimPost(dataNa, URL_SOCIALMEDIA_DELETE);
 			}else if(gawe == 'wa-chat-rotator') {
 				kirimPost(dataNa, URL_WA_CHAT_ROTATOR_DELETE);
+			}else if(gawe == 'theme-landingpage') {
+				kirimPost(dataNa, URL_THEME_LANDINGPAGE_DELETE);
 			}
 
 			} // end of the loop
@@ -1405,7 +1427,7 @@ function kirimPost(dataForm, urlNa){
         			}else{
         				// if the form is comming but not from settings call
         				//alert(data);
-        				if(URL_WA_CHAT_ROTATOR_DELETE == urlNa || URL_LAYANANMANUAL_DELETE == urlNa || URL_ORDER_DELETE == urlNa || urlNa == URL_ORDER_UPDATE){
+        				if(URL_THEME_LANDINGPAGE_DELETE == urlNa ||URL_WA_CHAT_ROTATOR_DELETE == urlNa || URL_LAYANANMANUAL_DELETE == urlNa || URL_ORDER_DELETE == urlNa || urlNa == URL_ORDER_UPDATE){
         					if(jumlahData<=1)
         				 alert('data berhasil terupdate!');
 	        			}else{
@@ -1872,7 +1894,7 @@ $.ajax({
     		$('#status-virtualvisitors-loading').hide();
 			$('#virtualvisitors-progress').hide();
 
-		}else if(urlNa == URL_LAYANANMANUAL_ADD){
+		}else if(urlNa == URL_LAYANANMANUAL_ADD || urlNa == URL_THEME_LANDINGPAGE_ADD){
 
 			window.location.reload();
 

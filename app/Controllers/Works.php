@@ -265,6 +265,59 @@ class Works extends BaseController
         //echo var_dump($data);
     }
 
+    public function upload_data_themes(){
+
+        $validated = $this->validate([
+            'file_preview' => [
+                'uploaded[file_preview]',
+                'ext_in[file_preview,jpg,jpeg,png]',
+                'max_size[file_preview,2024]',
+            ],
+        ]);
+
+
+        //echo var_dump( $validated);
+
+        if ($validated) {
+
+            $docs = $this->request->getFile('file_preview');
+
+            // create folder by date
+          
+
+             $dname = explode(".", $_FILES['file_preview']['name']);
+            $ext = end($dname);
+
+            $folderWaktu = date('ymd');
+              $folderName = 'themes/' . $folderWaktu;
+            $folderPath = WRITEPATH . 'uploads/' . $folderName;
+            $newName = date('ymdhis') . '_themes.' . $ext;
+
+            //echo 'moved';
+
+             if (!file_exists($folderPath)) {
+                mkdir($folderPath, 0777, true);
+            }
+
+             $docs->move($folderPath, $newName);
+
+             sleep(3);
+
+             // how to continue this part for resizing?
+             $nama_lengkap = $folderPath . '/' . $newName;
+             resizeImage($nama_lengkap, $nama_lengkap);
+            
+             // now we saved as the dir / file name only
+             $nama_lengkap = $folderWaktu . '/' . $newName;   
+             return $nama_lengkap;
+        }
+
+       
+        //echo var_dump($data);
+        return null;
+        
+    }
+
      public function upload_data_layananmanual(){
 
         $validated = $this->validate([
@@ -1573,6 +1626,32 @@ curl_close($ch);
 
     }
 
+     public function theme_add()
+    {
+        $name = $this->request->getPost('name');
+        $genre = $this->request->getPost('genre');
+        $desc = $this->request->getPost('description');
+        
+        $file = $this->upload_data_themes();
+
+        $data = array(
+            'name'  => $name,
+            'genre'  => $genre,
+            'description'      => $desc,
+            'file_preview'     => $file
+        );
+
+     $rest = $this->db->insertData($data, 'themes_landingpage');
+     
+     if($rest == 0){
+        echo "none";
+     }else {
+        echo "valid";
+     }
+
+
+    }
+
     public function user_add()
     {
         $u = $this->request->getPost('username');
@@ -2148,6 +2227,39 @@ curl_close($ch);
 
     }
 
+    public function theme_update(){
+
+            $id = $this->request->getPost('id');
+        
+        $name = $this->request->getPost('name');
+        $genre = $this->request->getPost('genre');
+        $desc = $this->request->getPost('description');
+        
+        $file = $this->upload_data_themes();
+
+
+
+        $data = array(
+            'name'  => $name,
+            'genre'  => $genre,
+            'description'      => $desc
+        );
+
+        if(!empty($file)){
+            $data['file_preview'] = $file;
+        }
+        
+     $rest = $this->db->updateData($id, $data, 'themes_landingpage');
+
+     
+     if($rest == 0){
+        echo "none";
+     }else {
+        echo "valid";
+     }
+
+    }
+
     public function package_update(){
 
         $id = $this->request->getPost('id');
@@ -2182,6 +2294,20 @@ curl_close($ch);
          $id = $this->request->getPost('id');
 
           $rest = $this->db->deleteData($id, 'packages');
+     
+         if($rest != 0){
+            echo "valid";
+         }else{
+            echo "none";
+         }
+
+    }
+
+    public function theme_delete()
+    {
+         $id = $this->request->getPost('id');
+
+          $rest = $this->db->deleteData($id, 'themes_landingpage');
      
          if($rest != 0){
             echo "valid";
@@ -2304,6 +2430,22 @@ curl_close($ch);
         //$id = 5;
 
           $rest = $this->db->selectData($id, 'users');
+        
+        if(count($rest)==0){
+            // no value
+            echo "none";
+        }else{
+            echo json_encode($rest[0]);
+        }
+
+    }
+
+     public function theme_edit()
+    {
+        $id = $this->request->getPost('id');
+        //$id = 5;
+
+          $rest = $this->db->selectData($id, 'themes_landingpage');
         
         if(count($rest)==0){
             // no value

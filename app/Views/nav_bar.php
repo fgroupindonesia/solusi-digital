@@ -26,6 +26,13 @@
                                 <span class="hide-menu">Manage Apps</span>
                             </a>
                         </li>
+                          <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-landingpage"
+                                aria-expanded="false">
+                                <i class="fa fa-desktop" aria-hidden="true"></i>
+                                <span class="hide-menu">Manage Landing Page</span>
+                            </a>
+                        </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-virtualvisitors"
                                 aria-expanded="false">
@@ -60,6 +67,13 @@
                                 aria-expanded="false">
                                 <i class="fa fa-box" aria-hidden="true"></i>
                                 <span class="hide-menu">Manage Packages</span>
+                            </a>
+                        </li>
+                         <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-themes"
+                                aria-expanded="false">
+                                <i class="fa fa-box" aria-hidden="true"></i>
+                                <span class="hide-menu">Manage Themes</span>
                             </a>
                         </li>
                          <li class="sidebar-item">
