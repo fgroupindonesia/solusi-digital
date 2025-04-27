@@ -1,27 +1,10 @@
+<?php
+$v = random_int(1, 100);
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords"
-        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template">
-    <meta name="description"
-        content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
-    <meta name="robots" content="noindex,nofollow">
-    <title>Dashboard - Solusi Digital</title>
-    <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/solusi-digital-logo.png">
-    <!-- Custom CSS -->
-    <link href="/assets/plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
-    <!-- Custom CSS -->
-    <link href="/assets/css/style.min.css" rel="stylesheet">
-    <link href="/assets/css/style-custom.css" rel="stylesheet">
-</head>
+<?php include('container_header.php'); ?>
 
 <body>
     <!-- ============================================================== -->
@@ -137,6 +120,68 @@
                         </div>
                     </div>
                 </div>
+
+<div class="row">
+          <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-info">
+            <i class="fas fa-money-bill-wave"></i>
+            </span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Penghasilan Bulan ini</span>
+                <span class="info-box-number"><?= $monthly_balance; ?></span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-success">
+               <i class="fas fa-receipt"></i>
+            </span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Total Order</span>
+                <span class="info-box-number"><?= $total_orders ;?> <?= ($total_orders > 1)? "items" : "item";?></span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-warning">
+                <i class="fas fa-box-open"></i>
+            </span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Total Packages</span>
+                <span class="info-box-number"><?= $total_packages; ?> <?= ($total_packages > 1)? "items" : "item";?></span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-danger"><i class="far fa-star"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Total Jasa</span>
+                <span class="info-box-number">15 items.</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+        </div>
+
                 <!-- ============================================================== -->
                 <!-- PRODUCTS YEARLY SALES -->
                 <!-- ============================================================== -->
@@ -204,7 +249,15 @@
                                             <td><?= $key->email ?>
                                             </td>
                                             <td class="txt-oflo"><?= $key->whatsapp ?></td>
-                                              <td class="txt-oflo"><?= $key->sex ?></td>
+                                              <td class="txt-oflo">
+                                                  
+                                              <?php if($key->sex == 'male'): ?>
+                                                <img src="/assets/images/male-icon.png" class="img-dash img-fluid" >
+                                              <?php else: ?>
+                                                <img src="/assets/images/female-icon.png" class="img-dash img-fluid" >
+                                              <?php endif; ?>
+
+                                              </td>
                                             <td><span class="text-success"><?= $key->date_created ?></span></td>
                                         </tr>
                  <?php endforeach; ?>
@@ -225,7 +278,7 @@
                     <div class="col-md-12 col-lg-8 col-sm-12">
                         <div class="card white-box p-0">
                             <div class="card-body">
-                                <h3 class="box-title mb-0">Recent Apps</h3>
+                                <h3 class="box-title mb-0">Recent Orders</h3>
                             </div>
                             <div class="comment-widgets">
                                 <!-- Comment Row -->
@@ -369,6 +422,7 @@
                 </div>
 
       <?php include('modal_setting_form.php'); ?>
+      
 
             </div>
             <!-- ============================================================== -->
@@ -392,23 +446,7 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="/assets/plugins/bower_components/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="/assets/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/app-style-switcher.js"></script>
-    <script src="/assets/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
-    <!--Wave Effects -->
-    <script src="/assets/js/waves.js"></script>
-    <!--Menu sidebar -->
-    <script src="/assets/js/sidebarmenu.js"></script>
-    <!--Custom JavaScript -->
-    <script src="/assets/js/custom.js"></script>
-    <script src="/assets/js/modal-works.js"></script>
-    <!--This page JavaScript -->
-    <!--chartis chart-->
-    <script src="/assets/plugins/bower_components/chartist/dist/chartist.min.js"></script>
-    <script src="/assets/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-    <script src="/assets/js/pages/dashboards/dashboard1.js"></script>
+   <?php include('container_scripts.php'); ?>
 </body>
 
 </html>

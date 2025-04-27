@@ -70,8 +70,8 @@
     <div class="col-8">
       <div class="input-group">
         <select id="username_owned" name="username_owned" >
-            <?php foreach ($data_users as $v): ?>
-              <option data-id="<?= $v->id ?>" value="<?= $v->username ?>"><?= $v->username ?></option>
+            <?php foreach ($data_users as $userna): ?>
+              <option data-id="<?= $userna->id ?>" value="<?= $userna->username ?>"><?= $userna->username ?></option>
             <?php endforeach; ?>
         </select>
       </div>
@@ -92,7 +92,7 @@
       </div> 
       <div class="modal-footer">
          <img class="modal-loading" src="/assets/plugins/images/loading.gif" >
-        <button type="button" class="btn btn-secondary btn-close-custom" data-bs-dismiss="modal">Close</button>
+        
         <input type="submit" class="btn btn-primary btn-save" value="Save changes">
       </div>
     </div>

@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\DataModel;
 use App\Libraries\CurrencyHelper;
+use App\Libraries\DateHelper;
 
 class Home extends BaseController
 {
@@ -12,6 +13,7 @@ class Home extends BaseController
 
     public function __construct(){
 
+        date_default_timezone_set('Asia/Jakarta');
         $this->db = new DataModel();
         //echo var_dump($this->db);
 
@@ -101,11 +103,13 @@ class Home extends BaseController
 
        $data = $this->getDashboardData($r);
        $data['search_display'] = 'search-hide';
+       $data['page_name'] = 'Order Jasa';
        $data['role'] = $r;
 
        // we pass the library to help
        // the view in rendering cash value
        $data['currency_helper'] = new CurrencyHelper();
+       $data['date_helper'] = new DateHelper();
 
         if(!empty($r)){
          
@@ -128,9 +132,7 @@ class Home extends BaseController
        $data = array();
 
        if(isset($st)){
-        $data['status'] = 'wrong username or password!';
-       }else{
-        $data['status'] = '';
+        $data['error'] = 'salah username atau password!';
        }
 
         return view('login_portal', $data);
@@ -160,14 +162,19 @@ class Home extends BaseController
 
     private function formatTimeInData($arrayNa){
         
+        if(is_array($arrayNa))        
         foreach ($arrayNa as $k) {
             
             $k->date_created = date('D, d-m-Y H:i', strtotime($k->date_created)) . " WIB";
+       
 
         }
 
+        if(is_array($arrayNa))
         return $arrayNa;
 
+        if(!is_array($arrayNa))
+        return false;
     }
 
     private function protectLogin(){
@@ -200,6 +207,8 @@ class Home extends BaseController
        $data['role'] = $r;
 
         if(!empty($r)){
+
+            $data['page_name'] = "Dashboard";
          
             if($r == 'admin'){
                 //echo "admin";
@@ -284,37 +293,66 @@ class Home extends BaseController
     private function getDashboardData($usage){
 
             $data_users = $this->db->selectAllData('users');
-            arsort($data_users);
+            !empty($data_users) ? arsort($data_users) : null;
 
             $u = $this->getSessionData('username');
 
             $data_themeslp = $this->db->selectAllData('themes_landingpage');
-            arsort($data_themeslp);
+            !empty($data_themeslp) ? arsort($data_themeslp) : null;
            
 
         if($usage == 'admin'){
         
+        $status_email_notif_on = "";
+        $status_email_notif_off = "";
+
+        $status_approval_mode_auto = "";
+        $status_approval_mode_manual = "";
+
+        $data_system_work = $this->db->selectData(1, 'system_works');
+
+        if(!empty($data_system_work)){
+            $apmode = $data_system_work->approval_mode;
+            $ean  = $data_system_work->email_activity_notification;
+
+            if($apmode == 'automatic'){
+                $status_approval_mode_auto = "checked";
+            }else{
+                $status_approval_mode_manual = "checked";
+            }
+
+             if($ean == 'on'){
+                $status_email_notif_on = "checked";
+            }else{
+                $status_email_notif_off = "checked";
+            }
+
+        }
 
 
         $data_apps = $this->db->selectAllData('apps');
-            arsort($data_apps);
+        !empty($data_apps) ? arsort($data_apps) : null;
+
         $data_packages = $this->db->selectAllData('packages');
-            arsort($data_packages);
+         !empty($data_packages) ? arsort($data_packages) : null;
+
         $data_orders = $this->db->selectAllData('order_jasa');
-            arsort($data_orders);
+        !empty($data_orders) ? arsort($data_orders) : null;
+
         $data_deposits = $this->db->selectAllData('deposits');
-            arsort($data_deposits);
-            $data_deposits = $this->changeAllNumberIntoCurrency($data_deposits);
+        !empty($data_deposits) ? arsort($data_deposits) : null;
+
+        $data_deposits = $this->changeAllNumberIntoCurrency($data_deposits);
 
         $data_vvisitors = $this->db->selectAllData('data_virtualvisitors');
-            arsort($data_vvisitors);
+        !empty($data_vvisitors) ? arsort($data_vvisitors) : null;
 
-             $data_layananmanual = $this->db->selectAllData('layananmanual');
-            arsort($data_layananmanual);
+        $data_layananmanual = $this->db->selectAllData('layananmanual');
+        !empty($data_layananmanual) ? arsort($data_layananmanual) : null;
            
         $data_wa_chat_rotator = $this->db->getWAChatRotatorManagementData();
-            arsort($data_wa_chat_rotator);
-
+        !empty($data_wa_chat_rotator) ? arsort($data_wa_chat_rotator) : null;
+        
         $kategori1 = array('order_type'=>'wa_chat_rotator', 'status'=>'pending');
         $kategori2 = array('order_type'=>'wa_chat_rotator', 'status'=>'success');
 
@@ -324,23 +362,26 @@ class Home extends BaseController
 
         }else{
 
-             $data_wa_chat_rotator = $this->db->getWAChatRotatorManagementData($u);
-            arsort($data_wa_chat_rotator);
+            $data_wa_chat_rotator = $this->db->getWAChatRotatorManagementData($u);
+            !empty($data_wa_chat_rotator) ? arsort($data_wa_chat_rotator) : null;
          
-             $data_layananmanual = $this->db->selectAllDataByUsername($u, 'layananmanual');
+            $data_layananmanual = $this->db->selectAllDataByUsername($u, 'layananmanual');
             
             $data_apps = $this->db->selectAllDataByUsername($u, 'apps');
-            arsort($data_apps);
+            !empty($data_apps) ? arsort($data_apps) : null;
 
             $data_packages = $this->db->selectAllData('packages');
-            arsort($data_packages);
+            !empty($data_packages) ? arsort($data_packages) : null;
+  
 
-             $data_orders = $this->db->selectAllDataByUsername($u, 'order_jasa');
-            arsort($data_orders);
-              $data_deposits = $this->db->selectAllDataByUsername($u, 'deposits');
-            arsort($data_deposits);
-              $data_vvisitors = $this->db->selectAllDataByUsername($u, 'data_virtualvisitors');
-            arsort($data_vvisitors);
+            $data_orders = $this->db->selectAllDataByUsername($u, 'order_jasa');
+            !empty($data_orders) ? arsort($data_orders) : null;
+
+            $data_deposits = $this->db->selectAllDataByUsername($u, 'deposits');
+            !empty($data_deposits) ? arsort($data_deposits) : null;
+
+            $data_vvisitors = $this->db->selectAllDataByUsername($u, 'data_virtualvisitors');
+            !empty($data_vvisitors) ? arsort($data_vvisitors) : null;
 
             $kategori1 = array('order_type'=>'wa_chat_rotator', 'status'=>'pending', 'username'=>$u);
             $kategori2 = array('order_type'=>'wa_chat_rotator', 'status'=>'success', 'username'=>$u);
@@ -404,53 +445,54 @@ class Home extends BaseController
         $total_no_cs_wa_chat_rotator = 0;
         $total_themes_landingpage = 0;
 
-        if(isset($data_themeslp)){
+        if(is_array($data_themeslp)){
             $total_themes_landingpage = count($data_themeslp);
         }
 
-        if(isset($data_no_cs_chat_rotator)){
+        if(is_array($data_no_cs_chat_rotator)){
             $total_no_cs_wa_chat_rotator = count($data_no_cs_chat_rotator);
         }
 
-        if(isset($data_wa_chat_rotator_pending)){
+        if(is_array($data_wa_chat_rotator_pending)){
             $total_order_pending_wa_chat_rotator = count($data_wa_chat_rotator_pending);
         }
 
-        if(isset($data_wa_chat_rotator_success)){
+        if(is_array($data_wa_chat_rotator_success)){
             $total_order_success_wa_chat_rotator = count($data_wa_chat_rotator_success);
         }
 
-        if(isset($data_layananmanual)){
+        if(is_array($data_layananmanual)){
             $total_layananmanual = count($data_layananmanual);
         }
 
-        if(isset($data_wa_chat_rotator)){
+        if(is_array($data_wa_chat_rotator)){
             $total_wa_chat_rotator = count($data_wa_chat_rotator);
         }
 
 
-        if(isset($data_deposits)){
+        if(is_array($data_deposits)){
             $total_deposits = count($data_deposits);
         }
 
-        if(isset($data_users)){
+        if(is_array($data_users)){
             $total_users = count($data_users);
         }
 
-         if(isset($data_packages)){
+         if(is_array($data_packages)){
             $total_packages = count($data_packages);
         }
 
-          if(isset($data_vvisitors)){
+          if(is_array($data_vvisitors)){
             $total_vvisitors = count($data_vvisitors);
         }
 
-        if(isset($data_apps)){
+        if(is_array($data_apps)){
             $total_apps = count($data_apps);
             $total_apps_published =  $this->countPublishedApp($data_apps);
+
         }
 
-         if(isset($data_orders)){
+         if(is_array($data_orders)){
             $total_orders = count($data_orders);
         }
 
@@ -469,11 +511,13 @@ class Home extends BaseController
         );
 
         $cash = $this->getDBData('balance', $cond, 'users');
+        $app_name = "Solusi Digital";
 
         $data = array(
             'user_id'   => $this->getSessionData('user_id'),
             'propic'    => $this->getSessionData('propic'),
-            'balance'    => $this->asRupiah($cash),
+            'balance_rp'    => $this->asRupiah($cash),
+            'balance'    => $cash,
             'username'  => $this->getSessionData('username'),
             'fullname'  => $this->getSessionData('fullname'),
             'pass'  => $this->getSessionData('pass'),
@@ -492,10 +536,11 @@ class Home extends BaseController
             'data_layananmanual' => $this->formatTimeInData($data_layananmanual),
             'data_wa_chat_rotator' => $this->formatTimeInData($data_wa_chat_rotator),
             
+            'monthly_balance' => $monthly_balance,
             'total_users' => $total_users,
             'total_themes_landingpage' => $total_themes_landingpage,
             'total_packages' => $total_packages,
-             'total_vvisitors' => $total_vvisitors,
+            'total_vvisitors' => $total_vvisitors,
             'total_deposits' => $total_deposits,
             'total_apps' => $total_apps,
             'total_orders' => $total_orders,
@@ -521,12 +566,22 @@ class Home extends BaseController
             'base_price_ketik_document' => $base_price_ketik_document,
 
             'base_price_wa_chat_rotator' => $base_price_wa_chat_rotator,
-            'base_price_landing_page' => $base_price_landing_page
+            'base_price_landing_page' => $base_price_landing_page,
+            'app_name' => $app_name
+
+
+
         );
 
         if($usage == 'admin'){
              $data['data_packages'] = $this->formatTimeInData($data_packages);
              $data['monthly_balance'] = $monthly_balance;
+
+            $data['email_notif_on'] = $status_email_notif_on;
+            $data['email_notif_off'] = $status_email_notif_off;
+            $data['approval_mode_auto'] = $status_approval_mode_auto;
+            $data['approval_mode_manual'] = $status_approval_mode_manual;
+
         }else{
             // for non admin
             // we just need the data as casual
@@ -698,6 +753,8 @@ class Home extends BaseController
            $data = $this->getDashboardData($r);
             $data['search_display'] = 'search-shown';
             $data['role'] = $r;
+            $data['page_name'] = "Management WA Chat Rotator";
+
 
         return view('manage_wa_chat_rotator', $data);
     }

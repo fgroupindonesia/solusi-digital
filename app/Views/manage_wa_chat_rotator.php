@@ -1,29 +1,10 @@
+<?php
+$v = random_int(1, 100);
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords"
-        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template">
-    <meta name="description"
-        content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
-    <meta name="robots" content="noindex,nofollow">
-    <title>Manage WA Chat Rotator - Solusi Digital</title>
-    <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/solusi-digital-logo.png">
-    <!-- Custom CSS -->
-    <link href="/assets/plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
-    <!-- Custom CSS -->
-    <link href="/assets/css/datatables.min.css" rel="stylesheet">    
-    <link href="/assets/css/style.min.css" rel="stylesheet">
-    <link href="/assets/css/style-custom.css" rel="stylesheet" >
-     <link rel="stylesheet" href="/assets/css/adminlte.min.css">
-</head>
+<?php include('container_header.php'); ?>
 
 <body>
     <!-- ============================================================== -->
@@ -76,8 +57,8 @@
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <div class="d-md-flex">
-                            <ol class="breadcrumb ms-auto">
-                                <li></li>
+                             <ol class="breadcrumb ms-auto">
+                                <li>Saldo Anda : <strong id="saldo-anda" data-cash="<?= $balance; ?>"><?= $balance_rp; ?></strong></li>
                             </ol>
                            
                         </div>
@@ -123,12 +104,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                   <?php if (isset($data_wa_chat_rotator)): ?>                 
+                   <?php if (is_array($data_wa_chat_rotator)): ?>                 
                   <?php foreach($data_wa_chat_rotator as $key): ?>
 
                                         <tr data-widget="expandable-table" aria-expanded="false">
                                             <td><input type="checkbox" class="user-checked" data-id="<?= $key->id ?>" /></td>
-                                            <td class="txt-oflo"> <?= $key->package ?></td>
+                                            <td class="txt-oflo">
+                                            <a href="#" class="link-wizard" data-id="<?= $key->id ;?>" data-entity="wa-chat-rotator">
+                                                <?= $key->package ?>
+                                             </a>
+                                            </td>
                                             <td><?= $key->total_cs ?>
                                             </td>
                                             <td class="txt-oflo"><?= $key->total_web ?></td>
@@ -141,6 +126,7 @@
                                          <tr class="expandable-body d-none">
                                           <td colspan="6">
                                             <p style="display: none;">
+                                              <b>ID Code : </b><?= $key->order_client_reff; ?> <br>  
                                               <b>Nama Tema: </b><?= empty($key->custom_name) ? '-': $key->custom_name; ?> <br>  
                                               <b>Mode : </b><?= $key->rotator_mode; ?> <br>  
                                               <b>Nomor WA Tim CS : </b><?= $key->details_cs; ?> <br>
@@ -162,8 +148,10 @@
                 <?php include('modal_wa_chat_rotator.php'); ?>
                 <?php include('modal_wa_chat_rotator_script.php'); ?>
                 <?php include('modal_wa_chat_rotator_custom.php'); ?>
+                <?php include('modal_wa_chat_rotator_wizard.php'); ?>
                 <?php include('modal_wa_chat_rotator_region.php'); ?>
                 <?php include('modal_wa_chat_rotator_schedule.php'); ?>
+                <?php include('modal_wa_float.php'); ?>
 
             </div>
             <!-- ============================================================== -->
@@ -187,25 +175,28 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="/assets/plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/assets/plugins/bower_components/jquery/dist/jquery.min.js?v=<?=$v;?>"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="/assets/plugins/bower_components/popper.js/dist/umd/popper.min.js"></script>
-    <script src="/assets/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/app-style-switcher.js"></script>
-    <script src="/assets/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <script src="/assets/plugins/bower_components/popper.js/dist/umd/popper.min.js?v=<?=$v;?>"></script>
+    <script src="/assets/bootstrap/dist/js/bootstrap.bundle.min.js?v=<?=$v;?>"></script>
+     <script src="/assets/js/sweetalert2@11.js?v=<?=$v;?>"></script>
+    <script src="/assets/js/app-style-switcher.js?v=<?=$v;?>"></script>
+    <script src="/assets/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js?v=<?=$v;?>"></script>
 
     <!--Wave Effects -->
-    <script src="/assets/js/waves.js"></script>
+    <script src="/assets/js/waves.js?v=<?=$v;?>"></script>
     <!--Menu sidebar -->
-    <script src="/assets/js/sidebarmenu.js"></script>
-    <script src="/assets/js/datatables.min.js"></script>
+    <script src="/assets/js/sidebarmenu.js?v=<?=$v;?>"></script>
+    <script src="/assets/js/datatables.min.js?v=<?=$v;?>"></script>
     <!--Custom JavaScript -->
-    <script src="/assets/js/custom.js"></script>
+    <script src="/assets/js/custom.js?v=<?=$v;?>"></script>
     <!--This page JavaScript -->
-    <script src="/assets/js/adminlte.js"></script>
+    <script src="/assets/js/adminlte.js?v=<?=$v;?>"></script>
    
-    <script src="/assets/js/sweetalert2@11.js"></script>
-    <script src="/assets/js/modal-works.js"></script>
+    <script src="/assets/js/sweetalert2@11.js?v=<?=$v;?>"></script>
+    <script src="/assets/js/modal-works.js?v=<?=$v;?>"></script>
+      <script src="/assets/js/ext-wa-chat-rotator.js?v=<?=$v;?>"></script>
+
 </body>
 
 </html>

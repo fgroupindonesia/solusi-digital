@@ -29,7 +29,7 @@
 
               <div class="form-group">
                 <label for="identifier_mode">Identifier Mode</label>
-                <select id="identifier_mode" name="identifier_mode" class="form-control custom-select">
+                <select name="identifier_mode" class="identifier_mode form-control custom-select">
                   <option selected="" disabled="">Pilih Satu</option>
                   <option value="manual">manual</option>
                   <option value="button contains">button contains</option>
@@ -37,7 +37,7 @@
                   <option value="all buttons">all buttons</option>
                   <option value="all links">all links</option>
                 </select>
-                 <input type="text" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="tulis disini identifier penghubung klik wa di website mu" placeholder="tulis tag disini" id="identifier_tag" name="identifier_tag" class="form-control" >
+                 <input type="text" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="tulis disini identifier penghubung klik wa di website mu" placeholder="tulis tag disini"  name="identifier_tag" class="form-control identifier_tag" >
 
               </div>
 </div>
@@ -94,7 +94,59 @@
             <div class="card-body" style="display: block;">
              
               <div  id="nomor_wa_cs" class="form-group">
-                
+             
+  <div>
+    <input 
+      type="text" 
+      class="nomor_wa_cs form-control" 
+      name="nomor_wa_cs[]" 
+      value="6281234567890" 
+      style="display: inline-block;"
+    >
+
+    <span 
+      class="delete_input" 
+      entity="nomor_wa_cs" 
+      style="display: inline-block;"
+    >❌</span>
+
+    <select 
+      class="form-control device_wa" 
+      name="client_target_device[]" 
+      style="display: none;"
+    >
+      <option value="all">Generic</option>
+      <option value="android">🟢 Android</option>
+      <option value="iphone">📱 Iphone</option>
+      <option value="laptop">💻 Laptop</option>
+    </select>
+
+    <span 
+      class="add_region" 
+      entity="nomor_wa_cs" 
+      data-bs-toggle="modal" 
+      data-bs-target="#wa-chat-rotator-region-modal" 
+      style="display: inline-block;"
+    >🌎</span>
+
+    <span 
+      class="add_schedule" 
+      data-bs-toggle="modal" 
+      data-bs-target="#wa-chat-rotator-schedule-modal" 
+      style="display: inline-block;"
+    >⌚</span>
+
+    <span 
+  entity="nomor_wa_cs" 
+  class="add_input"
+  style="display: inline-block;"
+>➕</span>
+
+  </div>
+
+
+
+
               </div>
             
             </div>
@@ -119,7 +171,22 @@
             <div class="card-body" style="display: block;">
              
               <div id="web_url" class="form-group">
-                
+                <div>
+                  <input 
+                    type="text" 
+                    class="web_url form-control" 
+                    name="web_url[]" 
+                    value="https://yourlink.com" 
+                    style="display: inline-block;"
+                  >
+
+                  <span 
+                    class="delete_input" 
+                    entity="web_url" 
+                    style="display: inline-block;"
+                  >❌</span>
+                </div>
+
               </div>
             
             </div>

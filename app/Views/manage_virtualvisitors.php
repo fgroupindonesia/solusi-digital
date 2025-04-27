@@ -1,3 +1,6 @@
+<?php
+$v = random_int(1, 100);
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -79,7 +82,7 @@
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <div class="d-md-flex">
                             <ol class="breadcrumb ms-auto">
-                                <li></li>
+                                <li>Saldo Anda : <strong id="saldo-anda" data-cash="<?= $balance; ?>"><?= $balance_rp; ?></strong></li>
                             </ol>
                           
                         </div>
@@ -102,37 +105,31 @@
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12">
                         <div class="white-box">
-                            <div class="d-md-flex mb-3">
-                                <h3 class="box-title mb-0">All Virtual Visitors (<?= $total_vvisitors ?>)</h3><br>
-                                 <img id="management-loading" src="/assets/plugins/images/loading.gif" >
-                                <div class="col-md-4 col-sm-4 col-xs-6 ms-auto">
-                                    <a class="link-upload" href="/upload-data-virtualvisitors" data-entity='virtualvisitors' data-bs-toggle="modal"
-                                    data-bs-target="#upload-virtualvisitors-form-modal" 
-                                    >Upload</a>
-                                    <a class="link-edit" href="/edit-data-virtualvisitors" data-entity='virtualvisitors'>Edit</a>
-                                    <a class="link-delete" href="/delete-data-virtualvisitors" data-entity='virtualvisitors'>Delete</a>
-                                     <a class="link-virtualvisitors-code" data-bs-toggle="modal"
-                                    data-bs-target="#code-virtualvisitors-form-modal"  href="/" data-entity='virtualvisitors'>Code</a>
-                                    <br>
-                                    <span>Change Selected Data to Theme: </span>
-                                    <select name="theme">
-                                            <option value="snow">default</option>
-                                            <option value="snowy">snowy</option>
-                                            <option value="summer">summer</option>
-                                            <option value="winter">winter</option>
-                                            <option value="rainy">rainy</option>
-                                            <option value="hotspring">hotspring</option>
-                                    </select>
-                                    |
-                                    <select name="iconic">
-                                            <option value="no-icon">no icon</option>
-                                            <option value="gender">gender</option>
-                                            <option value="arrow">arrow</option>
-                                    </select>
-                                    <a class="link-apply-theme" >Apply</a> 
-                                   
-                                </div>
-                            </div>
+                            <div class="container-fluid">
+  <div class="d-md-flex align-items-start justify-content-between flex-wrap mb-3">
+    <div class="mb-2 me-3">
+      <h3 class="box-title mb-0">
+        All Virtual Visitors (<?= $total_vvisitors ?>)
+      </h3>
+      <img id="management-loading" src="/assets/plugins/images/loading.gif" class="mt-2" />
+    </div>
+
+   <div class="col-md-3 col-sm-12">
+  <div class="d-flex flex-column flex-sm-row flex-wrap align-items-start gap-2 ms-auto">
+    <div class="d-flex flex-wrap gap-2">
+      <a class="link-upload" href="/upload-data-virtualvisitors" data-entity="virtualvisitors" data-bs-toggle="modal" data-bs-target="#upload-virtualvisitors-form-modal">Upload</a>
+      <a class="link-edit" href="/edit-data-virtualvisitors" data-entity="virtualvisitors">Edit</a>
+      <a class="link-delete" href="/delete-data-virtualvisitors" data-entity="virtualvisitors">Delete</a>
+      <a class="link-virtualvisitors-code" data-bs-toggle="modal" data-bs-target="#code-virtualvisitors-form-modal" href="/" data-entity="virtualvisitors">Code</a>
+    </div>
+
+   
+  </div>
+</div>
+
+  </div>
+</div>
+
                             <div class="table-responsive">
                                 <table id="table-visitors" class="table no-wrap stripe">
                                     <thead>
@@ -156,7 +153,11 @@
 
                                         <tr>
                                             <td><input type="checkbox" class="user-checked" data-id="<?= $key->id ?>" /></td>
-                                            <td class="txt-oflo"> <?= $key->client_name ?></td>
+                                            <td class="txt-oflo">
+                                                <a href="#" data-id="<?= $key->id ?>" data-bs-toggle="modal" data-bs-target="#virtualvisitor-theme-modal">
+                                             <?= $key->client_name ?>
+                                         </a>
+                                         </td>
                                             <td><?= $key->gender ?> </td>
                                             <td><?= $key->city ?> </td>
                                             <td><?= $key->product_bought ?> </td>
@@ -182,6 +183,8 @@
                 <?php include('modal_add_deposit_client.php'); ?>
                 <?php include('modal_upload_virtualvisitors.php'); ?>
                 <?php include('modal_code_virtualvisitors.php'); ?>
+                <?php include('modal_change_virtualvisitors_theme.php'); ?>
+                <?php include('modal_wa_float.php'); ?>
 
             </div>
             <!-- ============================================================== -->
@@ -205,23 +208,24 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="/assets/js/jquery-3.7.1.js"></script>
+    <script src="/assets/js/jquery-3.7.1.js?v=<?=$v;?>"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="/assets/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/app-style-switcher.js"></script>
-    <script src="/assets/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <script src="/assets/bootstrap/dist/js/bootstrap.bundle.min.js?v=<?=$v;?>"></script>
+     <script src="/assets/js/sweetalert2@11.js?v=<?=$v;?>"></script>
+    <script src="/assets/js/app-style-switcher.js?v=<?=$v;?>"></script>
+    <script src="/assets/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js?v=<?=$v;?>"></script>
     <!--Wave Effects -->
-    <script src="/assets/js/waves.js"></script>
+    <script src="/assets/js/waves.js?v=<?=$v;?>"></script>
     <!--Menu sidebar -->
-    <script src="/assets/js/sidebarmenu.js"></script>
+    <script src="/assets/js/sidebarmenu.js?v=<?=$v;?>"></script>
     <!--Custom JavaScript -->
-    <script src="/assets/js/datatables.min.js"></script>
-    <script src="/assets/js/custom.js"></script>
+    <script src="/assets/js/datatables.min.js?v=<?=$v;?>"></script>
+    <script src="/assets/js/custom.js?v=<?=$v;?>"></script>
     <!--This page JavaScript -->
     <!--chartis chart-->
    
    
-    <script src="/assets/js/modal-works.js"></script>
+    <script src="/assets/js/modal-works.js?v=<?=$v;?>"></script>
 </body>
 
 </html>

@@ -5,6 +5,7 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <!-- User Profile-->
+                        <hr>
                         <li class="sidebar-item pt-2">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/dashboard"
                                 aria-expanded="false">
@@ -19,78 +20,90 @@
                                 <span class="hide-menu">Settings</span>
                             </a>
                         </li>
+                        <hr>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href=""
+                                aria-expanded="false">
+                                <span class="hide-menu">&gt; Management</span>
+                            </a>
+                        </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-apps"
                                 aria-expanded="false">
                                 <i class="fa fa-desktop" aria-hidden="true"></i>
-                                <span class="hide-menu">Manage Apps</span>
+                                <span class="hide-menu"> Apps</span>
                             </a>
                         </li>
                           <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-landingpage"
+                            <a class="sidebar-link maintenance-link waves-effect waves-dark sidebar-link" href="/manage-landingpage"
                                 aria-expanded="false">
-                                <i class="fa fa-desktop" aria-hidden="true"></i>
-                                <span class="hide-menu">Manage Landing Page</span>
+                                <i class="fa fa-hashtag" aria-hidden="true"></i>
+                                <span class="hide-menu"> Landing Page</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-virtualvisitors"
                                 aria-expanded="false">
-                                <i class="fa fa-laptop" aria-hidden="true"></i>
-                                <span class="hide-menu">Manage V.Visitors</span>
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                <span class="hide-menu"> V.Visitors</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-socialmedia"
                                 aria-expanded="false">
-                                <i class="fa fa-laptop" aria-hidden="true"></i>
-                                <span class="hide-menu">Manage Social Media</span>
+                                <i class="fa fa-cogs" aria-hidden="true"></i>
+                                <span class="hide-menu"> Social Media</span>
                             </a>
                         </li>
                           <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-layananmanual"
                                 aria-expanded="false">
-                                <i class="fa fa-laptop" aria-hidden="true"></i>
-                                <span class="hide-menu">Manage Layanan Manual</span>
+                                <i class="fa fa-concierge-bell" aria-hidden="true"></i>
+                                <span class="hide-menu"> Layanan Manual</span>
                             </a>
                         </li>
+                       
                         <?php if($role == 'admin'): ?>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-users"
                                 aria-expanded="false">
                                 <i class="fa fa-users" aria-hidden="true"></i>
-                                <span class="hide-menu">Manage Users</span>
+                                <span class="hide-menu"> Users</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-packages"
                                 aria-expanded="false">
                                 <i class="fa fa-box" aria-hidden="true"></i>
-                                <span class="hide-menu">Manage Packages</span>
+                                <span class="hide-menu"> Packages</span>
                             </a>
                         </li>
                          <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-themes"
                                 aria-expanded="false">
-                                <i class="fa fa-box" aria-hidden="true"></i>
-                                <span class="hide-menu">Manage Themes</span>
+                                <i class="fa fa-magic" aria-hidden="true"></i>
+                                <span class="hide-menu"> Themes</span>
                             </a>
                         </li>
                          <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-order-jasa"
                                 aria-expanded="false">
                                 <i class="fa fa-edit" aria-hidden="true"></i>
-                                <span class="hide-menu">Manage Order Jasa</span>
+                                <span class="hide-menu"> Order Jasa</span>
                             </a>
                         </li>
                          <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/manage-deposits"
                                 aria-expanded="false">
-                                <i class="fa fa-wallet" aria-hidden="true"></i>
-                                <span class="hide-menu">Manage Deposits</span>
+                                <i class="fa fa-money-check-alt" aria-hidden="true"></i>
+                                <span class="hide-menu"> Deposits</span>
                             </a>
                         </li>
+                        
                         <?php endif; ?>
+
+                         <hr>
+
                           <?php if($role != 'admin'): ?>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/order-jasa"
@@ -122,3 +135,5 @@
             </div>
             <!-- End Sidebar scroll-->
         </aside>
+
+        

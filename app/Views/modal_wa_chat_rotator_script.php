@@ -7,7 +7,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Script (Code):</h5>
+        <h5 class="modal-title">Script</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -15,17 +15,39 @@
 <!-- the form body started from here -->
 
  <div class="form-group row">
+
+  <h5> HTML Code :</h5>
     
     <div class="col-9">
-      <div class="input-group">
+      <div class="input-group input-strike-wrap">
         <input id="wa-chat-rotator-script-model" required name="model" type="text" class="form-control"> 
       </div>
     </div>
 
     <div class="col-1">
       <div class="input-group">
-         <button data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Copy" id="copy-code" class="btn btn-primary btn-copy-code" >🗐</button>
-         <span id="message-copy"> </span>
+         <button data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Copy" data-source="code" class="copy-code btn btn-primary btn-copy-code" >🗐</button>
+         <span id="message-copy1"> </span>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-group row">
+    
+    <h5> Direct Link :</h5>
+
+    <div class="col-9">
+      <div class="input-group ">
+        <input id="wa-chat-rotator-link-model" required name="model" type="text" class="form-control"> 
+      </div>
+    </div>
+
+    <div class="col-1">
+      <div class="input-group">
+         <button data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Copy" data-source="link" class="copy-code btn btn-primary btn-copy-code" >🗐</button>
+         <span id="message-copy2"> </span>
 
       </div>
     </div>

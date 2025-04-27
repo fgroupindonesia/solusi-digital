@@ -78,8 +78,8 @@
                   <h2 class="animate__animated animate__fadeInDown">Selamat datang !</h2>
                   <p class="animate__animated animate__fadeInUp animate_typing">Kami hadir untuk membantu Anda mampu mewujudkan pencapaian bisnis dengan kemudahan dan hasil terbaik untuk dunia digital!</p>
               </div>
-              <div class="col-lg">
-                <img src="/assets/images/female-hijab-welcome.png" alt="welcome to Solusi Digital Online Platform"/>
+              <div class="features-image col-lg-4 d-flex align-items-center">
+                <img class="img-fluid" src="/assets/images/female-hijab-welcome.png" alt="welcome to Solusi Digital Online Platform"/>
               </div>
             </div>
            
@@ -131,7 +131,9 @@
 
         <div class="row position-relative">
 
-          <div class="col-lg-7 about-img" data-aos="zoom-out" data-aos-delay="200"><img src="assets/images/person-arm-closed2.jpg"></div>
+          <div class="features-image col-lg-4 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
+            <img class="img-fluid" src="assets/images/person-arm-closed2.jpg">
+          </div>
 
           <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
           
@@ -149,8 +151,9 @@
 
               <div class="watch-video d-flex align-items-center position-relative">
                 <i class="bi bi-play-circle"></i>
-                <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox stretched-link">Watch Video</a>
+                <a href="https://www.youtube.com/watch?v=qSGQhtV--mg" class="glightbox stretched-link">Watch Video</a>
               </div>
+              <?php include('modal_view_watch.php'); ?>
             </div>
           </div>
 
@@ -913,6 +916,7 @@
   <script src="assets/js/jquery-3.7.1.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/wa-konsul.js"></script>
+  <script src="assets/js/watch-video.js"></script>
   <script src="assets/js/custom.js"></script>
 
 </body>

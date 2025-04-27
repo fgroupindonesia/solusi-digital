@@ -12,7 +12,7 @@
   <div class="form-group row">
     <label for="package" class="col-4 col-form-label">Package</label> 
     <div class="col-8">
-      <?php if($total_packages !=0 ): ?>
+      <?php if(is_array($data_packages)): ?>
       <?php foreach($data_packages as $data_p): ?>
       <div class="custom-control custom-radio custom-control-inline">
         <?php if($data_p->order_type== 'landingpage'): ?>
@@ -27,19 +27,28 @@
   <div class="form-group row">
     <label for="theme" class="col-4 col-form-label">Theme</label> 
     <div class="col-8">
-       <?php if($total_themes_landingpage !=0 ): ?>
-      <?php foreach($data_themes as $data_p): ?>
+       <?php if(is_array($data_themeslp)): ?>
+      
       <div class="custom-control custom-radio custom-control-inline">
         <select id="landingpage-theme" name="theme" class="form-control">
-          <?php if($data_p->genre== 'free'): ?>
-          <option value="<?= $data_p->name ;?>" > <?= $data_p->name; ?> </option>
-          <?php endif;?>
+          <option >Pilih Satu </option>
+          <?php foreach($data_themeslp as $data_p): ?>          
+          <option value="<?= $data_p->name ;?>"
+          data-url="<?= $data_p->url;?>" 
+            data-preview="<?= $data_p->file_preview;?>" > 
+            <?= $data_p->name; ?> 
+          </option>
+          <?php endforeach; ?>
         </select>
       </div>
-      <?php endforeach; ?>
+      
       <?php endif; ?>
-      <a href="#" id="preview_landingpage">Preview</a>
-      <img src="" id="screnshot_landingpage" style="display:none;" >
+      <div id="preview-container" class="mt-3" style="display:none;">
+        <a id="preview-link" href="" target="_blank">
+        <img src="" class="img-thumbnail" width="200" id="screenshot_landingpage"  >
+        </a>
+      </div>
+
     </div>
   </div>
   <div class="form-group row">
@@ -86,7 +95,7 @@
       </div> <!-- this is end of modal-body -->
       <div class="modal-footer">
          <img class="modal-loading" src="/assets/plugins/images/loading.gif" >
-        <button type="button" class="btn btn-secondary btn-close-custom" data-bs-dismiss="modal" >Close</button>
+       
         <input type="submit" class="btn btn-primary btn-save" value="Save changes">
       </div>
     </div>

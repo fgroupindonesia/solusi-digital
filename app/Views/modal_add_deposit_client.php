@@ -16,32 +16,35 @@
 <!-- the form body started from here -->
 
 <section id="deposit-option">
- <div class="form-group row">
-    <label class="col-4">Paket Pengisian</label> 
-    <div class="col-8">
-      <div class="custom-control custom-radio custom-control-inline">
-        <input name="amount" id="add-deposit-50" type="radio" class="custom-control-input" value="50000"> 
-        <label for="add-deposit-50" class="custom-control-label">50rb</label>
-      </div>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input name="amount" id="add-deposit-100" type="radio" class="custom-control-input" value="100000"> 
-        <label for="add-deposit-100" class="custom-control-label">100rb</label>
-      </div>
-    <div class="custom-control custom-radio custom-control-inline">
-        <input name="amount" id="add-deposit-200" type="radio" class="custom-control-input" value="200000"> 
-        <label for="add-deposit-200" class="custom-control-label">200rb</label>
-      </div>
-    <div class="custom-control custom-radio custom-control-inline">
-        <input name="amount" id="add-deposit-500" type="radio" class="custom-control-input" value="500000"> 
-        <label for="add-deposit-500" class="custom-control-label">500rb</label>
-      </div>
-    <div class="custom-control custom-radio custom-control-inline">
-        <input name="amount" id="add-deposit-1000" type="radio" class="custom-control-input" value="1000000"> 
-        <label for="add-deposit-1000" class="custom-control-label">1juta</label>
+  <div class="form-group row">
+    <label class="col-12 col-md-4 col-form-label">Paket Pengisian</label> 
+    <div class="col-12 col-md-8">
+      <div class="d-flex flex-wrap">
+        <div class="custom-control custom-radio custom-control-inline mr-3">
+          <input name="amount" id="add-deposit-50" type="radio" class="custom-control-input" value="50000"> 
+          <label for="add-deposit-50" class="custom-control-label">50rb</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline mr-3">
+          <input name="amount" id="add-deposit-100" type="radio" class="custom-control-input" value="100000"> 
+          <label for="add-deposit-100" class="custom-control-label">100rb</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline mr-3">
+          <input name="amount" id="add-deposit-200" type="radio" class="custom-control-input" value="200000"> 
+          <label for="add-deposit-200" class="custom-control-label">200rb</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline mr-3">
+          <input name="amount" id="add-deposit-500" type="radio" class="custom-control-input" value="500000"> 
+          <label for="add-deposit-500" class="custom-control-label">500rb</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input name="amount" id="add-deposit-1000" type="radio" class="custom-control-input" value="1000000"> 
+          <label for="add-deposit-1000" class="custom-control-label">1juta</label>
+        </div>
       </div>
     </div>
-  </div> 
+  </div>
 </section>
+
 
 <!-- this is end of form body -->
 <section id="payment-method">
@@ -57,7 +60,7 @@
       </div> 
       <div class="modal-footer">
          <img class="modal-loading" src="/assets/plugins/images/loading.gif" >
-        <button type="button" class="btn btn-secondary btn-close-custom" data-bs-dismiss="modal">Close</button>
+       
         <input type="submit" class="btn btn-primary btn-save" value="Save changes">
       </div>
     </div>

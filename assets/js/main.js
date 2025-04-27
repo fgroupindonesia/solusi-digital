@@ -1,92 +1,120 @@
+(function () {
+  'use strict';
 
+  const body = document.body;
+  const header = document.getElementById('header');
+  const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+  const scrollTopBtn = document.querySelector('.scroll-top');
+  const preloader = document.getElementById('preloader');
+  const navLinks = document.querySelectorAll('.navmenu a');
 
-(function() {
-  "use strict";
+  let sectionPositions = [];
 
-  /**
-   * Apply .scrolled class to the body as the page is scrolled down
-   */
-  function toggleScrolled() {
-    const selectBody = document.querySelector('body');
-    const selectHeader = document.querySelector('#header');
-    if (!selectHeader.classList.contains('scroll-up-sticky') && !selectHeader.classList.contains('sticky-top') && !selectHeader.classList.contains('fixed-top')) return;
-    window.scrollY > 100 ? selectBody.classList.add('scrolled') : selectBody.classList.remove('scrolled');
+  function debounce(fn, delay = 15) {
+    let timeout;
+    return function (...args) {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => fn.apply(this, args), delay);
+    };
   }
 
-  document.addEventListener('scroll', toggleScrolled);
-  window.addEventListener('load', toggleScrolled);
+  function hasStickyHeader() {
+    return header &&
+      (header.classList.contains('scroll-up-sticky') ||
+        header.classList.contains('sticky-top') ||
+        header.classList.contains('fixed-top'));
+  }
 
-  /**
-   * Mobile nav toggle
-   */
-  const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+  function toggleScrolled() {
+    if (hasStickyHeader()) {
+      body.classList.toggle('scrolled', window.scrollY > 100);
+    }
+  }
 
-  function mobileNavToogle() {
-    document.querySelector('body').classList.toggle('mobile-nav-active');
+  function toggleScrollTop() {
+    if (scrollTopBtn) {
+      scrollTopBtn.classList.toggle('active', window.scrollY > 100);
+    }
+  }
+
+  function scrollToTop(e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function toggleMobileNav() {
+    body.classList.toggle('mobile-nav-active');
     mobileNavToggleBtn.classList.toggle('bi-list');
     mobileNavToggleBtn.classList.toggle('bi-x');
   }
-  mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
 
-  /**
-   * Hide mobile nav on same-page/hash links
-   */
-  document.querySelectorAll('#navmenu a').forEach(navmenu => {
-    navmenu.addEventListener('click', () => {
-      if (document.querySelector('.mobile-nav-active')) {
-        mobileNavToogle();
-      }
-    });
-
-  });
-
-  /**
-   * Toggle mobile nav dropdowns
-   */
-  document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
-    navmenu.addEventListener('click', function(e) {
-      e.preventDefault();
-      this.parentNode.classList.toggle('active');
-      this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
-      e.stopImmediatePropagation();
-    });
-  });
-
-  /**
-   * Preloader
-   */
-  const preloader = document.querySelector('#preloader');
-  if (preloader) {
-    window.addEventListener('load', () => {
-      preloader.remove();
-    });
-  }
-
-  /**
-   * Scroll top button
-   */
-  let scrollTop = document.querySelector('.scroll-top');
-
-  function toggleScrollTop() {
-    if (scrollTop) {
-      window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
+  function closeMobileNav() {
+    if (body.classList.contains('mobile-nav-active')) {
+      toggleMobileNav();
     }
   }
-  scrollTop.addEventListener('click', (e) => {
+
+  function toggleDropdown(e) {
     e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+    const parent = e.currentTarget.parentNode;
+    const sibling = parent.nextElementSibling;
+    parent.classList.toggle('active');
+    if (sibling) sibling.classList.toggle('dropdown-active');
+    e.stopImmediatePropagation();
+  }
+
+  function handleHashScroll() {
+    if (window.location.hash) {
+      const target = document.querySelector(window.location.hash);
+      if (target) {
+        setTimeout(() => {
+          const scrollMarginTop = getComputedStyle(target).scrollMarginTop || '0';
+          window.scrollTo({
+            top: target.offsetTop - parseInt(scrollMarginTop),
+            behavior: 'smooth',
+          });
+        }, 100);
+      }
+    }
+  }
+
+  function cacheSectionPositions() {
+    sectionPositions = Array.from(navLinks)
+      .filter(link => link.hash && document.querySelector(link.hash))
+      .map(link => {
+        const section = document.querySelector(link.hash);
+        return {
+          link,
+          top: section.offsetTop,
+          height: section.offsetHeight,
+        };
+      });
+  }
+
+  function navmenuScrollspy() {
+    const position = window.scrollY + 200;
+    sectionPositions.forEach(({ link, top, height }) => {
+      const isActive = position >= top && position <= top + height;
+      link.classList.toggle('active', isActive);
     });
-  });
+  }
 
-  window.addEventListener('load', toggleScrollTop);
-  document.addEventListener('scroll', toggleScrollTop);
+  function initSwiper() {
+    const swipers = document.querySelectorAll('.init-swiper');
+    swipers.forEach(swiperEl => {
+      const configEl = swiperEl.querySelector('.swiper-config');
+      if (!configEl) return;
+      const config = JSON.parse(configEl.textContent.trim());
 
-  /**
-   * Animation on scroll function and init
-   */
-  function aosInit() {
+      if (swiperEl.classList.contains('swiper-tab')) {
+        initSwiperWithCustomPagination(swiperEl, config);
+      } else {
+        new Swiper(swiperEl, config);
+      }
+    });
+  }
+
+  function initAOS() {
     AOS.init({
       duration: 600,
       easing: 'ease-in-out',
@@ -94,81 +122,48 @@
       mirror: false
     });
   }
-  window.addEventListener('load', aosInit);
 
-  /**
-   * Initiate glightbox
-   */
-  const glightbox = GLightbox({
-    selector: '.glightbox'
+  // === Event bindings ===
+
+  document.addEventListener('scroll', debounce(toggleScrolled));
+  document.addEventListener('scroll', debounce(toggleScrollTop));
+  document.addEventListener('scroll', debounce(navmenuScrollspy));
+
+  window.addEventListener('load', () => {
+    toggleScrolled();
+    toggleScrollTop();
+    cacheSectionPositions();
+    navmenuScrollspy();
+    initAOS();
+    initSwiper();
+    handleHashScroll();
+    preloader?.remove();
   });
 
-  /**
-   * Frequently Asked Questions Toggle
-   */
-  document.querySelectorAll('.faq-item h3, .faq-item .faq-toggle').forEach((faqItem) => {
-    faqItem.addEventListener('click', () => {
-      faqItem.parentNode.classList.toggle('faq-active');
+  if (scrollTopBtn) {
+    scrollTopBtn.addEventListener('click', scrollToTop);
+  }
+
+  if (mobileNavToggleBtn) {
+    mobileNavToggleBtn.addEventListener('click', toggleMobileNav);
+  }
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', closeMobileNav);
+  });
+
+  const dropdownToggles = document.querySelectorAll('.navmenu .toggle-dropdown');
+  dropdownToggles.forEach(toggle => {
+    toggle.addEventListener('click', toggleDropdown);
+  });
+
+  const faqToggles = document.querySelectorAll('.faq-item h3, .faq-item .faq-toggle');
+  faqToggles.forEach(el => {
+    el.addEventListener('click', () => {
+      el.parentNode.classList.toggle('faq-active');
     });
   });
 
-  /**
-   * Init swiper sliders
-   */
-  function initSwiper() {
-    document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
-      let config = JSON.parse(
-        swiperElement.querySelector(".swiper-config").innerHTML.trim()
-      );
-
-      if (swiperElement.classList.contains("swiper-tab")) {
-        initSwiperWithCustomPagination(swiperElement, config);
-      } else {
-        new Swiper(swiperElement, config);
-      }
-    });
-  }
-
-  window.addEventListener("load", initSwiper);
-
-  /**
-   * Correct scrolling position upon page load for URLs containing hash links.
-   */
-  window.addEventListener('load', function(e) {
-    if (window.location.hash) {
-      if (document.querySelector(window.location.hash)) {
-        setTimeout(() => {
-          let section = document.querySelector(window.location.hash);
-          let scrollMarginTop = getComputedStyle(section).scrollMarginTop;
-          window.scrollTo({
-            top: section.offsetTop - parseInt(scrollMarginTop),
-            behavior: 'smooth'
-          });
-        }, 100);
-      }
-    }
-  });
-
-  /**
-   * Navmenu Scrollspy
-   */
-  let navmenulinks = document.querySelectorAll('.navmenu a');
-
-  function navmenuScrollspy() {
-    navmenulinks.forEach(navmenulink => {
-      if (!navmenulink.hash) return;
-      let section = document.querySelector(navmenulink.hash);
-      if (!section) return;
-      let position = window.scrollY + 200;
-      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-        document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
-        navmenulink.classList.add('active');
-      } else {
-        navmenulink.classList.remove('active');
-      }
-    })
-  }
-  window.addEventListener('load', navmenuScrollspy);
-  document.addEventListener('scroll', navmenuScrollspy);
-
+  // === Init GLightbox ===
+  GLightbox({ selector: '.glightbox' });
 })();

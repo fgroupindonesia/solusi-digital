@@ -59,7 +59,25 @@ $( document ).ready(function() {
 
     toggleByLoginLink();
 
+    specialMaintenanceLink();
+
 });
+
+function specialMaintenanceLink(){
+
+
+    $('body').on('click', '.maintenance-link', function(e){
+
+        e.preventDefault();
+
+        let menu = $(this).text();
+        let pesan = 'Fitur ' + menu + ' ini sedang Maintenance!'
+        showInfo(pesan);
+
+
+    });
+
+}
 
 function prepareDataTable(idCome){
 
@@ -120,3 +138,28 @@ $(".dropdown ul").click(function (event) {
 
 
 }
+
+
+ function showSuccess(msg) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: msg,
+            });
+        }
+
+ function showInfo(msg) {
+            Swal.fire({
+                icon: 'info',
+                title: 'Information',
+                text: msg,
+            });
+        }
+
+function showError(msg) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: msg,
+            });
+        }

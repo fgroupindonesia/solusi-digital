@@ -1,99 +1,126 @@
 <div class="modal fade" id="setting-form-modal" tabindex="-1">
   <form id="setting-form" action="/update-settings" method="post">
- <!-- hidden elemental used -->
-  <input id="setting-hidden-id" name="id" type="hidden" value="<?= $user_id ?>" class="form-control">
- <!-- hidden elemental used -->
+    <input id="setting-hidden-id" name="id" type="hidden" value="<?= $user_id ?>" class="form-control">
 
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Settings</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        
-<!-- the form body started from here -->
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Settings</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
 
-<div class="form-group row">
-    <label for="setting-fullname" class="col-4 col-form-label">Fullname</label> 
-    <div class="col-8">
-      <div class="input-group">
-         
-        <input id="setting-fullname" name="fullname" value="<?= $fullname ?>" type="text" class="form-control">
-      </div>
-    </div>
-  </div>
- <div class="form-group row">
-    <label for="setting-username" class="col-4 col-form-label">Username</label> 
-    <div class="col-8">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <div class="input-group-text">
-            <i class="fa fa-user"></i>
+        <div class="modal-body">
+          <!-- Fullname -->
+          <div class="row mb-3">
+            <label for="setting-fullname" class="col-sm-4 col-form-label">Fullname</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="setting-fullname" name="fullname" value="<?= $fullname ?>">
+            </div>
           </div>
-        </div> 
-        <input id="setting-username" name="username" value="<?= $username ?>" type="text" class="form-control">
+
+          <!-- Username -->
+          <div class="row mb-3">
+            <label for="setting-username" class="col-sm-4 col-form-label">Username</label>
+            <div class="col-sm-8">
+              <div class="input-group">
+                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                <input type="text" class="form-control" id="setting-username" name="username" value="<?= $username ?>">
+              </div>
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="row mb-3">
+            <label for="setting-pass" class="col-sm-4 col-form-label">Password</label>
+            <div class="col-sm-8">
+              <input type="password" class="form-control" id="setting-pass" name="pass" value="<?= $pass ?>">
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="row mb-3">
+            <label for="setting-email" class="col-sm-4 col-form-label">Email</label>
+            <div class="col-sm-8">
+              <input type="email" class="form-control" id="setting-email" name="email" value="<?= $email ?>">
+            </div>
+          </div>
+
+          <!-- Occupation -->
+          <div class="row mb-3">
+            <label for="setting-occupation" class="col-sm-4 col-form-label">Occupation</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="setting-occupation" name="occupation" value="<?= $occupation ?>">
+            </div>
+          </div>
+
+          <!-- Sex -->
+          <div class="row mb-3">
+            <label class="col-sm-4 col-form-label">Sex</label>
+            <div class="col-sm-8 d-flex align-items-center gap-3">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="sex" id="setting-sex-male" value="male" <?= $sex_male_radio ?>>
+                <label class="form-check-label" for="setting-sex-male">Male</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="sex" id="setting-sex-female" value="female" <?= $sex_female_radio ?>>
+                <label class="form-check-label" for="setting-sex-female">Female</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Whatsapp -->
+          <div class="row mb-3">
+            <label for="setting-whatsapp" class="col-sm-4 col-form-label">Whatsapp</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="setting-whatsapp" name="whatsapp" value="<?= $whatsapp ?>">
+            </div>
+          </div>
+
+          <hr>
+          <!-- Admin Mode -->
+          
+        <?php if($role == 'admin'): ?>
+       
+         <!-- Notification -->
+          <div class="row mb-3">
+            <label class="col-sm-4 col-form-label">Email Notification</label>
+            <div class="col-sm-8 d-flex align-items-center gap-3">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="email_notif" id="email-notif-on" value="on" <?= $email_notif_on ?>>
+                <label class="form-check-label" for="email-notif-on">On</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="email_notif" id="email-notif-off" value="off" <?= $email_notif_off ?>>
+                <label class="form-check-label" for="email-notif-off">Off</label>
+              </div>
+            </div>
+          </div>
+
+           <!-- Approval Mode -->
+          <div class="row mb-3">
+            <label class="col-sm-4 col-form-label">Approval Mode</label>
+            <div class="col-sm-8 d-flex align-items-center gap-3">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="approval_mode" id="approval_mode_auto" value="automatic" <?= $approval_mode_auto ?>>
+                <label class="form-check-label" for="approval_mode_auto">Automatic</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="approval_mode" id="approval_mode_manual" value="manual" <?= $approval_mode_manual ?>>
+                <label class="form-check-label" for="approval_mode_manual">Manual</label>
+              </div>
+            </div>
+          </div>
+        <?php endif; ?>
+
+        </div>
+
+
+
+        <div class="modal-footer">
+          <img class="modal-loading" src="/assets/plugins/images/loading.gif" alt="Loading..." style="height: 25px;">
+          <input type="submit" class="btn btn-save btn-primary" value="Save changes">
+        </div>
       </div>
     </div>
-  </div>
-  <div class="form-group row">
-    <label for="setting-pass" class="col-4 col-form-label">Password</label> 
-    <div class="col-8">
-      <input id="setting-pass" name="pass" type="password" value="<?= $pass ?>" class="form-control">
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label for="setting-email" class="col-4 col-form-label">Email</label> 
-    <div class="col-8">
-      <div class="input-group">
-        <input id="setting-email" name="email" type="email" value="<?= $email ?>" class="form-control">
-      </div>
-    </div>
-  </div> 
-
-  <div class="form-group row">
-    <label for="setting-occupation" class="col-4 col-form-label">Occupation</label> 
-    <div class="col-8">
-      <div class="input-group">
-        <input id="setting-occupation" name="occupation" type="text" value="<?= $occupation ?>" class="form-control">
-      </div>
-    </div>
-  </div> 
-
- <div class="form-group row">
-    <label class="col-4">Sex</label> 
-    <div class="col-8">
-      <div class="custom-control custom-radio custom-control-inline">
-        <input name="sex" id="setting-sex-male" <?= $sex_male_radio ?> type="radio" class="custom-control-input" value="male"> 
-        <label for="setting-sex-male" class="custom-control-label">male</label>
-      </div>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input name="sex" id="setting-sex-female" <?= $sex_female_radio ?> type="radio" class="custom-control-input" value="female"> 
-        <label for="setting-sex-female" class="custom-control-label">female</label>
-      </div>
-    </div>
-  </div> 
-
-  <div class="form-group row">
-    <label for="setting-whatsapp" class="col-4 col-form-label">Whatsapp</label> 
-    <div class="col-8">
-      <div class="input-group">
-        <input id="setting-whatsapp" name="whatsapp" type="text" value="<?= $whatsapp ?>" class="form-control">
-      </div>
-    </div>
-  </div> 
-
-
-<!-- this is end of form body -->
-
-      </div> 
-      <div class="modal-footer">
-         <img class="modal-loading" src="/assets/plugins/images/loading.gif" >
-        <button type="button" class="btn btn-secondary btn-close-custom" data-bs-dismiss="modal">Close</button>
-        <input type="submit" class="btn btn-primary btn-save" value="Save changes">
-      </div>
-    </div>
-  </div>
-</form>
+  </form>
 </div>

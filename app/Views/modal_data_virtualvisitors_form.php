@@ -90,7 +90,7 @@
       </div> <!-- this is end of modal-body -->
       <div class="modal-footer">
          <img class="modal-loading" src="/assets/plugins/images/loading.gif" >
-        <button type="button" class="btn btn-secondary btn-close-custom" data-bs-dismiss="modal" >Close</button>
+      
         <input type="submit" class="btn btn-primary btn-save" value="Save changes">
       </div>
     </div>

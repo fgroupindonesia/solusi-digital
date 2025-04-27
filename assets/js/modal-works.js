@@ -42,6 +42,7 @@ const URL_WA_CHAT_ROTATOR_UPDATE 	= "/update-wa-chat-rotator";
 const URL_CS_REGION_WA_CHAT_ROTATOR_UPDATE 	= "/update-wa-chat-rotator-cs-region";
 const URL_CS_SCHEDULE_WA_CHAT_ROTATOR_UPDATE 	= "/update-wa-chat-rotator-cs-schedule";
 const URL_WA_CHAT_ROTATOR_SCRIPT_READY = "/check-wa-chat-rotator-script-ready";
+const URL_WA_CHAT_ROTATOR_SCRIPT_GRATIS = "/check-wa-chat-rotator-script-gratis";
 
 const URL_DATA_VIRTUALVISITORS = "/upload-data-virtualvisitors";
 const URL_DATA_LAYANANMANUAL = "/upload-data-layananmanual";
@@ -52,10 +53,12 @@ const URL_CAMPAIGN_REQUEST = "/request-campaign";
 const URL_CAMPAIGN_SINGLE_REQUEST = "/request-single-campaign";
 
 const URL_SETTINGS_UPDATE = "/update-settings";
+const URL_PREVIEW_IMAGE = "/client/preview-image/";
 
+const URL_SHORTENER = "/client/make-it-short";
 
 const URL_ENTRY_JS_ENDPOINT = "https://cdn.fgroupindonesia.com/virtualvisitors/js?";
-const _URL_ENTRY_WA_CHAT_ROTATOR = "https://sd.fgroupindonesia.com/";
+const _URL_ENTRY_WA_CHAT_ROTATOR = "https://solusi-digital.fgroupindonesia.com/";
 
 var jumlahData = 0;
 
@@ -66,6 +69,26 @@ let _ref_wac = null;
 $( document ).ready(function() {
 
 enablePopper();
+
+// this is for selectiing theme and displaying the preview
+$('#landingpage-theme').on('change', function () {
+  const url = $(this).find(':selected').data('url');
+  const prevw = $(this).find(':selected').data('preview');
+  
+  //alert('a');
+  //alert(url);
+
+  if (url) {
+
+  	let url_prevw = URL_PREVIEW_IMAGE + prevw;
+
+    $('#screenshot_landingpage').attr('src', url_prevw);
+    $('#preview-link').attr('href', url);
+    $('#preview-container').fadeIn();
+  } else {
+    $('#preview-container').fadeOut();
+  }
+});
 
 // this is for changing days to select dropdown
 // in the modal schedule
@@ -219,15 +242,16 @@ $('body').on('click','.add_region', function(e){
 });
 
 // this part for identifier mode
-$('body').on('click', '#identifier_mode', function(){
+$('body').on('click', '.identifier_mode', function(){
 
 	let ops = $(this).val();
+	let parent = $(this).parent();
 	
 	if(ops=='manual' || ops=='button contains' || ops=='link contains'){
 
-		$('#identifier_tag').show();
+		parent.find('.identifier_tag').show();
 	}else{
-		$('#identifier_tag').hide();
+		parent.find('.identifier_tag').hide();
 	}
 
 });
@@ -323,33 +347,45 @@ $('body').on('click', '.access-code', function(e){
 
 	let as_script = "<script src='LINK'></script>";
 	let url_js = _URL_ENTRY_WA_CHAT_ROTATOR + "client/?code=" + reff;
+	let link = _URL_ENTRY_WA_CHAT_ROTATOR + "client/fwd?code=" + reff;
 
 	let new_code = as_script.replace('LINK', url_js);
 	$('#wa-chat-rotator-script-model').val(new_code);
-
+	$('#wa-chat-rotator-link-model').val('wait...');
+	
 		// check the status
-		let datana = {code: reff};
+		let datana = {code: reff, url: link};
 		kirimPost(datana, URL_WA_CHAT_ROTATOR_SCRIPT_READY);
 
 });
 
 
 // script copy for wa chat rotator
-$('body').on('click', '#copy-code', function(){
+$('body').on('click', '.copy-code', function(){
 
-	let el = $('#wa-chat-rotator-script-model');
+	let source = $(this).attr('data-source');
+
+	let el = null;
+
+	if(source=='code'){
+	
+	el = $('#wa-chat-rotator-script-model');
+	$('#message-copy1').text('copied...');		
+
+	} else {
+	el = $('#wa-chat-rotator-link-model');
+	$('#message-copy2').text('copied...');		
+	}
+
 	let code = el.val();
 	el.select();
     el[0].setSelectionRange(0, 99999); 
                
-    let tooltip_code = $('#tooltip-code');
-
    document.execCommand("copy");
 
-   $('#message-copy').text('copied...');
-
    setTimeout(function(){
-		$('#message-copy').fadeOut();   		
+		$('#message-copy1').fadeOut();   		
+		$('#message-copy2').fadeOut();
    },2000);
    
 });
@@ -361,12 +397,16 @@ $('#add-deposit-form-modal').on('shown.bs.modal', function () {
     $('#payment-method-doc').hide();
 });
 
+$('#add-deposit-form-modal').on('hidden.bs.modal', function () {
+   location.reload();
+});
+
 // these parts for format os modal work
 $('#format-os-contact-person-type-self').on('change', function(){
 
 	// take the hidden data
 	// into the form
-	let myname = $('')
+	let myname = $('');
 
 	$('#format-os-contact-person-name').val(myname);
 	$('#format-os-contact-person-wa').val(mywa);	
@@ -397,6 +437,8 @@ $('#format-os-contact-person-type-other').on('change', function(){
 	displaySubmitFor('wa-chat-rotator-custom-form');
 	displaySubmitFor('wa-chat-rotator-schedule-form');
 	displaySubmitFor('theme-landingpage-form');
+	displaySubmitFor('setting-form');
+	
 
 
 
@@ -459,6 +501,18 @@ $('#quota_package').keyup(function(e){
 
 });
 
+$('#wa-chat-rotator-wizard-form').on('submit', function(e){
+
+	e.preventDefault();
+
+		let datana = $(this).serialize();
+			
+			let tujuanURL = $(this).attr('action');
+			kirimPost(datana, tujuanURL);
+
+
+});
+
 // package-form modal done
 
 // this is for campaign creation of modal popup Upload data
@@ -472,7 +526,7 @@ $('#upload-virtualvisitors-form').on('submit', function(e){
 			$('#save-campaign').click();
 		}
 
-})
+});
 
 // this is for code js vvisitors selected campaign
 $('#existing-campaign-code select').on('change', function(){
@@ -665,6 +719,7 @@ $('#upload-virtualvisitors-attachment').on('change', function(){
 			$('#wa-chat-rotator-schedule-modal').modal('hide');
 	});
 
+	
 
 	 // this is for package form
 	$('#package-form').on('submit', function(e){
@@ -793,19 +848,61 @@ $('#upload-virtualvisitors-attachment').on('change', function(){
 	});
 	// settings form done!
 
+	// radio button gratis chosen
+	$('#wa-chat-rotator-paket-gratis').on('click', function(){ 
+
+		let us = $('#wa-chat-rotator-form').find('#wa-chat-rotator-hidden-username').val();
+		let datana = {username : us};
+
+		kirimPost(datana, URL_WA_CHAT_ROTATOR_SCRIPT_GRATIS);
+
+	});
+
+	// radio button other than gratis chosen
+
+$('input[name="package"]').on('change', function () {
+  
+  const value = $(this).val();
+  const harga = $(this).attr('data-harga');
+
+  if(value != 'gratis'){
+  	let form = $('#wa-chat-rotator-form');
+  	form.find('input[type=submit]').show();
+  }
+  
+});
 
 
 	// this is for wa-chat-rotator form
 	$('#wa-chat-rotator-form').on('submit', function(e){
 			e.preventDefault();
-			$('.btn-save').hide();
-			$('.btn-close-custom').hide();
-			$('.modal-loading').fadeIn();
+			
 
 			let datana = $(this).serialize();
 
 			let tujuanURL = $(this).attr('action');
+
+			let cash = $('#saldo-anda').attr('data-cash');
+			let cash_text = $('#saldo-anda').text();
+			let harga = $(this).find('input[name="package"]:checked').attr('data-harga');
+
+			cash = parseInt(cash, 10);
+			harga = parseInt(harga, 10);
+
+			if(cash < harga){
+
+				showError("Saldomu " + cash_text + " tidak cukup! ");
+
+			}else{
+
+			$('.btn-save').hide();
+			$('.btn-close-custom').hide();
+			$('.modal-loading').fadeIn();
+
+			//alert('a');
 			kirimPost(datana, tujuanURL);
+
+			}
 
 	});
 	// wa-chat-rotator form done!
@@ -1114,7 +1211,7 @@ function addInputWAChatRotator(entity, text, rt_mode){
 	
 	$(id_parent).append(div);
 	//$(div).insertAfter(id_parent);
-	$(div).append(el)
+	$(div).append(el);
 	$(del).insertAfter(el);
 
 	if(entity != 'web_url'){
@@ -1154,9 +1251,9 @@ $(idnaSocmed).on('click', function(){
 
 function enablePopper(){
 
-var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-  return new bootstrap.Tooltip(tooltipTriggerEl)
+  return new bootstrap.Tooltip(tooltipTriggerEl);
 });
 
 }
@@ -1318,6 +1415,68 @@ function fillDefaultCampaign(){
         	 			$('#existing-campaign-code').show();
 }
 
+
+function calculateDaysWAChatRotatorFree(dataObject){
+
+let tanggal = dataObject.date_created;
+
+const rawDate = tanggal;
+const parsedDate = new Date(rawDate.replace(' ', 'T')); // ISO 8601 format
+
+const now = new Date();
+const msInDay = 1000 * 60 * 60 * 24;
+
+// Calculate days passed
+const daysPassed = Math.floor((now - parsedDate) / msInDay);
+const daysLeft = 14 - daysPassed;
+
+let pesan = null;
+
+// Output logic
+if (daysLeft < 0) {
+  pesan = `❌ Akun Gratis Expired ${Math.abs(daysLeft)} hari lalu.`;
+} else {
+  pesan = `✅ Akun Gratis Masih valid — ${daysLeft} sisa hari lagi.`;
+}
+
+
+	return pesan;
+
+}
+
+function makeStrikeThrough(el_codena){
+
+
+el_codena.attr('readonly', true).attr('disabled', true);
+        				el_codena.css({
+								  'user-select': 'none',
+								  'pointer-events': 'none',
+								  'background-color': '#f8f9fa', // Optional: visual cue
+								  'cursor': 'not-allowed'        // Optional: UX feedback
+								});
+
+								el_codena.attr('class', 'input-strike');
+								el_codena.parent().addClass('input-strike-wrap');
+
+
+}
+
+function resetStrikeThrough(el_codena){
+
+el_codena.removeAttr('readonly')
+							      .removeAttr('disabled')
+							      .css({
+							        'user-select': '',
+							        'pointer-events': '',
+							        'background-color': '',
+							        'cursor': ''
+							      })
+							      .removeClass('input-strike');
+
+							      el_codena.parent().removeClass('input-strike-wrap');
+
+}
+
 function kirimPost(dataForm, urlNa){
 	
 	console.log('kirim ke '+ urlNa +' ' + JSON.stringify(dataForm));
@@ -1331,27 +1490,86 @@ function kirimPost(dataForm, urlNa){
 
         	console.log('ada respond ' + data);
 
-        	if(urlNa == URL_WA_CHAT_ROTATOR_SCRIPT_READY){
+
+        	if(urlNa == URL_SHORTENER){
+
+        		if(isValidJSON(data)){
+        			let json = JSON.parse(data);
+        			$('#wa-chat-rotator-link-model').val(json.url);
+        		}else {
+        			
+        			showMessage('error', 'URL gagal dipendekkan!');
+
+        		}
+
+        	}else if(urlNa == URL_WA_CHAT_ROTATOR_UPDATE){
+
+        		showMessage('success', 'Berhasil diupdate!');
+        		setTimeout(function(){
+        			window.location.reload();
+        		}, 3000);
+        		
+
+        	} else if(urlNa == URL_WA_CHAT_ROTATOR_SCRIPT_GRATIS){
+
+        		if(isValidJSON(data)){
+        			let json = JSON.parse(data);
+
+        			let tombol = $('#wa-chat-rotator-form').find('input[type=submit]');
+
+        			if(json.status == 'valid'){
+        				// sudah ada gratis koq mau lagi?
+
+        			 let msg_na = 	calculateDaysWAChatRotatorFree(json.message);
+        			 
+        			 showAlert(msg_na);
+
+        				tombol.hide();
+        			}else{
+        				tombol.show();
+        			}
+
+        		}
+
+        	}else if(urlNa == URL_WA_CHAT_ROTATOR_SCRIPT_READY){
 
         		if(isValidJSON(data)){
         			let json = JSON.parse(data);
         			let div = $('#wa-chat-rotator-script-modal');
 
+
+
         			if(json.status != 'valid'){
         				// this means the data hasnt been ready
        					div.find('p').html('Script Error! ☢️');
 
-       					$('#copy-code').hide();
+       					$('.copy-code').hide();
 
         			}else{
 
+        				let codena =	$('#wa-chat-rotator-script-model');
+        				let linkna =	$('#wa-chat-rotator-link-model');
+
         				if(json.message !=null && json.message != 'ready'){
+
+								// make double strikethrough        				
+        				makeStrikeThrough(codena);
+        				makeStrikeThrough(linkna);
+
         					div.find('p').html('Script WA Chat Rotator ini <b>belum tuntas disetel &amp; belum siap dipakai!</b>. Karena ' + json.message + ' ⚡');
 
-        					$('#copy-code').hide();
+        					$('.copy-code').hide();
         				}else if(json.message == 'ready'){
-        					$('#copy-code').show();
-        					div.find('p').html('Segera <b>Copy & Paste script ini</b> ke dalam halaman website mu karena WA Chat Rotator <b>sudah siap berfungsi dengan baik</b>! 🌐');
+
+        					// normalize
+        					resetStrikeThrough(codena);
+        					resetStrikeThrough(linkna);
+
+        					$('.copy-code').show();
+        					div.find('p').html('Segera <b>Copy & Paste 1 script ini</b> ke dalam halaman website mu karena WA Chat Rotator <b>sudah siap berfungsi dengan baik</b>! 🌐');
+
+        					kirimPost(dataForm, URL_SHORTENER);
+
         				}
 								
         			}
@@ -1394,7 +1612,7 @@ function kirimPost(dataForm, urlNa){
 
 
 	        	 		// this is for code data for selected campaign
-	        	 		renderDataCampaign(datain, '#existing-campaign-code')
+	        	 		renderDataCampaign(datain, '#existing-campaign-code');
 
 	        	 		let hasil = $('#existing-campaign select').val();	
 	        	 		let datana = {name : hasil};
@@ -1417,6 +1635,9 @@ function kirimPost(dataForm, urlNa){
         	 			
             			extractOrderDetailData(dataNa.data, dataForm.order_type);
            }else if(urlNa != URL_CS_SCHEDULE_WA_CHAT_ROTATOR_EDIT && urlNa != URL_CS_SCHEDULE_WA_CHAT_ROTATOR_UPDATE && urlNa != URL_WA_CHAT_ROTATOR_EDIT && urlNa != URL_LAYANANMANUAL_EDIT && urlNa != URL_PACKAGE_EDIT && urlNa != URL_USER_EDIT && urlNa != URL_APP_EDIT && urlNa != URL_DEPOSIT_EDIT){
+        		
+           	showMessage('success', "Data Berhasil diupdate!");
+
         		setTimeout(function(){
         			if(urlNa == URL_SETTINGS_UPDATE){
         		var dForm = convertIntoJSON(dataForm);
@@ -1428,9 +1649,11 @@ function kirimPost(dataForm, urlNa){
         				// if the form is comming but not from settings call
         				//alert(data);
         				if(URL_THEME_LANDINGPAGE_DELETE == urlNa ||URL_WA_CHAT_ROTATOR_DELETE == urlNa || URL_LAYANANMANUAL_DELETE == urlNa || URL_ORDER_DELETE == urlNa || urlNa == URL_ORDER_UPDATE){
-        					if(jumlahData<=1)
-        				 alert('data berhasil terupdate!');
-	        			}else{
+        					
+        				 
+        						
+
+	        			} else {
 
 	        				//if(jumlahData<=1)
 	        				//alert('data berhasil dipesan!');
@@ -1441,17 +1664,22 @@ function kirimPost(dataForm, urlNa){
 	        					// hide the payment
 	        					$('#deposit-option').hide();
 
+	        					// hide the loading
+	        					$('.modal-loading').hide();
+
+	        					showMessage('info', 'Silahkan screenshot Bukti Pembayaran Anda ke CS Admin by Whatsapp!');
+
 	        				}
 
   	       			}
 
   	       			if(urlNa != URL_DEPOSIT_ADD && urlNa != URL_CS_REGION_WA_CHAT_ROTATOR_UPDATE)
-         			location.reload();
+         					location.reload();
 
         			}
-        		}, 2000);
+        		}, 3000);
             	
-            }else{
+            } else {
             	// extract the data into form
             	if(data != 'none'){
             		if(urlNa == URL_LAYANANMANUAL_EDIT){
@@ -1748,10 +1976,12 @@ function extractWAChatRotatorData(argument){
 	formNa.find('#wa-chat-rotator-custom-user-hidden-id').val(data.id);
 	formNa.find('#wa-chat-rotator-custom-package').val(data.package);
 
-	// continue making the phone and web url data
-	$('.add_input').remove();
+	
 
 	if(data.data_cs.length>0){
+
+// continue making the phone and web url data
+	$('.add_input').remove();
 
 		$('#nomor_wa_cs').html('');
 
@@ -1949,6 +2179,18 @@ return jsonObject;
 
 }
 
+ function showMessage(status, message){
+
+ 	if(status=='error'){
+ 		showError(message);
+ 	}else if (status=='info'){
+ 		showAlert(message);
+ 	}else {
+ 		showSuccess(message);
+ 	}
+
+ }
+
 
 function showError(message){
 
@@ -1956,6 +2198,17 @@ function showError(message){
             title: "Error",
             text: message,
             icon: "error"
+        });
+
+
+}
+
+function showSuccess(message){
+
+	Swal.fire({
+            title: "Success",
+            text: message,
+            icon: "success"
         });
 
 

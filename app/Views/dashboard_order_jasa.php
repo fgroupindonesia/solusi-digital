@@ -1,29 +1,10 @@
+<?php
+$v = random_int(1, 100);
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords"
-        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template">
-    <meta name="description"
-        content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
-    <meta name="robots" content="noindex,nofollow">
-    <title>Order Jasa - Solusi Digital</title>
-    <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/solusi-digital-logo.png">
-    <!-- Custom CSS -->
-    <link href="/assets/plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
-    <link rel="stylesheet" href="/assets/css/icons/font-awesome/css/all.css">
-
-    <!-- Custom CSS -->
-    <link href="/assets/css/style.min.css" rel="stylesheet">
-    <link href="/assets/css/style-custom.css" rel="stylesheet">
-</head>
+<?php include('container_header.php'); ?>
 
 <body>
     <!-- ============================================================== -->
@@ -77,7 +58,7 @@
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <div class="d-md-flex">
                             <ol class="breadcrumb ms-auto">
-                                <li>Saldo Anda : <strong><?= $balance; ?></strong></li>
+                                <li>Saldo Anda : <strong id="saldo-anda" data-cash="<?= $balance; ?>"><?= $balance_rp; ?></strong></li>
                             </ol>
                            
                         </div>
@@ -326,7 +307,13 @@
                                         <h5 class="font-medium">Order ID: #<?= strtoupper($key->order_client_reff); ?></h5>
                                         <span class="mb-3 d-block">Pemesanan <?= $key->order_type; ?>.</span>
                                         <div class="comment-footer d-md-flex align-items-center">
-                                             <span class="badge bg-primary rounded"><?= $key->status; ?></span>
+                                            <?php if($key->status == 'approved'): ?>
+                                             <span class="badge bg-success rounded"><?= $key->status; ?></span>
+                                         <?php elseif($key->status == 'cancel'): ?>
+                                             <span class="badge bg-danger rounded"><?= $key->status; ?></span>
+                                             <?php else: ?>
+                                             <span class="badge bg-warning rounded"><?= $key->status; ?></span>
+                                            <?php endif; ?>
                                              
                                     <div class="text-muted fs-2 ms-auto mt-2 mt-md-0"><?= $key->date_created; ?></div>
                                         </div>
@@ -357,20 +344,13 @@
                                             <div class="ms-2">
                                                 <span class="text-dark"><?= $currency_helper->asCurrency($key->amount); ?> <small
                                                         class="d-block text-success d-block"><?= $key->status; ?></small></span>
+                                                <span class="text-dark"><?= $date_helper->asFormat($key->date_created, "d-M-Y, h:i") . " WIB"; ?></span>
                                             </div>
                                         </a>
                                     </li>
                                     <?php endforeach; ?>
                                     <?php endif; ?>
-                                    <li>
-                                        <a href="#" id="wa-help" data-phone="6285795569337"  class="msg-user-wa d-flex align-items-center"><img
-                                                src="/assets/images/wa.png" alt="user-img" class="img-circle">
-                                            <div class="ms-2">
-                                                <span class="text-dark">Contact Admin
-                                                    <small class="d-block text-success">Technical Issue</small></span>
-                                            </div>
-                                        </a>
-                                    </li>
+                                    
                                 </ul>
                             </div>
                         </div>
@@ -392,6 +372,7 @@
       <?php include('modal_format_os.php'); ?>
       <?php include('modal_wa_chat_rotator.php'); ?>
       <?php include('modal_jasa_landingpage.php'); ?>
+      <?php include('modal_wa_float.php'); ?>
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
@@ -414,17 +395,18 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="/assets/js/jquery-3.7.1.js"></script>
+    <script src="/assets/js/jquery-3.7.1.js?v=<?=$v;?>"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="/assets/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/app-style-switcher.js"></script>
-   
+    <script src="/assets/bootstrap/dist/js/bootstrap.bundle.min.js?v=<?=$v;?>"></script>
+    <script src="/assets/js/app-style-switcher.js?v=<?=$v;?>"></script>
+    <script src="assets/js/sweetalert2@11.js?v=<?=$v;?>"></script>
    
     <!--Menu sidebar -->
-    <script src="/assets/js/sidebarmenu.js"></script>
+    <script src="/assets/js/sidebarmenu.js?v=<?=$v;?>"></script>
     <!--Custom JavaScript -->
-    <script src="/assets/js/custom.js"></script>
-    <script src="/assets/js/modal-works.js"></script>
+    <script src="/assets/js/custom.js?v=<?=$v;?>"></script>
+    <script src="/assets/js/modal-works.js?v=<?=$v;?>"></script>
+
     <!--This page JavaScript -->
  
 </body>

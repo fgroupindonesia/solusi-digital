@@ -27,9 +27,14 @@ class Database extends Config
     public array $default = [
         'DSN'          => '',
         'hostname'     => 'localhost',
+        // untuk local
         'username'     => 'root',
         'password'     => '',
         'database'     => 'db_fgi_sistem_solusi_digital_v1',
+        // untuk live
+        //'username'     => 'fgroupin_solusi_digital_v1',
+        //'password'     => 'callMe_281188$$',
+        //'database'     => 'fgroupin_solusi_digital_v1',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
         'pConnect'     => false,

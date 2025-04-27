@@ -1,4 +1,7 @@
 <?php
+
+$v = random_int(1, 100);
+
  function asRupiah($number) {
         $formattedNumber = number_format($number, 0, ',', '.');
         return 'Rp ' . $formattedNumber;
@@ -177,11 +180,12 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="/assets/plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/assets/plugins/bower_components/jquery/dist/jquery.min.js?v=<?=$v;?>"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="/assets/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/custom.js"></script>
-    <script src="/assets/js/modal-works.js"></script>
+    <script src="/assets/bootstrap/dist/js/bootstrap.bundle.min.js?v=<?=$v;?>"></script>
+       <script src="/assets/js/sweetalert2@11.js?v=<?=$v;?>"></script>
+    <script src="/assets/js/custom.js?v=<?=$v;?>"></script>
+    <script src="/assets/js/modal-works.js?v=<?=$v;?>"></script>
     <!--This page JavaScript -->
     
    

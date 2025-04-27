@@ -16,8 +16,9 @@ class DataModel extends Model
     protected $table_cs_record_wa_chat_rotator  = 'table_cs_record_wa_chat_rotator';
     protected $table_cs_schedule_wa_chat_rotator  = 'table_cs_schedule_wa_chat_rotator';
     protected $table_web_wa_chat_rotator       = 'table_web_wa_chat_rotator';
+    protected $table_system_works      = 'table_system_works';
 
-    
+    protected $table_purchased_order       = 'table_purchased_order';
     protected $table_themes_landingpage       = 'table_themes_landingpage';
     protected $table_data_virtualvisitors       = 'table_data_virtualvisitors';
     protected $table_campaign_virtualvisitors       = 'table_campaign_virtualvisitors';
@@ -37,7 +38,13 @@ class DataModel extends Model
 
     private function getEntity($entity){
         $table_na = null;
-        if($entity == 'users'){
+        if($entity == 'system_works'){
+            $table_na = $this->table_system_works;
+            
+        }else if($entity == 'purchased_order'){
+            $table_na = $this->table_purchased_order;
+            
+        }else if($entity == 'users'){
             $table_na = $this->table_users;
             
         }else if($entity == 'packages'){
@@ -91,7 +98,7 @@ class DataModel extends Model
         }else if($entity == 'order_view'){
             $table_na = $this->table_order_view;
 
-        }else if($entity == 'order_wa_chat_rotator'){
+        }else if($entity == 'order_wa_chat_rotator' || $entity == 'wa_chat_rotator'){
             $table_na = $this->table_order_wa_chat_rotator;
 
         }else if($entity == 'layananmanual'){
@@ -121,12 +128,51 @@ class DataModel extends Model
         return $table_na;
     }
 
+    // for system works usage
+    public function isSystemApprovalAutomatic()
+    {
+
+        $table_na = $this->getEntity('system_works');
+
+        $cari = array(
+            'id' => 1
+        );
+
+        $stat = false;
+
+        $data_system = $this->db->table($table_na)->where($cari)->get()->getRow(); 
+
+        if(!empty($data_system))
+            $stat = $data_system->approval_mode;
+
+        return ($stat == 'automatic') ? true : false;
+    }
+
+    // for system works usage
+    public function isSystemEmailNotificationOn()
+    {
+
+        $table_na = $this->getEntity('system_works');
+
+        $cari = array(
+            'id' => 1
+        );
+
+        $stat = false;
+
+        $data_system = $this->db->table($table_na)->where($cari)->get()->getRow(); 
+
+        if(!empty($data_system))
+            $stat = $data_system->email_activity_notification;
+
+        return ($stat == 'on') ? true : false;
+    }
+
     public function isDuplicate($data, $entity){
         $table_na = $this->getEntity($entity);
 
         if($entity == 'users'){
             $kriteria = array(
-                'username' => $data['username'],
                 'email' => $data['email']
             );
         }else if($entity == 'apps'){
@@ -160,6 +206,19 @@ class DataModel extends Model
 
         return $val;
         
+    }
+
+    public function decreasedBalance($username, $cash){
+
+        $table_na = $this->getEntity('users');
+
+        $res = $this->db->table($table_na)
+        ->set('balance', "balance - {$cash}", false) // false = no escaping
+        ->where('username', $username)
+        ->update();
+
+        return $res;
+
     }
 
     public function getNextScheduleCSNumberBy($filter){
@@ -289,6 +348,29 @@ class DataModel extends Model
         } else { 
             return ($time_int >= $open_int || $time_int < $close_int);
         }
+
+    }
+
+    public function getDifferentUsername($username_used){
+
+        $table = $this->getEntity('users');
+
+        $filter = array(
+            'username' => $username_used
+        );
+
+        $res = $this->db->table($table)->where($filter)->get()->getResult();
+
+        $username_preferred = $username_used;
+
+        // 4 digit random with 0000 leading front
+        $generated_code = str_pad(random_int(0, 9999), 4, '0', STR_PAD_LEFT);
+
+        if(!empty($res)){
+            $username_preferred = $username_used . $generated_code;
+        }
+
+        return $username_preferred;
 
     }
 
@@ -483,6 +565,24 @@ class DataModel extends Model
 
     }
 
+    public function isWAChatRotatorExist($filter){
+
+
+       $table1 = $this->getEntity('order_wa_chat_rotator');
+
+       $data1 = $this->db->table($table1)->where($filter)->get()->getRow();
+
+       if(!empty($data1)){
+
+            return $data1;
+
+       }
+
+       return false;
+
+
+    }
+
     public function isWAChatRotatorReady($code_come, $as_text){
 
         // ready state is :
@@ -611,7 +711,7 @@ class DataModel extends Model
 
         $res = $this->db->table($table_na)->where('id', $id)->get();
         
-		return $res->getResult();
+		return $res->getRow();
     }
 
      public function selectAllData($entity)
@@ -660,6 +760,31 @@ class DataModel extends Model
         if($hasil != false){
             return $res->getRow()->base_price;   
         }
+
+    }
+
+    public function getPackageByOrder($order_id, $entity){
+
+        $data = null;
+
+        $data_detail = $this->selectData($order_id, $entity);
+
+        if(!empty($data_detail)){
+            $package_name = $data_detail->package;
+
+            $filter = array(
+                'name' => $package_name,
+                'order_type' => $entity
+            );
+
+            $data_package = $this->selectDataBy($filter, 'packages');
+
+            if(!empty($data_package))
+                $data = $data_package;
+
+        }
+
+        return $data;
 
     }
 

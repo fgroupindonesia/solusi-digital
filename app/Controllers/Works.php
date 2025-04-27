@@ -5,6 +5,8 @@ namespace App\Controllers;
 use CodeIgniter\Files\File;
 use App\Models\DataModel;
 use App\Libraries\XLSXReader;
+use App\Libraries\DateHelper;
+use App\Libraries\URLShortenerHelper;
 
 class Works extends BaseController
 {
@@ -12,15 +14,437 @@ class Works extends BaseController
 	protected $helpers = ['form', 'filesystem', 'directory'];
 	
     public $db = null;
+    public $date_helper = null;
 
     public function __construct(){
 
         $this->db = new DataModel();
         //echo var_dump($this->db);
+        $this->date_helper = new DateHelper();
+        $this->url_shortener = new URLShortenerHelper();
+
+    }
+
+    public function url_shortener(){
+
+        $status = 'invalid';
+        $result = array(
+            'status' => $status
+        );
+        $urlna = $this->request->getPost('url');
+
+        $pendek = $this->url_shortener->makeShort($urlna);
+
+        if(!empty($pendek)){
+            $status = 'valid';
+            $result['url'] = $pendek;
+        }
+
+        echo json_encode($result);
+
+    }
+
+    public function generate_php(){
+
+        
+        $code = $this->request->getGet('code');
+        $debug = $this->request->getGet('debug');
+        
+        $identifier = "#btn_ok";
+        $phone = "6285795569337";
+        $message = "hello!";
+
+        $result = "working...";
+
+        $filter = array(
+            'order_client_reff' => $code
+        );
+
+        // check first existance
+        $datana = $this->db->selectDataBy($filter, 'order_jasa');
+
+        if(!empty($datana)){
+
+            $filter2 = array(
+                'id' => $datana->order_id
+            );
+
+            $filter3 = array(
+                'order_id' => $datana->order_id
+            );
+
+            $data_wa_chat = $this->db->selectDataBy($filter2, 'order_wa_chat_rotator');
+            $data_cs = $this->db->selectAllDataBy($filter3, 'cs_wa_chat_rotator');
+
+            $phones_cs = $this->getPhoneNumbersOnly($data_cs);
+
+            $message = $data_wa_chat->message;
+               
+           $cari_generic = array('client_target_device'=>'all', 'order_id' => $datana->order_id);
+
+           $rotator_mode = $data_wa_chat->rotator_mode;
+
+           $phone_cs = '';
+
+            // random works started
+           if($rotator_mode == 'random'){
+
+                $cari_cs_semua = array('order_id' => $datana->order_id);
+                $cs_all = $this->db->selectAllDataBy($cari_cs_semua, 'cs_wa_chat_rotator');
+                $cs_all = $this->getPhoneNumbersOnly($cs_all);
+
+                $data_record = $cs_all;
+
+                if(!empty($cs_all)){
+                    $ran_post = rand(0, sizeof($cs_all)-1);
+                    $phone_cs = $cs_all[$ran_post];
+                }else{
+                    // if empty
+                    $ran_post = 0;
+                    // send to admin
+                    $phone_cs = "6285795569337";
+                }
+
+                
+           } // random works done
+
+             // order works started
+           if($rotator_mode == 'order'){
+
+                $cari_cs_semua = array('order_id' => $datana->order_id);
+                $cs_all = $this->db->selectAllDataBy($cari_cs_semua, 'cs_wa_chat_rotator');
+                $cs_all = $this->getPhoneNumbersOnly($cs_all);
+
+                $data_record = $this->db->selectDataBy($cari_cs_semua, 'cs_record_wa_chat_rotator');
+                $idna = $data_record->id;
+
+                $index_terakhir = $data_record->last_index;
+                $total_banyak_cs = sizeof($cs_all);
+
+                if($index_terakhir < $total_banyak_cs-1){
+                    $index_terakhir++;
+                }else{
+                    $index_terakhir = 0;
+                }
+
+                // update the record
+                $up = array(
+                    'last_index' => $index_terakhir
+                );
+
+                $this->db->updateData($idna, $up, 'cs_record_wa_chat_rotator');
+
+                if(!empty($cs_all)){
+                    $phone_cs = $cs_all[$index_terakhir];
+                }else{
+                    // if empty
+                    // send to admin
+                    $phone_cs = "6285795569337";
+                }
+
+                
+           } // order works done
+
+             // schedule works started
+           if($rotator_mode == 'schedule'){
+
+                $cari_cs_semua = array('order_id' => $datana->order_id);
+                $cs_all = $this->db->selectAllDataBy($cari_cs_semua, 'cs_wa_chat_rotator');
+                $cs_all = $this->getPhoneNumbersOnly($cs_all);
+
+                $data_record = $this->db->selectAllDataBy($cari_cs_semua, 'cs_schedule_wa_chat_rotator');
+
+                $ketemu_cocok_day = false;
+
+                foreach($data_record as $dr){
+                    $harian = json_decode($dr->days_selected);
+                    
+                    $hari_ini = $this->date_helper->getDayNameNow();
+                    if(!empty($harian)){
+                        if(in_array($hari_ini, $harian)){
+                            $phone_ketemu = $dr->cs_number;
+                            $ketemu_cocok_day = true;
+                            break;
+                        }
+                    }
+
+                }
+
+                if(!empty($cs_all)){
+                    if($ketemu_cocok_day)
+                    $phone_cs = $phone_ketemu;
+
+                    // jika tidak cocok
+                   // maka acak saja
+                    if($ketemu_cocok_day==false){
+                       
+
+                        $data_record = $this->db->selectDataBy($cari_cs_semua, 'cs_record_wa_chat_rotator');
+                        $idna = $data_record->id;
+
+                        $index_terakhir = $data_record->last_index;
+                        $total_banyak_cs = sizeof($cs_all);
+
+                        if($index_terakhir < $total_banyak_cs-1){
+                            $index_terakhir++;
+                        }else{
+                            $index_terakhir = 0;
+                        }
+
+                        // update the record
+                        $up = array(
+                            'last_index' => $index_terakhir
+                        );
+
+                        $this->db->updateData($idna, $up, 'cs_record_wa_chat_rotator');
+
+                        $phone_cs = $cs_all[$index_terakhir];
+
+                    }
+                    
+
+                }else{
+                    // if empty
+                    // send to admin
+                    $phone_cs = "6285795569337";
+                }
+
+                
+           } // schedule works done
+
+             // origin works started
+           if($rotator_mode == 'origin'){
+
+                $cari_cs_semua = array('order_id' => $datana->order_id);
+                $cs_all = $this->db->selectAllDataBy($cari_cs_semua, 'cs_wa_chat_rotator');
+                $cs_all = $this->getPhoneNumbersOnly($cs_all);
+
+                $data_record = $this->db->selectAllDataBy($cari_cs_semua, 'cs_map_wa_chat_rotator');
+
+                // origin works in client detection
+                
+           } // origin works done
+
+             // device works started
+           if($rotator_mode == 'device'){
+
+                $cari_cs_semua = array('order_id' => $datana->order_id);
+                $cs_all = $this->db->selectAllDataBy($cari_cs_semua, 'cs_wa_chat_rotator');
+                //$cs_all = $this->getPhoneNumbersOnly($cs_all);
+
+                $data_record = $cs_all;
+
+                // origin works in client detection
+                
+           } // device works done
+
+           $result = "done";
+            
+        }
+
+
+        if($debug == 1){
+            print_r($result);
+            exit();
+        }
+
+        $data = array(
+            'data' => $datana->order_id,
+            'data_cs' => json_encode($data_record),
+            'cs_number' => $phone_cs,
+            'message' => $message,
+            'rotator_mode' => $rotator_mode,
+            'order_id' => $datana->order_id
+        );
+
+       
+        return   view('php-smart/client_forwarder', $data);
+       
+    }
+
+    // obtaining the next number based on their device matching
+    public function wa_chat_rotator_next_device_cs(){
+
+        $result = array(
+            'status' => 'invalid'
+        );
+
+        $device      = $this->request->getPost('device');
+        $order_id       = $this->request->getPost('order_id');
+
+        $filter = array(
+            'order_id' => $order_id
+        );
+
+        $data_cs = $this->db->selectAllDataBy($filter, 'cs_wa_chat_rotator');
+        $data_record = $this->db->selectDataBy($filter, 'cs_record_wa_chat_rotator');
+
+        if(!empty($data_cs)){
+            $last_index = $data_record->last_index;
+
+            $total_cs = sizeof($data_cs);
+            $chosen_post = -1;
+            $starting = $last_index;
+            $total_match_device = 0;
+
+            if($last_index == $total_cs-1){
+                $starting = 0;
+            }
+
+            for($post = $starting; $post < $total_cs; $post++){
+                $device_na = $data_cs[$post]->client_target_device;
+
+                if($device_na=='all' || strcmp($device, $device_na) == 0 ){
+                    $total_match_device++;
+                    $precious_post = $post;
+
+                    if($last_index != $post){
+                        $chosen_post = $post;
+                        break;
+                    }
+                }
+
+            
+            }
+
+            // we use it anyway if no other device matched
+            if($chosen_post == -1 && $total_match_device == 1){
+                $chosen_post = $precious_post;
+            }
+
+            // if we found already
+            if($chosen_post != -1){
+                // we take the phone number
+                $result['cs_number'] = $data_cs[$chosen_post]->cs_number;
+                $result['status'] = "valid";
+
+                // update the index
+                $data_baru = array(
+                    'last_index' => $chosen_post
+                );
+
+                $this->db->updateDataBy($filter, $data_baru, 'cs_record_wa_chat_rotator');
+            }
+
+        }
+
+        //$result['data'] = $chosen_post;
+        echo json_encode($result);
+
+    }
+
+     // obtaining the next number based on their origin matching    
+    public function wa_chat_rotator_next_origin_cs(){
+
+        $result = array(
+            'status' => 'invalid'
+        );
+
+        $origin      = $this->request->getPost('origin');
+        $order_id       = $this->request->getPost('order_id');
+
+        $filter = array(
+            'order_id' => $order_id
+        );
+
+        $data_cs = $this->db->selectAllDataBy($filter, 'cs_map_wa_chat_rotator');
+        $data_record = $this->db->selectDataBy($filter, 'cs_record_wa_chat_rotator');
+
+        if(!empty($data_cs)){
+            $last_index = $data_record->last_index;
+
+             $total_cs = sizeof($data_cs);
+            $chosen_post = -1;
+            $starting = $last_index;
+            $total_same_city = 0;
+
+            if($last_index == $total_cs-1){
+                $starting = 0;
+            }
+
+             for($post = $starting; $post < $total_cs; $post++){
+                $city_na = $data_cs[$post]->city;
+                $city_na = strtolower($city_na);
+
+                if($post==0){
+                    //break;
+                }
+
+                if(strpos($city_na, $origin) !== false){
+                    $total_same_city++;
+                    $precious_post = $post;
+
+                    if($last_index != $post){
+                        $chosen_post = $post;
+                        break;
+                    }
+                }
+
+            }
+
+            // if the same city exist
+            // and no other data found // we shall use it anyway
+            if($chosen_post == -1 && $total_same_city == 1){
+                $chosen_post = $precious_post;
+            }
+
+
+            // if we found already
+            if($chosen_post != -1){
+                // we take the phone number
+                $result['cs_number'] = $data_cs[$chosen_post]->cs_number;
+                $result['status'] = "valid";
+
+                // update the index
+                $data_baru = array(
+                    'last_index' => $chosen_post
+                );
+                
+                $this->db->updateDataBy($filter, $data_baru, 'cs_record_wa_chat_rotator');
+            }
+
+        }
+        
+        //$result['data'] = $total_cs;
+        echo json_encode($result);
+
+    }
+
+    // we check is this cs number already called by the record?
+    // if so then say valid!
+    public function wa_chat_rotator_update_index_check(){
+
+        $index      = $this->request->getPost('index');
+        $cs_number  = $this->request->getPost('cs_number');
+        $order_id   = $this->request->getPost('order_id');
+
+        $filter = array(
+            'order_id' => $order_id
+        );
+
+        $data = $this->db->selectDataBy($filter, 'cs_record_wa_chat_rotator');
+
+        $result = "invalid";
+
+        if(!empty($data)){
+            $post = $data->last_index;
+            $data_cs = $this->db->selectAllDataBy($filter, 'cs_wa_chat_rotator');
+
+            foreach($data_cs as $dc){
+                if($dc->cs_number == $cs_number){
+                    $result = "valid";
+                    break;
+                }
+            }
+        }
+
+        echo $result;
 
     }
 
     public function generate_js(){
+
+        $origin = $this->request->getServer('HTTP_ORIGIN');
 
         $code = $this->request->getGet('code');
         $debug = $this->request->getGet('debug');
@@ -141,10 +565,27 @@ class Works extends BaseController
        
         return    $this->response
             ->setContentType('application/javascript')
+            ->setHeader('Access-Control-Allow-Origin', '*')
+    ->setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS')
+    ->setHeader('Access-Control-Allow-Headers', 'Content-Type')
              ->setBody($jqueryScript . " " . $jsweet . " " . $jsSmart);
        
 
     }
+
+// accessing the uploaded image from writeable folder directly
+    public function preview_image($folder, $filename)
+{
+
+    $path = WRITEPATH . "uploads/themes/{$folder}/{$filename}";
+
+    if (!is_file($path)) {
+        $path = FCPATH . 'assets/images/question.png';
+    }
+
+    $mime = mime_content_type($path);
+    return $this->response->setHeader('Content-Type', $mime)->setBody(file_get_contents($path));
+}
 
     private function getPhoneNumbersOnly($data_result){
 
@@ -219,7 +660,11 @@ class Works extends BaseController
     }
 
     public function testing(){
-        return view('popup');
+
+        $x = $this->db->isSystemEmailNotificationOn();
+        echo var_dump($x);
+
+        //return view('popup');
     }
 
     public function upload_data_virtualvisitors(){
@@ -418,7 +863,7 @@ class Works extends BaseController
 
     }
 
-    public function send_email($jenis, $id){
+    public function send_email($jenis, $data_passed){
 
         //echo "AAA";
         //$jenis = $this->request->getPost('type');
@@ -426,13 +871,112 @@ class Works extends BaseController
 
         //echo $id;
 
-        if($jenis == 'activation'){
+        if($jenis == 'order'){
+            // object is passed
+            $id = $data_passed->user_id;
+            $data = $data_passed->ordered_data;
+
+            $stat = $this->send_order($id, $data);
+        }else if($jenis == 'activation'){
+            $id = $data_passed;
             $this->send_activation($id);
         }else if($jenis == 'registration'){
-            $this->send_registration($id);
+            $id = $data_passed;
+            $stat = $this->send_registration($id);
         }else{
-            echo "invalid";
+            $stat = "invalid";
         }
+
+        return $stat;
+
+    }
+
+
+   public function send_order($id_user, $data_package){
+     
+        $dataNa = $this->db->selectData($id_user, 'users');
+        $status = "invalid";
+
+        // when we found it
+        if(!empty($dataNa)){
+
+        $url = "https://solusi-digital.fgroupindonesia.com/portal";
+        $fullname   = $dataNa->fullname;
+        $email      = $dataNa->email;
+
+        $year = date('Y');
+
+        $render_data = array(
+                'company' => 'FGroupIndonesia',
+                'year' => $year,
+                'fullname' => $fullname,
+                'login_url' => $url,
+                'ordered_date' => $data_package->date_created,
+                'total_price' => $data_package->total_price,
+                'order_type' => $data_package->order_type,
+                'quantity' => 1,
+                'package' => $data_package->name
+
+        ); 
+
+        $render_data2 = array(
+                'company' => 'FGroupIndonesia',
+                'year' => $year,
+                'fullname' => $fullname,
+                'login_url' => $url,
+                'ordered_date' => $data_package->date_created,
+                'total_price' => $data_package->total_price,
+                'order_type' => $data_package->order_type,
+                'quantity' => 1,
+                'package' => $data_package->name
+
+        ); 
+
+        $from = "support@fgroupindonesia.com";
+        $sender = "Support Team";
+        $subject = "✔️ Solusi Digital : Order Jasa Success! ";
+        $subject2 = "✔️ Solusi Digital : Permintaan Order Jasa! ";
+
+        $html = view('email/order_jasa_success', $render_data, ['debug' => false]);
+        $html2 = view('email/admin_notif_user_order', $render_data2, ['debug' => false]);
+
+        try {
+           // echo $html;
+            $this->send_email_now($email, $from, $sender, $subject, $html);
+
+            // this is for admin purposes
+            if($this->db->isSystemEmailNotificationOn()){
+                $cari = array(
+                    'role' => 'admin'
+                );
+
+                $data_admin = $this->db->selectAllDataBy($cari, 'users');
+
+                if(!empty($data_admin)){
+                    foreach($data_admin as $dm){
+                    $email2 = $dm->email;
+
+                    if(!empty($email2))
+                    $this->send_email_now($email2, $from, $sender, $subject2, $html2);
+                    
+                    }
+                }
+            }
+
+            $status = 'valid';
+        } catch(E){
+            $status = 'error';
+        }
+        
+
+
+        }else{
+
+            $status = "none";
+
+        }
+
+        return $status;    
 
     }
 
@@ -440,11 +984,11 @@ class Works extends BaseController
        $dataNa = $this->db->selectData($idNa, 'users');
 
         // when we found it
-        if(count($dataNa) == 1){
+        if(!empty($dataNa)){
 
-        $username   = $dataNa[0]->username;
-        $email      = $dataNa[0]->email;
-        $pass       = $dataNa[0]->pass;
+        $username   = $dataNa->username;
+        $email      = $dataNa->email;
+        $pass       = $dataNa->pass;
 
         $passedData = 'type=activation&email=' . $email . "&username=" . $username . "&pass=" . 
         urlencode($pass);
@@ -455,11 +999,11 @@ class Works extends BaseController
             // call the email sending
             $this->callURL($urlEmailSender);
 
-            echo "valid";
+            //echo "valid";
 
         }else{
 
-            echo "none";
+            //echo "none";
 
         }
  }
@@ -467,29 +1011,91 @@ class Works extends BaseController
     public function send_registration($idNa){
      
         $dataNa = $this->db->selectData($idNa, 'users');
+        $status = "invalid";
 
         // when we found it
-        if(count($dataNa) == 1){
+        if(!empty($dataNa)){
 
-        $fullname   = $dataNa[0]->fullname;
-        $email      = $dataNa[0]->email;
+        $url = "https://solusi-digital.fgroupindonesia.com/portal";
+        $fullname   = $dataNa->fullname;
+        $email      = $dataNa->email;
+        $pass       = $dataNa->pass;
+        $role       = $dataNa->role;
+        $username      = $dataNa->username;
+        $year = date('Y');
 
-        $passedData = 'type=registration&email=' . $email . "&fullname=" . urlencode($fullname);
+        $render_data = array(
+                'company' => 'FGroupIndonesia',
+                'year' => $year,
+                'pass' => $pass,
+                'username' => $username,
+                'fullname' => $fullname,
+                'login_url' => $url
+            ); 
 
-        $urlEmailSender = 'https://demo.fgroupindonesia.com/email/sending.php?' . ($passedData);
-        //echo $urlEmailSender . "<br>";
+        $render_data2 = array(
+                'company' => 'FGroupIndonesia',
+                'year' => $year,
+                'role' => $role,
+                'username' => $username,
+                'login_url' => $url
+            ); 
 
-            // call the email sending
-            $this->callURL($urlEmailSender);
+        $from = "support@fgroupindonesia.com";
+        $sender = "Support Team";
+        $subject = "✔️ Solusi Digital : Registrasi Berhasil! ";
+        $html = view('email/registration_success', $render_data, ['debug' => false]);
 
-            //echo "valid";
+
+        $email_admin = "fgroupindonesia@gmail.com";
+        $subject2 = "✔️ Solusi Digital : Registrasi User Baru Berhasil!";
+        $html2 = view('email/admin_notif_user_registration', $render_data2, ['debug' => false]);
+
+        try {
+            $this->send_email_now($email, $from, $sender, $subject, $html);
+
+            // send another one for admin
+            $this->send_email_now($email_admin, $from, $sender, $subject2, $html2);
+            
+            $status = 'valid';
+        } catch(E){
+            $status = 'error';
+        }
+        
+
 
         }else{
 
-            echo "none";
+            $status = "none";
 
         }
 
+        return $status;    
+
+    }
+
+    private function send_email_now($to, $from, $sender, $subject, $html){
+$email = service('email');
+
+        $config = array();
+$config['protocol'] = 'smtp';
+$config['mailType'] = 'html';
+$config['SMTPHost'] = 'mail.fgroupindonesia.com';
+$config['SMTPUser'] = 'support@fgroupindonesia.com';
+$config['SMTPPass'] = 'weAreAlways100_success';
+$config['SMTPCrypto'] = 'ssl';
+$config['SMTPPort'] = 465;
+
+$email->initialize($config);
+
+//$email->set_newline("\r\n");
+
+$email->setFrom($from, $sender);
+$email->setTo($to);
+$email->setSubject($subject);
+$email->setMessage($html);
+
+$email->send();
 
 
     }
@@ -528,7 +1134,7 @@ curl_close($ch);
 
          $result = array(
             'status'=> 'success',
-            'data' => $datana[0]
+            'data' => $datana
          );
 
          if(empty($datana)){
@@ -613,13 +1219,42 @@ curl_close($ch);
 
         $res = $this->db->updateData($id, $datana, 'order_jasa');
 
-        if($res > 0){
-            echo "success";
-        }else{
-            echo "none";
+        $order_id = $id;
+        $this->process_purchased_order($order_id);
+
+     if($res>0)
+      echo "valid";
+
+    if($res<=0)
+        echo "none";
+
+
+    }
+
+    public function process_purchased_order($id){
+        $data_order = $this->db->selectData($id, 'order_jasa');
+
+        $data_package = null;
+
+        if(!empty($data_order)){
+             $order_id      = $data_order->order_id;
+             $order_type    = $data_order->order_type;
+             $user    = $data_order->username;
+            
+            $data_package = $this->db->getPackageByOrder($order_id, $order_type);
+
+            $price = $data_package->total_price;
+
+            $data_terbeli = array(
+                'order_type' => $order_type,
+                'total_price' => $price,
+                'username' => $user
+            );
+
+            $this->db->insertData($data_terbeli, 'purchased_order');
+            $this->db->decreasedBalance($user, $price);
+
         }
-
-
     }
 
     public function settings_update(){
@@ -644,6 +1279,20 @@ curl_close($ch);
 
      $rest = $this->db->updateData($id, $data, 'users');
      
+     // if admin usage
+        $en = $this->request->getPost('email_notif');
+        $am = $this->request->getPost('approval_mode');
+
+        if(!empty($en) && !empty($am)){
+
+            $datana_admin = array(
+                'email_activity_notification' => $en,
+                'approval_mode' => $am
+            );
+
+            $this->db->updateData(1, $datana_admin, 'system_works');
+        }
+
      if($rest == 0){
         echo "none";
      }else {
@@ -699,13 +1348,36 @@ curl_close($ch);
 
     public function verify_login()
     {
-        $u = $this->request->getPost('username');
+        $e = $this->request->getPost('email');
+        $u = null;
+        $valid_email = false;
+
+        if (str_contains($e, '@')) {
+            $data_user = explode('@', $e);
+            $u = $data_user[0];
+            $valid_email = true;
+        } else {
+            // this is username
+            $u = $e;
+        }
+
         $p = $this->request->getPost('password');
 
-        $data = array(
-            'username'=>$u,
-            'pass'=>$p
-        );
+        if($valid_email){
+
+            $data = array(
+                'email'=>$e,
+                'pass'=>$p
+            );
+
+        }else {
+
+            $data = array(
+                'username'=>$u,
+                'pass'=>$p
+            );
+
+        }
 
         $rest = $this->db->verify_login($data);
         
@@ -800,7 +1472,9 @@ curl_close($ch);
         $package = $this->request->getPost('package');
         $user = $this->request->getPost('username');
        
-        
+        $status = 'pending';
+        $resut = "invalid";
+
           $data1 = array(
             'package'  => $package,
             'username' => $user
@@ -810,24 +1484,70 @@ curl_close($ch);
             $order_id = $rest1;
             $order_type = 'wa_chat_rotator';
 
+            
+
         $sixDigitRandomRef = $this->generateRandomPass(6);
+
+        if($package == 'gratis'){
+            $status = 'approved';
+        }
+
+        // for system easiness
+        if($this->db->isSystemApprovalAutomatic()){
+            $status = 'approved';
+        }
 
           $data2 = array(
             'order_id'              => $order_id,
             'order_type'            => $order_type,
             'order_client_reff'     => $sixDigitRandomRef,
-            'status'                => 'pending',
+            'status'                => $status,
             'username'              => $user
         );
 
+
+
        $rest2 = $this->db->insertData($data2, 'order_jasa');
+
+       // for system calculation profit purchased order
+        if($this->db->isSystemApprovalAutomatic()){
+            $order_id = $rest2;
+            $this->process_purchased_order($order_id);
+        }
      
      if($rest1 == 0){
-        echo "none";
+        $resut = "none";
      }else if($rest1 != 0 && $rest2 != 0) {
-        echo "valid";
+        $this->process_order_email_notification($package, $order_type, $user);
      }
 
+     echo $resut;
+
+    }
+
+    public function process_order_email_notification($package, $order_type, $user)
+    {
+         $filter = array(
+                'name' => $package,
+                'order_type' => $order_type
+            );
+
+            $filter1 = array(
+                'username' => $user
+            );
+
+            $rest_temp = $this->db->selectDataBy($filter, 'packages');
+            $data_user_temp = $this->db->selectDataBy($filter1, 'users');
+            
+            $rest_data = array();
+            $rest_data['user_id'] = $data_user_temp->id;
+            $rest_data['ordered_data'] = $rest_temp;
+
+            // convert to object
+            $obj_data = (object) $rest_data;
+
+            // this is object based
+            $resut = $this->send_email('order', $obj_data);
     }
 
     public function jasa_upgrade_fituraplikasi_order(){
@@ -840,6 +1560,7 @@ curl_close($ch);
             $app_base = $dataappbaseString;
         }
 
+        $status = 'pending';
         $url = $this->request->getPost('url');
         $title = $this->request->getPost('title');
         $package = $this->request->getPost('package');
@@ -862,20 +1583,32 @@ curl_close($ch);
 
         $sixDigitRandomRef = $this->generateRandomPass(6);
 
+         // for system works
+        if($this->db->isSystemApprovalAutomatic()){
+            $status = 'approved';
+        }
+
           $data2 = array(
             'order_id'              => $order_id,
             'order_type'            => $order_type,
             'order_client_reff'     => $sixDigitRandomRef,
-            'status'                => 'pending',
+            'status'                => $status,
             'username'              => $user
         );
 
        $rest2 = $this->db->insertData($data2, 'order_jasa');
+
+       // for system calculation profit purchased order
+        if($this->db->isSystemApprovalAutomatic()){
+            $order_id = $rest2;
+            $this->process_purchased_order($order_id);
+        }
      
      if($rest1 == 0){
         echo "none";
      }else if($rest1 != 0 && $rest2 != 0) {
         echo "valid";
+        $this->process_order_email_notification($package, $order_type, $user);
      }
 
     }
@@ -891,6 +1624,7 @@ curl_close($ch);
             $website = $dataappbaseString;
         }
 
+        $status = 'pending';
         $url = $this->request->getPost('url');
         $business_name = $this->request->getPost('business_name');
         $package = $this->request->getPost('package');
@@ -914,20 +1648,32 @@ curl_close($ch);
 
         $sixDigitRandomRef = $this->generateRandomPass(6);
 
+        // for system calculation profit purchased order
+        if($this->db->isSystemApprovalAutomatic()){
+         $status = 'approved';
+        }
+
           $data2 = array(
             'order_id'              => $order_id,
             'order_type'            => $order_type,
             'order_client_reff'     => $sixDigitRandomRef,
-            'status'                => 'pending',
+            'status'                => $status,
             'username'              => $user
         );
 
        $rest2 = $this->db->insertData($data2, 'order_jasa');
      
+       // for system calculation profit purchased order
+        if($this->db->isSystemApprovalAutomatic()){
+            $order_id = $rest2;
+            $this->process_purchased_order($order_id);
+        }
+
      if($rest1 == 0){
         echo "none";
      }else if($rest1 != 0 && $rest2 != 0) {
         echo "valid";
+        $this->process_order_email_notification($package, $order_type, $user);
      }
 
     }
@@ -943,6 +1689,7 @@ curl_close($ch);
             $app_base = $dataappbaseString;
         }
 
+        $status = 'pending';
         $title = $this->request->getPost('title');
         $notes = $this->request->getPost('notes');
         $package = $this->request->getPost('package');
@@ -964,20 +1711,32 @@ curl_close($ch);
 
         $sixDigitRandomRef = $this->generateRandomPass(6);
 
+        // for system calculation profit purchased order
+        if($this->db->isSystemApprovalAutomatic()){
+           $status = 'approved';
+        }
+
           $data2 = array(
             'order_id'              => $order_id,
             'order_type'            => $order_type,
             'order_client_reff'     => $sixDigitRandomRef,
-            'status'                => 'pending',
+            'status'                => $status,
             'username'              => $user
         );
 
        $rest2 = $this->db->insertData($data2, 'order_jasa');
+
+       // for system calculation profit purchased order
+        if($this->db->isSystemApprovalAutomatic()){
+            $order_id = $rest2;
+            $this->process_purchased_order($order_id);
+        }
      
      if($rest1 == 0){
         echo "none";
      }else if($rest1 != 0 && $rest2 != 0) {
         echo "valid";
+        $this->process_order_email_notification($package, $order_type, $user);
      }
 
     }
@@ -993,6 +1752,7 @@ curl_close($ch);
             $social_media = $datasocmedString;
         }
 
+        $status = 'pending';
        $url = $this->request->getPost('url');
         $title = $this->request->getPost('title');
         $package = $this->request->getPost('package');
@@ -1017,20 +1777,32 @@ curl_close($ch);
 
         $sixDigitRandomRef = $this->generateRandomPass(6);
 
+        // for system calculation profit purchased order
+        if($this->db->isSystemApprovalAutomatic()){
+            $status = 'approved';
+        }
+
           $data2 = array(
             'order_id'    => $order_id,
             'order_type'     => $order_type,
             'order_client_reff'      => $sixDigitRandomRef,
-            'status'         => 'pending',
+            'status'         => $status,
             'username'       => $user
         );
 
        $rest2 = $this->db->insertData($data2, 'order_jasa');
+
+       // for system calculation profit purchased order
+        if($this->db->isSystemApprovalAutomatic()){
+            $order_id = $rest2;
+            $this->process_purchased_order($order_id);
+        }
      
      if($rest1 == 0){
         echo "none";
      }else if($rest1 != 0 && $rest2 != 0) {
         echo "valid";
+        $this->process_order_email_notification($package, $order_type, $user);
      }
 
     }
@@ -1045,6 +1817,7 @@ curl_close($ch);
             $marketplace = $datamarketplaceString;
         }
 
+        $status = 'pending';
         $url = $this->request->getPost('url');
         $shop_name = $this->request->getPost('shop_name');
         $package = $this->request->getPost('package');
@@ -1070,20 +1843,32 @@ curl_close($ch);
 
          $sixDigitRandomRef = $this->generateRandomPass(6);
 
+          // for system calculation profit purchased order
+        if($this->db->isSystemApprovalAutomatic()){
+            $status = 'approved';
+        }
+
           $data2 = array(
             'order_id'    => $order_id,
             'order_type'     => $order_type,
             'order_client_reff'      => $sixDigitRandomRef,
-            'status'         => 'pending',
+            'status'         => $status,
             'username'       => $user
         );
 
        $rest2 = $this->db->insertData($data2, 'order_jasa');
      
+        // for system calculation profit purchased order
+        if($this->db->isSystemApprovalAutomatic()){
+            $order_id = $rest2;
+            $this->process_purchased_order($order_id);
+        }
+
      if($rest1 == 0){
         echo "none";
      }else if($rest1 != 0 && $rest2 != 0) {
         echo "valid";
+        $this->process_order_email_notification($package, $order_type, $user);
      }
 
     }
@@ -1098,6 +1883,7 @@ curl_close($ch);
             $marketplace = $datamarketplaceString;
         }
 
+        $status = 'pending';
         $url = $this->request->getPost('url');
         $shop_name = $this->request->getPost('shop_name');
         $package = $this->request->getPost('package');
@@ -1123,20 +1909,32 @@ curl_close($ch);
 
         $sixDigitRandomRef = $this->generateRandomPass(6);
 
+         // for system calculation profit purchased order
+        if($this->db->isSystemApprovalAutomatic()){
+         $status = 'approved';
+        }
+
           $data2 = array(
             'order_id'    => $order_id,
             'order_type'     => $order_type,
             'order_client_reff'      => $sixDigitRandomRef,
-            'status'         => 'pending',
+            'status'         => $status,
             'username'       => $user
         );
 
        $rest2 = $this->db->insertData($data2, 'order_jasa');
      
+        // for system calculation profit purchased order
+        if($this->db->isSystemApprovalAutomatic()){
+            $order_id = $rest2;
+            $this->process_purchased_order($order_id);
+        }
+
      if($rest1 == 0){
         echo "none";
      }else if($rest1 != 0 && $rest2 != 0) {
         echo "valid";
+        $this->process_order_email_notification($package, $order_type, $user);
      }
 
     }
@@ -1151,6 +1949,7 @@ curl_close($ch);
             $social_media = $datasocmedString;
         }
 
+        $status = 'pending';
         $url = $this->request->getPost('url');
         $business_name = $this->request->getPost('business_name');
         $package = $this->request->getPost('package');
@@ -1176,24 +1975,63 @@ curl_close($ch);
 
       $sixDigitRandomRef = $this->generateRandomPass(6);
 
+       // for system calculation profit purchased order
+        if($this->db->isSystemApprovalAutomatic()){
+         $status = 'approved';
+        }
+
           $data2 = array(
             'order_id'    => $order_id,
             'order_type'     => $order_type,
             'order_client_reff'      => $sixDigitRandomRef,
-            'status'         => 'pending',
+            'status'         => $status,
             'username'       => $user
         );
 
        $rest2 = $this->db->insertData($data2, 'order_jasa');
+
+        // for system calculation profit purchased order
+        if($this->db->isSystemApprovalAutomatic()){
+            $order_id = $rest2;
+            $this->process_purchased_order($order_id);
+        }
      
      if($rest1 == 0){
         echo "none";
      }else if($rest1 != 0 && $rest2 != 0) {
         echo "valid";
+        $this->process_order_email_notification($package, $order_type, $user);
      }
 
     }
 
+
+    public function wa_chat_rotator_script_gratis()
+    {
+        
+       $u =  $this->request->getPost('username');
+
+       $end_result = array(
+        'status' => 'invalid',
+        'message' => null
+       );
+
+       $filter = array(
+        'package' => 'gratis',
+        'username' => $u
+       );
+
+       // i need a message error if not exist
+       $data = $this->db->isWAChatRotatorExist($filter);
+
+       if(!empty($data)){
+            $end_result['status'] = 'valid';
+            $end_result['message'] = $data;
+       }
+
+       echo json_encode($end_result);
+
+    }
 
     public function wa_chat_rotator_script_ready()
     {
@@ -1227,6 +2065,7 @@ curl_close($ch);
             $social_media = $datasocmedString;
         }
 
+        $status = 'pending';
         $url = $this->request->getPost('url');
         $account_name = $this->request->getPost('account_name');
         $package = $this->request->getPost('package');
@@ -1250,20 +2089,32 @@ curl_close($ch);
 
        $sixDigitRandomRef = $this->generateRandomPass(6);
 
+        // for system calculation profit purchased order
+        if($this->db->isSystemApprovalAutomatic()){
+         $status = 'approved';
+        }
+
           $data2 = array(
             'order_id'    => $order_id,
             'order_type'     => $order_type,
             'order_client_reff'      => $sixDigitRandomRef,
-            'status'         => 'pending',
+            'status'         => $status,
             'username'       => $user
         );
 
        $rest2 = $this->db->insertData($data2, 'order_jasa');
+
+        // for system calculation profit purchased order
+        if($this->db->isSystemApprovalAutomatic()){
+            $order_id = $rest2;
+            $this->process_purchased_order($order_id);
+        }
      
      if($rest1 == 0){
         echo "none";
      }else if($rest1 != 0 && $rest2 != 0) {
         echo "valid";
+        $this->process_order_email_notification($package, $order_type, $user);
      }
 
     }
@@ -1278,6 +2129,7 @@ curl_close($ch);
             $social_media = $datasocmedString;
         }
 
+        $status = 'pending';
         $url = $this->request->getPost('url');
         $title = $this->request->getPost('title');
         $package = $this->request->getPost('package');
@@ -1313,20 +2165,32 @@ curl_close($ch);
 
         $sixDigitRandomRef = $this->generateRandomPass(6);
 
+         // for system calculation profit purchased order
+        if($this->db->isSystemApprovalAutomatic()){
+            $status = 'approved';
+        }
+
           $data2 = array(
             'order_id'    => $order_id,
             'order_type'     => $order_type,
             'order_client_reff'      => $sixDigitRandomRef,
-            'status'         => 'pending',
+            'status'         => $status,
             'username'       => $user
         );
 
        $rest2 = $this->db->insertData($data2, 'order_jasa');
      
+        // for system calculation profit purchased order
+        if($this->db->isSystemApprovalAutomatic()){
+            $order_id = $rest2;
+            $this->process_purchased_order($order_id);
+        }
+
      if($rest1 == 0){
         echo "none";
      }else if($rest1 != 0 && $rest2 != 0) {
         echo "valid";
+        $this->process_order_email_notification($package, $order_type, $user);
      }
 
     }
@@ -1440,8 +2304,8 @@ curl_close($ch);
 
         $order_id = 0;
 
-         if($data_jasa != false){
-            $order_id = $data_jasa[0]->order_id;
+         if(!empty($data_jasa)){
+            $order_id = $data_jasa->order_id;
          }
 
          
@@ -1537,11 +2401,11 @@ curl_close($ch);
 
           $rest = $this->db->selectData($id, 'apps');
         
-        if(count($rest)==0){
+        if(empty($rest)){
             // no value
             echo "none";
         }else{
-            echo json_encode($rest[0]);
+            echo json_encode($rest);
         }
     }
 
@@ -1552,11 +2416,11 @@ curl_close($ch);
 
           $rest = $this->db->selectData($id, 'deposits');
         
-        if(count($rest)==0){
+        if(empty($rest)){
             // no value
             echo "none";
         }else{
-            echo json_encode($rest[0]);
+            echo json_encode($rest);
         }
     }
 
@@ -1566,7 +2430,6 @@ curl_close($ch);
         $u = $this->request->getPost('username');
 
         $data = array(
-            'username'  => $u,
             'email'     => $e
         );
 
@@ -1707,6 +2570,11 @@ curl_close($ch);
         $u = $dataNa[0];
         $d = $dataNa[1];
 
+        // we need to ensure the username is not same with the existing
+        // from the db
+        $u = $this->db->getDifferentUsername($u);
+
+
         if(count($dataNa)==0){
             return null;
         }
@@ -1731,14 +2599,17 @@ curl_close($ch);
     public function user_register()
     {
         
-        $p = $this->generateRandomPass(7);
-        $e = $this->request->getGet('email');
-        $f = $this->request->getGet('fullname');
+        $end_result = "invalid";
+
+        //$p = $this->generateRandomPass(7);
+        $p = $this->request->getPost('pass');
+        $e = $this->request->getPost('email');
+        $f = $this->request->getPost('fullname');
         $u = $this->getFromEmail($e);
 
-        $s = $this->request->getGet('sex');
+        $s = $this->request->getPost('sex');
         $o = 'none';
-        $wa = $this->request->getGet('whatsapp');
+        $wa = $this->request->getPost('whatsapp');
 
         if(!isset($role)){
             $role = 'client';
@@ -1769,14 +2640,16 @@ curl_close($ch);
 
      
      if($rest == 0){
-        echo "none";
+        $end_result = "none";
      }else {
-        echo "valid";
+        
         $idUser = $rest;
 
-        $this->send_email('registration', $idUser);
-        return view('wa_call');
+         $end_result = $this->send_email('registration', $idUser);
+        //return view('wa_call');
      }
+
+     echo $end_result;
 
 
     }
@@ -1971,6 +2844,10 @@ curl_close($ch);
 
             $client_target_device = $this->request->getPost('client_target_device');
 
+            if(empty($client_target_device)){
+                // set default for all devices
+                $client_target_def = "all";
+            }
 
             if(!empty($nomor_wa_cs)){
 
@@ -1984,10 +2861,13 @@ curl_close($ch);
                 $urut=0;
                 foreach($nomor_wa_cs as $no){
 
+                    if(!empty($client_target_device))
+                        $client_target_def = $client_target_device[$urut];
+
                         $datana = array(
                         'cs_number' => $no,
                         'order_id' => $id,
-                        'client_target_device' => $client_target_device[$urut]
+                        'client_target_device' => $client_target_def
                         );
 
                         if(!empty($no))
@@ -2361,11 +3241,11 @@ curl_close($ch);
 
           $rest = $this->db->selectData($id, 'data_virtualvisitors');
         
-        if(count($rest)==0){
+        if(empty($rest)){
             // no value
             echo "none";
         }else{
-            echo json_encode($rest[0]);
+            echo json_encode($rest);
         }
 
     }
@@ -2389,7 +3269,7 @@ curl_close($ch);
 
           // because all is object based 
             // we transform them into associative array
-            $rest_array = json_decode(json_encode($rest[0]), true);
+            $rest_array = json_decode(json_encode($rest), true);
 
             $data_sisipan = array();
           $data_sisipan['data_web'] = $rest3;
@@ -2399,7 +3279,7 @@ curl_close($ch);
 
           }
         
-        if(count($rest)==0){
+        if(empty($rest)){
             // no value
             echo "none";
         }else{
@@ -2415,11 +3295,11 @@ curl_close($ch);
 
           $rest = $this->db->selectData($id, 'layananmanual');
         
-        if(count($rest)==0){
+        if(empty($rest)){
             // no value
             echo "none";
         }else{
-            echo json_encode($rest[0]);
+            echo json_encode($rest);
         }
 
     }
@@ -2431,11 +3311,11 @@ curl_close($ch);
 
           $rest = $this->db->selectData($id, 'users');
         
-        if(count($rest)==0){
+        if(empty($rest)){
             // no value
             echo "none";
         }else{
-            echo json_encode($rest[0]);
+            echo json_encode($rest);
         }
 
     }
@@ -2447,11 +3327,11 @@ curl_close($ch);
 
           $rest = $this->db->selectData($id, 'themes_landingpage');
         
-        if(count($rest)==0){
+        if(empty($rest)){
             // no value
             echo "none";
         }else{
-            echo json_encode($rest[0]);
+            echo json_encode($rest);
         }
 
     }
@@ -2463,11 +3343,11 @@ curl_close($ch);
 
           $rest = $this->db->selectData($id, 'packages');
         
-        if(count($rest)==0){
+        if(empty($rest)){
             // no value
             echo "none";
         }else{
-            echo json_encode($rest[0]);
+            echo json_encode($rest);
         }
 
     }

@@ -15,13 +15,13 @@
         
 <!-- the form body started from here -->
  <div class="form-group row">
-    <label class="col-4">Paket</label> 
-    <div class="col-8">
+   <label class="col-md-4 col-12 col-form-label">Paket</label> 
+       <div class="col-md-8 col-12">
       
     <?php if($total_packages !=0 ): ?>
       <?php foreach($data_packages as $data_p): ?>
-      <div class="custom-control custom-radio custom-control-inline">
-        <?php if($data_p->order_type== 'wa_chat_rotator'): ?>
+      <div class="custom-control custom-radio d-block">
+        <?php if($data_p->order_type == 'wa_chat_rotator'): ?>
         <input required name="package" data-harga="<?= $data_p->total_price; ?>" data-paket="<?= $data_p->name; ?>" id="wa-chat-rotator-paket-<?= $data_p->name; ?>" type="radio" class="wa-rotator-paket custom-control-input" value="<?= $data_p->name; ?>"> 
         <label for="wa-chat-rotator-paket-<?= $data_p->name; ?>" class="custom-control-label"><?= $data_p->name; ?></label>
         <?php endif;?>
@@ -44,7 +44,7 @@
     <div class="col-8">
        <p class="warning-text"> Pilihan paket ini disesuaikan dengan kebutuhan anda: <br/>
         <div id="deskripsi-gratis">
-          <h4>Harga : <span id="harga-paket-gratis"></span> </h4>
+          <h4>Harga : <span id="harga-paket-gratis" ></span> </h4>
             <ul class="tersedia">
               <li>Bisa dipasang di 1 website</li>
               <li>Mode Rotator Acak / Terurut</li>
@@ -58,7 +58,7 @@
         </div>
 
         <div id="deskripsi-bisnis">
-          <h4>Harga : <span id="harga-paket-bisnis"></span> </h4>
+          <h4>Harga : <span id="harga-paket-bisnis" ></span> </h4>
             <ul class="tersedia">
               <li>Semua Fitur Gratis Plus</li>
               <li>Bisa dipasang di 3 website</li>
@@ -72,7 +72,7 @@
         </div>
 
           <div id="deskripsi-developer">
-            <h4>Harga : <span id="harga-paket-developer"></span> </h4>
+            <h4>Harga : <span id="harga-paket-developer" ></span> </h4>
             <ul class="tersedia">
               <li>Semua Fitur Bisnis Plus</li>
               <li>Bisa dipasang di unlimited website</li>
@@ -85,7 +85,7 @@
         </div>
 
           <div id="deskripsi-vip">
-            <h4>Harga : <span id="harga-paket-vip"></span> </h4>
+            <h4>Harga : <span id="harga-paket-vip" data-cash=""></span> </h4>
             <ul class="tersedia">
               <li>Semua Fitur Developer Plus</li>
               <li>Mode Rotator + Integrasi Sync Perangkat</li>
@@ -110,7 +110,7 @@
       </div> 
       <div class="modal-footer">
          <img class="modal-loading" src="/assets/plugins/images/loading.gif" >
-        <button type="button" class="btn btn-secondary btn-close-custom" data-bs-dismiss="modal">Close</button>
+       
         <input type="submit" class="btn btn-primary btn-save" value="Save changes">
       </div>
     </div>

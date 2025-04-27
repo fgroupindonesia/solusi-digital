@@ -57,7 +57,7 @@ $routes->post('/add-new-user', 'Works::user_add');
 $routes->post('/add-new-package', 'Works::package_add');
 $routes->post('/add-new-deposit', 'Works::deposit_add');
 $routes->post('/add-new-theme-landingpage', 'Works::theme_add');
-$routes->get('/register-new-user', 'Works::user_register');
+$routes->post('/register-new-user', 'Works::user_register');
 $routes->post('/delete-virtualvisitors', 'Works::virtualvisitors_delete');
 $routes->post('/delete-app', 'Works::app_delete');
 $routes->post('/delete-campaign', 'Works::campaign_delete');
@@ -89,13 +89,25 @@ $routes->post('/update-deposit', 'Works::deposit_update');
 $routes->post('/update-wa-chat-rotator', 'Works::wa_chat_rotator_update');
 $routes->post('/update-wa-chat-rotator-cs-region', 'Works::wa_chat_rotator_cs_region_update');
 $routes->post('/update-wa-chat-rotator-cs-schedule', 'Works::wa_chat_rotator_cs_schedule_update');
+
 $routes->post('/request-statistics', 'Works::statistics_data');
 $routes->post('/request-campaign', 'Works::campaign_data');
 $routes->post('/request-single-campaign', 'Works::campaign_single_data');
 $routes->post('/request-detail-jasa-order', 'Works::jasa_order_data');
 $routes->post('/send-email', 'Works::send_email');
 $routes->post('/check-email-exists', 'Works::user_email_check');
+$routes->post('/check-wa-chat-rotator-script-gratis', 'Works::wa_chat_rotator_script_gratis');
 $routes->post('/check-wa-chat-rotator-script-ready', 'Works::wa_chat_rotator_script_ready');
+
 $routes->get('/client', 'Works::generate_js');
-$routes->post('/client/next-cs-number', 'Works::wa_chat_rotator_next_cs');
+$routes->get('/client/fwd', 'Works::generate_php');
+$routes->post('/client/next--index', 'Works::wa_chat_rotator_update_index_check');
+$routes->post('/client/update-index', 'Works::wa_chat_rotator_update_index_record');
+
+// we obtain the cs number based on their parameters
+$routes->post('/client/next-device-cs-number', 'Works::wa_chat_rotator_next_device_cs');
+$routes->post('/client/next-origin-cs-number', 'Works::wa_chat_rotator_next_origin_cs');
+$routes->post('/client/make-it-short', 'Works::url_shortener');
+
 $routes->post('/client/next-schedule-cs-number', 'Works::wa_chat_rotator_next_schedule_cs');
+$routes->get('/client/preview-image/(:any)/(:any)', 'Works::preview_image/$1/$2');

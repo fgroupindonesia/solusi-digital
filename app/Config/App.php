@@ -29,6 +29,7 @@ class App extends BaseConfig
      *
      * @var list<string>
      */
+    //public array $allowedHostnames = ["https://solusi-digital.fgroupindonesia.com"];
     public array $allowedHostnames = ["http://sd.fgroupindonesia.com"];
 
     /**

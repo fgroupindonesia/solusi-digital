@@ -1,0 +1,30 @@
+CRITICAL - 2025-04-24 14:21:26 --> ErrorException: Undefined variable $page_name
+[Method: GET, Route: order-jasa]
+in APPPATH\Views\container_header.php on line 11.
+ 1 APPPATH\Views\container_header.php(11): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $page_name', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\container_header.php', 11)
+ 2 APPPATH\Views\dashboard_order_jasa.php(7): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\container_header.php')
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_order_jasa.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_order_jasa', [], true)
+ 6 APPPATH\Controllers\Home.php(114): view('dashboard_order_jasa', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->order_jasa()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-24 14:21:45 --> ErrorException: Undefined variable $page_name
+[Method: GET, Route: order-jasa]
+in APPPATH\Views\container_header.php on line 11.
+ 1 APPPATH\Views\container_header.php(11): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $page_name', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\container_header.php', 11)
+ 2 APPPATH\Views\dashboard_order_jasa.php(7): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\container_header.php')
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_order_jasa.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_order_jasa', [], true)
+ 6 APPPATH\Controllers\Home.php(114): view('dashboard_order_jasa', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->order_jasa()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

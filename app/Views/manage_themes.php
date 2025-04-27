@@ -1,3 +1,6 @@
+<?php
+$v = random_int(1, 100);
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -175,23 +178,24 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="/assets/plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/assets/plugins/bower_components/jquery/dist/jquery.min.js?v=<?=$v;?>"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="/assets/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/app-style-switcher.js"></script>
-    <script src="/assets/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <script src="/assets/bootstrap/dist/js/bootstrap.bundle.min.js?v=<?=$v;?>"></script>
+       <script src="/assets/js/sweetalert2@11.js?v=<?=$v;?>"></script>
+    <script src="/assets/js/app-style-switcher.js?v=<?=$v;?>"></script>
+    <script src="/assets/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js?v=<?=$v;?>"></script>
     <!--Wave Effects -->
-    <script src="/assets/js/waves.js"></script>
+    <script src="/assets/js/waves.js?v=<?=$v;?>"></script>
     <!--Menu sidebar -->
-    <script src="/assets/js/sidebarmenu.js"></script>
-    <script src="/assets/js/datatables.min.js"></script>
+    <script src="/assets/js/sidebarmenu.js?v=<?=$v;?>"></script>
+    <script src="/assets/js/datatables.min.js?v=<?=$v;?>"></script>
     <!--Custom JavaScript -->
-    <script src="/assets/js/custom.js"></script>
+    <script src="/assets/js/custom.js?v=<?=$v;?>"></script>
     <!--This page JavaScript -->
     <!--chartis chart-->
    
    
-    <script src="/assets/js/modal-works.js"></script>
+    <script src="/assets/js/modal-works.js?v=<?=$v;?>"></script>
 </body>
 
 </html>

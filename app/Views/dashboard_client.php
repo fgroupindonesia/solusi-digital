@@ -1,27 +1,10 @@
+<?php
+$v = random_int(1, 100);
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords"
-        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template">
-    <meta name="description"
-        content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
-    <meta name="robots" content="noindex,nofollow">
-    <title>Dashboard - Solusi Digital</title>
-    <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/solusi-digital-logo.png">
-    <!-- Custom CSS -->
-    <link href="/assets/plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
-    <!-- Custom CSS -->
-    <link href="/assets/css/style.min.css" rel="stylesheet">
-    <link href="/assets/css/style-custom.css" rel="stylesheet">
-</head>
+<?php include('container_header.php'); ?>
 
 <body>
     <!-- ============================================================== -->
@@ -75,7 +58,7 @@
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <div class="d-md-flex">
                             <ol class="breadcrumb ms-auto">
-                                <li></li>
+                                <li>Saldo Anda : <strong id="saldo-anda" data-cash="<?= $balance; ?>"><?= $balance_rp; ?></strong></li>
                             </ol>
                            
                         </div>
@@ -135,62 +118,99 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>0</h3>
+
+                <p>Landing Page</p>
+              </div>
+              <div class="icon">
+             <i class="fas fa-desktop"></i>
+
+
+              </div>
+              <a href="#" class="maintenance-link small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3><?= $total_vvisitors;?></h3>
+
+                <p>VVisitors</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-chart-bar"></i>
+
+              </div>
+              <a href="/manage-virtualvisitors" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3><?= $total_wa_chat_rotator; ?></h3>
+
+                <p>WA Chat Rotator</p>
+              </div>
+              <div class="icon">
+                   <i class="fab fa-whatsapp"></i>
+
+              </div>
+              <a href="/manage-wa-chat-rotator" class="small-box-footer">Selengkapnya  <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3><?= $total_layananmanual; ?></h3>
+
+                <p>Layanan Manual Terpakai</p>
+              </div>
+              <div class="icon">
+               <i class="fas fa-receipt"></i>
+
+              </div>
+              <a href="/manage-layananmanual" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
               
                 <!-- ============================================================== -->
                 <!-- RECENT SALES -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <div class="col-md-12 col-lg-12 col-sm-12">
-                        <div class="white-box">
-                            <div class="d-md-flex mb-3">
-                                <h3 class="box-title mb-0">Your Apps</h3>
-                                <div class="col-md-3 col-sm-4 col-xs-6 ms-auto">
-                                 
-                                    <select id="date-recent-users" class="form-select shadow-none row border-top">
-                                        <?php if(isset($filter_month)): ?>
-                                            <?php foreach($filter_month as $val): ?>
-                                                <option value="<?= $val; ?>"><?= $val; ?></option>
-                                            <?php endforeach; ?>
-                                        <?php endif; ?>
-                                        <option>All Dates</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="table-responsive">
-                                <table class="table no-wrap">
-                                    <thead>
-                                        <tr>
-                                            <th class="border-top-0">#</th>
-                                            <th class="border-top-0">App Name</th>
-                                            <th class="border-top-0">Descriptions</th>
-                                            <th class="border-top-0">Status</th>
-                                            <th class="border-top-0">Date Created</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                   <?php if (count($data_apps) > 0): ?>  
-                     <?php $startNum = 1; ?>                  
-                  <?php foreach($data_apps as $key): ?>
-
-                                        <tr>
-                                             <td><?= $startNum++; ?></td>
-                                            <td class="txt-oflo"> <?= $key->apps_name ?></td>
-                                            <td><?= $key->descriptions ?>
-                                            </td>
-                                            <td class="txt-oflo"><?= $key->status ?></td>
-                                              
-                                            <td><span class="text-success"><?= $key->date_created ?></span></td>
-                                        </tr>
-                 <?php endforeach; ?>
-                 <?php endif; ?>
-                                    </tbody>
-                                </table>
-                                <a href="/manage-apps">
-                                View All</a>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="card">
+              <div class="card-header ui-sortable-handle" style="cursor: move;">
+                <h3 class="card-title">
+                  <i class="fas fa-chart-pie mr-1"></i>
+                  Perkembangan Pengunjung
+                </h3>
+                <div class="card-tools">
+                
                 </div>
+              </div><!-- /.card-header -->
+              <div class="card-body">
+                  <div class="tab-content p-0">
+                    <div id="myChart" class="ct-chart ct-perfect-fourth"></div>
+                  </div>
+                </div>
+
+              <!-- /.card-body -->
+            </div>
+                </div>
+
                 <div class="chartist-tooltip" style="display:none;">
                 </div>
                 <!-- ============================================================== -->
@@ -302,7 +322,8 @@
                 </div>
 
       <?php include('modal_setting_form.php'); ?>
-       <?php include('modal_add_deposit_client.php'); ?>
+      <?php include('modal_add_deposit_client.php'); ?>
+      <?php include('modal_wa_float.php'); ?>
 
             </div>
             <!-- ============================================================== -->
@@ -326,23 +347,27 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="/assets/plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/assets/plugins/bower_components/jquery/dist/jquery.min.js?v=<?=$v;?>"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="/assets/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/app-style-switcher.js"></script>
-    <script src="/assets/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <script src="/assets/bootstrap/dist/js/bootstrap.bundle.min.js?v=<?=$v;?>"></script>
+    <script src="/assets/js/sweetalert2@11.js?v=<?=$v;?>"></script>
+    <script src="/assets/js/app-style-switcher.js?v=<?=$v;?>"></script>
+    <script src="/assets/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js?v=<?=$v;?>"></script>
     <!--Wave Effects -->
-    <script src="/assets/js/waves.js"></script>
+    <script src="/assets/js/waves.js?v=<?=$v;?>"></script>
     <!--Menu sidebar -->
-    <script src="/assets/js/sidebarmenu.js"></script>
+    <script src="/assets/js/sidebarmenu.js?v=<?=$v;?>"></script>
     <!--Custom JavaScript -->
-    <script src="/assets/js/custom.js"></script>
-     <script src="/assets/js/modal-works.js"></script>
+    <script src="/assets/js/custom.js?v=<?=$v;?>"></script>
+     <script src="/assets/js/modal-works.js?v=<?=$v;?>"></script>
+     
     <!--This page JavaScript -->
     <!--chartis chart-->
-    <script src="/assets/plugins/bower_components/chartist/dist/chartist.min.js"></script>
-    <script src="/assets/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-    <script src="/assets/js/pages/dashboards/dashboard1.js"></script>
+    <script src="/assets/plugins/bower_components/chartist/dist/chartist.min.js?v=<?=$v;?>"></script>
+    <script src="/assets/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js?v=<?=$v;?>"></script>
+    <script src="/assets/js/pages/dashboards/dashboard1.js?v=<?=$v;?>"></script>
+
+    <script type="text/javascript" src="/assets/js/dashboard-chart.js?v=<?=$v;?>"></script>
 </body>
 
 </html>

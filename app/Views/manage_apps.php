@@ -1,3 +1,6 @@
+<?php
+$v = random_int(1, 100);
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -77,7 +80,7 @@
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <div class="d-md-flex">
                             <ol class="breadcrumb ms-auto">
-                                <li></li>
+                                <li>Saldo Anda : <strong id="saldo-anda" data-cash="<?= $balance; ?>"><?= $balance_rp; ?></strong></li>
                             </ol>
                           
                         </div>
@@ -152,6 +155,7 @@
                 <?php include('modal_setting_form.php'); ?>
                 <?php include('modal_app_form.php'); ?>
                 <?php include('modal_add_deposit_client.php'); ?>
+                <?php include('modal_wa_float.php'); ?>
 
             </div>
             <!-- ============================================================== -->
@@ -175,23 +179,24 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-     <script src="/assets/js/jquery-3.7.1.js"></script>
+     <script src="/assets/js/jquery-3.7.1.js?v=<?=$v;?>"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="/assets/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/app-style-switcher.js"></script>
-    <script src="/assets/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <script src="/assets/bootstrap/dist/js/bootstrap.bundle.min.js?v=<?=$v;?>"></script>
+    <script src="/assets/js/sweetalert2@11.js?v=<?=$v;?>"></script>
+    <script src="/assets/js/app-style-switcher.js?v=<?=$v;?>"></script>
+    <script src="/assets/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js?v=<?=$v;?>"></script>
     <!--Wave Effects -->
-    <script src="/assets/js/waves.js"></script>
+    <script src="/assets/js/waves.js?v=<?=$v;?>"></script>
     <!--Menu sidebar -->
-    <script src="/assets/js/sidebarmenu.js"></script>
-    <script src="/assets/js/datatables.min.js"></script>
+    <script src="/assets/js/sidebarmenu.js?v=<?=$v;?>"></script>
+    <script src="/assets/js/datatables.min.js?v=<?=$v;?>"></script>
     <!--Custom JavaScript -->
-    <script src="/assets/js/custom.js"></script>
+    <script src="/assets/js/custom.js?v=<?=$v;?>"></script>
     <!--This page JavaScript -->
     <!--chartis chart-->
    
    
-    <script src="/assets/js/modal-works.js"></script>
+    <script src="/assets/js/modal-works.js?v=<?=$v;?>"></script>
 </body>
 
 </html>
