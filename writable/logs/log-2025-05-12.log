@@ -1,0 +1,64 @@
+CRITICAL - 2025-05-12 12:47:38 --> ErrorException: Undefined variable $v
+[Method: GET, Route: testing]
+in APPPATH\Views\testing.php on line 1.
+ 1 APPPATH\Views\testing.php(1): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $v', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\testing.php', 1)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\testing.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('testing', [], true)
+ 5 APPPATH\Controllers\Works.php(738): view('testing')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->testing()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-12 14:31:27 --> ErrorException: require_once(C:\xampp\htdocs\solusi-digital\app\Views/vendor/autoload.php): Failed to open stream: No such file or directory
+[Method: GET, Route: testing]
+in APPPATH\Views\testing.php on line 7.
+ 1 APPPATH\Views\testing.php(7): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require_once(C:\\xampp\\htdocs\\solusi-digital\\app\\Views/vendor/autoload.php): Failed to open stream: No such file or directory', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\testing.php', 7)
+ 2 APPPATH\Views\testing.php(7): require_once()
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\testing.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('testing', [], true)
+ 6 APPPATH\Controllers\Works.php(738): view('testing')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->testing()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-12 14:32:23 --> ErrorException: require_once(C:\xampp\htdocs\solusi-digital\app\Views../../vendor/autoload.php): Failed to open stream: No such file or directory
+[Method: GET, Route: testing]
+in APPPATH\Views\testing.php on line 7.
+ 1 APPPATH\Views\testing.php(7): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require_once(C:\\xampp\\htdocs\\solusi-digital\\app\\Views../../vendor/autoload.php): Failed to open stream: No such file or directory', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\testing.php', 7)
+ 2 APPPATH\Views\testing.php(7): require_once()
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\testing.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('testing', [], true)
+ 6 APPPATH\Controllers\Works.php(738): view('testing')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->testing()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-12 14:32:36 --> PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO)
+[Method: GET, Route: testing]
+in FCPATH\vendor\hansschouten\phpagebuilder\src\Core\DB.php on line 32.
+ 1 FCPATH\vendor\hansschouten\phpagebuilder\src\Core\DB.php(32): PDO->__construct('mysql:host=localhost;dbname=;options=\'--client_encoding=utf8\'', '', '', [...])
+ 2 FCPATH\vendor\hansschouten\phpagebuilder\src\PHPageBuilder.php(146): PHPageBuilder\Core\DB->__construct([...])
+ 3 FCPATH\vendor\hansschouten\phpagebuilder\src\PHPageBuilder.php(70): PHPageBuilder\PHPageBuilder->setDatabaseConnection([...])
+ 4 APPPATH\Views\testing.php(15): PHPageBuilder\PHPageBuilder->__construct([...])
+ 5 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\testing.php')
+ 6 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 7 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('testing', [], true)
+ 8 APPPATH\Controllers\Works.php(738): view('testing')
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Works->testing()
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-05-12 23:27:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-05-12 23:29:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-05-12 23:29:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

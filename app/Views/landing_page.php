@@ -54,7 +54,13 @@
               <li><a href="#">Staff</a></li>
             </ul>
           </li>
-          <li><a href="#contact">Kontak</a></li>
+            <li class="dropdown"><a href="#"><span>Bantuan </span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="#contact">Kontak</a></li>
+              <li><a href="#kalkulator">Kalkulator Proyek</a></li>
+            </ul>
+          </li>
+          
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -797,7 +803,34 @@
     </section><!-- /Faq Section -->
 
    
+     <section id="kalkulator" class="call-to-action section dark-background">
 
+      <img src="assets/img/cta-bg.jpg" alt="">
+
+      <div class="container">
+        <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
+          <div class="col-xl-10">
+            <div class="text-center">
+              <h3>Butuh Estimasi Harga Proyek Pembuatan Aplikasi?</h3>
+              <p>Kamu bisa pakai tools ini untuk memperoleh gambaran berapa angka kasar dalam produksi software nya yang dibutuhkan dalam proyek aplikasi kamu!</p>
+               <div class="icon">
+               <a class="cta-btn bi bi-calculator" href="#" data-bs-toggle="modal" data-bs-target="#modalEstimatorMobile"> Kalkulator Mobile App</a>
+              </div>
+
+              <div class="icon">
+               <a class="cta-btn bi bi-calculator" href="#" data-bs-toggle="modal" data-bs-target="#modalEstimatorWeb"> Kalkulator Web App</a>
+              </div>
+
+              <div class="icon">
+               <a class="cta-btn bi bi-calculator" href="#" data-bs-toggle="modal" data-bs-target="#modalEstimatorDesktop"> Kalkulator Desktop App </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- /Call To Action Section -->
    
 
     <!-- Contact Section -->
@@ -878,6 +911,10 @@
 
     </section><!-- /Contact Section -->
 
+    <?php include('modal_calculator_mobile.php'); ?>
+    <?php include('modal_calculator_web.php'); ?>
+    <?php include('modal_calculator_desktop.php'); ?>
+
   </main>
 
   <footer id="footer" class="footer light-background">
@@ -918,6 +955,7 @@
   <script src="assets/js/wa-konsul.js"></script>
   <script src="assets/js/watch-video.js"></script>
   <script src="assets/js/custom.js"></script>
+  <script src="assets/js/calculator-project.js"></script>
 
 </body>
 

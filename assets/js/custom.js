@@ -61,7 +61,81 @@ $( document ).ready(function() {
 
     specialMaintenanceLink();
 
+    tableClickedChecked();
+
+    // close wa-contact-container
+    bantuanTeknisAdmin();
+
 });
+
+function bantuanTeknisAdmin(){
+
+    // Ini untuk close permanent floating wa
+     const updateVersion = 'popupWA-v1'; // ← ganti versi ini kalau admin mau munculin lagi
+
+        // Cek apakah sudah pernah ditutup versi ini
+        if (sessionStorage.getItem('waPopupClosed') === updateVersion) {
+            $('#wa-contact-container').hide();
+        }
+
+        // Aksi saat tombol close diklik
+        $('#wa-close-btn').click(function () {
+           sessionStorage.setItem('waPopupClosed', updateVersion);
+
+            $('#wa-contact-container').fadeOut();
+        });
+
+    // ini untuk menu dropdown sama wa admin juga beda bentuk aja
+    $('#wa-help-bantuan-teknis').on('click', function(e) {
+        e.preventDefault(); // cegah default anchor behavior
+
+        var phone = $(this).data('phone');
+        var message = encodeURIComponent("Halo *Admin* , saya butuh bantuan teknis nih di platform *Solusi Digital* ...");
+
+        var waUrl = "https://wa.me/" + phone + "?text=" + message;
+
+        window.open(waUrl, '_blank');
+    }); 
+
+}
+
+function tableClickedChecked(){
+
+$("tbody tr").on("click", function (e) {
+
+    let idna = null;
+
+      // Jika yang diklik bukan checkbox, toggle checkbox di dalam baris
+      if (!$(e.target).is("input[type='checkbox']")) {
+        let checkbox = $(this).find("input[type='checkbox']");
+        checkbox.prop("checked", !checkbox.prop("checked"));
+
+        idna = checkbox.data('id');
+
+      }
+
+      const clicked = $(e.target);
+
+    // Cek apakah itu kolom status
+    const isStatusColumn = clicked.closest("td").index() === 2;
+
+    if(isStatusColumn){
+
+        let gawe = $(this).closest('table').data('entity');
+         // but we only process the 1st one
+       
+        let dataNa = {id : idna};
+        if(gawe == 'deposits'){
+                kirimPost(dataNa, URL_DEPOSIT_EDIT);
+        } 
+
+        //alert(gawe); 
+
+    }
+
+    });
+
+}
 
 function specialMaintenanceLink(){
 

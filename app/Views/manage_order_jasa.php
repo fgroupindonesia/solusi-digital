@@ -4,28 +4,7 @@ $v = random_int(1, 100);
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords"
-        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template">
-    <meta name="description"
-        content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
-    <meta name="robots" content="noindex,nofollow">
-    <title>Manage Order Jasa - Solusi Digital</title>
-    <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/solusi-digital-logo.png">
-    <!-- Custom CSS -->
-    <link href="/assets/plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
-    <!-- Custom CSS -->
-    <link href="/assets/css/datatables.min.css" rel="stylesheet">
-    <link href="/assets/css/style.min.css" rel="stylesheet">
-    <link href="/assets/css/style-custom.css" rel="stylesheet" >
-</head>
+<?php include('container_header.php'); ?>
 
 <body>
     <!-- ============================================================== -->
@@ -74,7 +53,7 @@ $v = random_int(1, 100);
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Management Order Jasa</h4>
+                        <h4 class="page-title">Management Status Order</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <div class="d-md-flex">
@@ -114,44 +93,70 @@ $v = random_int(1, 100);
                                 </div>
                             </div>
                             <div class="table-responsive">
-                                <table id="table-order-jasa" class="table no-wrap">
-                                    <thead>
-                                        <tr>
-                                            <th id="check-all" data-state="inactive" class="border-top-0">#</th>
-                                            <th class="border-top-0">Order Type</th>
-                                            <th class="border-top-0">Status</th>
-                                            <th class="border-top-0">Username</th>
-                                              <th class="border-top-0">Detail</th>
-                                            <th class="border-top-0">Date Created</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                   <?php if (count($data_orders) > 0): ?>                 
-                  <?php foreach($data_orders as $key): ?>
+                               <table id="table-order-jasa" class="table table-striped table-hover align-middle">
+    <thead class="table-light">
+        <tr>
+            <th id="check-all" data-state="inactive">#</th>
+            <th>Code ID</th>
+            <th>Order Type</th>
+            <th>Status</th>
+            <th>Username</th>
+            <th>Detail</th>
+            <th>Date Created</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php if (count($data_orders) > 0): ?>                 
+            <?php foreach($data_orders as $key): ?>
+                <tr>
+                    <td>
+                        <input type="checkbox" 
+                               class="form-check-input user-checked" 
+                                data-id="<?= $key->id ?>"
+                               data-code-id="<?= $key->order_client_reff ?>"
+                               data-order-type="<?= $key->order_type ?>"
+                        />
+                    </td>
+                    <td><?= htmlspecialchars($key->order_client_reff) ?></td>
+                    <td class="text-truncate"><?= htmlspecialchars($key->order_type) ?></td>
+                    <td>
+                        <?php 
+                        // Status Badge Logic
+                        $statusClass = 'secondary';
+                        if (strtolower($key->status) == 'pending' || strtolower($key->status) == 'revision') {
+                            $statusClass = 'warning';
+                        } elseif (strtolower($key->status) == 'approved') {
+                            $statusClass = 'success';
+                        } elseif (strtolower($key->status) == 'cancel') {
+                            $statusClass = 'danger';
+                        } elseif (strtolower($key->status) == 'delivered') {
+                            $statusClass = 'primary';
+                        } 
+                        ?>
+                        <span class="badge bg-<?= $statusClass ?>">
+                            <?= htmlspecialchars($key->status) ?>
+                        </span>
+                    </td>
+                    <td class="text-truncate"><?= htmlspecialchars($key->username) ?></td>
+                    <td>
+                        <a href="#"
+                           class="btn btn-sm btn-primary detail-order-link"
+                           data-ordertype="<?= htmlspecialchars($key->order_type) ?>"
+                           data-orderhasrevision="<?= $key->has_revision; ?>" 
+                           data-orderid="<?= htmlspecialchars($key->order_id) ?>"
+                           data-bs-toggle="modal"
+                           data-bs-target="#detail-order-form-modal">
+                           <i class="fas fa-eye"></i> View
+                        </a>
 
-                                        <tr>
-                                        <td><input type="checkbox" 
-                                            class="user-checked" 
-                                            data-id="<?= $key->id ?>"
-                                            data-order-type="<?= $key->order_type ?>"
-                                             /></td>
-                                        <td class="txt-oflo"> <?= $key->order_type ?></td>
-                                        <td><?= $key->status ?>
-                                        </td>
-                                        <td class="txt-oflo"><?= $key->username ?>
-                                        </td>
-                                        <td class="txt-oflo">
-                                <a href="#"
-                                data-ordertype="<?= $key->order_type ;?>" class="detail-order-link" data-bs-toggle="modal" data-bs-target="#detail-order-form-modal" data-orderid="<?= $key->order_id ;?>"> view
-                                </a> 
-                                        </td>
-                                        <td><span class="text-success"><?= $key->date_created ?></span>
-                                        </td>
-                                        </tr>
-                 <?php endforeach; ?>
-                 <?php endif; ?>
-                                    </tbody>
-                                </table>
+                    </td>
+                    <td><span class="text-success"><?= htmlspecialchars($key->date_created) ?></span></td>
+                </tr>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </tbody>
+</table>
+
                                 <p>Selected : <span id="active-checked">0</span> data.</p>
                             </div>
                         </div>
@@ -161,6 +166,8 @@ $v = random_int(1, 100);
 
                 <?php include('modal_setting_form.php'); ?>
                   <?php include('modal_detail_order_form.php'); ?>
+                  <?php include('modal_detail_order_end_result_form.php'); ?>
+                  <?php include('modal_revisions_admin.php'); ?>
                 
             </div>
             <!-- ============================================================== -->
@@ -202,6 +209,7 @@ $v = random_int(1, 100);
    
    
     <script src="/assets/js/modal-works.js?v=<?=$v;?>"></script>
+      <script src="/assets/js/reader-night-mode.js?v=<?=$v;?>"></script>
 </body>
 
 </html>

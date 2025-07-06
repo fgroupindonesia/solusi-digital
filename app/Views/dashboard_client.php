@@ -53,7 +53,7 @@ $v = random_int(1, 100);
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Dashboard</h4>
+                        <h4 class="page-title">Dashboard </h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <div class="d-md-flex">
@@ -76,50 +76,10 @@ $v = random_int(1, 100);
                 <!-- ============================================================== -->
                 <!-- Three charts -->
                 <!-- ============================================================== -->
-                <div class="row justify-content-center">
-                    <div class="col-lg-4 col-md-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">Total Apps</h3>
-                            <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li>
-                                    <div id="sparklinedash"><canvas width="67" height="30"
-                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                    </div>
-                                </li>
-                                <li class="ms-auto"><span class="counter text-success"><?= $total_users ?></span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">Total Rejected App</h3>
-                            <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li>
-                                    <div id="sparklinedash2"><canvas width="67" height="30"
-                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                    </div>
-                                </li>
-                                <li class="ms-auto"><span class="counter text-purple"><?= $total_apps ?></span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">Total Published App</h3>
-                            <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li>
-                                    <div id="sparklinedash3"><canvas width="67" height="30"
-                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                    </div>
-                                </li>
-                                <li class="ms-auto"><span class="counter text-info"><?= $total_apps_published ?></span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+        
 
                 <div class="row">
+                   <h3>Layanan Aktif</h3>
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-info">
@@ -143,13 +103,13 @@ $v = random_int(1, 100);
               <div class="inner">
                 <h3><?= $total_vvisitors;?></h3>
 
-                <p>VVisitors</p>
+                <p>Popup Sales Notification</p>
               </div>
               <div class="icon">
                 <i class="fas fa-chart-bar"></i>
 
               </div>
-              <a href="/manage-virtualvisitors" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="/manage-virtualvisitors" class="<?= count($data_vvisitors) > 0 ? '' : 'order-pelayanan-link' ;?> small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -165,7 +125,7 @@ $v = random_int(1, 100);
                    <i class="fab fa-whatsapp"></i>
 
               </div>
-              <a href="/manage-wa-chat-rotator" class="small-box-footer">Selengkapnya  <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="/manage-wa-chat-rotator" class="<?= count($data_wa_chat_rotator) > 0 ? '' : 'order-pelayanan-link' ;?> small-box-footer">Selengkapnya  <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -181,12 +141,208 @@ $v = random_int(1, 100);
                <i class="fas fa-receipt"></i>
 
               </div>
-              <a href="/manage-layananmanual" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="maintenance-link small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
         </div>
+
+        <div class="row justify-content-center">
+        <div class="col-md-4">
+            <!-- Widget: user widget style 2 -->
+            <div class="card card-widget widget-user-2 shadow-sm">
+  <!-- Add the bg color to the header using any of the bg-* classes -->
+  <div class="widget-user-header bg-warning d-flex align-items-center justify-content-between">
+    <div class="d-flex align-items-center">
+      <div class="widget-user-image">
+        <img class="img-circle elevation-2" src="assets/images/chat.png" alt="User Avatar">
+      </div>
+      <div class="ms-2">
+        <h4 class="widget-user-username fw-bold m-0">Komen</h4>
+        <h5 class="widget-user-desc m-0">Mengelola interaksi komentar</h5>
+      </div>
+    </div>
+    <!-- Toggle button -->
+    <button class="btn btn-sm btn-light toggle-footer-btn" title="Toggle Detail">
+      <i class="fas fa-chevron-down"></i>
+    </button>
+  </div>
+
+  <!-- Footer (toggled content) -->
+  <div class="card-footer p-0 footer-content">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          Total Order <span class="float-right badge bg-primary">31</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          Pending <span class="float-right badge bg-info">5</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          Success <span class="float-right badge bg-success">12</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          Total Seluruh Komentar <span class="float-right badge bg-danger">842</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+            <!-- /.widget-user -->
+          </div>
+                  
+         <div class="col-md-4">
+            <!-- Widget: user widget style 2 -->
+           <div class="card card-widget widget-user-2 shadow-sm">
+  <!-- Add the bg color to the header using any of the bg-* classes -->
+  <div class="widget-user-header bg-warning d-flex align-items-center justify-content-between">
+    <div class="d-flex align-items-center">
+      <div class="widget-user-image">
+        <img class="img-circle elevation-2" src="assets/images/star.png" alt="User Avatar">
+      </div>
+      <div class="ms-2">
+        <h4 class="widget-user-username fw-bold m-0">Rating &amp; Review</h4>
+        <h5 class="widget-user-desc m-0">Mengelola penilaian pengunjung</h5>
+      </div>
+    </div>
+    <!-- Toggle button -->
+    <button class="btn btn-sm btn-light toggle-footer-btn" title="Toggle Detail">
+      <i class="fas fa-chevron-down"></i>
+    </button>
+  </div>
+
+  <!-- Footer (toggled content) -->
+  <div class="card-footer p-0 footer-content">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          Total Order <span class="float-right badge bg-primary">31</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          Pending <span class="float-right badge bg-info">5</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          Success <span class="float-right badge bg-success">12</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          Rata-Rata Rating <span class="float-right badge bg-danger">842</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+            <!-- /.widget-user -->
+          </div>
+                  
+           <div class="col-md-4">
+            <!-- Widget: user widget style 2 -->
+             <div class="card card-widget widget-user-2 shadow-sm">
+  <!-- Add the bg color to the header using any of the bg-* classes -->
+  <div class="widget-user-header bg-warning d-flex align-items-center justify-content-between">
+    <div class="d-flex align-items-center">
+      <div class="widget-user-image">
+        <img class="img-circle elevation-2" src="assets/images/bell.png" alt="User Avatar">
+      </div>
+      <div class="ms-2">
+        <h4 class="widget-user-username fw-bold m-0">Subs. &amp; Follower</h4>
+        <h5 class="widget-user-desc m-0">Mengelola pengikut sosmed</h5>
+      </div>
+    </div>
+    <!-- Toggle button -->
+    <button class="btn btn-sm btn-light toggle-footer-btn" title="Toggle Detail">
+      <i class="fas fa-chevron-down"></i>
+    </button>
+  </div>
+
+  <!-- Footer (toggled content) -->
+  <div class="card-footer p-0 footer-content">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          Total Order <span class="float-right badge bg-primary">31</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          Pending <span class="float-right badge bg-info">5</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          Success <span class="float-right badge bg-success">12</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          Total Seluruh Followers <span class="float-right badge bg-danger">842</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+            <!-- /.widget-user -->
+          </div>
+
+
+                </div>
               
+              <?php if($mode_affiliator == true): ?>
+                <div class="row">
+    <h3>Affiliate Progress</h3>
+    <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-info"><i class="fas fa-money-bill-wave"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Total Profit (Keseluruhan)</span>
+                <span class="info-box-number"><?= $total_affiliate_profit; ?></span>
+            </div>
+            </div>
+        </div>
+    <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-success"><i class="fas fa-shopping-cart"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Total Pesanan (Bulan Ini)</span>
+                <span class="info-box-number"><?= $total_affiliate_product_sales_this_month; ?> pesanan.</span>
+            </div>
+            </div>
+        </div>
+    <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-warning"><i class="fas fa-box-open"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Total Pesanan (Bulan Lalu)</span>
+                <span class="info-box-number"><?= $total_affiliate_product_sales_last_month; ?> pesanan.</span>
+            </div>
+            </div>
+        </div>
+    <div class="col-md-3 col-sm-6 col-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-danger"><i class="fas fa-thumbs-up"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Likes</span>
+                <span class="info-box-number">93,139</span>
+            </div>
+            </div>
+        </div>
+    </div>
+
+     
+
                 <!-- ============================================================== -->
                 <!-- RECENT SALES -->
                 <!-- ============================================================== -->
@@ -210,6 +366,7 @@ $v = random_int(1, 100);
               <!-- /.card-body -->
             </div>
                 </div>
+                    <?php endif; ?>
 
                 <div class="chartist-tooltip" style="display:none;">
                 </div>
@@ -219,101 +376,71 @@ $v = random_int(1, 100);
                 <div class="row">
                     <!-- .col -->
                     <div class="col-md-12 col-lg-8 col-sm-12">
-                        <div class="card white-box p-0">
+                        <div class="card white-box p-0 ">
                             <div class="card-body">
-                                <h3 class="box-title mb-0">Recent Apps</h3>
+                           <h3 class="box-title mb-0 heading-riwayat" style="cursor:pointer;" >
+  <i class="fas fa-chevron-down me-2 icon-riwayat" ></i>Riwayat Transaksi Anda (<?= count($data_orders) ?? '0'; ?>)
+</h3>
+
+
                             </div>
-                            <div class="comment-widgets">
+                            <div class="comment-widgets content-riwayat" >
+
                                 <!-- Comment Row -->
-                                  <?php if (isset($data_apps)): ?>                 
-                                <?php foreach($data_apps as $key): ?>
+                               <?php if (isset($data_orders)): ?>                 
+                                <?php foreach($data_orders as $key): ?>
                                 <div class="d-flex flex-row comment-row p-3 mt-0">
-                                    <div class="p-2"><img src="/assets/plugins/images/apps-02.png" alt="user" width="50" class="rounded-circle"></div>
+                                    <?php $namaFileIcon = "order-" . $key->status . "-icon.png"; ?>
+                                    <div class="p-2"><img src="/assets/images/<?= $namaFileIcon; ?>" alt="user" width="50" class="rounded-circle"></div>
                                     <div class="comment-text ps-2 ps-md-3 w-100">
-                                        <h5 class="font-medium"><?= $key->apps_name ;?></h5>
-                                        <span class="mb-3 d-block"><?= $key->descriptions ;?> </span>
+                                        <h5 class="font-medium">Order ID: #<?= strtoupper($key->order_client_reff); ?></h5>
+                                        <span class="mb-3 d-block">Pemesanan <?= $key->order_type; ?>.</span>
                                         <div class="comment-footer d-md-flex align-items-center">
-                                             <span class="badge bg-primary rounded"><?= $key->status ;?></span>
+                                            <?php if($key->status == 'approved'): ?>
+                                             <span class="badge bg-success rounded"><?= $key->status; ?></span>
+                                         <?php elseif($key->status == 'cancel'): ?>
+                                             <span class="badge bg-danger rounded"><?= $key->status; ?></span>
+                                             <?php else: ?>
+                                             <span class="badge bg-warning rounded"><?= $key->status; ?></span>
+                                            <?php endif; ?>
                                              
-                                            <div class="text-muted fs-2 ms-auto mt-2 mt-md-0"><?= $key->date_created ;?></div>
+                                    <div class="text-muted fs-2 ms-auto mt-2 mt-md-0"><?= $key->date_created; ?></div>
                                         </div>
                                     </div>
                                 </div>
-                                 <?php endforeach; ?>
+                                <?php endforeach; ?>
                                 <?php endif; ?>
                                 <!-- Comment Row -->
-                             
+                               
+                                
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12 col-sm-12">
                         <div class="card white-box p-0">
                             <div class="card-heading">
-                                <h3 class="box-title mb-0">Top Users</h3>
+                                <h3 class="box-title mb-0 heading-riwayat" style="cursor:pointer;">
+                                  <i class="fas fa-chevron-down me-2 icon-riwayat" ></i>Riwayat Deposit Anda (<?= count($data_deposits) ?? '0' ;?>)</h3>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body content-riwayat">
                                 <ul class="chatonline">
-                                    <li>
-                                       
-                                        <a href="javascript:void(0)" class="d-flex align-items-center"><img
-                                                src="/assets/plugins/images/users/varun.jpg" alt="user-img" class="img-circle">
-                                            <div class="ms-2">
-                                                <span class="text-dark">Master Keren <small
-                                                        class="d-block text-success d-block">10 Apps</small></span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                       
-                                        <a href="javascript:void(0)" class="d-flex align-items-center"><img
-                                                src="/assets/plugins/images/users/genu.jpg" alt="user-img" class="img-circle">
-                                            <div class="ms-2">
-                                                <span class="text-dark">Neng
-                                                    Kidul <small class="d-block text-warning">1 App</small></span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        
-                                        <a href="javascript:void(0)" class="d-flex align-items-center"><img
-                                                src="/assets/plugins/images/users/ritesh.jpg" alt="user-img" class="img-circle">
-                                            <div class="ms-2">
-                                                <span class="text-dark">Gondrong
-                                                    Purnomo <small class="d-block text-danger">0 App</small></span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                       
-                                        <a href="javascript:void(0)" class="d-flex align-items-center"><img
-                                                src="/assets/plugins/images/users/arijit.jpg" alt="user-img" class="img-circle">
-                                            <div class="ms-2">
-                                                <span class="text-dark">Dewa
-                                                    Sono <small class="d-block text-muted">-</small></span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                      
-                                        <a href="javascript:void(0)" class="d-flex align-items-center"><img
-                                                src="/assets/plugins/images/users/govinda.jpg" alt="user-img"
-                                                class="img-circle">
-                                            <div class="ms-2">
-                                                <span class="text-dark">Gogolia
-                                                    Star <small class="d-block text-success">9 Apps</small></span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
+                                      <?php if (isset($data_deposits)): ?>                 
+                                    <?php foreach($data_deposits as $key): ?>
+                                    <?php  $fileCash = "cash-" . $key->status . ".png"; ?>
                                     
-                                        <a href="javascript:void(0)" class="d-flex align-items-center"><img
-                                                src="/assets/plugins/images/users/hritik.jpg" alt="user-img" class="img-circle">
+                                    <li>
+                                        <a href="#" class="d-flex align-items-center">
+                                            <img src="/assets/images/<?= $fileCash ;?>" alt="user-img" class="img-circle">
                                             <div class="ms-2">
-                                                <span class="text-dark">Kentang Goreng
-                                                    <small class="d-block text-success">7 Apps</small></span>
+                                                <span class="text-dark"><?= $currency_helper->asCurrency($key->amount); ?> <small
+                                                        class="d-block text-success d-block"><?= $key->status; ?></small></span>
+                                                <span class="text-dark"><?= $date_helper->asFormat($key->date_created, "d-M-Y, h:i") . " WIB"; ?></span>
                                             </div>
                                         </a>
                                     </li>
+                                    <?php endforeach; ?>
+                                    <?php endif; ?>
+                                    
                                 </ul>
                             </div>
                         </div>
@@ -324,6 +451,7 @@ $v = random_int(1, 100);
       <?php include('modal_setting_form.php'); ?>
       <?php include('modal_add_deposit_client.php'); ?>
       <?php include('modal_wa_float.php'); ?>
+      <?php include('modal_affiliate_shop_profile.php'); ?>
 
             </div>
             <!-- ============================================================== -->
@@ -360,6 +488,7 @@ $v = random_int(1, 100);
     <!--Custom JavaScript -->
     <script src="/assets/js/custom.js?v=<?=$v;?>"></script>
      <script src="/assets/js/modal-works.js?v=<?=$v;?>"></script>
+     <script src="/assets/js/toggle-dashboard.js?v=<?=$v;?>"></script>
      
     <!--This page JavaScript -->
     <!--chartis chart-->
@@ -368,6 +497,7 @@ $v = random_int(1, 100);
     <script src="/assets/js/pages/dashboards/dashboard1.js?v=<?=$v;?>"></script>
 
     <script type="text/javascript" src="/assets/js/dashboard-chart.js?v=<?=$v;?>"></script>
+    <script src="/assets/js/reader-night-mode.js?v=<?=$v;?>"></script>
 </body>
 
 </html>

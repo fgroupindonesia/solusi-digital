@@ -18,115 +18,96 @@ class DataModel extends Model
     protected $table_web_wa_chat_rotator       = 'table_web_wa_chat_rotator';
     protected $table_system_works      = 'table_system_works';
 
+
     protected $table_purchased_order       = 'table_purchased_order';
     protected $table_themes_landingpage       = 'table_themes_landingpage';
     protected $table_data_virtualvisitors       = 'table_data_virtualvisitors';
     protected $table_campaign_virtualvisitors       = 'table_campaign_virtualvisitors';
     protected $table_deposits       = 'table_deposits';
     protected $table_order_jasa       = 'table_order_jasa';
+    protected $table_order_ketik_document      = 'table_order_ketik_document';
+    protected $table_order_format_os       = 'table_order_format_os';
     protected $table_order_upgrade_fituraplikasi = 'table_order_upgrade_fituraplikasi';
     protected $table_order_pembuatanaplikasi     = 'table_order_pembuatanaplikasi';
+    protected $table_order_uploadaplikasi     = 'table_order_uploadaplikasi';
     protected $table_order_virtualvisitors       = 'table_order_virtualvisitors';
     protected $table_order_comment       = 'table_order_comment';
     protected $table_order_follow_marketplace       = 'table_order_follow_marketplace';
     protected $table_order_rating       = 'table_order_rating';
     protected $table_order_subscriber       = 'table_order_subscriber';
     protected $table_order_view       = 'table_order_view';
+    protected $table_order_types       = 'table_order_types';
+    protected $table_order_revisions       = 'table_order_revisions';
     protected $table_order_wa_chat_rotator       = 'table_order_wa_chat_rotator';
-    protected $table_order_landingpage       = 'table_order_landingpage';
+    protected $table_order_landing_page       = 'table_order_landing_page';
     protected $table_order_wishlist_marketplace       = 'table_order_wishlist_marketplace';
+    protected $table_group_wa_chat_rotator       = 'table_group_wa_chat_rotator';
 
-    private function getEntity($entity){
-        $table_na = null;
-        if($entity == 'system_works'){
-            $table_na = $this->table_system_works;
-            
-        }else if($entity == 'purchased_order'){
-            $table_na = $this->table_purchased_order;
-            
-        }else if($entity == 'users'){
-            $table_na = $this->table_users;
-            
-        }else if($entity == 'packages'){
-            $table_na = $this->table_packages;
+    protected $table_affiliate_products         = 'table_affiliate_products';
+    protected $table_affiliate_carts            = 'table_affiliate_carts';
+    protected $table_affiliate_cart_items       = 'table_affiliate_cart_items';
+    protected $table_affiliate_custom_prices    = 'table_affiliate_custom_prices';
+    protected $table_affiliate_product_categories   = 'table_affiliate_product_categories';
+    protected $table_affiliate_product_images       = 'table_affiliate_product_images';
+    protected $table_affiliate_product_reviews      = 'table_affiliate_product_reviews';
+    protected $table_affiliate_sales                = 'table_affiliate_sales';
+    protected $table_affiliate_shop_profile                = 'table_affiliate_shop_profile';
+    
 
-        }else if($entity == 'themes_landingpage'){
-            $table_na = $this->table_themes_landingpage;
+    private function getEntity($entity)
+{
+    $map = [
+        'system_works' => $this->table_system_works,
+        'order_revisions' => $this->table_order_revisions,
+        'order_types' => $this->table_order_types,
+        'purchased_order' => $this->table_purchased_order,
+        'users' => $this->table_users,
+        'packages' => $this->table_packages,
+        'themes_landingpage' => $this->table_themes_landingpage,
+        'ticketing' => $this->table_ticketing,
+        'apps' => $this->table_apps,
+        'deposits' => $this->table_deposits,
+        'data_virtualvisitors' => $this->table_data_virtualvisitors,
+        'campaign_virtualvisitors' => $this->table_campaign_virtualvisitors,
+        'order_ketik_document' => $this->table_order_ketik_document,
+        'order_format_os' => $this->table_order_format_os,
+        'order_jasa' => $this->table_order_jasa,
+        'order_virtualvisitors' => $this->table_order_virtualvisitors,
+        'order_upgrade_fituraplikasi' => $this->table_order_upgrade_fituraplikasi,
+        'order_pembuatanaplikasi' => $this->table_order_pembuatanaplikasi,
+        'order_uploadaplikasi' => $this->table_order_uploadaplikasi,
+        'order_comment' => $this->table_order_comment,
+        'order_follow_marketplace' => $this->table_order_follow_marketplace,
+        'order_wishlist_marketplace' => $this->table_order_wishlist_marketplace,
+        'order_rating' => $this->table_order_rating,
+        'order_landing_page' => $this->table_order_landing_page,
+        'order_subscriber' => $this->table_order_subscriber,
+        'order_view' => $this->table_order_view,
+        'order_wa_chat_rotator' => $this->table_order_wa_chat_rotator,
+        'wa_chat_rotator' => $this->table_order_wa_chat_rotator, 
+        'group_wa_chat_rotator' => $this->table_group_wa_chat_rotator,
+        'layananmanual' => $this->table_layananmanual,
+        'socialmedia' => $this->table_socialmedia,
+        'cs_wa_chat_rotator' => $this->table_cs_wa_chat_rotator,
+        'web_wa_chat_rotator' => $this->table_web_wa_chat_rotator,
+        'cs_map_wa_chat_rotator' => $this->table_cs_map_wa_chat_rotator,
+        'cs_record_wa_chat_rotator' => $this->table_cs_record_wa_chat_rotator,
+        'cs_schedule_wa_chat_rotator' => $this->table_cs_schedule_wa_chat_rotator,
+        'affiliate_products' => $this->table_affiliate_products,
+        'affiliate_carts' => $this->table_affiliate_carts,
+        'affiliate_cart_items' => $this->table_affiliate_cart_items,
+        'affiliate_custom_prices' => $this->table_affiliate_custom_prices,
+        'affiliate_product_categories' => $this->table_affiliate_product_categories,
+        'affiliate_product_images' => $this->table_affiliate_product_images,
+        'affiliate_product_reviews' => $this->table_affiliate_product_reviews,
+        'affiliate_sales' => $this->table_affiliate_sales,
+        'affiliate_shop_profile' => $this->table_affiliate_shop_profile,
 
-        }else if($entity == 'ticketing'){
-            $table_na = $this->table_ticketing;
+    ];
 
-        }else if($entity == 'apps'){
-            $table_na = $this->table_apps;
+    return $map[$entity] ?? null;
+}
 
-        }else if($entity == 'deposits'){
-            $table_na = $this->table_deposits;
-
-        }else if($entity == 'data_virtualvisitors'){
-            $table_na = $this->table_data_virtualvisitors;
-
-        }else if($entity == 'campaign_virtualvisitors'){
-            $table_na = $this->table_campaign_virtualvisitors;
-
-        }else if($entity == 'order_jasa'){
-            $table_na = $this->table_order_jasa;
-
-        }else if($entity == 'order_virtualvisitors'){
-            $table_na = $this->table_order_virtualvisitors;
-
-        }else if($entity == 'order_upgrade_fituraplikasi'){
-            $table_na = $this->table_order_upgrade_fituraplikasi;
-
-        }else if($entity == 'order_pembuatanaplikasi'){
-            $table_na = $this->table_order_pembuatanaplikasi;
-
-        }else if($entity == 'order_comment'){
-            $table_na = $this->table_order_comment;
-
-        }else if($entity == 'order_follow_marketplace'){
-            $table_na = $this->table_order_follow_marketplace;
-
-        }else if($entity == 'order_wishlist_marketplace'){
-            $table_na = $this->table_order_wishlist_marketplace;
-
-        }else if($entity == 'order_rating'){
-            $table_na = $this->table_order_rating;
-
-        }else if($entity == 'order_subscriber'){
-            $table_na = $this->table_order_subscriber;
-
-        }else if($entity == 'order_view'){
-            $table_na = $this->table_order_view;
-
-        }else if($entity == 'order_wa_chat_rotator' || $entity == 'wa_chat_rotator'){
-            $table_na = $this->table_order_wa_chat_rotator;
-
-        }else if($entity == 'layananmanual'){
-            $table_na = $this->table_layananmanual;
-
-        }else if($entity == 'socialmedia'){
-            $table_na = $this->table_socialmedia;
-
-        } else if($entity == 'cs_wa_chat_rotator'){
-            $table_na = $this->table_cs_wa_chat_rotator;
-
-        } else if($entity == 'web_wa_chat_rotator'){
-            $table_na = $this->table_web_wa_chat_rotator;
-
-        }  else if($entity == 'cs_map_wa_chat_rotator'){
-            $table_na = $this->table_cs_map_wa_chat_rotator;
-
-        }else if($entity == 'cs_record_wa_chat_rotator'){
-            $table_na = $this->table_cs_record_wa_chat_rotator;
-
-        }else if($entity == 'cs_schedule_wa_chat_rotator'){
-            $table_na = $this->table_cs_schedule_wa_chat_rotator;
-
-        }
-
-
-        return $table_na;
-    }
 
     // for system works usage
     public function isSystemApprovalAutomatic()
@@ -180,11 +161,6 @@ class DataModel extends Model
                 'apps_name' => $data['apps_name'],
                 'user_id' => $data['user_id']
             );
-        }else if($entity == 'cs_wa_chat_rotator' || $entity == 'cs_schedule_wa_chat_rotator' || $entity == 'cs_map_wa_chat_rotator'){
-            $kriteria = array(
-                'order_id' => $data['order_id'],
-                'cs_number' => $data['cs_number']
-            );
         }else if($entity == 'web_wa_chat_rotator'){
             $kriteria = array(
                 'order_id'  => $data['order_id'],
@@ -218,6 +194,139 @@ class DataModel extends Model
         ->update();
 
         return $res;
+
+    }
+
+    public function getWAChatRotatorAnalysisGroupDataByUsername($username){
+
+        $table_1 = $this->getEntity('order_wa_chat_rotator');
+        $table_2 = $this->getEntity('group_wa_chat_rotator');
+
+        // sebutkan kebutuhan column disini
+        $columnNeeds = array();
+        $columnNeeds[] = $table_1 . '.package';
+        $columnNeeds[] = $table_1 . '.username';
+        $columnNeeds[] = $table_2 . '.order_id';
+        $columnNeeds[] = $table_2 . '.nama as group_name';
+        $columnNeeds[] = $table_2 . '.total_clicks';
+        $columnNeeds[] = $table_2 . '.id as group_id';
+
+        $columnNeedsString = implode(', ', $columnNeeds);
+
+        // sebutkan kolom yg ingin dibandingkan
+        $columnsCompared = array();
+        $columnsCompared[] = $table_2 . '.order_id';
+        $columnsCompared[] = $table_1 . '.id';
+
+        $columnsComparedString = implode('=', $columnsCompared);        
+
+        $filter = array(
+            $table_1 . '.username' => $username
+        );
+
+          $builder = $this->db->table($table_1);
+         
+
+        $hasil = $builder->select($columnNeedsString)
+                    ->join($table_2, $columnsComparedString)
+                    ->where($filter)->get()
+                    ->getResult(); // Mengambil semua hasil yang cocok
+
+        return $hasil;
+
+    }
+
+    public function getWAChatRotatorAnalysisDistribusiDataByGroupId($id){
+
+        $table_1 = $this->getEntity('group_wa_chat_rotator');
+        $table_2 = $this->getEntity('cs_wa_chat_rotator');
+
+        // sebutkan kebutuhan column disini
+        $columnNeeds = array();
+        $columnNeeds[] = $table_1 . '.nama as group_name';
+        $columnNeeds[] = $table_1 . '.distribusi as group_distribution';
+        $columnNeeds[] = $table_2 . '.cs_nama as cs_name';
+        $columnNeeds[] = $table_2 . '.cs_number';
+        $columnNeeds[] = $table_2 . '.cs_status';
+        $columnNeeds[] = $table_2 . '.total_leads';
+
+        $columnNeedsString = implode(', ', $columnNeeds);
+
+        // sebutkan kolom yg ingin dibandingkan
+        $columnsCompared = array();
+        $columnsCompared[] = $table_2 . '.group_id';
+        $columnsCompared[] = $table_1 . '.id';
+
+        $columnsComparedString = implode('=', $columnsCompared);        
+
+        $filter = array(
+            $table_1 . '.id' => $id
+        );
+
+          $builder = $this->db->table($table_1);
+         
+
+        $hasil = $builder->select($columnNeedsString)
+                    ->join($table_2, $columnsComparedString)
+                    ->where($filter)->get()
+                    ->getResult(); // Mengambil semua hasil yang cocok
+
+        return $hasil;
+
+    }
+
+    public function getAffiliateTotalCommissionAmount($filter){
+
+    $table_na1 = $this->getEntity('affiliate_sales');        
+    $data_na1 = $this->db->table($table_na1)->where($filter)->get()->getResult(); 
+
+    $cash = 0;
+
+    if(!empty($data_na1)){
+        foreach($data_na1 as $data){
+            $cash += $data->commision_amount;
+        }
+    }
+
+    return $cash;
+
+    }
+
+    public function getAffiliateCountThisMonth($filter){
+
+    // perbaiki
+    $currentMonth = date('Y-m'); 
+    $filter['DATE_FORMAT(sale_date, "%Y-%m")'] = $currentMonth;
+
+    $table_na1 = $this->getEntity('affiliate_sales');        
+    $data_na1 = $this->db->table($table_na1)->where($filter)->get()->getResult(); 
+
+    $total_sales_count = 0;
+
+    if(!empty($data_na1)){
+        $total_sales_count = count($data_na1);
+    }
+
+    return $total_sales_count;
+
+    }
+
+    public function getAffiliateCountLastMonth($filter){
+
+    // perbaiki
+    $lastMonth = date('Y-m', strtotime('-1 month'));
+    $filter['DATE_FORMAT(sale_date, "%Y-%m")'] = $lastMonth;
+
+    $table_na1 = $this->getEntity('affiliate_sales');        
+    $data_na1 = $this->db->table($table_na1)->where($filter)->get()->getResult(); 
+
+    $total_sales_count = 0;
+
+    if(!empty($data_na1)){
+        $total_sales_count = count($data_na1);
+    }
+
+    return $total_sales_count;
 
     }
 
@@ -414,50 +523,36 @@ class DataModel extends Model
 
     }
 
-    public function getWAChatRotatorManagementData($username = null){
+    public function getWAChatRotatorManagementData($order_id = null){
 
+         $table_na = $this->getEntity('group_wa_chat_rotator');
+         $table_na2 = $this->getEntity('cs_wa_chat_rotator');
 
-        // end result is
-        // package, total_no_wa, total_web, date_created, id, and also
-        // the phone and web structured in array
-        // for ul li elements expanded later
-        $table_wa = $this->getEntity('order_wa_chat_rotator');
-        $table_cs = $this->getEntity('cs_wa_chat_rotator');
-        $table_web = $this->getEntity('web_wa_chat_rotator');
-        $table_order_jasa = $this->getEntity('order_jasa');
+         $filter = array(
+            'order_id' => $order_id
+         );
 
-        $query_combine_hp = "IFNULL(GROUP_CONCAT(DISTINCT cs.cs_number ORDER BY cs.cs_number SEPARATOR ', '), '-') AS details_cs";
-        $query_combine_url = "IFNULL(GROUP_CONCAT(DISTINCT web.url ORDER BY web.url SEPARATOR ', '), '-') AS details_web";
+        $builder = $this->db->table($table_na);
+        $builder->where($filter);
+        $builder->orderBy('id', 'ASC');
 
-       $builder = $this->db->table($table_wa . " as wa");
-       $builder->select("wa.id, wa.package, COUNT(DISTINCT cs.id) AS total_cs, COUNT(DISTINCT web.id) AS total_web, ". $query_combine_hp. "," . $query_combine_url . ", wa.date_created, wa.custom_name, wa.rotator_mode, jasa.order_client_reff");
+        $groups = $builder->get()->getResult();
 
-       if(!empty($username)){
-        
-        $builder->join($table_cs." as cs", "wa.id = cs.order_id", "left")
-        ->join($table_web." as web", "wa.id = web.order_id", "left")
-        ->join($table_order_jasa." as jasa", "jasa.order_id = wa.id AND order_type='wa_chat_rotator'", "left")
-        ->where('wa.username', $username)
-        ->groupBy("wa.id, wa.package, wa.date_created")
-        ->orderBy("wa.id");
+        // Untuk setiap grup, ambil data CS terkait
+        foreach ($groups as &$group) {
 
-       }else{
+            $filter2 = array(
+            'order_id' => $order_id,
+            'group_id' => $group->id
+            );
 
-        $builder->join($table_cs." as cs", "wa.id = cs.order_id", "left")
-        ->join($table_web." as web", "wa.id = web.order_id", "left")
-        ->join($table_order_jasa." as jasa", "jasa.order_id = wa.id AND order_type='wa_chat_rotator'", "left")
-        ->groupBy("wa.id, wa.package, wa.date_created")
-        ->orderBy("wa.id");
+           $builder = $this->db->table($table_na2);
+           $builder->where($filter2);
+            
+            $group->cs_list = $builder->get()->getResult();
+        }
 
-       }
-
-       $result = $builder->get()->getResult();
-
-       if(!empty($result)){
-            return $result;
-       }
-
-       return false;
+        return $groups;
 
     }
 
@@ -490,7 +585,7 @@ class DataModel extends Model
         $table_na = $this->getEntity($entity);
 
         // this is for non-order tables
-        if($entity == 'users' || $entity == 'apps' || $entity == 'web_wa_chat_rotator' || $entity == 'cs_wa_chat_rotator'){
+        if($entity == 'users' || $entity == 'apps' || $entity == 'web_wa_chat_rotator' ){
 
         if(!$this->isDuplicate($data, $entity)){
         $this->db->table($table_na)->insert($data);
@@ -498,8 +593,10 @@ class DataModel extends Model
         }
 
     }else{
+
         $this->db->table($table_na)->insert($data);
         return $this->db->insertID();
+        
     }
 
         return 0;
@@ -546,6 +643,72 @@ class DataModel extends Model
         $res = $this->db->table($table_na)->where($arrayFilter)->get();
         
         return $res->getResult();
+    }
+
+     public function selectLastDataBy($arrayFilter, $entity)
+    {
+        $table_na = $this->getEntity($entity);
+
+        $res = $this->db->table($table_na)
+    ->where($arrayFilter)
+    ->orderBy('id', 'DESC') // assuming 'id' is the primary key
+    ->get(1)->getRow();
+
+    return $res;
+    }
+
+    public function selectAllDataAffiliateProducts(){
+
+         $table_na  = $this->getEntity('affiliate_products');
+         $table_2   = $this->getEntity('affiliate_product_categories');
+
+        $builder = $this->db->table($table_na . ' as af_prod');
+
+          $res = $builder->select('
+            af_prod.id as id,
+            af_prod.name as name,
+            af_prod.description,
+            af_prod.base_price,
+            af_prod.status,
+            af_prod.admin_commission_rate,
+            af_prod.date_created,
+            af_prod_cat.name as category'
+    )
+            ->join($table_2 . ' as af_prod_cat', 'af_prod_cat.id = af_prod.category_id', 'inner')
+            ->get();
+
+        return $res->getResult();
+
+    }
+
+    public function selectDataAffiliateProductByID($id){
+
+         $table_na  = $this->getEntity('affiliate_products');
+         $table_2   = $this->getEntity('affiliate_product_categories');
+
+         $filter = array(
+            "af_prod.id" => $id
+         );
+
+        $builder = $this->db->table($table_na . ' as af_prod');
+
+        $res = $builder->select('
+            af_prod.id as id,
+            af_prod.name as name,
+            af_prod.description,
+            af_prod.base_price,
+            af_prod.status,
+            af_prod.admin_commission_rate,
+            af_prod.date_created,
+            af_prod_cat.name as category'
+    )->join($table_2 . ' as af_prod_cat', 'af_prod_cat.id = af_prod.category_id', 'inner')
+            ->where($filter)
+            ->get();
+
+        //return $filter;
+
+        return $res->getRow();
+
     }
 
     public function selectAllCSNumberWAChatRotatorByUsername($username, $entity){
@@ -705,6 +868,15 @@ class DataModel extends Model
         return $res->getRow();
     }
 
+    public function selectDataLastBy($arrayFilter, $entity)
+    {
+        $table_na = $this->getEntity($entity);
+
+        $res = $this->db->table($table_na)->where($arrayFilter)->orderBy('date_created', 'DESC')->get();
+        
+        return $res->getRow();
+    }
+
     public function selectData($id, $entity)
     {
         $table_na = $this->getEntity($entity);
@@ -727,7 +899,7 @@ class DataModel extends Model
     {
         $table_na = $this->getEntity($entity);
 
-        if($entity === 'apps' || $entity === 'layananmanual'){
+        if($entity === 'apps' ){
            $res = $this->db->table($table_na)->where('username_owned', $username)->get();
         }else{
             $res = $this->db->table($table_na)->where('username', $username)->get();
@@ -744,7 +916,169 @@ class DataModel extends Model
         
         return $res->getResult();   
     }
+
+    public function getAffiliateProductForShopBy($filter){
+
+        $table1 = $this->getEntity('affiliate_products'); // 'products'
+        $table2 = $this->getEntity('affiliate_product_categories'); // 'categories'
+
+        $builder = $this->db->table($table1 . ' as p');
+        $builder->select('p.name as product_name, p.id as product_id, p.short_info, p.description, p.rating_overall, p.base_price, c.name as category_name');
+        $builder->where($filter);
+        $builder->join($table2 . ' as c', 'p.category_id = c.id', 'left'); // LEFT JOIN
+
+        $query = $builder->get();
+        return $query->getRow();
+
+
+    }
+
+   
+
+     public function getAffiliateProductRatingShopBy($filter){
+
+        $table1 = $this->getEntity('affiliate_product_reviews'); 
+        $table2 = $this->getEntity('users'); 
+
+        $builder = $this->db->table($table1 . ' as r');
+        $builder->select('r.rating, r.comment, u.propic, u.username, r.date_created');
+        $builder->where($filter);
+        $builder->join($table2 . ' as u', 'u.id = r.user_id', 'left'); 
+
+        $query = $builder->get();
+        return $query->getRow();
+
+
+    }
 	
+    public function getAllAffiliateProductsForShop(){
+
+        $table_1 = $this->getEntity('affiliate_products');        
+        $table_2 = $this->getEntity('affiliate_product_images');        
+
+     
+ $sql = "SELECT 
+            p.id AS product_id, 
+            p.name AS product_name, 
+            p.base_price, 
+            i.id AS image_id, 
+            i.image_url, 
+            i.is_thumbnail
+        FROM {$table_1} p
+        LEFT JOIN {$table_2} i ON i.id = (
+            SELECT id
+            FROM {$table_2}
+            WHERE product_id = p.id
+            ORDER BY is_thumbnail DESC, id ASC
+            LIMIT 1
+        )
+    ";
+
+    $query = $this->db->query($sql);
+    return $query->getResult();
+
+
+    }
+
+     public function getAllAffiliateProductsForShopByPrice($min, $max){
+
+        $table_1 = $this->getEntity('affiliate_products');        
+        $table_2 = $this->getEntity('affiliate_product_images');        
+
+     
+       $sql = "SELECT 
+            p.id AS product_id, 
+            p.name AS product_name, 
+            p.base_price, 
+            i.id AS image_id, 
+            i.image_url, 
+            i.is_thumbnail
+        FROM {$table_1} p
+        LEFT JOIN {$table_2} i ON i.id = (
+            SELECT id
+            FROM {$table_2}
+            WHERE product_id = p.id
+            ORDER BY is_thumbnail DESC, id ASC
+            LIMIT 1
+        )
+        WHERE p.base_price BETWEEN ? AND ?";
+
+    $query = $this->db->query($sql, [$min, $max]);
+
+    return $query->getResult();
+
+
+    }
+
+    public function getAffiliateProductHighestPrice(){
+
+        $table_na = $this->getEntity('affiliate_products');        
+
+
+        $res = $this->db->table($table_na)->orderBy('base_price','desc')->limit(0)->get();
+        
+        if(!empty($res)){
+            return $res->getRow()->base_price;   
+        }
+
+        return 0;
+
+    }
+
+     public function getAffiliateProductLowestPrice(){
+
+        $table_na = $this->getEntity('affiliate_products');        
+
+
+        $res = $this->db->table($table_na)->orderBy('base_price','asc')->limit(0)->get();
+        
+        if(!empty($res)){
+            return $res->getRow()->base_price;   
+        }
+
+        return 0;
+
+    }
+
+     public function getAllAffiliateProductsForShopByPriceMinimum($min){
+
+        $table_1 = $this->getEntity('affiliate_products');        
+        $table_2 = $this->getEntity('affiliate_product_images');        
+
+     
+         $sql = "SELECT p.*, i.* 
+            FROM {$table_1} p
+            LEFT JOIN {$table_2} i ON i.id = (
+                SELECT id
+                FROM {$table_2}
+                WHERE product_id = p.id
+                ORDER BY is_thumbnail DESC, id ASC
+                LIMIT 1
+            )
+            WHERE p.base_price >= ?";
+
+    $query = $this->db->query($sql, [$min]);
+    
+    return $query->getResult();
+
+
+    }
+
+    public function getAllAffiliateProductCategoriesForShop(){
+
+         $table1 = $this->getEntity('affiliate_products');   // Assuming 'product'
+         $table2 = $this->getEntity('affiliate_product_categories'); // Assuming 'category'
+
+    $builder = $this->db->table($table2 . ' as c');
+    $builder->select('c.name as category_name, c.slug, COUNT(p.id) as total_products');
+    $builder->join($table1 . ' as p', 'p.category_id = c.id', 'left');
+    $builder->groupBy('c.id');
+
+    $query = $builder->get();
+    return $query->getResult();
+
+    }
+
     public function getLowestBasePricePackage($ordertype){
 
         $table_na = $this->getEntity('packages');        
@@ -772,9 +1106,13 @@ class DataModel extends Model
         if(!empty($data_detail)){
             $package_name = $data_detail->package;
 
+            // buang kata order didepannya
+            // save jenis order typenya saja
+            $o_type = str_replace('order_', '', $entity);
+
             $filter = array(
                 'name' => $package_name,
-                'order_type' => $entity
+                'order_type' => $o_type
             );
 
             $data_package = $this->selectDataBy($filter, 'packages');

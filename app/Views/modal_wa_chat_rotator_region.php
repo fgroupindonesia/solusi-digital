@@ -7,6 +7,7 @@
 
 <div class="modal fade" id="wa-chat-rotator-region-modal" tabindex="-1">
 
+    <input id="wa-chat-rotator-region-data-group-id" value="" type="hidden" >
     <input id="wa-chat-rotator-region-data-region" value="" type="hidden" >
     <input id="wa-chat-rotator-region-data-city" value="" type="hidden" >
     <input id="wa-chat-rotator-region-data-country" value="" type="hidden" >
@@ -14,14 +15,15 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">CS : <span id="no_wa_cs_region">-</span></h5>
+        <h5 class="modal-title">Group : <span id="wa-chat-rotator-region-group-name">-</span></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         
   
   <div class="form-group row">
-     <input type="text" id="locationInput" placeholder="Enter country or city" onkeypress="searchLocation(event)">
+    <label>Ketik lalu ENTER : </label>
+     <input type="text" id="locationInput" placeholder="Tuliskan Nama Kota Spesifik" onkeypress="searchLocation(event)">
      <input type="range" id="radius" min="1000" max="50000" value="10000" step="1000" onchange="updateRadius()">
     <p>Radius: <span id="radiusValue">10000</span> meters</p>
   </div>

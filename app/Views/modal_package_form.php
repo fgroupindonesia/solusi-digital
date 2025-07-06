@@ -43,30 +43,30 @@
     </label> 
     <div class="col-8">
       <div class="input-group">
-        <div class="input-group-prepend">
-          <div class="input-group-text">
+       <div class="input-group-text">
             <i class="fa fa-mobile"></i>
           </div>
-        </div> 
-        <select id="order_type" name="order_type" type="text" class="form-control">
-          
-          <option value="wa_chat_rotator">WA Chat Rotator</option>
-          <option value="landingpage">Landing Page</option>
-          <option value="virtualvisitors">Virtual Visitors</option>
-          <option value="view">View</option>
-          <option value="follow_marketplace">Follow Marketplace</option>
-          <option value="wishlist_marketplace">Wishlist Marketplace</option>
-          <option value="subscriber">Subscriber</option>
-          <option value="rating">Rating</option>
-          <option value="comment">Comment</option>
-          <option value="pembuatanaplikasi">Pembuatan Aplikasi</option>
-          <option value="upgrade_fituraplikasi">Upgrade Fitur Aplikasi</option>
-          
+       <select id="order_type" name="order_type" class="form-control">
+          <?php if(!empty($data_order_types)): ?>
+            <?php foreach($data_order_types as $dot): ?>
+              <option value="<?=$dot->slug_name;?>"><?= ucwords($dot->name);?></option>
+            <?php endforeach; ?>
+          <?php endif; ?>
+         
+          <option value="add_new">-- Add New Item --</option>
         </select>
+
+        
+        
       </div>
     </div>
   </div>
  
+  <div id="add-new-order-type-container" style="display:none; margin-top: 10px;">
+        <input type="text" id="new-order-type" class="form-control" placeholder="Enter new order type">
+        <button type="button" id="btn-add-new-order-type" class="btn btn-success mt-2">Update</button>
+      </div>
+
  
 
       </div> <!-- this is end of modal-body -->

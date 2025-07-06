@@ -1,6 +1,8 @@
 <div class="modal fade" id="landingpage-form-modal" tabindex="-1">
   <form id="landingpage-form" action="/order-new-landingpage" method="post">
-    <input id="landingpage-user-hidden-id" name="id" type="hidden" value="" class="form-control">
+
+    <input id="landingpage-hidden-username" name="username" type="hidden" value="<?= $username; ?>" class="form-control">
+
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -15,8 +17,8 @@
       <?php if(is_array($data_packages)): ?>
       <?php foreach($data_packages as $data_p): ?>
       <div class="custom-control custom-radio custom-control-inline">
-        <?php if($data_p->order_type== 'landingpage'): ?>
-        <input required name="package" id="landingpage-package-<?= $data_p->name; ?>" type="radio" class="custom-control-input" value="<?= $data_p->name; ?>"> 
+        <?php if($data_p->order_type== 'landing_page'): ?>
+        <input data-harga="<?=$data_p->total_price; ?>" required data-entity="landing_page" required name="package" id="landingpage-package-<?= $data_p->name; ?>" type="radio" class="radio-package custom-control-input" value="<?= $data_p->name; ?>"> 
         <label for="landingpage-package-<?= $data_p->name; ?>" class="custom-control-label"><?= $data_p->name; ?></label>
         <?php endif;?>
       </div>
@@ -24,44 +26,29 @@
       <?php endif; ?>
     </div>
   </div>
-  <div class="form-group row">
-    <label for="theme" class="col-4 col-form-label">Theme</label> 
-    <div class="col-8">
-       <?php if(is_array($data_themeslp)): ?>
-      
-      <div class="custom-control custom-radio custom-control-inline">
-        <select id="landingpage-theme" name="theme" class="form-control">
-          <option >Pilih Satu </option>
-          <?php foreach($data_themeslp as $data_p): ?>          
-          <option value="<?= $data_p->name ;?>"
-          data-url="<?= $data_p->url;?>" 
-            data-preview="<?= $data_p->file_preview;?>" > 
-            <?= $data_p->name; ?> 
-          </option>
-          <?php endforeach; ?>
-        </select>
-      </div>
-      
-      <?php endif; ?>
-      <div id="preview-container" class="mt-3" style="display:none;">
-        <a id="preview-link" href="" target="_blank">
-        <img src="" class="img-thumbnail" width="200" id="screenshot_landingpage"  >
-        </a>
-      </div>
 
-    </div>
-  </div>
+   <div class="form-group row">
+            <label for="landingpage-price" class="col-4 col-form-label">Harga :</label>
+            <div class="col-8">
+              <div class="input-group">
+                <input id="landingpage-price" readonly type="text" class="form-control">
+              </div>
+            </div>
+          </div> 
+
+ 
+
   <div class="form-group row">
-    <label for="integrasi" class="col-4 col-form-label">Integrasi</label> 
+    <label for="landingpage-integrasi" class="col-4 col-form-label">Integrasi</label> 
     <div class="col-8">
-      <select id="integrasi" name="integrasi" class="form-control">
+      <select id="landingpage-integrasi" name="integrasi" class="form-control">
         <option value="tidak">Tidak</option>
         <option value="ya">Ya</option>
       </select>
     </div>
   </div>
   
-<div class="form-group row">
+<div class="form-group row landingpage-platform-integrasi-wrapper d-none" >
     <label class="col-4 col-form-label">Platform Integrasi:</label> <div class="col-8">
        
       <div class="social-medias round-btn opt-appbase" data-value="wordpress" >

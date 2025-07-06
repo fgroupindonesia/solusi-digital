@@ -61,7 +61,7 @@
       <?php foreach($data_packages as $data_p): ?>
       <div class="custom-control custom-radio custom-control-inline">
         <?php if($data_p->order_type== 'comment'): ?>
-        <input required name="package" id="jasa-komen-paket-<?= $data_p->name; ?>" type="radio" class="custom-control-input" value="<?= $data_p->name; ?>"> 
+        <input data-harga="<?=$data_p->total_price; ?>" required data-entity="comment" required name="package" id="jasa-komen-paket-<?= $data_p->name; ?>" type="radio" class="radio-package custom-control-input" value="<?= $data_p->name; ?>"> 
         <label for="jasa-komen-paket-<?= $data_p->name; ?>" class="custom-control-label"><?= $data_p->name; ?></label>
         <?php endif;?>
       </div>
@@ -77,6 +77,15 @@
 
     </div>
   </div> 
+
+   <div class="form-group row">
+            <label for="jasa-komen-price" class="col-4 col-form-label">Harga :</label>
+            <div class="col-8">
+              <div class="input-group">
+                <input id="jasa-komen-price" readonly type="text" class="form-control">
+              </div>
+            </div>
+          </div>
 
   <div class="form-group row">
     <label for="jasa-komen-gender-member" class="col-4 col-form-label">Gender</label> 

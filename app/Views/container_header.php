@@ -8,13 +8,14 @@
     <meta name="description"
         content="Solusi Digital adalah pusat layanan digital marketing all-in-one yang menghadirkan berbagai solusi cerdas untuk kebutuhan bisnis modern. Kami menawarkan layanan seperti manajemen media sosial, peningkatan viewer dan subscriber, layanan WhatsApp customer service, pembuatan landing page, layanan terjemahan Inggris–Indonesia, format komputer profesional, serta customisasi software dan web sesuai kebutuhan Anda. Semua layanan dirancang untuk mempercepat pertumbuhan digital Anda secara efektif dan efisien, dengan adanya teknologi bisnis anda lebih berkembang dan lancar dapat profitnya!">
     <meta name="robots" content="noindex,nofollow">
-    <title><?= $page_name ;?> - <?= $app_name; ?></title>
+    <title><?= $page_name ;?> </title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/solusi-digital-logo.png">
     <!-- Custom CSS -->
     <link href="/assets/plugins/bower_components/chartist/dist/chartist.min.css?v=<?=$v;?>" rel="stylesheet">
     <link rel="stylesheet" href="/assets/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css?v=<?=$v;?>">
+   <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css?v=<?=$v;?>">
     <!-- Custom CSS -->
     <link href="/assets/css/style.min.css?v=<?=$v;?>" rel="stylesheet">
     <link href="/assets/css/style-custom.css?v=<?=$v;?>" rel="stylesheet">

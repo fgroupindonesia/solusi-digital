@@ -54,7 +54,7 @@
       <?php foreach($data_packages as $data_p): ?>
       <div class="custom-control custom-radio custom-control-inline">
         <?php if($data_p->order_type== 'subscriber'): ?>
-        <input required name="package" id="jasa-subscriber-paket-<?= $data_p->name; ?>" type="radio" class="custom-control-input" value="<?= $data_p->name; ?>"> 
+        <input data-harga="<?=$data_p->total_price; ?>" required data-entity="subscriber" required name="package" id="jasa-subscriber-paket-<?= $data_p->name; ?>" type="radio" class="radio-package custom-control-input" value="<?= $data_p->name; ?>"> 
         <label for="jasa-subscriber-paket-<?= $data_p->name; ?>" class="custom-control-label"><?= $data_p->name; ?></label>
         <?php endif;?>
       </div>
@@ -70,6 +70,15 @@
 
     </div>
   </div> 
+
+   <div class="form-group row">
+            <label for="jasa-subscriber-price" class="col-4 col-form-label">Harga :</label>
+            <div class="col-8">
+              <div class="input-group">
+                <input id="jasa-subscriber-price" readonly type="text" class="form-control">
+              </div>
+            </div>
+          </div>
 
   <div class="form-group row">
     <label for="jasa-subscriber-gender-member" class="col-4 col-form-label">Gender</label> 

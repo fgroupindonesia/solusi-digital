@@ -1,0 +1,36 @@
+ #virtualvisitors-box {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px; /* Lebar div notifikasi */
+            background-color: rgba(0, 0, 0, 0.7); /* Latar belakang semi-transparan */
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            font-family: Arial, sans-serif;
+            z-index: 9000; /* Pastikan di atas elemen lain */
+            display: none; /* Sembunyikan secara default */
+            cursor: pointer; /* Menunjukkan bahwa div bisa diklik */
+        }
+
+        #virtualvisitors-box p {
+            margin: 5px 0;
+            line-height: 1.4;
+        }
+
+        #virtualvisitors-box a {
+            color: #4CAF50; /* Warna link yang menarik */
+            text-decoration: none;
+            font-weight: bold; /* Link bold */
+        }
+
+        #virtualvisitors-box a:hover {
+            text-decoration: underline;
+        }
+
+        #virtualvisitors-box .time-ago {
+            font-size: 0.85em;
+            color: #ccc;
+            margin-top: 5px;
+        }

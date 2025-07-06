@@ -4,5 +4,7 @@ $(document).ready(() => {
 
               $('body').css('background', 'url(/assets/images/hd-bg-0' + randomInt + '.jpg');
               $('body').css('background-repeat', 'no-repeat').css('opacity', 0).fadeTo(500, 1);  
+
+             
                     
 });

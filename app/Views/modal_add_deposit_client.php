@@ -51,7 +51,7 @@
     <h5>Catatan :</h5>
     <label for="payment-method" class="custom-control-label">Pembayaran via (salah satu) : Bank Transfer/Go Pay/ShopeePay </label>
     <label for="payment-method" class="custom-control-label">Screenshot bukti pembayaran ke whatsapp admin untuk diproses lebih lanjut.</label>
-    <iframe id="payment-method-doc" src="<?= base_url(); ?>/assets/docs/payment_method_all.pdf" width="100%" height="100%">
+    <iframe id="payment-method-doc" src="<?= base_url(); ?>assets/docs/payment_method_all.pdf" width="100%" height="100%">
 
     </iframe>
 </section>

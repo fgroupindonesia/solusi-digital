@@ -4,29 +4,7 @@ $v = random_int(1, 100);
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords"
-        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template">
-    <meta name="description"
-        content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
-    <meta name="robots" content="noindex,nofollow">
-    <title>Manage Apps - Solusi Digital</title>
-    <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
-    <!-- Favicon icon -->
-   <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/solusi-digital-logo.png">
-    <!-- Custom CSS -->
-    <link href="/assets/plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
-    <!-- Custom CSS -->
-    <link href="/assets/css/datatables.min.css" rel="stylesheet">
-    <link href="/assets/css/style.min.css" rel="stylesheet">
-    <link href="/assets/css/style-custom.css" rel="stylesheet" >
-   
-</head>
+<?php include('container_header.php'); ?>
 
 <body>
     <!-- ============================================================== -->
@@ -75,7 +53,7 @@ $v = random_int(1, 100);
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Management Apps</h4>
+                        <h4 class="page-title"><?= $page_name; ?></h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <div class="d-md-flex">
@@ -100,6 +78,7 @@ $v = random_int(1, 100);
                 <!-- ============================================================== -->
                 <!-- RECENT SALES -->
                 <!-- ============================================================== -->
+                <?php if(!empty($data_apps)): ?>
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12">
                         <div class="white-box">
@@ -151,11 +130,23 @@ $v = random_int(1, 100);
                         </div>
                     </div>
                 </div>
+                <?php endif; ?>
+
+                <?php if(empty($data_apps)): ?>
+                    <div class="container">
+                      <div class="row justify-content-center">
+                        <div class="col-auto text-center">
+                          <img src="/assets/images/no-access.png" class="img-fluid" alt="Centered Image" style="max-width: 200px;">
+                        </div>
+                      </div>
+                    </div>
+                <?php endif; ?>
              
                 <?php include('modal_setting_form.php'); ?>
                 <?php include('modal_app_form.php'); ?>
                 <?php include('modal_add_deposit_client.php'); ?>
                 <?php include('modal_wa_float.php'); ?>
+               
 
             </div>
             <!-- ============================================================== -->

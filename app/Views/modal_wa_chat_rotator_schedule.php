@@ -1,12 +1,13 @@
 <div class="modal fade" id="wa-chat-rotator-schedule-modal" tabindex="-1">
   <form id="wa-chat-rotator-schedule-form" action="/update-wa-chat-rotator-cs-schedule" method="post">
     
-    <input type="hidden" name="order_id" id="wa-chat-rotator-schedule-user-id" >
+    <input type="hidden" name="cs_id" value="" id="wa-chat-rotator-schedule-cs-id" >
+    
 
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Schedule</h5>
+        <h5 class="modal-title">Schedule : <span id="wa-chat-rotator-schedule-cs-name"></span></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

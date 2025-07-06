@@ -4,29 +4,7 @@ $v = random_int(1, 100);
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords"
-        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template">
-    <meta name="description"
-        content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
-    <meta name="robots" content="noindex,nofollow">
-    <title>Manage Deposits - Solusi Digital</title>
-    <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
-    <!-- Favicon icon -->
-     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/solusi-digital-logo.png">
-    <!-- Custom CSS -->
-    <link href="/assets/plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
-    <!-- Custom CSS -->
-    <link href="/assets/css/datatables.min.css" rel="stylesheet">    
-    <link href="/assets/css/style.min.css" rel="stylesheet">
-    <link href="/assets/css/style-custom.css" rel="stylesheet" >
-
-</head>
+<?php include('container_header.php'); ?>
 
 <body>
     <!-- ============================================================== -->
@@ -96,6 +74,96 @@ $v = random_int(1, 100);
             <!-- ============================================================== -->
             <div class="container-fluid">
                
+               <div class="row">
+          <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box bg-info">
+              <span class="info-box-icon">
+                <i class="fas fa-money-bill-wave"></i>
+              </span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Total Cash (purchased)</span>
+                <span class="info-box-number"><?= $total_deposit_purchased; ?></span>
+
+                <div class="progress">
+                  <div class="progress-bar" style="width: <?= $percent_cash_purchased;?>"></div>
+                </div>
+                <span class="progress-description">
+                  <?= $percent_cash_purchased;?> ok
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box bg-success">
+              <span class="info-box-icon">
+                <i class="fas fa-hourglass-half"></i>
+            </span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Total Cash (pending)</span>
+                <span class="info-box-number"><?= $total_deposit_pending; ?></span>
+
+                <div class="progress">
+                  <div class="progress-bar" style="width: <?= $percent_cash_pending;?>"></div>
+                </div>
+                <span class="progress-description">
+                  <?= $percent_cash_pending;?> belum
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box bg-warning">
+              <span class="info-box-icon"><i class="fas fa-credit-card"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Purchased Deposit</span>
+                <span class="info-box-number"><?= $total_deposit_purchased_count; ?>
+                    <?= ($total_deposit_purchased_count > 1) ? ' items' : ' item'; ?>
+                </span>
+
+                <div class="progress">
+                  <div class="progress-bar" style="width: <?= $percent_purchased;?>"></div>
+                </div>
+                <span class="progress-description">
+                  <?= $percent_purchased;?> Profit
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box bg-danger">
+              <span class="info-box-icon"><i class="fas fa-clock"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Pending Deposit</span>
+                <span class="info-box-number"><?= $total_deposit_pending_count; ?>
+                    <?= ($total_deposit_pending_count > 1) ? ' items' : ' item'; ?>
+                </span>
+
+                <div class="progress">
+                  <div class="progress-bar" style="width: <?= $percent_pending;?>"></div>
+                </div>
+                <span class="progress-description">
+                  <?= $percent_pending;?> Stagnan
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+        </div>
                
                 <!-- ============================================================== -->
                 <!-- RECENT SALES -->
@@ -103,47 +171,106 @@ $v = random_int(1, 100);
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12">
                         <div class="white-box">
-                            <div class="d-md-flex mb-3">
-                                <h3 class="box-title mb-0">All Deposits (<?= $total_deposits ?>)</h3><br>
-                                 <img id="management-loading" src="/assets/plugins/images/loading.gif" >
-                                <div class="col-md-4 col-sm-4 col-xs-6 ms-auto">
-                                  <a data-bs-toggle="modal" data-bs-target="#add-deposit-admin-form-modal" class="link-add" id="link-add" href="/add-new-deposit">Add New</a>
-                                    <a class="link-edit" href="/edit-deposit" data-entity='deposits'>Edit</a>
-                                    <a class="link-delete" href="/delete-deposit" data-entity='deposits'>Delete</a>
-                                   
-                                </div>
-                            </div>
-                            <div class="table-responsive">
-                                <table id="table-deposits" class="table no-wrap">
-                                    <thead>
-                                        <tr>
-                                            <th id="check-all" data-state="inactive" class="border-top-0">#</th>
-                                            <th class="border-top-0">Username</th>
-                                            <th class="border-top-0">Status</th>
-                                           
-                                            <th class="border-top-0">Amount</th>
-                                            <th class="border-top-0">Date Created</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                   <?php if (count($data_deposits) > 0): ?>                 
-                  <?php foreach($data_deposits as $key): ?>
+                           <div class="d-md-flex mb-3">
+    <h3 class="box-title mb-0">All Deposits (<?= $total_deposits ?>)</h3><br>
+    <img id="management-loading" src="/assets/plugins/images/loading.gif" >
+    <div class="col-md-4 col-sm-4 col-xs-6 ms-auto">
+        <a data-bs-toggle="modal" data-bs-target="#add-deposit-admin-form-modal" class="link-add" id="link-add" href="/add-new-deposit">Add New</a>
+        <span class="mx-2">|</span>
+        <a class="link-edit" href="/edit-deposit" data-entity='deposits'>Edit</a>
+        <span class="mx-2">|</span>
+        <a class="link-delete" href="/delete-deposit" data-entity='deposits'>Delete</a>
+    </div>
+</div>
 
-                                        <tr>
-                                            <td><input type="checkbox" class="user-checked" data-id="<?= $key->id ?>" /></td>
-                                            <td class="txt-oflo"> <?= $key->username ?></td>
-                                            <td><?= $key->status ?>
-                                            </td>
+<!-- Bulk Action Section -->
+<div class="bulk-actions-wrapper border rounded p-3 mt-3 bg-light shadow-sm">
+  <div class="row g-3 align-items-center">
+    <div class="col-12 col-md">
+      
+    </div>
+    <div class="col-12 col-md-auto d-flex align-items-center gap-2">
+      <label for="bulk-action-select" class="form-label mb-0">Apply Bulk Action:</label>
+      <span class="mx-2">|</span>
+      <select id="" class="bulk-action-select form-select form-select-sm">
+        <option value="">-- Choose Action --</option>
+        <option value="pending">Pending</option>
+        <option value="purchased">Purchased</option>
+        <option value="cancel">Cancel</option>
+      </select>
+    </div>
+    <div class="col-12 col-md-auto">
+      <button  class="btn-apply-bulk btn btn-sm btn-primary">
+        Apply
+      </button>
+    </div>
+  </div>
+</div>
 
-                                            <td class="txt-oflo"><?= $key->amount ?></td>
-                                            <td><span class="text-success"><?= $key->date_created ?></span></td>
-                                        </tr>
-                 <?php endforeach; ?>
-                 <?php endif; ?>
-                                    </tbody>
-                                </table>
-                                <p>Selected : <span id="active-checked">0</span> data.</p>
-                            </div>
+                           <div class="table-responsive">
+  <table id="table-deposits" data-entity="deposits" class="table table-hover align-middle">
+    <thead class="table-light">
+      <tr>
+        <th id="check-all" data-state="inactive">#</th>
+        <th>Username</th>
+        <th>Status</th>
+        <th>Amount</th>
+        <th>Date Created</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php if (count($data_deposits) > 0): ?>                 
+        <?php foreach($data_deposits as $key): ?>
+          <tr>
+            <td><input type="checkbox" class="form-check-input user-checked" data-id="<?= $key->id ?>" /></td>
+            <td><?= $key->username ?></td>
+            <td>
+              <?php 
+                $status = strtolower($key->status);
+                $badgeClass = 'secondary';
+                if ($status == 'pending') $badgeClass = 'warning';
+                elseif ($status == 'approved' || $status == 'purchased') $badgeClass = 'success';
+                elseif ($status == 'cancel' || $status == 'rejected') $badgeClass = 'danger';
+              ?>
+              <span class="badge bg-<?= $badgeClass ?>"><?= ucfirst($key->status) ?></span>
+            </td>
+            <td><?= $key->amount ?></td>
+            <td><span class="text-success"><?= $key->date_created ?></span></td>
+          </tr>
+        <?php endforeach; ?>
+      <?php endif; ?>
+    </tbody>
+  </table>
+</div>
+
+<!-- Bulk Action Section -->
+<div class="bulk-actions-wrapper border rounded p-3 mt-3 bg-light shadow-sm">
+  <div class="row g-3 align-items-center">
+    <div class="col-12 col-md">
+      <span class="fw-semibold">
+        Selected: <span id="active-checked" class="text-primary">0</span> data
+      </span>
+    </div>
+    <div class="col-12 col-md-auto">
+      <div class="d-flex align-items-center gap-2">
+        <label for="bulk-action-select" class="form-label mb-0">Apply Bulk Action:</label>
+        <select class="bulk-action-select form-select form-select-sm">
+          <option value="">-- Choose Action --</option>
+          <option value="pending">Pending</option>
+          <option value="purchased">Purchased</option>
+          <option value="cancel">Cancel</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-12 col-md-auto">
+      <button class="btn-apply-bulk btn btn-sm btn-primary">
+        Apply
+      </button>
+    </div>
+  </div>
+</div>
+
+
                         </div>
                     </div>
                 </div>
@@ -191,6 +318,7 @@ $v = random_int(1, 100);
    
    
     <script src="/assets/js/modal-works.js?v=<?=$v;?>"></script>
+      <script src="/assets/js/reader-night-mode.js?v=<?=$v;?>"></script>
 </body>
 
 </html>

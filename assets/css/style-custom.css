@@ -1,3 +1,8 @@
+.bold {
+font-weight: bold;
+
+}
+
 .card {
 
     position: relative;
@@ -14,8 +19,54 @@
 
 }
 
+.flex-wrap a:hover{
+  background-color: yellow;
+
+}
+
+.flex-wrap a{
+  
+    text-align: right;
+    background-size: 16px;
+    background-position: left;
+    background-repeat: no-repeat;
+}
+
+#link-clear-all-virtualvisitors{
+  width: 100px;
+  background-image: url('/assets/images/delete.png');
+
+}
+
+.link-virtualvisitors-custom{
+width: 80px;
+  background-image: url('/assets/images/chat-bubble.png');
+
+}
+
+.link-virtualvisitors-custom:hover {
+  cursor: pointer;
+}
+
+
+
+tbody tr:hover {
+      background-color: #f0f8ff;
+      cursor: pointer;
+    }
+
+.bg-danger, .bg-danger>a {
+    color: #fff !important;
+}
+
 .left-sidebar{
   z-index: 11 !important;
+}
+
+.info-box .info-box-number {
+    display: block;
+    margin-top: .25rem;
+    font-weight: 700;
 }
 
 .bg-warning {
@@ -181,6 +232,7 @@
       padding : 10px;
     }
 
+/* --- Started for WhatsApp Floating Contact --- */
  #wa-contact-container {
             position: fixed;
             bottom: 20px;
@@ -219,9 +271,28 @@
             font-weight: bold;
         }
 
+        #wa-close-btn {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #ff5c5c;
+    color: white;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    text-align: center;
+    line-height: 22px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    z-index: 10000;
+}
+
         #wa-help small {
             font-size: 12px;
         }
+
+        /* --- WhatsApp Floating Contact Done! --- */
 
         .text-success {
             color: #28a745;
@@ -360,7 +431,7 @@
 
 .link-virtualvisitors-code, .link-apply-theme, .link-all, .link-add, .link-upload, .link-edit, .link-delete, .link-approve, .link-cancel {
   display: inline-block;
-  height: 24px;
+  
   text-align: right;
   background-size:  16px;
   background-position: left;
@@ -542,4 +613,193 @@ border-radius: 46px 46px 46px 46px;
   max-width: 700px !important;
 }
 
+}
+
+.sidebar-mini .hide-menu {
+  display: none;
+}
+
+.sidebar-nav {
+  overflow: hidden;
+}
+
+
+ body.night-mode {
+    background-color: #1e1e1e !important;
+    color: #eee;
+    background: #1e1e1e !important;
+  }
+
+  .night-mode {
+    background-color: #1e1e1e !important;
+    color: #eee;
+    background: #1e1e1e !important;
+  }
+
+  /* Tambahan khusus sidebar */
+  .left-sidebar.night-mode {
+    background-color: #111 !important;
+  }
+
+  .night-mode .sidebar-link {
+    color: #ddd !important;
+  }
+
+  .night-mode span, .night-mode div {
+    color: white !important;
+  }
+
+  .night-mode .sidebar-link:hover {
+    background-color: grey !important;
+    color: black !important;
+  }
+
+  button.night-mode {
+  filter: invert(100%);
+}
+
+  /* Optional: ubah background konten utama */
+  .night-mode .page-wrapper {
+    background-color: #222;
+    color: #ccc;
+  }
+
+  body.night-mode .footer {
+  background-color: #121212 !important;
+  color: #ccc !important;
+}
+
+body.night-mode .footer a {
+  color: #99ccff !important;
+}
+
+/* Ensure the modal-dialog occupies full width and height */
+#full-screen-image-viewer-modal .modal-dialog {
+    width: 100vw;       /* 100% of viewport width */
+    height: 100vh;      /* 100% of viewport height */
+    max-width: 100vw !important;   /* Override any max-width from Bootstrap */
+    max-height: 100vh;  /* Override any max-height from Bootstrap */
+    margin: 0;          /* Remove any default margins that might shift it */
+    padding: 0;         /* Remove any default paddings */
+
+    /* Re-confirming flex properties for centering the modal-content */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Ensure the modal-content properly fills its centered space */
+#full-screen-image-viewer-modal .modal-content {
+    width: auto; /* Let content determine width, or set a max-width if desired */
+    height: auto; /* Let content determine height, or set a max-height */
+    max-width: 95vw; /* Optional: Give it a slight max-width for very wide screens */
+    max-height: 95vh; /* Optional: Give it a slight max-height */
+    background-color: transparent !important; /* Keep it transparent */
+    border: 0 !important; /* No border */
+    text-align: center; /* Ensures inner text content is centered */
+    margin: auto; /* Fallback centering if flexbox somehow fails */
+}
+
+/* And re-confirm the styling for the modal-body and image itself */
+#full-screen-image-viewer-modal .modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* This centers the image and text horizontally */
+    justify-content: center;
+    height: 100%; /* Ensure modal-body takes up available height */
+    overflow: hidden;
+    padding: 0; /* Remove padding */
+}
+
+#full-screen-image {
+    max-width: 100%;
+    max-height: 90vh; /* Adjust as needed */
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block; /* Essential for proper rendering and alignment */
+}
+
+#full-screen-image-viewer-modal .modal-body p {
+    text-align: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-width: 90%; /* Constrain text width */
+}
+
+.product-image-item {
+    position: relative; /* Ensure child absolute positioning is relative to this parent */
+}
+
+.btn-close-image-overlay {
+    position: absolute;
+    top: 5px;   /* Adjust as needed for top position */
+    right: 5px; /* Adjust as needed for right position */
+    z-index: 10; /* Ensure it's above the image and overlay */
+    background-color: rgba(255, 255, 255, 0.7); /* Slightly transparent background for visibility */
+    border-radius: 50%; /* Make it circular */
+    width: 25px; /* Adjust size */
+    height: 25px; /* Adjust size */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.2s ease-in-out; /* Smooth transition */
+}
+
+.product-image-item:hover .btn-close-image-overlay {
+    opacity: 1; /* Show on hover */
+}
+
+.night-mode .card {
+  background-color: black !important;
+}
+
+.night-mode .card-heading{
+  background-color: black !important; 
+}
+
+.dropdown a span:hover{
+  color: black !important;
+}
+
+/* Tambahkan ini di file CSS kustom Anda */
+.btn-copy-icon {
+    cursor: pointer; /* Menunjukkan bahwa ini dapat diklik */
+    display: flex; /* Untuk menengahkan ikon vertikal */
+    align-items: center; /* Menengahkan ikon secara vertikal */
+    justify-content: center; /* Menengahkan ikon secara horizontal */
+    width: 40px; /* Lebar tetap agar tombol tidak terlalu besar */
+    /* Opsional: Sesuaikan warna dan border jika diperlukan */
+    /* border-left: none; */ /* Jika ingin menghilangkan border di kiri */
+    background-color: green;
+}
+
+/* Hilangkan outline default saat fokus (klik) untuk penampilan lebih bersih */
+.btn-copy-icon:focus {
+    outline: none;
+    box-shadow: none; /* Hilangkan shadow jika ada dari Bootstrap */
+}
+
+#link-test-virtualvisitors{
+      background-image: url('/assets/images/play.png');
+      width: 110px;
+}
+
+.dropdown-bantuan:hover{
+  
+  background-color: yellow;
+  border-radius: 15px;
+
+}
+
+.dropdown-bantuan {
+   padding: 5px;
+}
+
+.dropdown-bantuan img {
+  width : 24px;
+  height: 24px;
 }

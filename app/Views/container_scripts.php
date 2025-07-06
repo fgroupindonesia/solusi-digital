@@ -17,3 +17,4 @@
     <script src="/assets/plugins/bower_components/chartist/dist/chartist.min.js?v=<?=$v;?>"></script>
     <script src="/assets/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js?v=<?=$v;?>"></script>
     <script src="/assets/js/pages/dashboards/dashboard1.js?v=<?=$v;?>"></script>
+    <script src="/assets/js/reader-night-mode.js?v=<?=$v;?>"></script>

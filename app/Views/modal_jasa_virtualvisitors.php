@@ -8,7 +8,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Jasa Virtual Visitors</h5>
+        <h5 class="modal-title">Jasa Popup Sales Notifications</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -72,7 +72,7 @@
       <?php foreach($data_packages as $data_p): ?>
       <div class="custom-control custom-radio custom-control-inline">
         <?php if($data_p->order_type== 'virtualvisitors'): ?>
-        <input required name="package" id="jasa-virtualvisitors-paket-<?= $data_p->name; ?>" type="radio" class="custom-control-input" value="<?= $data_p->name; ?>"> 
+        <input data-harga="<?=$data_p->total_price; ?>" required data-entity="virtualvisitors" required name="package" id="jasa-virtualvisitors-paket-<?= $data_p->name; ?>" type="radio" class="radio-package custom-control-input" value="<?= $data_p->name; ?>"> 
         <label for="jasa-virtualvisitors-paket-<?= $data_p->name; ?>" class="custom-control-label"><?= $data_p->name; ?></label>
         <?php endif;?>
       </div>
@@ -87,20 +87,18 @@
       end of sample layout -->
 
     </div>
-  </div> 
+  </div>
 
-  <div class="form-group row">
-    <label for="jasa-virtualvisitors-gender-member" class="col-4 col-form-label">Gender</label> 
-    <div class="col-8">
-      <div class="input-group">
-        <select id="jasa-virtualvisitors-gender-member" name="gender">
-          <option value="lelaki">Laki-laki</option>
-         <option value="perempuan">Perempuan</option>
-          <option value="perempuan">Mixed</option>
-        </select>
-      </div>
-    </div>
-  </div> 
+   <div class="form-group row">
+            <label for="jasa-virtualvisitors-price" class="col-4 col-form-label">Harga :</label>
+            <div class="col-8">
+              <div class="input-group">
+                <input id="jasa-virtualvisitors-price" readonly type="text" class="form-control">
+              </div>
+            </div>
+          </div>  
+
+ 
 
   <div class="form-group row">
   

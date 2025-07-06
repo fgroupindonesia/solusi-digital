@@ -69,8 +69,8 @@
       <?php foreach($data_packages as $data_p): ?>
       <div class="custom-control custom-radio custom-control-inline">
         <?php if($data_p->order_type== 'upgrade_fituraplikasi'): ?>
-        <input required name="package" id="jasa-upgrade-fituraplikasi-paket-<?= $data_p->name; ?>" type="radio" class="custom-control-input" value="<?= $data_p->name; ?>"> 
-        <label for="jasa-upgrade-fituraplikasi-paket-<?= $data_p->name; ?>" class="custom-control-label"><?= $data_p->name; ?></label>
+        <input data-harga="<?=$data_p->total_price; ?>" required data-entity="upgrade_fituraplikasi" name="package" id="jasa-upgrade-fituraplikasi-paket-<?= $data_p->name; ?>" type="radio" class="custom-control-input radio-package" value="<?= $data_p->name; ?>"> 
+        <label for="jasa-upgrade-fituraplikasi-paket-<?= $data_p->name; ?>"  class="custom-control-label"><?= $data_p->name; ?></label>
         <?php endif;?>
       </div>
       <?php endforeach; ?>
@@ -85,6 +85,15 @@
 
     </div>
   </div> 
+
+      <div class="form-group row">
+            <label for="jasa-upgrade-fituraplikasi-price" class="col-4 col-form-label">Harga :</label>
+            <div class="col-8">
+              <div class="input-group">
+                <input id="jasa-upgrade-fituraplikasi-price" readonly type="text" class="form-control">
+              </div>
+            </div>
+          </div>
 
 
   <div class="form-group row">

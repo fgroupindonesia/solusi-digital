@@ -6,12 +6,12 @@
 <link rel="stylesheet" type="text/css" href="/assets/bootstrap/dist/css/bootstrap.min.css">  
 <link rel="stylesheet" type="text/css" href="/assets/css/login-style.css">
  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/solusi-digital-logo.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon.ico">
+  
 
 </head>   
 <body>
 
-  <?php if(!isset($error)) : ?>
+  <?php if(!isset($error) && empty($second_visit)) : ?>
   <div class="full-screen" id="intro">
     <img src="/assets/images/cinaralab-logo.png" class="logo" id="logo1" style="display:none;" />
     <img src="/assets/images/fgroupindonesia-logo.png" class="logo" id="logo2" style="display:none;" />
@@ -25,7 +25,13 @@
          <img src="/assets/images/solusi-digital-logo.png" alt="Logo" class="login-logo mb-3">
         <h4 class="mb-3 text-red">Login</h4>
         <form action="/verify" method="post">
+          
+          <?php if(!empty($error)): ?>
+          <div class="alert alert-danger" role="alert">
           <span class="alert-danger" id="error-msg" ><?= isset($error) ? $error : '' ?> </span>
+          </div>
+        <?php endif; ?>
+
           <div class="mb-3">
             <label>Email or Username</label>
             <input type="text" name="email" class="form-control" required>
@@ -50,14 +56,15 @@
 
 
   <script type="text/javascript" src="/assets/js/jquery-3.7.1.js"> </script>
-  <?php if(!isset($error)): ?>
+  <?php if(!isset($error) && empty($second_visit)): ?>
     <script type="text/javascript" src="/assets/js/login-anim-motto.js"> </script>
   <?php endif; ?>
   <script type="text/javascript" src="/assets/js/login-forgot-pass.js"> </script>
   <script type="text/javascript" src="/assets/js/random-bg.js"> </script>
+  <?php if (!empty($second_visit)): ?>
+<script type="text/javascript" src="/assets/js/login-anim-motto2.js"> </script>
+<?php endif; ?>
 
-
-   </script>
   
 
 </body>

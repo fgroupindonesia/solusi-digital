@@ -1,36 +1,10 @@
 <?php
-
 $v = random_int(1, 100);
-
- function asRupiah($number) {
-        $formattedNumber = number_format($number, 0, ',', '.');
-        return 'Rp ' . $formattedNumber;
-    }
 ?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords"
-        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template">
-    <meta name="description"
-        content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
-    <meta name="robots" content="noindex,nofollow">
-    <title>Manage Packages - Solusi Digital</title>
-    <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/solusi-digital-logo.png">
-    <!-- Custom CSS -->
-    <link href="/assets/plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
-    <!-- Custom CSS -->
-    <link href="/assets/css/style.min.css" rel="stylesheet">
-    <link href="/assets/css/style-custom.css" rel="stylesheet" >
-</head>
+<?php include('container_header.php'); ?>
 
 <body>
     <!-- ============================================================== -->
@@ -79,7 +53,7 @@ $v = random_int(1, 100);
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Management Packages</h4>
+                        <h4 class="page-title"><?= $page_name; ?></h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <div class="d-md-flex">
@@ -102,7 +76,7 @@ $v = random_int(1, 100);
                
                
                 <!-- ============================================================== -->
-                <!-- RECENT SALES -->
+                <!-- All Packages  -->
                 <!-- ============================================================== -->
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12">
@@ -110,6 +84,16 @@ $v = random_int(1, 100);
                             <div class="d-md-flex mb-3">
                                 <h3 class="box-title mb-0">All Packages (<?= $total_packages ?>)</h3><br>
                                  <img id="management-loading" src="/assets/plugins/images/loading.gif" >
+
+                                <select id="orderTypeFilter" class="form-select form-select-sm w-auto ms-3">
+                                    <option value="all">-- Filter by Order Type --</option>
+                                    <?php if(!empty($data_order_types)): ?>
+                                    <?php foreach($data_order_types as $type) : ?>
+                                       <option value="<?= $type->slug_name ?>"><?= ucwords($type->name) ?></option>
+                                    <?php endforeach; ?>
+                                    <?php endif;?>
+                                </select>
+
                                 <div class="col-md-4 col-sm-4 col-xs-6 ms-auto">
                                     
                                     <?php if($total_packages>0): ?>
@@ -124,32 +108,47 @@ $v = random_int(1, 100);
                             </div>
                             <div class="table-responsive">
                            
-                 <?php if($total_packages!=0): ?>
-                 <?php $many_cols = 4; 
-                  $row_count = ceil($total_packages/$many_cols); ?>
-                 <?php for($i=0; $i<$row_count; $i++): ?>
-                   <div class="row">
-                    <?php for($n=0; $n<$many_cols; $n++): ?>
-                        <?php $post = $i * $many_cols + $n; ?>
-                        <?php if($post < $total_packages): ?>
-                    <div class="col-md-3">
-                        <input type="checkbox" class="package-checked"
-                        data-id="<?= $data_packages[$post]->id;?>" >
-        <h3 class="inline-title"><?= $data_packages[$post]->name;?></h3>
-        <p>Order Type : 
-        <span> <?= $data_packages[$post]->order_type;?> </span> <br>
-        Base  Price: <span><?= asRupiah($data_packages[$post]->base_price);?></span> <br>
-        Total Price: <span><?= asRupiah($data_packages[$post]->total_price);?></span><br>
-        Quota: <span><?= $data_packages[$post]->quota;?></span> 
-        </p>
+               <?php if($total_packages != 0): ?>
+<div class="row g-3">
+    <?php foreach($data_packages as $package): ?>
+        <div class="col-md-3 col-sm-6 mb-4 package-card" data-order-type="<?= $package->order_type ?>">
+
+            <div class="card h-100 border-primary shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <h5 class="card-title text-primary">
+                            <i class="fas fa-box-open me-1"></i> <?= $package->name;?>
+                        </h5>
+                        <input type="checkbox" class="form-check-input package-checked mt-1"
+                            data-id="<?= $package->id;?>" title="Select Package">
                     </div>
-                <?php else: ?>
-                    <div class="col-md-3"> </div>
-                <?php endif; ?>
-                <?php endfor;?>
+
+                    <div class="mt-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="fw-semibold text-muted">Order Type:</span>
+                            <span class="text-dark"><?= $package->order_type;?></span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="fw-semibold text-muted">Base Price:</span>
+                            <span class="text-success"><?= asCurrency($package->base_price);?></span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="fw-semibold text-muted">Total Price:</span>
+                            <span class="text-danger"><?= asCurrency($package->total_price);?></span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span class="fw-semibold text-muted">Quota:</span>
+                            <span class="text-dark"><?= $package->quota;?></span>
+                        </div>
                     </div>
-                 <?php endfor; ?>
-                 <?php endif; ?>
+                </div>
+            </div>
+
+        </div>
+    <?php endforeach; ?>
+</div>
+<?php endif; ?>
+
 
                         </div>
                     </div>
@@ -186,6 +185,8 @@ $v = random_int(1, 100);
        <script src="/assets/js/sweetalert2@11.js?v=<?=$v;?>"></script>
     <script src="/assets/js/custom.js?v=<?=$v;?>"></script>
     <script src="/assets/js/modal-works.js?v=<?=$v;?>"></script>
+    <script src="/assets/js/dropdown-filter-works.js?v=<?=$v;?>"></script>
+    <script src="/assets/js/reader-night-mode.js?v=<?=$v;?>"></script>
     <!--This page JavaScript -->
     
    

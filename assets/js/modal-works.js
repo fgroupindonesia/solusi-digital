@@ -6,7 +6,9 @@ const URL_CAMPAIGN_ADD 	= "/add-new-campaign";
 const URL_LAYANANMANUAL_ADD 	= "/add-new-layananmanual";
 const URL_SOCIALMEDIA_ADD 	= "/add-new-socialmedia";
 const URL_THEME_LANDINGPAGE_ADD 	= "/add-new-theme-landingpage";
+const URL_ORDER_TYPE_ADD = "/add-new-order-type";
 
+const URL_AFFILIATE_SHOP_PROFILE_DELETE		= "/delete-affiliate-shop-profile-banner";
 const URL_USER_DELETE 		= "/delete-user";
 const URL_PACKAGE_DELETE 	= "/delete-package";
 const URL_APP_DELETE 		= "/delete-app";
@@ -18,6 +20,8 @@ const URL_LAYANANMANUAL_DELETE 	= "/delete-layananmanual";
 const URL_SOCIALMEDIA_DELETE 	= "/delete-socialmedia";
 const URL_WA_CHAT_ROTATOR_DELETE 	= "/delete-wa-chat-rotator";
 const URL_THEME_LANDINGPAGE_DELETE 	= "/delete-theme-landingpage";
+const URL_DETAIL_ORDER_REVISIONS_DELETE = "/delete-revisions-detail-order";
+const URL_GROUP_WA_CHAT_ROTATOR_DELETE = "delete-group-wa-chat-rotator";
 
 const URL_USER_EDIT 		= "/edit-user";
 const URL_PACKAGE_EDIT 		= "/edit-package";
@@ -30,45 +34,159 @@ const URL_WA_CHAT_ROTATOR_EDIT 		= "/edit-wa-chat-rotator";
 const URL_CS_SCHEDULE_WA_CHAT_ROTATOR_EDIT 		= "/edit-wa-chat-rotator-cs-schedule";
 const URL_THEME_LANDINGPAGE_EDIT	= "/edit-theme-landingpage";
 
+const URL_DETAIL_ORDER_REVISIONS_AS_CLIENTS_UPDATE = "/update-revisions-detail-order-as-clients";
+const URL_DETAIL_ORDER_REVISIONS_UPDATE = "/update-revisions-detail-order";
+const URL_DETAIL_ORDER_END_RESULT_UPDATE = "/update-end-result-detail-order";
+const URL_DETAIL_ORDER_END_RESULT_AS_CLIENTS_UPDATE = "/update-end-result-detail-order-as-clients";
+
+const URL_GROUP_WA_CHAT_ROTATOR_UPDATE = "/update-group-wa-chat-rotator";
+const URL_CS_WA_CHAT_ROTATOR_UPDATE = "/update-cs-wa-chat-rotator";
+const URL_CS_WA_CHAT_ROTATOR_DELETE = "/delete-cs-wa-chat-rotator";
+
+const URL_AFFILIATE_SHOP_PROFILE_UPDATE 		= "/update-affiliate-shop-profile";
 const URL_USER_UPDATE 		= "/update-user";
 const URL_THEME_LANDINGPAGE_UPDATE	= "/update-theme-landingpage";
 const URL_PACKAGE_UPDATE 	= "/update-package";
 const URL_ORDER_UPDATE 		= "/update-jasa-order";
 const URL_APP_UPDATE 		= "/update-app";
 const URL_DEPOSIT_UPDATE 	= "/update-deposit";
+const URL_DEPOSIT_BULK_UPDATE = "/update-deposit-bulk";
 const URL_LAYANANMANUAL_UPDATE 	= "/update-layananmanual";
 const URL_SOCIALMEDIA_UPDATE 	= "/update-socialmedia";
-const URL_WA_CHAT_ROTATOR_UPDATE 	= "/update-wa-chat-rotator";
+const URL_WA_CHAT_ROTATOR_UPDATE_MESSAGE 	= "/update-wa-chat-rotator-message";
 const URL_CS_REGION_WA_CHAT_ROTATOR_UPDATE 	= "/update-wa-chat-rotator-cs-region";
 const URL_CS_SCHEDULE_WA_CHAT_ROTATOR_UPDATE 	= "/update-wa-chat-rotator-cs-schedule";
 const URL_WA_CHAT_ROTATOR_SCRIPT_READY = "/check-wa-chat-rotator-script-ready";
 const URL_WA_CHAT_ROTATOR_SCRIPT_GRATIS = "/check-wa-chat-rotator-script-gratis";
+const URL_DETAIL_ORDER_END_RESULT_REQUEST = "/request-end-result-detail-order";
+const URL_DETAIL_ORDER_REVISIONS_REQUEST = "/request-revisions-detail-order";
 
+const URL_REQUEST_WA_CHAT_ROTATOR_MESSAGE = "/request-wa-chat-rotator-message";
+const URL_REQUEST_WA_CHAT_ROTATOR_CS_SCHEDULE = "/request-wa-chat-rotator-cs-schedule";
+
+const URL_REQUEST_VIRTUALVISITORS_MESSAGE = "/request-virtualvisitors-message";
 const URL_DATA_VIRTUALVISITORS = "/upload-data-virtualvisitors";
+const URL_MESSAGE_VIRTUALVISITORS_UPDATE = "/update-message-virtualvisitors";
 const URL_DATA_LAYANANMANUAL = "/upload-data-layananmanual";
 
 //const URL_DATA_VIRTUALVISITORS = "/test";
+const URL_ORDER_WA_CHAT_ROTATOR = "/order-new-wa-chat-rotator";
+const URL_ORDER_JASA_VIRTUALVISITORS = "/order-new-jasa-virtualvisitors";
+const URL_ORDER_JASA_RATING = "/order-new-jasa-rating";
+const URL_ORDER_JASA_SUBSCRIBER = "/order-new-jasa-subscriber";
+const URL_ORDER_JASA_COMMENT = "/order-new-jasa-comment";
+const URL_ORDER_PEMBUATANAPLIKASI = "/order-new-jasa-pembuatanaplikasi";
+const URL_ORDER_UPLOADAPLIKASI = "/order-new-jasa-uploadaplikasi";
+const URL_ORDER_KETIK_DOCUMENT = "/order-new-ketik-document";
+const URL_ORDER_FORMAT_OS = "/order-new-format-os";
+const URL_ORDER_UPGRADE_FITURAPLIKASI = "/order-new-jasa-upgrade-fituraplikasi";
+const URL_ORDER_LANDINGPAGE = "/order-new-landingpage";
+
 const URL_ORDER_REQUEST_DETAIL = "/request-detail-jasa-order";
 const URL_CAMPAIGN_REQUEST = "/request-campaign";
 const URL_CAMPAIGN_SINGLE_REQUEST = "/request-single-campaign";
 
 const URL_SETTINGS_UPDATE = "/update-settings";
+const URL_AFFILIATE_MODE_ACTIVATE = "/activate-affiliator-mode";
+
 const URL_PREVIEW_IMAGE = "/client/preview-image/";
 
 const URL_SHORTENER = "/client/make-it-short";
+const URL_MANAGE_STATUS_ORDER = "/manage-order-status";
 
 const URL_ENTRY_JS_ENDPOINT = "https://cdn.fgroupindonesia.com/virtualvisitors/js?";
-const _URL_ENTRY_WA_CHAT_ROTATOR = "https://solusi-digital.fgroupindonesia.com/";
+const _URL_ENTRY_MAIN_WEB = "https://solusi-digital.fgroupindonesia.com/";
 
 var jumlahData = 0;
 
 // for modal anti refreshing capabilities
 let _ref_wac = null;
+let _ref_btn = null;
+let _mode_adding_new_order_type;
+let _reply_confirmation = null;
 
 
 $( document ).ready(function() {
 
+// untuk client agar pesan dulu layanannya
+	ensureOrderPelayanan();
+
+// untuk client bisa jadi afiliator
+	ensureAffiliateMode();
+
+// this is for the wa chat rotator management
+	management_wa_chat_rotator_latest_helper();
+
+// this is for client when ordering
+	order_landingpage_form_helper();
+
+// this is for admin bulk actions
+	bulk_actions_click();
+
+// this is for admin order status
+enableEndResult();
+
+// this is for admin revision form
+revisionForms();
+
+// this is for client displaying price
+displayPriceOrderForm();
+
 enablePopper();
+
+$('body').on('click', '.link-virtualvisitors-custom', function(e){
+e.preventDefault();
+
+// passing data ke form 
+// karena id di form dibutuhkan untuk submission
+
+let idna = $('#vvisitors-order-id').val();
+$('#virtualvisitors-custom-order-id').val(idna);
+
+// grab dan extract ke modal popup tsb
+let datana = {id : idna};
+kirimPost(datana, URL_REQUEST_VIRTUALVISITORS_MESSAGE)
+
+});
+
+$('body').on('click','.btn-wa-schedule', function(){
+
+	// ambil code id cs nya
+	let idna = $(this).attr('data-cs-id');
+	let datana = {id: idna};
+	
+	let namana = $(this).attr('data-cs-name');
+
+	// tanya ke server
+	// render ke form schedule
+	kirimPost(datana, URL_REQUEST_WA_CHAT_ROTATOR_CS_SCHEDULE);
+
+	// taro juga di form
+	$('#wa-chat-rotator-schedule-cs-id').val(idna);
+	$('#wa-chat-rotator-schedule-cs-name').text(namana);
+
+});
+
+$('.btn-delete-banner').on('click', function () {
+        var bannerNumber = $(this).data('banner');
+        var nama = $(this).data('nama-file');
+        var shopId = $(this).data('shop');
+        // alat bantu nanti jika berhasil terhapus
+        _ref_btn = $(this);
+
+        let datana = {id: shopId, banner : bannerNumber, nama_file: nama};
+
+        kirimPost(datana, URL_AFFILIATE_SHOP_PROFILE_DELETE);
+});
+
+// this is for invoice downloading
+$('.invoice-order-link').on('click', function(e){
+
+	e.preventDefault();
+	let code = $(this).attr('data-order-client-reff');
+	window.location.href = "/download-invoice?order_client_reff=" + code;
+
+});
 
 // this is for selectiing theme and displaying the preview
 $('#landingpage-theme').on('change', function () {
@@ -119,7 +237,7 @@ $('#hour_open').on('change', function(){
 	createTime24Hours('#hour_closed', h, m);
 
 });
-
+ 
 // this is for disabling checkbox in modal schedule
 $('#cs_day_mode').on('change', function(){
 
@@ -136,29 +254,7 @@ $('#cs_day_mode').on('change', function(){
 
 });
 
-// this is for dropdown
-$('#wa-chat-rotator-custom-form #rotator_mode').on('change', function(){
 
-  let ops= 	$(this).val();
-  if(ops == 'device'){
-  	$('.device_wa').show();
-  	$('.add_region').hide();
-  	$('.add_schedule').hide();
-  }else if(ops == 'origin'){
-  	$('.device_wa').hide();
-  	$('.add_region').show();
-  	$('.add_schedule').hide();
-  }else if(ops == 'schedule'){
-  	$('.device_wa').hide();
-  	$('.add_region').hide();
-  	$('.add_schedule').show();
-  }else{
-  	$('.device_wa').hide();
-  	$('.add_region').hide();
-  	$('.add_schedule').hide();
-  }
-
-});
 
 
 
@@ -170,40 +266,7 @@ $('#wa-chat-rotator-region-modal').on('shown.bs.modal', function () {
         }, 300); 
 });
 
-// this is when the 2nd modal dissapered
-$('#wa-chat-rotator-region-modal').on('hidden.bs.modal', function () {
-             setTimeout(() => {
-            $('#wa-chat-rotator-custom-modal').modal('show');
-        }, 500); 
-});
 
-// this is when the 2nd modal dissapered
-$('#wa-chat-rotator-schedule-modal').on('hidden.bs.modal', function () {
-             setTimeout(() => {
-            $('#wa-chat-rotator-custom-modal').modal('show');
-        }, 500); 
-});
-
-$('#wa-chat-rotator-schedule-modal').on('shown.bs.modal', function () {
-            
-            // taken from the earlier modal value
-            let orderid = $('#wa-chat-rotator-custom-user-hidden-id').val();
-            $('#wa-chat-rotator-schedule-user-id').val(orderid);
-
-            // request the details if any
-            // then extract into the form
-            let formulir = $('#wa-chat-rotator-schedule-form');
-
-            let cs_num = formulir.find('#cs_number').val();
-
-            let datana = {cs_number: cs_num, order_id: orderid};
-            kirimPost(datana, URL_CS_SCHEDULE_WA_CHAT_ROTATOR_EDIT);
-
-
-            createTime24Hours('#hour_open',0,0);
-            createTime24Hours('#hour_closed',0,0);
-
-});
 
 
 // this part to take the number then selected to the schedule modal
@@ -346,12 +409,12 @@ $('body').on('click', '.access-code', function(e){
 	let reff = $(this).attr('data-client-reff');
 
 	let as_script = "<script src='LINK'></script>";
-	let url_js = _URL_ENTRY_WA_CHAT_ROTATOR + "client/?code=" + reff;
-	let link = _URL_ENTRY_WA_CHAT_ROTATOR + "client/fwd?code=" + reff;
+	let url_js = _URL_ENTRY_MAIN_WEB + "client/?code=" + reff;
+	let link = _URL_ENTRY_MAIN_WEB + "client/fwd?code=" + reff;
 
 	let new_code = as_script.replace('LINK', url_js);
 	$('#wa-chat-rotator-script-model').val(new_code);
-	$('#wa-chat-rotator-link-model').val('wait...');
+	$('#wa-chat-rotator-link-model').val('...');
 	
 		// check the status
 		let datana = {code: reff, url: link};
@@ -390,6 +453,27 @@ $('body').on('click', '.copy-code', function(){
    
 });
 
+// bagian untuk validasi form uploadaplikasi os
+$('#jasa-upload-aplikasi-form-modal').on('shown.bs.modal', function () {
+    $('.btn-save').hide();
+    validateForm('uploadaplikasi'); 
+  });
+
+$('#jasa-upload-aplikasi-form-modal :input').on('change keyup', function() {
+    validateForm('uploadaplikasi');
+});
+
+// bagian untuk validasi form format os
+$('#format-os-form-modal').on('shown.bs.modal', function () {
+    $('.btn-save').hide();
+    validateForm('format-os'); 
+  });
+
+// ini juga
+$('#format-os-form').on('input change', ':input[required], input[name="contact_person_type"]', function() {
+    validateForm('format-os');
+});
+
 // this part for enabling the add deposit form
 // back to normal
 $('#add-deposit-form-modal').on('shown.bs.modal', function () {
@@ -406,7 +490,8 @@ $('#format-os-contact-person-type-self').on('change', function(){
 
 	// take the hidden data
 	// into the form
-	let myname = $('');
+	let myname = $('#setting-fullname').val();
+	let mywa = $('#setting-whatsapp').val();
 
 	$('#format-os-contact-person-name').val(myname);
 	$('#format-os-contact-person-wa').val(mywa);	
@@ -438,9 +523,17 @@ $('#format-os-contact-person-type-other').on('change', function(){
 	displaySubmitFor('wa-chat-rotator-schedule-form');
 	displaySubmitFor('theme-landingpage-form');
 	displaySubmitFor('setting-form');
+	displaySubmitFor('format-os-form');
+	displaySubmitFor('ketik-dokumen-form');
+	displaySubmitFor('end-result-form');
+	displaySubmitFor('revision-admin-form');
+	displaySubmitFor('uploadaplikasi-form');
+	displaySubmitFor('landingpage-form');
+	displaySubmitFor('shop-profile-form');
+	displaySubmitFor('virtualvisitors-custom-form');
 	
-
-
+	
+	
 
 // this is for checked all and uncheck them directly!
 $('.link-all').on('click', function(e){
@@ -498,6 +591,80 @@ $('#quota_package').keyup(function(e){
 
 	hitungTotalPricePackage();
 	//alert('a');
+
+});
+
+$('#virtualvisitors-custom-form').on('submit', function(e){
+
+	e.preventDefault();
+	let datana = $(this).serialize();
+
+	kirimPost(datana, URL_MESSAGE_VIRTUALVISITORS_UPDATE);
+
+
+});
+
+$('#format-os-form').on('submit', function(e){
+
+	e.preventDefault();
+
+	proceedOrderWhenCashAvailable($(this));
+
+
+});
+
+$('#revision-admin-form').on('submit', function(e){
+
+	e.preventDefault();
+
+	let urlna = $(this).attr('action');
+	let datana =  $(this).serialize();
+
+	$(this).find('input[type="submit"]').hide();
+
+	kirimPost(datana, urlna);
+
+});
+
+$('#shop-profile-form').on('submit', function(e){
+    e.preventDefault();
+
+    let urlna = $(this).attr('action');
+    let datana = new FormData($(this)[0]);
+
+    $(this).find('input[type="submit"]').hide();
+
+    kirimPostUpload(datana, urlna);
+});  
+
+$('#end-result-form').on('submit', function(e){
+    e.preventDefault();
+
+    // === URL fixer ===
+    let endUrlInput = $('#endUrl');
+    let rawUrl = endUrlInput.val().trim();
+
+    if (rawUrl && !rawUrl.startsWith('http://') && !rawUrl.startsWith('https://')) {
+        rawUrl = 'http://' + rawUrl;
+        endUrlInput.val(rawUrl);
+    }
+    // ==================
+
+    let urlna = $(this).attr('action');
+    let datana = new FormData($(this)[0]);
+
+    $(this).find('input[type="submit"]').hide();
+
+    kirimPostUpload(datana, urlna);
+});
+
+
+$('#ketik-dokumen-form').on('submit', function(e){
+
+	e.preventDefault();
+
+	proceedOrderWhenCashAvailable($(this));
+
 
 });
 
@@ -647,13 +814,40 @@ $('#upload-virtualvisitors-attachment').on('change', function(){
   		$('.modal-loading').show();
   		let jenisNa = $(this).data('ordertype');
   		let idNa = $(this).data('orderid');
+  		let hasRevisionNa = $(this).data('orderhasrevision');
 
-  		let dataOrder = {order_type : jenisNa, order_id: idNa};
+  		// tempelin ke form
+  		$('#detail-order-hidden-id').val(idNa);
+  		$('#detail-order-end-result-hidden-id').val(idNa);
+  		$('#detail-order-hidden-order-type').val(jenisNa);
+
+  		//alert('ada ' + hasRevisionNa);
+
+  		let dataOrder = {order_type : jenisNa, order_id: idNa, "has_revision": hasRevisionNa};
 
   		kirimPost(dataOrder, URL_ORDER_REQUEST_DETAIL);
 
   });
 
+// this is for add new order type package
+   $('#order_type').on('change', function() {
+    if ($(this).val() === 'add_new') {
+    	_mode_adding_new_order_type = true;
+      $('#add-new-order-type-container').slideDown();
+      $('#new-order-type').val('').focus();
+    } else {
+    	_mode_adding_new_order_type = false;
+      $('#add-new-order-type-container').slideUp();
+    }
+  });
+
+
+   $('#btn-add-new-order-type').on('click', function() {
+    
+    	let el = $(this);
+    	addNewOrderType(el);
+
+  });
 
    // this is for approve click
   $('.link-approve').on('click', function(e){
@@ -665,11 +859,26 @@ $('#upload-virtualvisitors-attachment').on('change', function(){
   });
 
    // this is for cancel click
-  $('.link-cancel').on('click', function(e){
+  $('.link-cancel').on('click', async function(e){
   		e.preventDefault();
   		let entitiNa = $(this).data('entity');
 
-  		postOrderStatus(entitiNa, 'cancel');
+  		let codeNa = null;
+  		let orderType = null;
+
+  		$('input[type="checkbox"]:checked').each(function(){
+		 	codeNa = $(this).data('code-id');
+		 	orderType = $(this).data('order-type');
+		 }); 
+
+  		// kasih notif dulu cash tidak akan kembali meskipun di cancel
+  		_reply_confirmation = await showMessage('info', 'Yakin Cancel order <b>' + orderType + '</b> <br>untuk <b>Code ID : ' + codeNa + '</b> ini? <br>Cash tidak akan kembali meskipun sudah dicancel.');
+
+  		if(_reply_confirmation.isConfirmed){
+  			postOrderStatus(entitiNa, 'cancel');	
+  		}
+
+  		
 
   });
 
@@ -724,7 +933,13 @@ $('#upload-virtualvisitors-attachment').on('change', function(){
 	 // this is for package form
 	$('#package-form').on('submit', function(e){
 			e.preventDefault();
-			$('.btn-save').hide();
+			
+
+			// ketika tidak sedang editing new package 
+			// maka bisa save data package ini
+			if(!_mode_adding_new_order_type){
+
+				$('.btn-save').hide();
 			$('.btn-close-custom').hide();
 			$('.modal-loading').fadeIn();
 
@@ -737,7 +952,15 @@ $('#upload-virtualvisitors-attachment').on('change', function(){
 			
 
 			let tujuanURL = $(this).attr('action');
-			kirimPost(datana, tujuanURL);
+				
+				kirimPost(datana, tujuanURL);
+			}else{
+
+				// saving yg add new package 
+				let btn_package = $('#btn-add-new-order-type');
+				addNewOrderType(btn_package);
+
+			}
 	});
 	// package form done!
 
@@ -818,16 +1041,11 @@ $('#upload-virtualvisitors-attachment').on('change', function(){
 
 
     // this is for app form
-	$('#app-form').on('submit', function(e){
+	$('#uploadaplikasi-form').on('submit', function(e){
 			e.preventDefault();
-			$('.btn-save').hide();
-			$('.btn-close-custom').hide();
-			$('.modal-loading').fadeIn();
-
-			let datana = $(this).serialize();
-
-			let tujuanURL = $(this).attr('action');
-			kirimPost(datana, tujuanURL);
+			
+			// upload app pake uploadan formnya
+			proceedOrderWhenCashAvailable($(this), true);
 
 	});
 	// app form done!
@@ -877,32 +1095,7 @@ $('input[name="package"]').on('change', function () {
 	$('#wa-chat-rotator-form').on('submit', function(e){
 			e.preventDefault();
 			
-
-			let datana = $(this).serialize();
-
-			let tujuanURL = $(this).attr('action');
-
-			let cash = $('#saldo-anda').attr('data-cash');
-			let cash_text = $('#saldo-anda').text();
-			let harga = $(this).find('input[name="package"]:checked').attr('data-harga');
-
-			cash = parseInt(cash, 10);
-			harga = parseInt(harga, 10);
-
-			if(cash < harga){
-
-				showError("Saldomu " + cash_text + " tidak cukup! ");
-
-			}else{
-
-			$('.btn-save').hide();
-			$('.btn-close-custom').hide();
-			$('.modal-loading').fadeIn();
-
-			//alert('a');
-			kirimPost(datana, tujuanURL);
-
-			}
+			proceedOrderWhenCashAvailable($(this));
 
 	});
 	// wa-chat-rotator form done!
@@ -929,13 +1122,12 @@ $('input[name="package"]').on('change', function () {
 			//$('.btn-close-custom').hide();
 			//$('.modal-loading').fadeIn();
 
-			let o = $('#wa-chat-rotator-custom-user-hidden-id').val();
+			let o = $('#wa-chat-rotator-region-data-group-id').val();
 			let r = $('#wa-chat-rotator-region-data-region').val();
 			let ct = $('#wa-chat-rotator-region-data-city').val();
 			let cy = $('#wa-chat-rotator-region-data-country').val();
-			let c = $('#no_wa_cs_region').text();
 
-			let datana = {order_id: o, cs_number: c, country: cy, city: ct, region : r};
+			let datana = {group_id: o, country: cy, city: ct, region : r};
 
 			kirimPost(datana, URL_CS_REGION_WA_CHAT_ROTATOR_UPDATE);
 
@@ -945,6 +1137,7 @@ $('input[name="package"]').on('change', function () {
 	// wa-chat-rotator-custom form done!
 
 	// this is for jasa form that has social media div clicked opt
+	clickOnForm('landingpage-form');
 	clickOnForm('jasa-komen-form'); 
 	clickOnForm('jasa-view-form'); 
 	clickOnForm('jasa-rating-form'); 
@@ -981,6 +1174,13 @@ $('input[name="package"]').on('change', function () {
 		// count the items
 		 var count = $('input[type="checkbox"]:checked').length;
 		 $('#active-checked').text(count);
+
+		 if(count>1){
+		 	// tampilin bulk actions
+		 	$('.bulk-actions-wrapper').show();
+		 }else{
+		 		$('.bulk-actions-wrapper').hide();
+		 }
 
 		
 	});
@@ -1095,6 +1295,178 @@ $('input[name="package"]').on('change', function () {
 
 
 });
+
+// this is for add new package 
+function addNewOrderType(btnUpdate){
+
+
+	let newItem = $('#new-order-type').val().trim();
+
+    if(newItem === '') {
+      alert('Please enter a new order type');
+      return;
+    }
+
+    // call ajax
+    let namana = $('#new-order-type').val();
+    let datana = {name: namana};
+    kirimPost(datana, URL_ORDER_TYPE_ADD);
+
+    // Disable tombol selama proses ajax
+    $(btnUpdate).attr('disabled', true).text('Saving...');
+
+        $('<option>', {
+          value: newItem,
+          text: newItem
+        }).insertBefore('#order_type option[value="add_new"]');
+
+        // Pilih option baru tersebut
+        $('#order_type').val(newItem);
+
+        // Sembunyikan input dan tombol
+        $('#add-new-order-type-container').slideUp();
+
+        // Reset tombol
+        $('#btn-add-new-order-type').attr('disabled', false).text('Update');
+
+
+}
+
+function proceedOrderWhenCashAvailableCustomChecked(form){
+
+			let idFormGiven = $(form).attr('id');
+			let idGiven = '#' + $(form).attr('id');
+
+			let tujuanURL = form.attr('action');
+
+			let cash = $('#saldo-anda').attr('data-cash');
+			let cash_text = $('#saldo-anda').text();
+
+			let el_op = form.find('option[name="package"]:selected');
+			let el_input = form.find('input[name="package"]:checked');
+
+			let el_na = null;
+
+			if(el_op.length>0){
+				el_na = el_op;
+			}else {
+				el_na = el_input;
+			}
+
+			let harga = el_na.attr('data-harga');
+			let harga_text = formatRupiah(harga);
+
+			cash = parseInt(cash, 10);
+			harga = parseInt(harga, 10);
+
+			if(cash < harga){
+
+				showError("Saldomu " + cash_text + " tidak cukup! Harga orderan " + harga_text);
+
+			}else{
+
+			$('.btn-save').hide();
+			$('.btn-close-custom').hide();
+			$('.modal-loading').fadeIn();
+
+
+			let datana = $(form).serialize();
+			let socmedselected = [];
+			let appbaseselected = [];
+
+			// collect the checked item
+			let idDivChecked = idGiven + " .opt-social-checked";
+			//console.log('wer going to ' + idDivChecked);
+			$(idDivChecked).each(function() {
+				let socmed = $(this).data('value');
+		  	socmedselected.push(socmed);
+		  
+			});
+
+			// collect another item similar purpose
+
+			idDivChecked = idGiven + " .opt-appbase-checked";
+			//console.log('wer going to ' + idDivChecked);
+			$(idDivChecked).each(function() {
+				let socmed = $(this).data('value');
+		  	appbaseselected.push(socmed);
+		  
+			});
+
+
+			// embed another one based on different form ID names
+			if(idFormGiven == 'jasa-virtualvisitors-form'){
+				datana = datana + "&website=" + encodeURIComponent(JSON.stringify(appbaseselected));
+			}else if(idFormGiven == 'jasa-upgrade-fituraplikasi-form' || idFormGiven == 'jasa-pembuatanaplikasi-form'){
+				datana = datana + "&app_base=" + encodeURIComponent(JSON.stringify(appbaseselected));
+			}else if(idFormGiven != 'jasa-follow-marketplace-form' && idFormGiven != 'jasa-wishlist-marketplace-form'){
+				datana = datana + "&social_media=" + encodeURIComponent(JSON.stringify(socmedselected));
+			}else{
+				datana = datana + "&marketplace=" + encodeURIComponent(JSON.stringify(socmedselected));
+			}
+
+			
+		
+					kirimPost(datana, tujuanURL);
+
+			
+
+			}
+
+
+}
+
+function proceedOrderWhenCashAvailable(form, uploadBukan = false){
+
+
+		 let datana = form.serialize();
+
+			let tujuanURL = form.attr('action');
+
+			let cash = $('#saldo-anda').attr('data-cash');
+			let cash_text = $('#saldo-anda').text();
+
+			let el_op = form.find('option[name="package"]:selected');
+			let el_input = form.find('input[name="package"]:checked');
+
+			let el_na = null;
+
+			if(el_op.length>0){
+				el_na = el_op;
+			}else {
+				el_na = el_input;
+			}
+
+			let harga = el_na.attr('data-harga');
+			let harga_text = formatRupiah(harga);
+
+			cash = parseInt(cash, 10);
+			harga = parseInt(harga, 10);
+
+			if(cash < harga){
+
+				showError("Saldomu " + cash_text + " tidak cukup! <br>Harga orderan " + harga_text);
+
+			}else{
+
+			$('.btn-save').hide();
+			$('.btn-close-custom').hide();
+			$('.modal-loading').fadeIn();
+
+			//alert('a');
+				if(!uploadBukan){
+					kirimPost(datana, tujuanURL);
+
+				} else {
+					// datanya jadiin form based dulu
+					 datana = new FormData(form[0]);
+  					kirimPostUpload(datana, tujuanURL);				
+				}
+
+			}
+
+
+}
 
 function createTime24Hours(idElement, startHourFrom, startMinuteFrom){
 
@@ -1326,46 +1698,9 @@ let idGiven = "#" + idFormGiven;
 
 $(idGiven).on('submit', function(e){
 			e.preventDefault();
-			$('.btn-save').hide();
-			$('.btn-close-custom').hide();
-			$('.modal-loading').fadeIn();
-
-			let datana = $(this).serialize();
-			let socmedselected = [];
-			let appbaseselected = [];
-
-			// collect the checked item
-			let idDivChecked = idGiven + " .opt-social-checked";
-			//console.log('wer going to ' + idDivChecked);
-			$(idDivChecked).each(function() {
-				let socmed = $(this).data('value');
-		  	socmedselected.push(socmed);
-		  
-			});
-
-			// collect another item similar purpose
-			idDivChecked = idGiven + " .opt-appbase-checked";
-			//console.log('wer going to ' + idDivChecked);
-			$(idDivChecked).each(function() {
-				let socmed = $(this).data('value');
-		  	appbaseselected.push(socmed);
-		  
-			});
-
-
-			// embed another one based on different form ID names
-			if(idFormGiven == 'jasa-virtualvisitors-form'){
-				datana = datana + "&website=" + encodeURIComponent(JSON.stringify(appbaseselected));
-			}else if(idFormGiven == 'jasa-upgrade-fituraplikasi-form' || idFormGiven == 'jasa-pembuatanaplikasi-form'){
-				datana = datana + "&app_base=" + encodeURIComponent(JSON.stringify(appbaseselected));
-			}else if(idFormGiven != 'jasa-follow-marketplace-form' && idFormGiven != 'jasa-wishlist-marketplace-form'){
-				datana = datana + "&social_media=" + encodeURIComponent(JSON.stringify(socmedselected));
-			}else{
-				datana = datana + "&marketplace=" + encodeURIComponent(JSON.stringify(socmedselected));
-			}
-
-			let tujuanURL = $(this).attr('action');
-			kirimPost(datana, tujuanURL);
+		
+			proceedOrderWhenCashAvailableCustomChecked($(this));
+			
 
 	});
 
@@ -1477,6 +1812,93 @@ el_codena.removeAttr('readonly')
 
 }
 
+function renderWaChatRotatorScheduleModal(jsonData) {
+        // Parse JSON string menjadi objek JavaScript
+        const data = jsonData;
+
+        // Mengisi input hidden
+        $('#wa-chat-rotator-schedule-group-id').val(data.group_id);
+        $('#wa-chat-rotator-schedule-cs-id').val(data.id);
+
+        // Mengisi CS Number
+        $('#cs_number').val(data.cs_number);
+
+        // Mengisi Day Mode (select dropdown)
+        $('#cs_day_mode').val(data.day_mode);
+
+        // siapin dulu jam buka
+         const $dropdown = $('#hour_open');
+        $dropdown.empty(); // Kosongkan dropdown terlebih dahulu
+
+        for (let i = 0; i < 24; i++) {
+            const hour = i.toString().padStart(2, '0'); // Format jadi "00", "01", ..., "23"
+            const time = `${hour}:00`;
+            $dropdown.append(`<option value="${time}">${time}</option>`);
+        }
+
+        // Mengisi Jam Buka (select dropdown)
+        if (data.hour_open) {
+            $('#hour_open').val(data.hour_open);
+        } else {
+            // Jika hour_open null, Anda mungkin ingin memilih opsi default atau tidak melakukan apa-apa
+            // Misalnya, memilih opsi pertama jika ada
+            $('#hour_open option:first').prop('selected', true);
+        }
+
+        // Mengisi Jam Tutup (select dropdown)
+        if (data.hour_closed) {
+            $('#hour_closed').val(data.hour_closed);
+        } else {
+            // Jika hour_closed null, Anda mungkin ingin memilih opsi default atau tidak melakukan apa-apa
+            // Misalnya, memilih opsi pertama jika ada
+            $('#hour_closed option:first').prop('selected', true);
+        }
+
+
+  // Mengelola Hari Terpilih (checkboxes)
+        const $csDaysSelectedCheckboxes = $('.cs_days_selected');
+
+        // Menambahkan event listener untuk Day Mode agar mempengaruhi checkbox Hari Terpilih
+        $('#cs_day_mode').on('change', function() {
+            const currentDayMode = $(this).val();
+            if (currentDayMode === 'all') {
+                $csDaysSelectedCheckboxes.prop('checked', true).prop('disabled', true);
+            } else {
+                $csDaysSelectedCheckboxes.prop('disabled', false);
+                // Hanya uncheck jika sebelumnya "all"
+                if (data.day_mode === 'all') { // Ini akan uncheck hanya saat berganti dari 'all'
+                   $csDaysSelectedCheckboxes.prop('checked', false);
+                }
+            }
+        });
+        // Panggil trigger change secara manual untuk memastikan state awal yang benar
+        $('#cs_day_mode').trigger('change');
+
+
+        $csDaysSelectedCheckboxes.prop('checked', false).prop('disabled', false); // Reset semua checkbox
+
+        if (data.day_mode === 'all') {
+            $csDaysSelectedCheckboxes.prop('checked', true).prop('disabled', true);
+        } else if (data.day_mode === 'custom' && data.days_selected) {
+            let selectedDaysArray = [];
+            try {
+                // Parse string JSON dari days_selected
+                selectedDaysArray = JSON.parse(data.days_selected);
+            } catch (e) {
+                console.error("Gagal parsing days_selected JSON string:", data.days_selected, e);
+                // Fallback jika gagal parse, mungkin asumsikan koma-terpisah atau kosong
+                selectedDaysArray = data.days_selected.split(',').map(day => day.trim());
+            }
+
+            console.log('gw dapet ' + selectedDaysArray.length);
+
+            selectedDaysArray.forEach(day => {
+                $csDaysSelectedCheckboxes.filter(`[value="${day}"]`).prop('checked', true);
+            });
+
+        }
+ }
+
 function kirimPost(dataForm, urlNa){
 	
 	console.log('kirim ke '+ urlNa +' ' + JSON.stringify(dataForm));
@@ -1488,10 +1910,121 @@ function kirimPost(dataForm, urlNa){
         type: 'POST',
         success: function(data){
 
-        	console.log('ada respond ' + data);
+        	console.log('ada respond ' + JSON.stringify(data));
+
+        	if(urlNa == URL_REQUEST_VIRTUALVISITORS_MESSAGE){
+
+        		if(isValidJSON(data)){
+        			let jawab = JSON.parse(data);
+
+        			let form = $('#virtualvisitors-custom-form');
+        			form.find('#message').text(jawab.data.message);
+
+        		}
 
 
-        	if(urlNa == URL_SHORTENER){
+        	}else if(urlNa == URL_MESSAGE_VIRTUALVISITORS_UPDATE){
+
+        		$('.modal').modal('hide');
+
+        	}else if(urlNa == URL_CS_SCHEDULE_WA_CHAT_ROTATOR_UPDATE){
+
+        		//alert('a');
+
+        	}else if(urlNa == URL_REQUEST_WA_CHAT_ROTATOR_CS_SCHEDULE){
+
+        		if(isValidJSON(data)){
+
+        			let jawab = JSON.parse(data);
+
+        			renderWaChatRotatorScheduleModal(jawab.data);
+
+        		}
+
+
+        	} else if(urlNa == URL_REQUEST_WA_CHAT_ROTATOR_MESSAGE){
+
+        		let jawab = JSON.parse(data);
+
+        		let form = $('#wa-chat-rotator-custom-form');
+        		form.find('#message').text(jawab.data.message)
+
+        	}else if(urlNa == URL_AFFILIATE_SHOP_PROFILE_DELETE){
+
+        		_ref_btn.closest('p').remove();
+
+        	} else if(urlNa == URL_AFFILIATE_MODE_ACTIVATE){
+
+				if(isValidJSON(data)){
+					let jawab = JSON.parse(data);
+
+					location.reload();
+
+				}
+
+
+        	}else  if(urlNa == URL_DETAIL_ORDER_REVISIONS_REQUEST){
+
+        		if(isValidJSON(data)){
+        			
+        			let jawab = JSON.parse(data);
+
+        			// extracting
+        			if(dataForm.caller == 'client'){
+        				
+	        			if(jawab.status != 'invalid')
+  	      			extractingClientRevisions(jawab);
+        			}	
+
+        			if(dataForm.caller == 'admin'){
+
+        				if(jawab.status != 'invalid'){
+        					extractingAdminRevisions(jawab);
+        				}
+
+	 						}
+
+        		}
+
+
+        	}else if(urlNa == URL_DETAIL_ORDER_END_RESULT_REQUEST){
+
+        		if(!isValidJSON(data)){
+        			
+        			showMessage('error', 'data gagal diupdate!');
+
+        		} else {
+
+        			let jawab = JSON.parse(data);
+
+        			if(jawab.status == 'valid'){
+
+        				if(dataForm.caller != 'client'){
+        					extractToDetailEndResult(jawab);
+        				}else {
+
+        					populateClientViewModal(jawab);
+
+        				}
+
+        				
+        			}else{
+        				resetEndResultModal();
+        			}
+
+        		}
+
+        	} else if(urlNa == URL_ORDER_TYPE_ADD){
+
+        		// adding new package biar tanpa notif juga 
+
+        		if(!isValidJSON(data)){
+        			
+        			showMessage('error', 'data gagal diupdate!');
+
+        		}
+
+        	}else if(urlNa == URL_SHORTENER){
 
         		if(isValidJSON(data)){
         			let json = JSON.parse(data);
@@ -1502,12 +2035,11 @@ function kirimPost(dataForm, urlNa){
 
         		}
 
-        	}else if(urlNa == URL_WA_CHAT_ROTATOR_UPDATE){
+        	}else if(urlNa == URL_WA_CHAT_ROTATOR_UPDATE_MESSAGE){
 
-        		showMessage('success', 'Berhasil diupdate!');
-        		setTimeout(function(){
-        			window.location.reload();
-        		}, 3000);
+        		// lgsg close modal aja
+        		//showMessage('success', 'Berhasil diupdate!');
+        		$('.modal').modal('hide');
         		
 
         	} else if(urlNa == URL_WA_CHAT_ROTATOR_SCRIPT_GRATIS){
@@ -1632,9 +2164,15 @@ function kirimPost(dataForm, urlNa){
            }else if(urlNa == URL_ORDER_REQUEST_DETAIL){
         	 		let dataNa = JSON.parse(data);
         	 		console.log(dataNa.data);
+
+        	 		if (dataForm.has_revision && dataForm.has_revision > 0) {
+			    		$('#btn-revisions-show').show();
+							} else {
+					    $('#btn-revisions-show').hide(); 
+							}
         	 			
             			extractOrderDetailData(dataNa.data, dataForm.order_type);
-           }else if(urlNa != URL_CS_SCHEDULE_WA_CHAT_ROTATOR_EDIT && urlNa != URL_CS_SCHEDULE_WA_CHAT_ROTATOR_UPDATE && urlNa != URL_WA_CHAT_ROTATOR_EDIT && urlNa != URL_LAYANANMANUAL_EDIT && urlNa != URL_PACKAGE_EDIT && urlNa != URL_USER_EDIT && urlNa != URL_APP_EDIT && urlNa != URL_DEPOSIT_EDIT){
+           }else if(urlNa != URL_DETAIL_ORDER_REVISIONS_DELETE && urlNa != URL_CS_SCHEDULE_WA_CHAT_ROTATOR_EDIT && urlNa != URL_CS_SCHEDULE_WA_CHAT_ROTATOR_UPDATE && urlNa != URL_WA_CHAT_ROTATOR_EDIT && urlNa != URL_LAYANANMANUAL_EDIT && urlNa != URL_PACKAGE_EDIT && urlNa != URL_USER_EDIT && urlNa != URL_APP_EDIT && urlNa != URL_DEPOSIT_EDIT){
         		
            	showMessage('success', "Data Berhasil diupdate!");
 
@@ -1664,17 +2202,40 @@ function kirimPost(dataForm, urlNa){
 	        					// hide the payment
 	        					$('#deposit-option').hide();
 
+	        					$('#payment-method-doc')[0].contentWindow.location.reload();
+
+
 	        					// hide the loading
 	        					$('.modal-loading').hide();
 
-	        					showMessage('info', 'Silahkan screenshot Bukti Pembayaran Anda ke CS Admin by Whatsapp!');
+	        					showMessage('info', 'Silahkan kirim screenshot Bukti Pembayaran Anda ke CS Admin by Whatsapp!', false);
 
 	        				}
 
   	       			}
 
-  	       			if(urlNa != URL_DEPOSIT_ADD && urlNa != URL_CS_REGION_WA_CHAT_ROTATOR_UPDATE)
+  	       			// jika datang dari orderan
+  	       			 if(urlNa == URL_ORDER_JASA_SUBSCRIBER || 
+  	       			 	urlNa == URL_ORDER_LANDINGPAGE ||
+  	       			 	urlNa == URL_ORDER_WA_CHAT_ROTATOR || 
+  	       			 	urlNa == URL_ORDER_JASA_RATING || 
+  	       			 	urlNa == URL_ORDER_JASA_VIRTUALVISITORS ||
+  	       			 	urlNa == URL_ORDER_JASA_COMMENT || 
+  	       			 	urlNa == URL_ORDER_PEMBUATANAPLIKASI || 
+  	       			 	urlNa == URL_ORDER_FORMAT_OS || 
+  	       			 	urlNa == URL_ORDER_KETIK_DOCUMENT || 
+  	       			 	urlNa == URL_ORDER_UPGRADE_FITURAPLIKASI){
+  	       				location.href = URL_MANAGE_STATUS_ORDER;
+  	       			} else if(
+  	       				(urlNa == URL_PACKAGE_ADD && urlNa != URL_DEPOSIT_ADD && urlNa != URL_CS_REGION_WA_CHAT_ROTATOR_UPDATE)
+							  || urlNa == URL_DETAIL_ORDER_REVISIONS_UPDATE
+							  || urlNa == URL_DETAIL_ORDER_END_RESULT_AS_CLIENTS_UPDATE
+							  || urlNa == URL_DEPOSIT_UPDATE
+							  || urlNa == URL_DEPOSIT_BULK_UPDATE
+  	       				) 
+  	       			{
          					location.reload();
+  	       			} 
 
         			}
         		}, 3000);
@@ -1732,12 +2293,14 @@ function renderDataCampaign(jsonIn, idSelector){
 
 }
 
+
+
 function extractOrderDetailData(argument, order_type) {
 	
 	let data = (argument);
 	let formNa = $('#detail-order-form');
 
-	let idSectionNa = '#detail-order-' + order_type.replace("_","-");
+	let idSectionNa = '#detail-order-' + order_type.replace(/_/g, '-');
 
 	console.log('memunculkan ' + idSectionNa);
 
@@ -1747,6 +2310,7 @@ function extractOrderDetailData(argument, order_type) {
 	setTimeout(function(){
 		$('.modal-loading').hide();
 		sectionNa.show();	
+		$('#detail-order-admin').show();
 	},4000);
 	
 		$("#detail-order-username").val(data.username);
@@ -1763,6 +2327,38 @@ function extractOrderDetailData(argument, order_type) {
 		}
 
 
+	}else if(order_type == 'uploadaplikasi'){
+		
+		$(idSectionNa + "-app-name").val(data.app_name);
+    $(idSectionNa + "-description").val(data.description);
+    $(idSectionNa + "-privacy-url").val(data.privacy_url);
+    $(idSectionNa + "-date-created").val(data.date_created);
+
+    // Gambar icon dan screenshot
+    $(idSectionNa + "-icon-path").attr("src", data.icon_path);
+    $(idSectionNa + "-screenshot-path").attr("src", data.screenshot_path);
+
+	}else if(order_type == 'landing_page'){
+		$(idSectionNa + "-platform").val(data.platform_integrasi);
+		$(idSectionNa + "-integrasi").val(data.integrasi);
+		$(idSectionNa + "-package").val(data.package);
+	}else if(order_type == 'ketik_document'){
+		$(idSectionNa + "-name").val(data.document_name);
+		$(idSectionNa + "-total-pages").val(data.total_pages);
+		$(idSectionNa + "-descriptions").val(data.descriptions);
+		$(idSectionNa + "-price").val(data.date_limit);
+		$(idSectionNa + "-package").val(data.package);
+	}else if(order_type == 'wa_chat_rotator'){
+		
+		$(idSectionNa + "-package").val(data.package);
+	}else if(order_type == 'format_os'){
+		$(idSectionNa + "-model").val(data.model);
+		$(idSectionNa + "-descriptions").val(data.descriptions);
+		$(idSectionNa + "-delivery").val(data.delivery);
+		$(idSectionNa + "-contact-person-type").val(data.contact_type);
+		$(idSectionNa + "-contact-person-name").val(data.contact_person_name);
+		$(idSectionNa + "-contact-person-wa").val(data.contact_person_wa);
+		$(idSectionNa + "-package").val(data.package);
 	}else if(order_type == 'virtualvisitors'){
 		$(idSectionNa + "-website").val(data.website);
 		$(idSectionNa + "-url").val(data.url);
@@ -2020,8 +2616,8 @@ function extractWAChatRotatorData(argument){
 	}
 
 
-	// we changed the destination form to update deposit form
-	formNa.find('#wa-chat-rotator-custom-form').attr('action', URL_WA_CHAT_ROTATOR_UPDATE);
+	
+	formNa.find('#wa-chat-rotator-custom-form').attr('action', URL_WA_CHAT_ROTATOR_UPDATE_MESSAGE);
 
 
 }
@@ -2085,7 +2681,7 @@ function extractAppData(argument) {
 }
 
 function messageWA(nomer){
-	var msg = "*Hey!* Admin mau ngomong...";
+	var msg = "*Hey!* Admin mau ngomong. Bantuin aku dong. Gini ceritanya...";
 	var url = 'https://api.whatsapp.com/send?phone=' + nomer + '&text=' + msg;
 	location.href = url;
 } 
@@ -2122,16 +2718,27 @@ $.ajax({
 
     		$('#status-virtualvisitors-error').hide();
     		$('#status-virtualvisitors-loading').hide();
-			$('#virtualvisitors-progress').hide();
+			  $('#virtualvisitors-progress').hide();
 
-		}else if(urlNa == URL_LAYANANMANUAL_ADD || urlNa == URL_THEME_LANDINGPAGE_ADD){
+		}else if(urlNa == URL_LAYANANMANUAL_ADD || urlNa == URL_THEME_LANDINGPAGE_ADD
+			|| urlNa == URL_DETAIL_ORDER_END_RESULT_UPDATE ){
 
 			window.location.reload();
 
+		} else if (urlNa == URL_ORDER_UPLOADAPLIKASI){
+
+			window.location.href = URL_MANAGE_STATUS_ORDER;
+
+		} else if (urlNa == URL_AFFILIATE_SHOP_PROFILE_UPDATE){
+			
+			showMessage('success', 'Data Berhasil Terupdate!');
+			location.reload();
 		}
 
   },
   error: function(e,f,g){
+  	alert('kirim ' + datana + ' ke ' + urlNa);
+  	console.log('kirim ' + datana + ' ke ' + urlNa);
   	console.log(e + ' ' + f + ' ' + g);
   	$('#status-virtualvisitors-loading').hide();
   	$('#status-virtualvisitors-error').show();
@@ -2179,12 +2786,12 @@ return jsonObject;
 
 }
 
- function showMessage(status, message){
+ async function showMessage(status, message, displayYesNo=false){
 
  	if(status=='error'){
  		showError(message);
  	}else if (status=='info'){
- 		showAlert(message);
+ 		return await showAlert(message, displayYesNo);
  	}else {
  		showSuccess(message);
  	}
@@ -2196,7 +2803,7 @@ function showError(message){
 
 	Swal.fire({
             title: "Error",
-            text: message,
+            html: message,
             icon: "error"
         });
 
@@ -2214,13 +2821,987 @@ function showSuccess(message){
 
 }
 
-function showAlert(message){
+async function showAlert(message, displayYesNo=false){
 
-	Swal.fire({
+	_reply_confirmation = Swal.fire({
             title: "Warning",
-            text: message,
-            icon: "warning"
+            html: message,
+            icon: "warning",
+            showCancelButton: displayYesNo,
+        	confirmButtonText: "Yes",
+        	cancelButtonText: "No"
+        });
+
+	return _reply_confirmation;
+
+}
+
+function validateForm(entityName) {
+    let isValid = true;
+
+    let formSelector = '';
+    if (entityName === 'format-os') {
+        formSelector = '#format-os-form';
+    } else if (entityName === 'uploadaplikasi') {
+        formSelector = '#uploadaplikasi-form';
+    }
+
+    // Validasi umum: semua input[required] kecuali radio
+    $(`${formSelector} :input[required]`).not('[type="radio"]').each(function () {
+        if (!$(this).val() || $(this).val() === 'none') {
+            isValid = false;
+            return false;
+        }
+    });
+
+    // Validasi radio khusus jika ada
+    if (entityName === 'uploadaplikasi') {
+        // Jika ada radio package, validasi di sini
+        if ($(`${formSelector} input[name="package"]`).length) {
+            if (!$(`${formSelector} input[name="package"]:checked`).val()) {
+                isValid = false;
+            }
+        }
+    }
+
+    // Tampilkan atau sembunyikan tombol Save
+    if (isValid) {
+        $(`${formSelector} .btn-save`).show();
+    } else {
+        $(`${formSelector} .btn-save`).hide();
+    }
+}
+
+
+
+function enableEndResult(){
+
+// for client
+	$('.client-end-result-link').on('click', function(e){
+
+		e.preventDefault();
+
+		let id = $(this).data('id');
+		let order_type = $(this).data('order-type');
+		let datana = {"order-id": id, caller: "client", "order-type" : order_type};
+
+		kirimPost(datana, URL_DETAIL_ORDER_END_RESULT_REQUEST);
+
+	});
+
+
+// for admin
+	$('#resultType').on('change', function () {
+      if ($(this).val() === 'manual') {
+        $('#manualSection').removeClass('d-none');
+        $('#uploadSection').addClass('d-none');
+      } else {
+        $('#manualSection').addClass('d-none');
+        $('#uploadSection').removeClass('d-none');
+      }
+    });
+
+// for admin
+	$('#btn-end-result-show').on('click', function(e){
+
+		 $('.modal').modal('hide');
+
+		 setTimeout(function () {
+        $('#setEndResultModal').modal('show');
+        
+        // request data if any
+        let code = $('#detail-order-end-result-hidden-id').val();
+        let order_type = $('#detail-order-hidden-order-type').val();
+        let datana = {"order-id": code, "order-type" : order_type};
+
+        kirimPost(datana, URL_DETAIL_ORDER_END_RESULT_REQUEST);
+
+      }, 300); 
+
+
+	});
+
+	// as admin
+	$('#btn-revisions-show').on('click', function(e){
+
+		 $('.modal').modal('hide');
+		 let idna = $('#detail-order-hidden-id').val();
+		 $('#revision-admin-hidden-id').val(idna);
+
+		 console.log('tarik ' + idna);
+
+		 // request first if any revisions already have
+		 let datana = {"order-id": idna, caller: 'admin'};
+		 kirimPost(datana, URL_DETAIL_ORDER_REVISIONS_REQUEST);
+
+		 setTimeout(function(){
+		 	$('#revision-admin-modal').modal('show');
+		 }, 1500);
+		
+
+
+	});
+
+}
+
+
+// end result ala admin
+function extractToDetailEndResult(datana){
+
+	let data = datana.data;
+
+// Set hidden inputs
+$('#detail-order-end-result-hidden-id').val(data.order_id);
+$('#detail-order-end-result-hidden-username').val(data.username);
+
+// Set dropdown
+$('#resultType').val(data.end_result_type).trigger('change');
+
+// Reset preview and sections
+$('#endResultPreview').addClass('d-none');
+$('#endResultPreview a').attr('href', '#');
+$('#endUrl').val('');
+
+// Handle based on resultType
+if (data.end_result_type === 'upload') {
+  $('#uploadSection').removeClass('d-none');
+  $('#manualSection').addClass('d-none');
+
+  if (data.end_result_link) {
+    $('#endResultPreview a').attr('href', data.end_result_link);
+    $('#endResultPreview').removeClass('d-none');
+  }
+} else if (data.end_result_type === 'manual') {
+  $('#uploadSection').addClass('d-none');
+  $('#manualSection').removeClass('d-none');
+  $('#endUrl').val(data.end_result_link);
+}
+
+// Set description
+$('[name="description"]').val(data.admin_descriptions || '');
+
+
+}
+
+
+// reset ala admin
+function resetEndResultModal() {
+  // Clear inputs
+  $('#detail-order-end-result-hidden-id').val('');
+  $('#detail-order-end-result-hidden-username').val('');
+
+  $('#resultType').val('upload').trigger('change'); // default to upload
+  $('[name="endUrl"]').val('');
+  $('[name="description"]').val('');
+
+  // Clear file input
+  $('[name="endFile"]').val(null);
+
+  // Show upload by default, hide manual
+  $('#uploadSection').removeClass('d-none');
+  $('#manualSection').addClass('d-none');
+}
+
+// bagian client
+function populateClientViewModal(datana) {
+
+	let data = datana.data;
+  // Set file link
+  $('#client_end_result_link').attr('href', data.end_result_link);
+
+  // Set description
+  $('#client_end_result_description').text(data.admin_descriptions);
+
+  // Set updated date
+  $('#client_end_result_date_updated').val(data.date_updated);
+
+  // set the order-id tag
+  $('#btn-client-revisi').attr('data-id', data.order_id);
+  $('#btn-client-done').attr('data-id', data.order_id);
+  
+
+  // jika tak punya revisi
+  if(!data.has_revision || data.has_revision==0){
+  	$('#btn-client-revisi').hide();
+  }else{
+  	$('#btn-client-revisi').show();
+  }
+
+  if(data.status == 'completed'){
+  	$('#btn-client-done').hide();
+  	$('#btn-client-revisi').hide();
+  }else{
+  	$('#btn-client-done').show();
+  }
+
+  // Tampilkan modal
+  $('#detail-order-result-view-modal').modal('show');
+}
+
+
+function displayPriceOrderForm(){
+
+	// in the ketik_document form
+	$('#ketik-dokumen-package').on('change', function(){
+
+		let harga = $(this).find('option:selected').data('harga');
+
+    // Format ke Rupiah
+    let hargana = formatRupiah(harga);
+
+		$('#ketik-dokumen-price').val(hargana);
+
+
+	});
+
+	// in the format-os  form
+	$('#format-os-package').on('change', function(){
+
+		let harga = $(this).find('option:selected').data('harga');
+
+    // Format ke Rupiah
+    let hargana = formatRupiah(harga);
+
+		$('#format-os-price').val(hargana);
+
+
+	});
+
+	// in the uploadaplikasi  form
+	$('#uploadaplikasi-package').on('change', function(){
+
+		let harga = $(this).find('option:selected').data('harga');
+
+    // Format ke Rupiah
+    let hargana = formatRupiah(harga);
+
+		$('#uploadaplikasi-price').val(hargana);
+
+
+	});
+
+
+// this is for upgrade fitur app
+	$('.radio-package').on('change', function(){
+
+		let aktif = $(this).is(':checked');
+
+		if(aktif){
+			let harga = $(this).data('harga');
+			let entitina = $(this).data('entity');
+
+			// Format ke Rupiah
+    	let hargana = formatRupiah(harga);
+    	
+    	//console.log('dapat ' + entitina);
+
+    	if(entitina == 'upgrade_fituraplikasi'){
+    	$('#jasa-upgrade-fituraplikasi-price').val(hargana);
+    	}
+
+    	if(entitina == 'pembuatanaplikasi'){
+    	$('#jasa-pembuatanaplikasi-price').val(hargana);
+    	}
+
+    	if(entitina == 'comment'){
+    	$('#jasa-komen-price').val(hargana);
+    	}
+
+    	if(entitina == 'subscriber'){
+    	$('#jasa-subscriber-price').val(hargana);
+    	}
+
+    	if(entitina == 'rating'){
+    	$('#jasa-rating-price').val(hargana);
+    	}
+
+    	if(entitina == 'virtualvisitors'){
+    	$('#jasa-virtualvisitors-price').val(hargana);
+    	}
+
+    	if(entitina == 'landing_page'){
+    	$('#landingpage-price').val(hargana);
+    	}
+
+		}
+    
+
+		
+
+
+	});
+
+}
+
+function formatRupiah(angka) {
+    if (!angka) return 'Rp0';
+
+    return 'Rp' + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+}
+
+function revisionForms(){
+
+
+	// as admin
+	 $('#revision-admin-modal').on('shown.bs.modal', function () {
+    if ($container.children('.revisi-item').length === 0) {
+      addRevisi();
+    }
+  });
+
+	 $('#btnAddRevisi').on('click', addRevisi);
+
+	 $container.on('click', '.btn-remove', function () {
+	 	let parentna =  $(this).closest('.revisi-item');
+
+	 	let idNa = parentna.find('input[name="id[]"]').val();
+    parentna.remove();
+
+    let datana = {id : idNa};
+
+    kirimPost(datana, URL_DETAIL_ORDER_REVISIONS_DELETE);
+
+  });
+
+	 // now as client
+	 $('#btn-client-revisi').on('click', function(){
+
+	 	$('.modal').modal('hide');
+
+		 setTimeout(function(){
+		 	$('#revision-client-modal').modal('show');
+		 		let idNa = $('#btn-client-revisi').attr('data-id');
+		 		let datana = {"order-id" : idNa, caller: "client"};
+		 		kirimPost(datana, URL_DETAIL_ORDER_REVISIONS_REQUEST);
+		 }, 1500);
+
+	 });
+
+	 // this is also for client when replying revision
+	 updateDescriptionsClient();
+ 
+
+}
+
+let revisiCount = 0;
+const $container = $('#revisiContainer');
+const $template = $('#revisiTemplate');
+
+// add revisi as admin
+function addRevisi() {
+
+		// hitung jumlah revisi
+	 let elements = $('#revisiContainer').find('.revisi-title');
+
+	 revisiCount = elements.length;
+   revisiCount++;
+
+    // clone dan hapus d-none
+    let $newItem = $template.clone().removeAttr('id').removeClass('d-none');
+    $newItem.attr('data-id', revisiCount);
+    $newItem.find('.revisi-title').text('Revisi #' + revisiCount);
+    // kosongkan input dan textarea (jika template ada isi)
+    $newItem.find('input, textarea').val('');
+    $container.append($newItem);
+  }
+
+// for admin usage
+function extractingAdminRevisions(datana){
+
+	let data = datana.data;
+
+	const $container = $('#revisiContainer');
+  const $template = $('#revisiTemplate');
+  $container.empty(); // kosongkan container
+  
+
+  data.forEach((item, i) => {
+    const $clone = $template.clone().removeClass('d-none').removeAttr('id');
+    $clone.find('.revisi-title').text('Revisi #' + (i + 1));
+    $clone.find('input[name="end_result_link[]"]').val(item.end_result_link || '');
+    $clone.find('textarea[name="admin_descriptions[]"]').val(item.admin_descriptions || '');
+
+    if(!item.client_descriptions){
+			$clone.find('textarea[name="client_descriptions[]"]').hide();
+    }else{
+    	$clone.find('textarea[name="client_descriptions[]"]').show();
+    	$clone.find('textarea[name="client_descriptions[]"]').val(item.client_descriptions || '');	
+
+    	if(item.status=='accepted'){
+    		$clone.find('.client_status .icon-accepted').removeClass('d-none');
+    		$clone.find('.client_status .icon-rejected').addClass('d-none');
+    		$clone.find('.btn-remove').addClass('d-none');
+    	}else{
+    		$clone.find('.client_status .icon-accepted').addClass('d-none');
+    		$clone.find('.client_status .icon-rejected').removeClass('d-none');
+    	}
+    	
+    }
+    
+    
+    $clone.find('.revisi-title').parent().find('input[name="id[]"]').val(item.id);
+
+    $('#revision-admin-hidden-id').val(item.order_id); // set order-id
+
+    $container.append($clone);
+  });
+
+}
+
+// for client usage
+function extractingClientRevisions(datana){
+
+	let data = datana.data;
+
+	let tab1_status = false;
+
+		const $tabs = $('#revisionTabs').empty();
+    const $tabContent = $('#revisionTabContent');
+    $tabContent.find('.tab-pane:not(#revision-template)').remove();
+
+    data.forEach((rev, i) => {
+      const tabId = `rev-${rev.id}`;
+      const isActive = i === 0 ? 'active' : '';
+      const showActive = i === 0 ? 'show active' : '';
+
+      // Tab nav
+      $tabs.append(`
+        <li class="nav-item" role="presentation">
+          <button class="nav-link ${isActive}" id="${tabId}-tab" data-bs-toggle="tab" data-bs-target="#${tabId}" type="button" role="tab" aria-controls="${tabId}" aria-selected="${i === 0}">
+            Revisi #${i + 1}
+          </button>
+        </li>
+      `);
+
+      // Clone & isi konten
+      const $clone = $('#revision-template').clone().removeAttr('id').removeClass('d-none').addClass(`${showActive} ${isActive}`).addClass('tab-pane fade').attr({
+        id: tabId,
+        role: 'tabpanel',
+        'aria-labelledby': `${tabId}-tab`
+      });
+
+      $clone.find('.link-end-result').attr('href', rev.end_result_link);
+      $clone.find('.date-updated').text('Tanggal update: ' + rev.date_updated);
+      $clone.find('.admin-desc').val(rev.admin_descriptions);
+      $clone.find('.revision-id').val(rev.id);
+
+      if(rev.status != 'on progress'){
+      	$clone.find('.client-desc').attr('readonly', 'true');
+      	$clone.find('.client-desc').text(rev.client_descriptions);
+
+      	// store the 1 appearance
+      	if(i==0)
+      	tab1_status = true;
+      }
+
+      $tabContent.append($clone);
+ 			});
+
+
+    if (tab1_status){
+    	// hide first all button
+    	$('#clientRevisionForm button[type=submit]').hide();
+    }
+
+}
+
+// for client usage
+function updateDescriptionsClient(){
+
+	$('#btn-client-done').on('click', function(e){
+
+		let idna = $(this).attr('data-id');
+		let datana = {status: 'completed', 'order-id': idna};
+
+		kirimPost(datana, URL_DETAIL_ORDER_END_RESULT_AS_CLIENTS_UPDATE);
+
+	});
+
+	 $('#clientRevisionForm').on('submit', function(e) {
+    e.preventDefault(); // Hindari submit default
+
+    const $form = $(this);
+    const statusNa = $form.find('button[type=submit][clicked=true]').val();
+    
+    // Ambil tab yang sedang aktif
+    const $activeTab = $('#revisionTabContent .tab-pane.active');
+
+    const idNa = $activeTab.find('.revision-id').val();
+    const clientDesc = $activeTab.find('.client-desc').val();
+
+		$activeTab.find('.client-desc').attr('readonly', 'true');    
+
+    let datana = {id: idNa, client_descriptions: clientDesc, status: statusNa};
+
+   	kirimPost(datana, URL_DETAIL_ORDER_REVISIONS_AS_CLIENTS_UPDATE); 
+
+  });
+
+  // Menandai tombol mana yang diklik
+  $('#clientRevisionForm button[type=submit]').on('click', function() {
+    $('#clientRevisionForm button[type=submit]').removeAttr('clicked');
+    $(this).attr('clicked', 'true');
+    $('#clientRevisionForm button[type=submit]').hide();
+  });
+
+  // saat tab di klik
+  $('body').on('click', '#revisionTabs .nav-link', function (e) {
+    
+  	// munculin lagi tombol accept dan rejectnya.
+  	//$('#clientRevisionForm button[type=submit]').show();
+  	// disaat user client masih bisa komen
+
+  	const targetId = $(e.target).data('bsTarget'); // Dapatkan ID tab tujuan
+  const $newPanel = $(targetId); // Panel baru yang aktif
+
+  const kekunci = $newPanel.find('.client-desc').prop('readonly');
+
+  	if(kekunci){
+  		$('#clientRevisionForm button[type=submit]').hide();
+  	}else{
+  		$('#clientRevisionForm button[type=submit]').show();
+  	}
+
+  });
+
+
+}
+
+// ini untuk admin usage
+
+function bulk_actions_click() {
+  // gunakan event delegation (jika konten bisa di-load ulang), atau binding langsung kalau static
+  $('.btn-apply-bulk').on('click', function () {
+    // cari parent bulk-actions-wrapper dari tombol yang diklik
+    const bulkWrapper = $(this).closest('.bulk-actions-wrapper');
+    // ambil select di dalam bulkWrapper itu
+    const action = bulkWrapper.find('.bulk-action-select').val();
+
+    if (!action) {
+      showMessage('info', 'pilih dulu mode actionnya!');
+      return;
+    }
+
+    // ambil semua checkbox yang dicek di tabel (global, bukan di wrapper)
+    const ids = $('.user-checked:checked').map(function () {
+      return $(this).data('id');
+    }).get();
+
+    if (ids.length === 0) {
+      showMessage('info', 'pilih dulu datanya!');
+      return;
+    }
+
+    let datana = { id: ids, status: action };
+    kirimPost(datana, URL_DEPOSIT_BULK_UPDATE);
+  });
+}
+
+
+function order_landingpage_form_helper(){
+
+	$('#landingpage-integrasi').on('change', function(){
+
+		let valna = $(this).val();
+
+		if(valna == 'tidak'){
+			$('.landingpage-platform-integrasi-wrapper').addClass('d-none');
+		}else {
+			$('.landingpage-platform-integrasi-wrapper').removeClass('d-none');
+		}
+
+	});
+
+}
+
+// when user choose opsi distribusi on wa chat rotator
+// Function to handle the change event on the distribusi dropdown
+    function handleDistribusiChange(event) {
+        const $select = $(event.target);
+        const $groupItem = $select.closest('.group-item'); // Get the parent group
+        const $deviceOptions = $groupItem.find('.device-options');
+
+        const selectedValue = $select.val();
+
+        if (selectedValue === 'device') {
+            $deviceOptions.removeClass('d-none'); // Show device options
+        } else {
+            $deviceOptions.addClass('d-none');    // Hide device options
+        }
+
+        if (selectedValue === 'origin') {
+            // Trigger the dummy modal for "Berdasarkan Kota"
+            $('#wa-chat-rotator-region-modal').modal('show');
+
+            let namaGroup = $groupItem.find('.group-name').val();
+            let idGroup = $groupItem.attr('data-group-id');
+
+            $('#wa-chat-rotator-region-data-group-id').val(idGroup);
+            $('#wa-chat-rotator-region-group-name').text(namaGroup);
+        }
+ }
+
+
+
+function management_wa_chat_rotator_latest_helper(){
+
+	// generate the script link
+	$('body').on('click', '.btn-ambil-code-wa-chat-rotator', function(){
+
+		let code_group = $(this).attr('data-code-reff');
+
+		let WALINK = _URL_ENTRY_MAIN_WEB + "client/gac?code=" + code_group;
+		let kodeHTML = "<script src='KODE'></script>";
+		kodeHTML = kodeHTML.replace("KODE", WALINK);
+
+		$('#wa-chat-rotator-script-model').val(kodeHTML);
+
+		// then we request to shorten the link
+		let datana = {url : WALINK, jenis : 'group'};
+		kirimPost(datana, URL_SHORTENER);
+
+
+	});
+
+
+    // Attach event listener to existing group-distribusi dropdowns
+    $('#group-container').on('change', '.group-distribusi', handleDistribusiChange);
+
+   
+	    
+    // ==================== FUNGSI TAMBAH CS ====================
+    $(document).on('click', '.btn-add-cs', function() {
+        const $group = $(this).closest('.group-item');
+        const $csList = $group.find('.cs-list');
+        
+        // Clone template CS
+        const $csTemplate = $('#template-cs').clone().removeClass('d-none').removeAttr('id');
+        
+        // Tambahkan CS ke dalam group
+        $csList.append($csTemplate);
+        
+        // Fokus ke input nama CS
+        $csTemplate.find('.cs-name').focus();
+    });
+    
+    // ==================== FUNGSI DELETE CS ====================
+    $(document).on('click', '.btn-delete-cs', function() {
+        const $csItem = $(this).closest('.cs-item');
+        let csId = $csItem.attr('data-cs-id') || 'new'; // Jika baru, gunakan 'new'
+
+        let datana = {
+		    cs_id : csId
+		   };
+        
+        Swal.fire({
+            title: 'Hapus CS?',
+            text: "Anda yakin ingin menghapus CS ini?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Hapus!'
+        }).then((result) => {
+            
+        	  $.post(URL_CS_WA_CHAT_ROTATOR_DELETE, datana, function (response) {
+				         //alert(response);
+
+				         let json = JSON.parse(response);
+
+				            if (result.isConfirmed) {
+				                $csItem.remove();
+				                //Swal.fire('Dihapus!', 'CS telah dihapus.', 'success');
+				            }
+				         
+				    });
+
+        });
+
+    });
+    
+    // ==================== FUNGSI TAMBAH GROUP ====================
+    $('#btn-add-group').on('click', function() {
+        // Clone template group
+        const $groupTemplate = $('#template-group').clone().removeClass('d-none').removeAttr('id');
+        
+        // Tambahkan ke container
+        $('#group-container').append($groupTemplate);
+        
+        // Scroll ke group baru
+        $('html, body').animate({
+            scrollTop: $groupTemplate.offset().top
+        }, 500);
+    });
+    
+   
+    
+  
+
+
+   // Update Group saat ada perubahan
+$(document).on('change', '.group-name, .group-distribusi, .device-options .form-check-input', function () {
+    const groupItem = $(this).closest('.group-item');
+    let groupId = groupItem.attr('data-group-id') || 'new'; // Jika baru, gunakan 'new'
+    const groupName = groupItem.find('.group-name').val();
+    const distribusi = groupItem.find('.group-distribusi').val();
+    const orderId = groupItem.find('.group-order-id').val();
+
+     let clickedValue = $(this).val();
+
+        if($(this).attr('type') == 'radio'){
+
+        const isChecked = $(this).is(':checked');
+        //console.log(`Checkbox with value "${clickedValue}" is now ${isChecked ? 'checked' : 'unchecked'}.`);
+
+        // Example: If 'All' is clicked, uncheck others (or vice-versa)
+        if (clickedValue === 'all' && isChecked) {
+            $(this).closest('.device-options').find('input[type="radio"]').not(this).prop('checked', false);
+        } else if (clickedValue !== 'all' && isChecked) {
+            $(this).closest('.device-options').find('.device-all').prop('checked', false);
+        }
+
+        // trigger also the cs element
+        groupItem.find('.cs-list .cs-item').each(function() {
+            $(this).find('.cs-name').trigger('change');
         });
 
 
+        }else{
+        	// clear the device value
+        	clickedValue = null;
+        }
+
+     if(distribusi != 'device'){
+     	// clear the device value
+     		clickedValue = null;
+     }   
+
+    $.post(URL_GROUP_WA_CHAT_ROTATOR_UPDATE, {
+        group_id: groupId,
+        group_name: groupName,
+        distribusi: distribusi,
+        order_id: orderId,
+        device : clickedValue
+    }, function (response) {
+
+        console.log(response);
+        let json = JSON.parse(response);
+
+        if (groupId === 'new') {
+        	// set ke attribute biar kelacak di UI
+            groupItem.attr('data-group-id', json.data); 
+            groupItem.find('.btn-ambil-code-wa-chat-rotator').attr('data-code-reff', json.code);
+
+            
+        }
+
+        // set juga code nya ke modal message
+        groupItem.find('.btn-set-wa-chat-rotator-message').attr('data-code-reff', json.code);
+        // munculin deh
+        groupItem.find('.btn-set-wa-chat-rotator-message').removeClass('d-none');
+        
+
+    });
+});
+
+// ambil code group
+// taro panggil data di url extract ke text area
+// taro juga di form nya 
+$('body').on('click', '.btn-set-wa-chat-rotator-message', function(){
+
+	let code_group = $(this).attr('data-code-reff');
+
+	// simpen di form karena dia butuh saat user klik save send
+	$('#wa-chat-rotator-custom-code-reff').val(code_group);
+
+	let datana = {code: code_group};
+
+	// query ke server nanya ini message yg diapunya apa?
+	
+		kirimPost(datana, URL_REQUEST_WA_CHAT_ROTATOR_MESSAGE);
+	
+});
+
+// Delete Group
+$(document).on('click', '.btn-delete-group', function () {
+    const groupItem = $(this).closest('.group-item');
+    const groupId = groupItem.attr('data-group-id');
+
+    if (!groupId) {
+        groupItem.remove();
+        return;
+    }
+
+    let datana = { group_id: groupId };
+
+   
+
+     Swal.fire({
+            title: 'Hapus Group?',
+            text: "Anda yakin ingin menghapus Group ini?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Hapus!'
+        }).then((result) => {
+            
+        	  $.post(URL_GROUP_WA_CHAT_ROTATOR_DELETE, datana, function (response) {
+				         //alert(response);
+
+				         let json = JSON.parse(response);
+
+				            if (result.isConfirmed) {
+				                 groupItem.remove();
+				            }
+				         
+				    });
+
+        });
+
+
+
+
+});
+
+// Update CS saat ada perubahan
+$(document).on('change', '.cs-name, .cs-phone, .cs-status', function () {
+    const csItem = $(this).closest('.cs-item');
+    const groupItem = csItem.closest('.group-item');
+    let csId = csItem.attr('data-cs-id') || 'new';
+    const groupId = groupItem.attr('data-group-id') || 'new';
+    const orderId = groupItem.find('.group-order-id').val();
+
+    const distribusi = groupItem.find('.group-distribusi').val();
+    let device_target = null;
+
+    if(distribusi=='device'){
+        device_target = groupItem.find('.device-options').find('input[type="radio"]:checked').val();
+    }
+
+    if (!groupId) {
+        alert('Silakan simpan group terlebih dahulu');
+        return;
+    }
+
+    const csName = csItem.find('.cs-name').val();
+    const csPhone = csItem.find('.cs-phone').val();
+    let csStatus = csItem.find('.cs-status').is(':checked');
+
+    if(csStatus){
+        csStatus = 'enabled';
+    }else{
+        csStatus = 'disabled';
+    }
+
+    let datana = {
+        cs_id: csId,
+        group_id: groupId,
+        order_id: orderId,
+        cs_name: csName,
+        cs_phone: csPhone,
+        cs_status: csStatus,
+        device: device_target
+    };
+
+    console.log('mau kirim' + JSON.stringify(datana));
+
+    $.post(URL_CS_WA_CHAT_ROTATOR_UPDATE, datana, function (response) {
+        let json;
+        try {
+            json = JSON.parse(response);
+            console.log("Parsed JSON response:", json); // Debug: See the full parsed JSON
+        } catch (e) {
+            console.error("Failed to parse JSON response:", response, e);
+            //alert("Error: Invalid server response format.");
+            return;
+        }
+
+        // --- THE FIX IS HERE: Change 'success' to 'valid' ---
+        if (json.status === 'valid') { // Backend returns 'valid', not 'success'
+            // Your backend always returns json.data as an object with 'id' and 'cs_name'
+            // so we can directly access json.data.id and json.data.cs_name
+            const returnedCsId = json.data.id;
+            const returnedCsName = json.data.cs_nama; // Use cs_nama as per your PHP array key
+
+            // Update data-cs-id for the main cs-item container (if it was 'new')
+            // This is important because for 'new' items, the data-cs-id needs to be set.
+            csItem.attr('data-cs-id', returnedCsId);
+
+            // Update data-cs-id and data-cs-name for the schedule button
+            csItem.find('.btn-wa-schedule').attr('data-cs-id', returnedCsId);
+            csItem.find('.btn-wa-schedule').attr('data-cs-name', returnedCsName);
+
+            console.log("Updated btn-wa-schedule data-cs-id to:", returnedCsId); // Debug
+            console.log("Updated btn-wa-schedule data-cs-name to:", returnedCsName); // Debug
+
+            //alert('Data berhasil disimpan!');
+        } else {
+            //alert('Gagal menyimpan data: ' + json.message);
+        }
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+        console.error("AJAX request failed:", textStatus, errorThrown, jqXHR.responseText);
+        //alert("Terjadi kesalahan saat berkomunikasi dengan server.");
+    });
+});
+
+
+    // ensure that new form is given when there
+    // is no data rendered yet
+    let hasData = $('#group-container').text().trim().length>0;
+
+    if(!hasData)
+     $('#btn-add-group').trigger('click');
+
+
+}
+
+function ensureAffiliateMode(){
+
+    $('body').on('click', '#konfirmasi-affiliator', function(e){
+
+         Swal.fire({
+        title: 'Aktifkan Mode Affiliator?',
+        text: "Anda akan mengaktifkan mode khusus untuk affiliator",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, Aktifkan!',
+        cancelButtonText: 'Batal',
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Jika user klik Yes
+            Swal.fire(
+                'Diaktifkan!',
+                'Mode Affiliator telah aktif.',
+                'success'
+            ).then(() => {
+                
+                let userna = $('#nav-username').val();
+                let datana = {username : userna};
+            	kirimPost(datana, URL_AFFILIATE_MODE_ACTIVATE);
+
+            });
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            // Jika user klik No/Batal
+            
+        }
+    });
+
+    });
+
+}
+
+function ensureOrderPelayanan(){
+
+	$('body').on('click', '.order-pelayanan-link', function(e){
+
+		e.preventDefault();
+
+		showMessage('info', 'Order Dulu Akses Paket Pelayanan ini!');
+
+
+	});
 }

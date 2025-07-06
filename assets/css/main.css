@@ -1601,3 +1601,7 @@ section,
 .starter-section {
   /* Add your styles here */
 }
+
+ .wizard-step { display: none; }
+
+ .wizard-step.active { display: block; }

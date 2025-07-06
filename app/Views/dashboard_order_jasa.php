@@ -406,6 +406,7 @@ $v = random_int(1, 100);
     <!--Custom JavaScript -->
     <script src="/assets/js/custom.js?v=<?=$v;?>"></script>
     <script src="/assets/js/modal-works.js?v=<?=$v;?>"></script>
+    <script src="/assets/js/reader-night-mode.js?v=<?=$v;?>"></script>
 
     <!--This page JavaScript -->
  
