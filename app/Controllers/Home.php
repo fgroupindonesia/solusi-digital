@@ -957,14 +957,18 @@ class Home extends BaseController
             $total_deposit_purchased = $cash_purchased;
             $total_deposit_pending = $cash_pending;
 
-            $percent_pending = ($total_deposit_pending_count/$total_deposits) * 100;
-            $percent_purchased = ($total_deposit_purchased_count/$total_deposits) * 100;
+            
+            if ($total_deposits > 0) {
+                $percent_pending = ($total_deposit_pending_count / $total_deposits) * 100;
+                $percent_purchased = ($total_deposit_purchased_count/$total_deposits) * 100;
+                $percent_cash_pending = ($cash_pending/$total_cash_deposit) * 100;
+                $percent_cash_purchased = ($cash_purchased/$total_cash_deposit) * 100;
 
-            $percent_cash_pending = ($cash_pending/$total_cash_deposit) * 100;
-            $percent_cash_purchased = ($cash_purchased/$total_cash_deposit) * 100;
+                $percent_cash_pending = number_format($percent_cash_pending, 2);
+                $percent_cash_purchased = number_format($percent_cash_purchased, 2);
+            } 
 
-            $percent_cash_pending = number_format($percent_cash_pending, 2);
-            $percent_cash_purchased = number_format($percent_cash_purchased, 2);
+          
 
         }
 
