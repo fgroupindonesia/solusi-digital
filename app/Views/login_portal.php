@@ -19,9 +19,70 @@
   </div>
   <?php endif; ?>
 
+<div  class="benderaWrapper planet-gallery-wrapper">
+  <div class="planet-gallery" id="planetGallery">
+    <img src="/assets/images/animated/img1.jpg" class="planet" />
+    <img src="/assets/images/animated/img2.jpg" class="planet" />
+    <img src="/assets/images/animated/img3.jpg" class="planet" />
+    <img src="/assets/images/animated/img4.jpg" class="planet" />
+    <img src="/assets/images/animated/img5.jpg" class="planet" />
+    <img src="/assets/images/animated/img6.jpg" class="planet" />
+    <img src="/assets/images/animated/img7.jpg" class="planet" />
+    <img src="/assets/images/animated/img8.jpg" class="planet" />
+    <img src="/assets/images/animated/img9.jpg" class="planet" />
+    <img src="/assets/images/animated/img10.jpg" class="planet" />
+    <img src="/assets/images/animated/img11.jpg" class="planet" />
+    <img src="/assets/images/animated/img12.jpg" class="planet" />
+    <img src="/assets/images/animated/img13.jpg" class="planet" />
+    <img src="/assets/images/animated/img14.jpg" class="planet" />
+    <img src="/assets/images/animated/img15.jpg" class="planet" />
+    <img src="/assets/images/animated/img16.jpg" class="planet" />
+    <img src="/assets/images/animated/img17.jpg" class="planet" />
+    <img src="/assets/images/animated/img18.jpg" class="planet" />
+    <img src="/assets/images/animated/img19.jpg" class="planet" />
+    <img src="/assets/images/animated/img20.jpg" class="planet" />
+  </div>
+</div>
+
+<div class="benderaWrapper planet-gallery-wrapper bottom-gallery">
+  <div class="planet-gallery reverse" id="reverseGallery">
+     <img src="/assets/images/animated/img30.jpg" class="planet" />
+    <img src="/assets/images/animated/img29.jpg" class="planet" />
+    <img src="/assets/images/animated/img28.jpg" class="planet" />
+    <img src="/assets/images/animated/img27.jpg" class="planet" />
+    <img src="/assets/images/animated/img26.jpg" class="planet" />
+    <img src="/assets/images/animated/img25.jpg" class="planet" />
+    <img src="/assets/images/animated/img24.jpg" class="planet" />
+    <img src="/assets/images/animated/img23.jpg" class="planet" />
+    <img src="/assets/images/animated/img22.jpg" class="planet" />
+    <img src="/assets/images/animated/img21.jpg" class="planet" />
+    <img src="/assets/images/animated/img20.jpg" class="planet" />
+    <img src="/assets/images/animated/img19.jpg" class="planet" />
+    <img src="/assets/images/animated/img18.jpg" class="planet" />
+    <img src="/assets/images/animated/img17.jpg" class="planet" />
+    <img src="/assets/images/animated/img16.jpg" class="planet" />
+    <img src="/assets/images/animated/img15.jpg" class="planet" />
+    <img src="/assets/images/animated/img14.jpg" class="planet" />
+    <img src="/assets/images/animated/img13.jpg" class="planet" />
+    <img src="/assets/images/animated/img12.jpg" class="planet" />
+    <img src="/assets/images/animated/img11.jpg" class="planet" />
+     <img src="/assets/images/animated/img10.jpg" class="planet" />
+    <img src="/assets/images/animated/img9.jpg" class="planet" />
+    <img src="/assets/images/animated/img8.jpg" class="planet" />
+    <img src="/assets/images/animated/img7.jpg" class="planet" />
+    <img src="/assets/images/animated/img6.jpg" class="planet" />
+    <img src="/assets/images/animated/img5.jpg" class="planet" />
+  </div>
+</div>
+
+
+
   <div class="container login-container <?= isset($error) ? 'container-display' : '' ?>" id="loginForm" >
     <div class="card shadow">
       <div class="card-body p-4 text-center">
+
+
+
          <img src="/assets/images/solusi-digital-logo.png" alt="Logo" class="login-logo mb-3">
         <h4 class="mb-3 text-red">Login</h4>
         <form action="/verify" method="post">

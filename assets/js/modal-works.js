@@ -132,6 +132,9 @@ revisionForms();
 // this is for client displaying price
 displayPriceOrderForm();
 
+// this for limiting users
+limitPremiumAccess();
+
 enablePopper();
 
 $('body').on('click', '.link-virtualvisitors-custom', function(e){
@@ -3804,4 +3807,23 @@ function ensureOrderPelayanan(){
 
 
 	});
+}
+
+function limitPremiumAccess(){
+
+	$('.fitur-premium').on('click', function(){
+
+		Swal.fire({
+    icon: 'warning',
+    title: 'Maaf!',
+    text: 'Fitur ini untuk VIP (premium) Users.',
+    showConfirmButton: false,
+    timer: 1500
+  });
+
+
+	});
+
+	 
+
 }

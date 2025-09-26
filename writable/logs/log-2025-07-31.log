@@ -1,0 +1,778 @@
+INFO - 2025-07-31 09:00:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 02:00:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 09:00:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-07-31 09:00:49 --> [DEPRECATED] strtotime(): Passing null to parameter #1 ($datetime) of type string is deprecated in APPPATH\Controllers\Home.php on line 483.
+ 1 APPPATH\Controllers\Home.php(483): strtotime(null)
+ 2 APPPATH\Controllers\Home.php(1034): App\Controllers\Home->formatTimeInData([...])
+ 3 APPPATH\Controllers\Home.php(520): App\Controllers\Home->getDashboardData('admin')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-07-31 09:00:49 --> [DEPRECATED] strtotime(): Passing null to parameter #1 ($datetime) of type string is deprecated in APPPATH\Controllers\Home.php on line 483.
+ 1 APPPATH\Controllers\Home.php(483): strtotime(null)
+ 2 APPPATH\Controllers\Home.php(1034): App\Controllers\Home->formatTimeInData([...])
+ 3 APPPATH\Controllers\Home.php(520): App\Controllers\Home->getDashboardData('admin')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-07-31 09:00:49 --> [DEPRECATED] strtotime(): Passing null to parameter #1 ($datetime) of type string is deprecated in APPPATH\Controllers\Home.php on line 483.
+ 1 APPPATH\Controllers\Home.php(483): strtotime(null)
+ 2 APPPATH\Controllers\Home.php(1034): App\Controllers\Home->formatTimeInData([...])
+ 3 APPPATH\Controllers\Home.php(520): App\Controllers\Home->getDashboardData('admin')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-07-31 09:00:49 --> [DEPRECATED] strtotime(): Passing null to parameter #1 ($datetime) of type string is deprecated in APPPATH\Controllers\Home.php on line 483.
+ 1 APPPATH\Controllers\Home.php(483): strtotime(null)
+ 2 APPPATH\Controllers\Home.php(1034): App\Controllers\Home->formatTimeInData([...])
+ 3 APPPATH\Controllers\Home.php(520): App\Controllers\Home->getDashboardData('admin')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-07-31 09:00:49 --> [DEPRECATED] strtotime(): Passing null to parameter #1 ($datetime) of type string is deprecated in APPPATH\Controllers\Home.php on line 483.
+ 1 APPPATH\Controllers\Home.php(483): strtotime(null)
+ 2 APPPATH\Controllers\Home.php(1034): App\Controllers\Home->formatTimeInData([...])
+ 3 APPPATH\Controllers\Home.php(520): App\Controllers\Home->getDashboardData('admin')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-07-31 09:00:49 --> [DEPRECATED] strtotime(): Passing null to parameter #1 ($datetime) of type string is deprecated in APPPATH\Controllers\Home.php on line 483.
+ 1 APPPATH\Controllers\Home.php(483): strtotime(null)
+ 2 APPPATH\Controllers\Home.php(1034): App\Controllers\Home->formatTimeInData([...])
+ 3 APPPATH\Controllers\Home.php(520): App\Controllers\Home->getDashboardData('admin')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-07-31 09:00:49 --> [DEPRECATED] strtotime(): Passing null to parameter #1 ($datetime) of type string is deprecated in APPPATH\Controllers\Home.php on line 483.
+ 1 APPPATH\Controllers\Home.php(483): strtotime(null)
+ 2 APPPATH\Controllers\Home.php(1034): App\Controllers\Home->formatTimeInData([...])
+ 3 APPPATH\Controllers\Home.php(520): App\Controllers\Home->getDashboardData('admin')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-07-31 09:00:49 --> [DEPRECATED] strtotime(): Passing null to parameter #1 ($datetime) of type string is deprecated in APPPATH\Controllers\Home.php on line 483.
+ 1 APPPATH\Controllers\Home.php(483): strtotime(null)
+ 2 APPPATH\Controllers\Home.php(1034): App\Controllers\Home->formatTimeInData([...])
+ 3 APPPATH\Controllers\Home.php(520): App\Controllers\Home->getDashboardData('admin')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-07-31 09:00:49 --> [DEPRECATED] strtotime(): Passing null to parameter #1 ($datetime) of type string is deprecated in APPPATH\Controllers\Home.php on line 483.
+ 1 APPPATH\Controllers\Home.php(483): strtotime(null)
+ 2 APPPATH\Controllers\Home.php(1034): App\Controllers\Home->formatTimeInData([...])
+ 3 APPPATH\Controllers\Home.php(520): App\Controllers\Home->getDashboardData('admin')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 09:00:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-07-31 02:01:19 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): Peer certificate CN=`srv844440.hstgr.cloud' did not match expected CN=`mail.fgroupindonesia.com' in C:\xampp\htdocs\solusi-digital\system\Email\Email.php:1901
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): Pe...', 'C:\\xampp\\htdocs...', 1901)
+#1 C:\xampp\htdocs\solusi-digital\system\Email\Email.php(1901): fsockopen('ssl://mail.fgro...', 465, NULL, NULL, 5)
+#2 C:\xampp\htdocs\solusi-digital\system\Email\Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\xampp\htdocs\solusi-digital\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\xampp\htdocs\solusi-digital\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\xampp\htdocs\solusi-digital\app\Controllers\Works.php(2486): CodeIgniter\Email\Email->send()
+#6 C:\xampp\htdocs\solusi-digital\app\Controllers\Works.php(2443): App\Controllers\Works->send_email_now('kurnia@gmail.co...', 'support@fgroupi...', 'Support Team', '\xE2\x9C\x94\xEF\xB8\x8F Solusi D...', '<!DOCTYPE html>...')
+#7 C:\xampp\htdocs\solusi-digital\app\Controllers\Works.php(2273): App\Controllers\Works->send_registration(35)
+#8 C:\xampp\htdocs\solusi-digital\app\Controllers\Works.php(4526): App\Controllers\Works->send_email('registration', 35)
+#9 C:\xampp\htdocs\solusi-digital\system\CodeIgniter.php(933): App\Controllers\Works->user_register()
+#10 C:\xampp\htdocs\solusi-digital\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+#11 C:\xampp\htdocs\solusi-digital\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\solusi-digital\system\Boot.php(312): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\solusi-digital\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\solusi-digital\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+ERROR - 2025-07-31 02:01:20 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-07-31 02:01:20 --> 
+ERROR - 2025-07-31 02:01:20 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): Peer certificate CN=`srv844440.hstgr.cloud' did not match expected CN=`mail.fgroupindonesia.com' in C:\xampp\htdocs\solusi-digital\system\Email\Email.php:1901
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): Pe...', 'C:\\xampp\\htdocs...', 1901)
+#1 C:\xampp\htdocs\solusi-digital\system\Email\Email.php(1901): fsockopen('ssl://mail.fgro...', 465, NULL, NULL, 5)
+#2 C:\xampp\htdocs\solusi-digital\system\Email\Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\xampp\htdocs\solusi-digital\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\xampp\htdocs\solusi-digital\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\xampp\htdocs\solusi-digital\app\Controllers\Works.php(2486): CodeIgniter\Email\Email->send()
+#6 C:\xampp\htdocs\solusi-digital\app\Controllers\Works.php(2446): App\Controllers\Works->send_email_now('fgroupindonesia...', 'support@fgroupi...', 'Support Team', '\xE2\x9C\x94\xEF\xB8\x8F Solusi D...', '<!DOCTYPE html>...')
+#7 C:\xampp\htdocs\solusi-digital\app\Controllers\Works.php(2273): App\Controllers\Works->send_registration(35)
+#8 C:\xampp\htdocs\solusi-digital\app\Controllers\Works.php(4526): App\Controllers\Works->send_email('registration', 35)
+#9 C:\xampp\htdocs\solusi-digital\system\CodeIgniter.php(933): App\Controllers\Works->user_register()
+#10 C:\xampp\htdocs\solusi-digital\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Works))
+#11 C:\xampp\htdocs\solusi-digital\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\solusi-digital\system\Boot.php(312): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\solusi-digital\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\solusi-digital\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+ERROR - 2025-07-31 02:01:20 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-07-31 02:01:20 --> 
+INFO - 2025-07-31 09:01:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 02:01:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 09:01:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 02:20:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 09:20:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 10:13:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 03:13:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 10:13:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 10:13:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 10:13:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 10:19:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 10:20:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 10:20:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 10:20:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 10:20:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 10:53:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 10:58:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 10:58:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 11:03:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 11:16:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 11:16:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 11:33:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 11:34:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 11:35:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 11:35:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 11:42:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 11:42:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 11:42:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 11:43:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 12:48:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 19:48:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 19:49:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 19:53:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 19:53:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 19:53:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 19:53:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 19:54:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 19:54:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 19:55:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 19:55:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 19:56:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 19:58:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 19:59:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 20:02:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 20:04:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 20:10:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 20:10:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 20:10:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 20:11:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 20:12:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 20:12:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 20:13:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 20:34:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 20:34:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 20:34:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 13:36:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 20:36:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 20:36:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 20:36:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 20:36:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 20:37:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 20:37:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 20:37:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 20:45:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 20:47:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 21:01:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 21:01:13 --> ErrorException: Undefined property: App\Controllers\Home::$userModel
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Home.php on line 726.
+ 1 APPPATH\Controllers\Home.php(726): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Home::$userModel', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Controllers\\Home.php', 726)
+ 2 APPPATH\Controllers\Home.php(520): App\Controllers\Home->getDashboardData('client')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 21:03:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 21:03:03 --> ErrorException: Undefined variable $u
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Home.php on line 728.
+ 1 APPPATH\Controllers\Home.php(728): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $u', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Controllers\\Home.php', 728)
+ 2 APPPATH\Controllers\Home.php(520): App\Controllers\Home->getDashboardData('client')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 21:03:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 21:03:30 --> ErrorException: Undefined property: App\Controllers\Home::$currency_helper
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Home.php on line 735.
+ 1 APPPATH\Controllers\Home.php(735): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Home::$currency_helper', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Controllers\\Home.php', 735)
+ 2 APPPATH\Controllers\Home.php(520): App\Controllers\Home->getDashboardData('client')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-07-31 14:04:59 --> ParseError: syntax error, unexpected identifier "xx", expecting "function" or "const"
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Home.php on line 721.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\solusi-digital\\app\\Controllers\\Home.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Home')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Home')
+ 4 SYSTEMPATH\CodeIgniter.php(887): class_exists('\\App\\Controllers\\Home', true)
+ 5 SYSTEMPATH\CodeIgniter.php(496): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 21:05:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 21:05:05 --> ErrorException: Undefined property: App\Controllers\Home::$visitorModel
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Home.php on line 740.
+ 1 APPPATH\Controllers\Home.php(740): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Home::$visitorModel', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Controllers\\Home.php', 740)
+ 2 APPPATH\Controllers\Home.php(520): App\Controllers\Home->getDashboardData('client')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 21:07:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 21:07:48 --> ErrorException: Undefined property: App\Controllers\Home::$orderModel
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Home.php on line 770.
+ 1 APPPATH\Controllers\Home.php(770): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Home::$orderModel', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Controllers\\Home.php', 770)
+ 2 APPPATH\Controllers\Home.php(520): App\Controllers\Home->getDashboardData('client')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 21:08:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 21:08:09 --> ErrorException: Undefined property: App\Controllers\Home::$currency_helper
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Home.php on line 793.
+ 1 APPPATH\Controllers\Home.php(793): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Home::$currency_helper', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Controllers\\Home.php', 793)
+ 2 APPPATH\Controllers\Home.php(520): App\Controllers\Home->getDashboardData('client')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 21:09:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 21:09:24 --> ErrorException: Undefined variable $propic
+[Method: GET, Route: dashboard]
+in APPPATH\Views\nav_top.php on line 24.
+ 1 APPPATH\Views\nav_top.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $propic', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\nav_top.php', 24)
+ 2 APPPATH\Views\dashboard_client.php(33): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\nav_top.php')
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_client.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_client', [], true)
+ 6 APPPATH\Controllers\Home.php(543): view('dashboard_client', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 21:10:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 21:10:13 --> ErrorException: Undefined variable $username
+[Method: GET, Route: dashboard]
+in APPPATH\Views\nav_top.php on line 25.
+ 1 APPPATH\Views\nav_top.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $username', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\nav_top.php', 25)
+ 2 APPPATH\Views\dashboard_client.php(33): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\nav_top.php')
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_client.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_client', [], true)
+ 6 APPPATH\Controllers\Home.php(543): view('dashboard_client', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 21:10:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 21:10:33 --> ErrorException: Undefined variable $fullname
+[Method: GET, Route: dashboard]
+in APPPATH\Views\nav_top.php on line 26.
+ 1 APPPATH\Views\nav_top.php(26): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $fullname', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\nav_top.php', 26)
+ 2 APPPATH\Views\dashboard_client.php(33): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\nav_top.php')
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_client.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_client', [], true)
+ 6 APPPATH\Controllers\Home.php(543): view('dashboard_client', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 21:11:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 21:11:04 --> ErrorException: Undefined variable $user_id
+[Method: GET, Route: dashboard]
+in APPPATH\Views\modal_setting_form.php on line 3.
+ 1 APPPATH\Views\modal_setting_form.php(3): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $user_id', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\modal_setting_form.php', 3)
+ 2 APPPATH\Views\dashboard_client.php(451): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\modal_setting_form.php')
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_client.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_client', [], true)
+ 6 APPPATH\Controllers\Home.php(543): view('dashboard_client', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 21:11:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 21:11:44 --> ErrorException: Undefined variable $propic
+[Method: GET, Route: dashboard]
+in APPPATH\Views\nav_top.php on line 24.
+ 1 APPPATH\Views\nav_top.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $propic', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\nav_top.php', 24)
+ 2 APPPATH\Views\dashboard_client.php(33): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\nav_top.php')
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_client.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_client', [], true)
+ 6 APPPATH\Controllers\Home.php(543): view('dashboard_client', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 21:12:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 21:12:12 --> Error: Undefined constant "session"
+[Method: GET, Route: dashboard]
+in APPPATH\Views\nav_top.php on line 24.
+ 1 APPPATH\Views\dashboard_client.php(33): include()
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_client.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_client', [], true)
+ 5 APPPATH\Controllers\Home.php(543): view('dashboard_client', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 21:12:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 21:12:42 --> ErrorException: Undefined property: CodeIgniter\View\View::$session
+[Method: GET, Route: dashboard]
+in APPPATH\Views\nav_top.php on line 24.
+ 1 APPPATH\Views\nav_top.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: CodeIgniter\\View\\View::$session', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\nav_top.php', 24)
+ 2 APPPATH\Views\dashboard_client.php(33): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\nav_top.php')
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_client.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_client', [], true)
+ 6 APPPATH\Controllers\Home.php(543): view('dashboard_client', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 21:13:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 21:13:48 --> ErrorException: Undefined variable $user_id
+[Method: GET, Route: dashboard]
+in APPPATH\Views\modal_setting_form.php on line 3.
+ 1 APPPATH\Views\modal_setting_form.php(3): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $user_id', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\modal_setting_form.php', 3)
+ 2 APPPATH\Views\dashboard_client.php(451): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\modal_setting_form.php')
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_client.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_client', [], true)
+ 6 APPPATH\Controllers\Home.php(543): view('dashboard_client', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 21:14:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 21:14:04 --> ErrorException: Undefined variable $pass
+[Method: GET, Route: dashboard]
+in APPPATH\Views\modal_setting_form.php on line 36.
+ 1 APPPATH\Views\modal_setting_form.php(36): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pass', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\modal_setting_form.php', 36)
+ 2 APPPATH\Views\dashboard_client.php(451): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\modal_setting_form.php')
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_client.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_client', [], true)
+ 6 APPPATH\Controllers\Home.php(543): view('dashboard_client', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 21:14:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 21:14:46 --> ErrorException: Undefined variable $email
+[Method: GET, Route: dashboard]
+in APPPATH\Views\modal_setting_form.php on line 44.
+ 1 APPPATH\Views\modal_setting_form.php(44): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $email', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\modal_setting_form.php', 44)
+ 2 APPPATH\Views\dashboard_client.php(451): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\modal_setting_form.php')
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_client.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_client', [], true)
+ 6 APPPATH\Controllers\Home.php(543): view('dashboard_client', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 21:15:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 21:15:06 --> ErrorException: Undefined variable $occupation
+[Method: GET, Route: dashboard]
+in APPPATH\Views\modal_setting_form.php on line 52.
+ 1 APPPATH\Views\modal_setting_form.php(52): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $occupation', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\modal_setting_form.php', 52)
+ 2 APPPATH\Views\dashboard_client.php(451): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\modal_setting_form.php')
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_client.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_client', [], true)
+ 6 APPPATH\Controllers\Home.php(543): view('dashboard_client', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 21:18:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 21:18:55 --> Error: Undefined constant "App\Controllers\this"
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Home.php on line 744.
+ 1 APPPATH\Controllers\Home.php(524): App\Controllers\Home->getDashboardData('client')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 21:19:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 21:19:04 --> ErrorException: Undefined property: App\Controllers\Home::$session
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Home.php on line 729.
+ 1 APPPATH\Controllers\Home.php(729): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Home::$session', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Controllers\\Home.php', 729)
+ 2 APPPATH\Controllers\Home.php(744): App\Controllers\Home->getAllSessionData()
+ 3 APPPATH\Controllers\Home.php(524): App\Controllers\Home->getDashboardData('client')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 21:19:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 21:19:47 --> TypeError: array_merge(): Argument #2 must be of type array, CodeIgniter\Session\Session given
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Home.php on line 818.
+ 1 APPPATH\Controllers\Home.php(818): array_merge([...], Object(CodeIgniter\Session\Session))
+ 2 APPPATH\Controllers\Home.php(524): App\Controllers\Home->getDashboardData('client')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-07-31 14:21:19 --> ErrorException: Cannot use isset() on the result of an expression (you can use "null !== expression" instead)
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Home.php on line 732.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-07-31 14:21:39 --> ErrorException: Cannot use isset() on the result of an expression (you can use "null !== expression" instead)
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Home.php on line 732.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-07-31 14:22:28 --> ErrorException: Cannot use isset() on the result of an expression (you can use "null !== expression" instead)
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Home.php on line 731.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2025-07-31 21:22:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 21:22:57 --> TypeError: array_merge(): Argument #2 must be of type array, CodeIgniter\Session\Session given
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Home.php on line 819.
+ 1 APPPATH\Controllers\Home.php(819): array_merge([...], Object(CodeIgniter\Session\Session))
+ 2 APPPATH\Controllers\Home.php(524): App\Controllers\Home->getDashboardData('client')
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 21:23:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 21:23:58 --> ErrorException: Undefined variable $sex_male_radio
+[Method: GET, Route: dashboard]
+in APPPATH\Views\modal_setting_form.php on line 61.
+ 1 APPPATH\Views\modal_setting_form.php(61): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $sex_male_radio', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\modal_setting_form.php', 61)
+ 2 APPPATH\Views\dashboard_client.php(451): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\modal_setting_form.php')
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_client.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_client', [], true)
+ 6 APPPATH\Controllers\Home.php(543): view('dashboard_client', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 21:25:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 21:25:57 --> ErrorException: Undefined variable $sex_male_radio
+[Method: GET, Route: dashboard]
+in APPPATH\Views\modal_setting_form.php on line 61.
+ 1 APPPATH\Views\modal_setting_form.php(61): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $sex_male_radio', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\modal_setting_form.php', 61)
+ 2 APPPATH\Views\dashboard_client.php(451): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\modal_setting_form.php')
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_client.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_client', [], true)
+ 6 APPPATH\Controllers\Home.php(543): view('dashboard_client', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 21:26:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 21:26:17 --> ErrorException: Undefined variable $sex_male_radio
+[Method: GET, Route: dashboard]
+in APPPATH\Views\modal_setting_form.php on line 61.
+ 1 APPPATH\Views\modal_setting_form.php(61): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $sex_male_radio', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\modal_setting_form.php', 61)
+ 2 APPPATH\Views\dashboard_client.php(451): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\modal_setting_form.php')
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_client.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_client', [], true)
+ 6 APPPATH\Controllers\Home.php(543): view('dashboard_client', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->display_dashboard()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 21:26:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 21:44:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 21:49:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 21:50:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 21:50:44 --> ErrorException: Undefined variable $base_price_comment
+[Method: GET, Route: order-jasa-digital-marketing]
+in APPPATH\Views\dashboard_order_jasa_digital_marketing.php on line 91.
+ 1 APPPATH\Views\dashboard_order_jasa_digital_marketing.php(91): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $base_price_comment', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_order_jasa_digital_marketing.php', 91)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_order_jasa_digital_marketing.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_order_jasa_digital_marketing', [], true)
+ 5 APPPATH\Controllers\Home.php(392): view('dashboard_order_jasa_digital_marketing', [...])
+ 6 APPPATH\Controllers\Home.php(415): App\Controllers\Home->order_jasa('digital_marketing')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->order_jasa_digital_marketing()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-07-31 15:06:44 --> ParseError: syntax error, unexpected single-quoted string "order_ketik_document", expecting variable or "{" or "$"
+[Method: GET, Route: order-jasa-digital-marketing]
+in APPPATH\Controllers\Home.php on line 765.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\solusi-digital\\app\\Controllers\\Home.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Home')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Home')
+ 4 SYSTEMPATH\CodeIgniter.php(887): class_exists('\\App\\Controllers\\Home', true)
+ 5 SYSTEMPATH\CodeIgniter.php(496): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 22:06:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 22:06:54 --> ErrorException: Undefined variable $base_price_comment
+[Method: GET, Route: order-jasa-digital-marketing]
+in APPPATH\Views\dashboard_order_jasa_digital_marketing.php on line 91.
+ 1 APPPATH\Views\dashboard_order_jasa_digital_marketing.php(91): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $base_price_comment', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_order_jasa_digital_marketing.php', 91)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_order_jasa_digital_marketing.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_order_jasa_digital_marketing', [], true)
+ 5 APPPATH\Controllers\Home.php(392): view('dashboard_order_jasa_digital_marketing', [...])
+ 6 APPPATH\Controllers\Home.php(415): App\Controllers\Home->order_jasa('digital_marketing')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->order_jasa_digital_marketing()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 22:06:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-31 22:31:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 22:31:00 --> ErrorException: Undefined variable $base_price_comment
+[Method: GET, Route: order-jasa-digital-marketing]
+in APPPATH\Views\dashboard_order_jasa_digital_marketing.php on line 91.
+ 1 APPPATH\Views\dashboard_order_jasa_digital_marketing.php(91): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $base_price_comment', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_order_jasa_digital_marketing.php', 91)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_order_jasa_digital_marketing.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_order_jasa_digital_marketing', [], true)
+ 5 APPPATH\Controllers\Home.php(392): view('dashboard_order_jasa_digital_marketing', [...])
+ 6 APPPATH\Controllers\Home.php(415): App\Controllers\Home->order_jasa('digital_marketing')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->order_jasa_digital_marketing()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 22:32:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 22:32:34 --> ErrorException: Undefined variable $base_price_comment
+[Method: GET, Route: order-jasa-digital-marketing]
+in APPPATH\Views\dashboard_order_jasa_digital_marketing.php on line 91.
+ 1 APPPATH\Views\dashboard_order_jasa_digital_marketing.php(91): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $base_price_comment', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_order_jasa_digital_marketing.php', 91)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_order_jasa_digital_marketing.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_order_jasa_digital_marketing', [], true)
+ 5 APPPATH\Controllers\Home.php(395): view('dashboard_order_jasa_digital_marketing', [...])
+ 6 APPPATH\Controllers\Home.php(418): App\Controllers\Home->order_jasa('digital_marketing')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->order_jasa_digital_marketing()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 22:32:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 22:32:56 --> ErrorException: Undefined variable $base_price_subscriber
+[Method: GET, Route: order-jasa-digital-marketing]
+in APPPATH\Views\dashboard_order_jasa_digital_marketing.php on line 105.
+ 1 APPPATH\Views\dashboard_order_jasa_digital_marketing.php(105): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $base_price_subscriber', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_order_jasa_digital_marketing.php', 105)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_order_jasa_digital_marketing.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_order_jasa_digital_marketing', [], true)
+ 5 APPPATH\Controllers\Home.php(397): view('dashboard_order_jasa_digital_marketing', [...])
+ 6 APPPATH\Controllers\Home.php(420): App\Controllers\Home->order_jasa('digital_marketing')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->order_jasa_digital_marketing()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 22:34:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 22:34:36 --> ErrorException: Undefined variable $base_price_rating
+[Method: GET, Route: order-jasa-digital-marketing]
+in APPPATH\Views\dashboard_order_jasa_digital_marketing.php on line 117.
+ 1 APPPATH\Views\dashboard_order_jasa_digital_marketing.php(117): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $base_price_rating', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_order_jasa_digital_marketing.php', 117)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_order_jasa_digital_marketing.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_order_jasa_digital_marketing', [], true)
+ 5 APPPATH\Controllers\Home.php(405): view('dashboard_order_jasa_digital_marketing', [...])
+ 6 APPPATH\Controllers\Home.php(428): App\Controllers\Home->order_jasa('digital_marketing')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->order_jasa_digital_marketing()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 22:35:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 22:35:25 --> ErrorException: Undefined variable $base_price_wa_chat_rotator
+[Method: GET, Route: order-jasa-digital-marketing]
+in APPPATH\Views\dashboard_order_jasa_digital_marketing.php on line 133.
+ 1 APPPATH\Views\dashboard_order_jasa_digital_marketing.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $base_price_wa_chat_rotator', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_order_jasa_digital_marketing.php', 133)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_order_jasa_digital_marketing.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_order_jasa_digital_marketing', [], true)
+ 5 APPPATH\Controllers\Home.php(409): view('dashboard_order_jasa_digital_marketing', [...])
+ 6 APPPATH\Controllers\Home.php(432): App\Controllers\Home->order_jasa('digital_marketing')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->order_jasa_digital_marketing()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 22:36:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 22:36:13 --> ErrorException: Undefined variable $base_price_landing_page
+[Method: GET, Route: order-jasa-digital-marketing]
+in APPPATH\Views\dashboard_order_jasa_digital_marketing.php on line 149.
+ 1 APPPATH\Views\dashboard_order_jasa_digital_marketing.php(149): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $base_price_landing_page', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_order_jasa_digital_marketing.php', 149)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_order_jasa_digital_marketing.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_order_jasa_digital_marketing', [], true)
+ 5 APPPATH\Controllers\Home.php(413): view('dashboard_order_jasa_digital_marketing', [...])
+ 6 APPPATH\Controllers\Home.php(436): App\Controllers\Home->order_jasa('digital_marketing')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->order_jasa_digital_marketing()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 22:37:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 22:37:08 --> ErrorException: Undefined variable $base_price_virtualvisitors
+[Method: GET, Route: order-jasa-digital-marketing]
+in APPPATH\Views\dashboard_order_jasa_digital_marketing.php on line 165.
+ 1 APPPATH\Views\dashboard_order_jasa_digital_marketing.php(165): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $base_price_virtualvisitors', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_order_jasa_digital_marketing.php', 165)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_order_jasa_digital_marketing.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_order_jasa_digital_marketing', [], true)
+ 5 APPPATH\Controllers\Home.php(417): view('dashboard_order_jasa_digital_marketing', [...])
+ 6 APPPATH\Controllers\Home.php(440): App\Controllers\Home->order_jasa('digital_marketing')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->order_jasa_digital_marketing()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 22:37:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 22:37:55 --> ErrorException: Undefined variable $total_packages
+[Method: GET, Route: order-jasa-digital-marketing]
+in APPPATH\Views\modal_wa_chat_rotator.php on line 21.
+ 1 APPPATH\Views\modal_wa_chat_rotator.php(21): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $total_packages', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\modal_wa_chat_rotator.php', 21)
+ 2 APPPATH\Views\dashboard_order_jasa_digital_marketing.php(180): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\modal_wa_chat_rotator.php')
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_order_jasa_digital_marketing.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_order_jasa_digital_marketing', [], true)
+ 6 APPPATH\Controllers\Home.php(421): view('dashboard_order_jasa_digital_marketing', [...])
+ 7 APPPATH\Controllers\Home.php(444): App\Controllers\Home->order_jasa('digital_marketing')
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->order_jasa_digital_marketing()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 22:39:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 22:39:28 --> ErrorException: Undefined variable $total_packages
+[Method: GET, Route: order-jasa-digital-marketing]
+in APPPATH\Views\modal_wa_chat_rotator.php on line 21.
+ 1 APPPATH\Views\modal_wa_chat_rotator.php(21): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $total_packages', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\modal_wa_chat_rotator.php', 21)
+ 2 APPPATH\Views\dashboard_order_jasa_digital_marketing.php(180): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\modal_wa_chat_rotator.php')
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_order_jasa_digital_marketing.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_order_jasa_digital_marketing', [], true)
+ 6 APPPATH\Controllers\Home.php(428): view('dashboard_order_jasa_digital_marketing', [...])
+ 7 APPPATH\Controllers\Home.php(451): App\Controllers\Home->order_jasa('digital_marketing')
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->order_jasa_digital_marketing()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 22:39:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-31 22:39:45 --> ErrorException: Undefined variable $data_packages
+[Method: GET, Route: order-jasa-digital-marketing]
+in APPPATH\Views\modal_wa_chat_rotator.php on line 22.
+ 1 APPPATH\Views\modal_wa_chat_rotator.php(22): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data_packages', 'C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\modal_wa_chat_rotator.php', 22)
+ 2 APPPATH\Views\dashboard_order_jasa_digital_marketing.php(180): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\modal_wa_chat_rotator.php')
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\solusi-digital\\app\\Views\\dashboard_order_jasa_digital_marketing.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_order_jasa_digital_marketing', [], true)
+ 6 APPPATH\Controllers\Home.php(428): view('dashboard_order_jasa_digital_marketing', [...])
+ 7 APPPATH\Controllers\Home.php(451): App\Controllers\Home->order_jasa('digital_marketing')
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->order_jasa_digital_marketing()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-07-31 22:40:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

@@ -39,7 +39,7 @@ $v = random_int(1, 100);
         <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
-          <?php include('nav_bar.php'); ?>
+        <?php include('nav_bar.php'); ?>
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
@@ -53,12 +53,12 @@ $v = random_int(1, 100);
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title"><?= $page_name; ?></h4>
+                        <h4 class="page-title">Management QR-Codes</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <div class="d-md-flex">
                             <ol class="breadcrumb ms-auto">
-                                <li>Saldo Anda : <strong id="saldo-anda" data-cash="<?= $balance; ?>"><?= $balance_rp; ?></strong></li>
+                                <li></li>
                             </ol>
                            
                         </div>
@@ -73,70 +73,67 @@ $v = random_int(1, 100);
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Three charts -->
-                <!-- ============================================================== -->
-              
                
-             
-
-                <div class="row justify-content-center">
-                    <div class="col-lg-4 col-md-12">
-                        <div data-bs-toggle="modal" data-bs-target="#format-os-form-modal" class="order-item white-box analytics-info">
-                            <center>
-                            <div class="social-medias">
-                               <img src="/assets/images/win-logo.png">
-                               <img src="/assets/images/linux-logo.png">
-                            </div>
-                            <h3 class="box-title">Jasa Format OS</h3>
-                            <h5><?= $base_price_format_os;?>,/pc </h5>
-                            </center>
-                        </div>
-                    </div>
-                  
-                    <div class="col-lg-4 col-md-12">
-                         <div data-bs-toggle="modal" data-bs-target="#ketik-dokumen-form-modal" class="order-item white-box analytics-info">
-                            <center>
-                            <div class="social-medias">
-                                 <img src="/assets/images/english-logo.png">
-                                 <img src="/assets/images/document-logo.png">
-                            </div>
-                            <h3 class="box-title">Jasa Ketik Document</h3>
-                            <h5><?= $base_price_ketik_document;?>,/1 paket</h5>
-                            </center>
-                        </div>
-                    </div>
-
-                     <div class="col-lg-4 col-md-12">
-                         <div  data-bs-toggle="modal" data-bs-target="#" class="fitur-premium order-item white-box analytics-info">
-                            <center>
-                            <div class="social-medias">
-                                 <img src="/assets/images/qrcode-box-logo.png">
-                            </div>
-                            <h3 class="box-title">Jasa QRCode</h3>
-                            <h5>Gratis @1000 data</h5>
-                            </center>
-                        </div>
-                    </div>
-
-                </div>
-
-              
-              
-                
+               
+                <!-- ============================================================== -->
+                <!-- RECENT SALES -->
+                <!-- ============================================================== -->
                 <div class="row">
-                    <!-- .col -->
-                  
-                    <!-- /.col -->
-                </div>
+                    <div class="col-md-12 col-lg-12 col-sm-12">
+                        <div class="white-box">
+                            <div class="d-md-flex mb-3">
+                                <h3 class="box-title mb-0">All QR-Codes (<?= $total_qrcode ?>)</h3><br>
+                                 
+                                <div class="col-md-4 col-sm-4 col-xs-6 ms-auto">
+                                  <a data-bs-toggle="modal" data-bs-target="#user-form-modal" class="link-add" id="link-add" href="/add-new-user">Add New</a>
+                                    <a class="link-edit" href="/edit-user" data-entity='users'>Edit</a>
+                                    <a class="link-delete" href="/delete-user" data-entity='users'>Delete</a>
+                                   
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="table-users" class="table no-wrap">
+                                    <thead>
+                                        <tr>
+                                            <th id="check-all" data-state="inactive" class="border-top-0">#</th>
+                                            <th class="border-top-0">Username</th>
+                                            <th class="border-top-0">Email</th>
+                                            <th class="border-top-0">Whatsapp</th>
+                                            <th class="border-top-0">Sex</th>
+                                            <th class="border-top-0">Date Created</th>
+                                            <th class="border-top-0">Email Activation</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                   <?php if (isset($data_users)): ?>                 
+                  <?php foreach($data_users as $key): ?>
 
-      <?php include('modal_setting_form.php'); ?>
-      <?php include('modal_add_deposit_client.php'); ?>
-      <?php include('modal_format_os.php'); ?>
-      <?php include('modal_jasa_qrcode.php'); ?>
-      <?php include('modal_ketik_document.php'); ?>
-      <?php include('modal_affiliate_shop_profile.php'); ?>
-      <?php include('modal_wa_float.php'); ?>
+                                        <tr>
+                                            <td><input type="checkbox" class="user-checked" data-id="<?= $key->id ?>" /></td>
+                                            <td class="txt-oflo"> <?= $key->username ?></td>
+                                            <td><?= $key->email ?>
+                                            </td>
+                                            <td class="txt-oflo"><?= $key->whatsapp ?></td>
+                                              <td class="txt-oflo"><?= $key->sex ?></td>
+                                            <td><span class="text-success"><?= $key->date_created ?></span></td>
+                                            <td>
+                    <a href="#" data-id="<?= $key->id ?>" class="activation-user-email btn d-grid btn-warning text-white">
+                                Send</a>
+                                            </td>
+                                        </tr>
+                 <?php endforeach; ?>
+                 <?php endif; ?>
+                                    </tbody>
+                                </table>
+                                <p>Selected : <span id="active-checked">0</span> data.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             
+                <?php include('modal_setting_form.php'); ?>
+                <?php include('modal_qrcode_form.php'); ?>
+
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
@@ -144,7 +141,7 @@ $v = random_int(1, 100);
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <?php include('footer.php'); ?>
+          <?php include('footer.php'); ?>
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
@@ -159,21 +156,25 @@ $v = random_int(1, 100);
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="/assets/js/jquery-3.7.1.js?v=<?=$v;?>"></script>
+    <script src="/assets/plugins/bower_components/jquery/dist/jquery.min.js?v=<?=$v;?>"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="/assets/bootstrap/dist/js/bootstrap.bundle.min.js?v=<?=$v;?>"></script>
+       <script src="/assets/js/sweetalert2@11.js?v=<?=$v;?>"></script>
     <script src="/assets/js/app-style-switcher.js?v=<?=$v;?>"></script>
-    <script src="assets/js/sweetalert2@11.js?v=<?=$v;?>"></script>
-   
+    <script src="/assets/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js?v=<?=$v;?>"></script>
+    <!--Wave Effects -->
+    <script src="/assets/js/waves.js?v=<?=$v;?>"></script>
     <!--Menu sidebar -->
     <script src="/assets/js/sidebarmenu.js?v=<?=$v;?>"></script>
+    <script src="/assets/js/datatables.min.js?v=<?=$v;?>"></script>
     <!--Custom JavaScript -->
     <script src="/assets/js/custom.js?v=<?=$v;?>"></script>
+    <!--This page JavaScript -->
+    <!--chartis chart-->
+   
+   
     <script src="/assets/js/modal-works.js?v=<?=$v;?>"></script>
     <script src="/assets/js/reader-night-mode.js?v=<?=$v;?>"></script>
-
-    <!--This page JavaScript -->
- 
 </body>
 
 </html>

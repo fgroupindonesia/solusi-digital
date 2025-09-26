@@ -10,6 +10,8 @@ class Home extends BaseController
 {
 
     public $db = null;
+    private $currency_helper = null;
+    private $date_helper = null;
 
     public function __construct(){
 
@@ -17,6 +19,8 @@ class Home extends BaseController
         $this->db = new DataModel();
         //echo var_dump($this->db);
 
+        $this->currency_helper = new CurrencyHelper();
+        $this->date_helper = new DateHelper();
     }
 
     public function testing_post(){
@@ -79,11 +83,24 @@ class Home extends BaseController
 
     public function test(){
         
-        $mode_affiliator = $this->getSessionData('is_affiliator');
+       // $mode_affiliator = $this->getSessionData('is_affiliator');
 
-        echo var_dump($mode_affiliator);
+        //echo var_dump($mode_affiliator);
 
-        //return view('testing_wa_chat_rotator');
+        return view('render_tv');
+
+    }
+
+   
+
+
+    public function proxy(){
+        
+       // $mode_affiliator = $this->getSessionData('is_affiliator');
+
+        //echo var_dump($mode_affiliator);
+
+        return view('proxy');
 
     }
 
@@ -372,6 +389,43 @@ class Home extends BaseController
        $data['search_display'] = 'search-hide';
        $data['page_name'] = 'Order Jasa';
        $data['role'] = $r;
+
+        $data_packages = $this->db->selectAllData('packages');
+        !empty($data_packages) ? arsort($data_packages) : null;
+
+        $data['total_packages'] = count($data_packages);
+        $data['data_packages'] = $data_packages;
+
+       if($menu == 'digital_marketing'){
+
+        $bpc = $this->db->getLowestBasePricePackage('comment');
+        $base_price_comment = $this->asRupiah($bpc);
+        $data['base_price_comment'] = $base_price_comment;
+
+        $bps = $this->db->getLowestBasePricePackage('subscriber');
+        $base_price_subscriber = $this->asRupiah($bps);
+        $data['base_price_subscriber'] = $base_price_subscriber;
+
+        $bpr = $this->db->getLowestBasePricePackage('rating');
+        $base_price_rating = $this->asRupiah($bpr);
+        $data['base_price_rating'] = $base_price_rating;
+
+        $bwacr = $this->db->getLowestBasePricePackage('wa_chat_rotator');
+        $base_price_wa_chat_rotator = $this->asRupiah($bwacr);
+        $data['base_price_wa_chat_rotator'] = $base_price_wa_chat_rotator;
+
+        $blp = $this->db->getLowestBasePricePackage('landingpage');
+        $base_price_landing_page = $this->asRupiah($blp);
+        $data['base_price_landing_page'] = $base_price_landing_page;
+
+        $bpvv = $this->db->getLowestBasePricePackage('virtualvisitors');
+        $base_price_virtualvisitors = $this->asRupiah($bpvv);
+        $data['base_price_virtualvisitors'] = $base_price_virtualvisitors;
+
+       
+
+       }
+        
 
        // we pass the library to help
        // the view in rendering cash value
@@ -719,7 +773,108 @@ class Home extends BaseController
 
     }
 
-    private function getDashboardData($usage){
+ private function getAllSessionData($key = null)
+{
+    $session = session();
+
+    if ($key !== null) {
+    return null !== $session->get($key) ? $session->get($key) : null;
+}
+
+
+    return $session->get(); 
+}
+
+
+    private function getDashboardData($usage)
+{
+    // Ambil balance user (misal dari model)
+    $u = $this->getSessionData('username');
+    $u_id = $this->getSessionData('user_id');
+
+    $mode_affiliator = ($this->getSessionData('is_affiliator'));
+   
+    $sessionData = $this->getAllSessionData();
+    $sessionData['sex_male_radio'] = $this->getSessionData('sex') == 'male' ? 'checked' : '';
+    $sessionData['sex_female_radio'] = $this->getSessionData('sex') == 'female' ? 'checked' : '';
+
+     $cond = array(
+            'username' => $u
+        );
+
+        $cash = $this->getDBData('balance', $cond, 'users');
+
+    $balance = $cash;
+    
+    $balance_rp = $this->currency_helper->asCurrency($balance);
+
+    if($usage == 'admin' || $usage == 'administrator' || $usage == 'superadmin'){
+        $data_vvisitors = $this->db->selectAllData('data_virtualvisitors');
+        $data_wa_chat_rotator = $this->db->selectAllData('order_wa_chat_rotator');
+        $data_format_os = $this->db->selectAllData('order_format_os');
+        $data_ketik_document = $this->db->selectAllData('order_ketik_document');  
+        $data_orders = $this->db->selectAllData('order_jasa');
+        $data_deposits = $this->db->selectAllData('deposits');
+    }else{
+        $data_vvisitors = $this->db->selectAllDataByUsername($u, 'data_virtualvisitors');
+        $data_wa_chat_rotator = $this->db->selectAllDataByUsername($u,'order_wa_chat_rotator');
+        $data_format_os = $this->db->selectAllDataByUsername($u, 'order_format_os');
+        $data_ketik_document = $this->db->selectAllDataByUsername($u, 'order_ketik_document');
+        $data_orders = $this->db->selectAllDataByUsername($u, 'order_jasa');
+        $data_deposits = $this->db->selectAllDataByUsername($u, 'deposits');
+    }
+
+    
+     
+    !empty($data_vvisitors) ? arsort($data_vvisitors) : null;
+    $total_vvisitors = count($data_vvisitors);
+
+    !empty($data_wa_chat_rotator) ? arsort($data_wa_chat_rotator) : null;
+    $total_wa_chat_rotator = count($data_wa_chat_rotator);
+
+   
+     !empty($data_format_os) ? arsort($data_format_os) : null;
+     !empty($data_ketik_document) ? arsort($data_ketik_document) : null;
+
+    !empty($data_orders) ? arsort($data_orders) : null;
+    !empty($data_deposits) ? arsort($data_deposits) : null;
+
+    $total_layananmanual = count($data_format_os) + count($data_ketik_document);
+
+    // Data affiliate (jika mode aktif)
+    $total_affiliate_profit = $mode_affiliator ? $this->affiliateModel->getTotalProfit($user_id) : 0;
+    $total_affiliate_product_sales_this_month = $mode_affiliator ? $this->affiliateModel->getSalesThisMonth($user_id) : 0;
+    $total_affiliate_product_sales_last_month = $mode_affiliator ? $this->affiliateModel->getSalesLastMonth($user_id) : 0;
+
+    // Versi JS cache buster
+    $v = random_int(1, 100);
+
+    $existing = [
+        'balance' => $balance,
+        'balance_rp' => $balance_rp,
+        'total_vvisitors' => $total_vvisitors,
+      
+        'total_wa_chat_rotator' => $total_wa_chat_rotator,
+      
+        'total_layananmanual' => $total_layananmanual,
+        'mode_affiliator' => $mode_affiliator,
+        'total_affiliate_profit' => $total_affiliate_profit,
+        'total_affiliate_product_sales_this_month' => $total_affiliate_product_sales_this_month,
+        'total_affiliate_product_sales_last_month' => $total_affiliate_product_sales_last_month,
+        'data_orders' => $data_orders,
+        'data_deposits' => $data_deposits,
+        'currency_helper' => $this->currency_helper,
+        'date_helper' => $this->date_helper,
+        'v' => $v,
+    ];
+
+     $finalData = array_merge($existing, $sessionData);
+
+    return $finalData;
+}
+
+
+   /* private function getDashboardData($usage){
 
             $data_users = $this->db->selectAllData('users');
             !empty($data_users) ? arsort($data_users) : null;
@@ -1129,7 +1284,9 @@ class Home extends BaseController
         }
 
         return $data;
-    }
+    } */
+
+
 
 
     public function display_settings(): string
@@ -1269,6 +1426,21 @@ class Home extends BaseController
             return view('manage_order_status', $data);    
 
         }
+    }
+
+    public function qrcode_management(): string
+    {   
+
+          // for security reasons
+        $this->protectLogin();
+
+            $r = $this->getSessionData('role');
+           $data = $this->getDashboardData($r);
+            $data['search_display'] = 'search-shown';
+            $data['role'] = $r;
+             $data['page_name'] = "Management QR-Codes";
+
+        return view('manage_qrcodes', $data);
     }
 
     public function user_management(): string

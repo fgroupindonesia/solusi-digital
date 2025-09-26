@@ -31,6 +31,7 @@ $routes->get('/jasa-marketplace-follow', 'Home::form_jasa_marketplace_follow');
 $routes->get('/jasa-marketplace-wishlist', 'Home::form_jasa_marketplace_wishlist');
 $routes->get('/jasa-subscriber-follower', 'Home::form_jasa_subscriber_follower');
 $routes->get('/manage-virtualvisitors', 'Home::virtualvisitors_management');
+$routes->get('/manage-qrcodes', 'Home::qrcode_management');
 $routes->get('/manage-users', 'Home::user_management');
 $routes->get('/manage-apps', 'Home::app_management');
 $routes->get('/manage-packages', 'Home::package_management');

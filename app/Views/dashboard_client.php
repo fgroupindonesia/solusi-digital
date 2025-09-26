@@ -109,7 +109,7 @@ $v = random_int(1, 100);
                 <i class="fas fa-chart-bar"></i>
 
               </div>
-              <a href="/manage-virtualvisitors" class="<?= count($data_vvisitors) > 0 ? '' : 'order-pelayanan-link' ;?> small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="/manage-virtualvisitors" class="<?= ($total_vvisitors) > 0 ? '' : 'order-pelayanan-link' ;?> small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -125,7 +125,7 @@ $v = random_int(1, 100);
                    <i class="fab fa-whatsapp"></i>
 
               </div>
-              <a href="/manage-wa-chat-rotator" class="<?= count($data_wa_chat_rotator) > 0 ? '' : 'order-pelayanan-link' ;?> small-box-footer">Selengkapnya  <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="/manage-wa-chat-rotator" class="<?= ($total_wa_chat_rotator) > 0 ? '' : 'order-pelayanan-link' ;?> small-box-footer">Selengkapnya  <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -173,22 +173,22 @@ $v = random_int(1, 100);
     <ul class="nav flex-column">
       <li class="nav-item">
         <a href="#" class="nav-link">
-          Total Order <span class="float-right badge bg-primary">31</span>
+          Total Order <span class="float-right badge bg-primary">0</span>
         </a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link">
-          Pending <span class="float-right badge bg-info">5</span>
+          Pending <span class="float-right badge bg-info">0</span>
         </a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link">
-          Success <span class="float-right badge bg-success">12</span>
+          Success <span class="float-right badge bg-success">0</span>
         </a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link">
-          Total Seluruh Komentar <span class="float-right badge bg-danger">842</span>
+          Total Seluruh Komentar <span class="float-right badge bg-danger">0</span>
         </a>
       </li>
     </ul>
@@ -223,22 +223,22 @@ $v = random_int(1, 100);
     <ul class="nav flex-column">
       <li class="nav-item">
         <a href="#" class="nav-link">
-          Total Order <span class="float-right badge bg-primary">31</span>
+          Total Order <span class="float-right badge bg-primary">0</span>
         </a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link">
-          Pending <span class="float-right badge bg-info">5</span>
+          Pending <span class="float-right badge bg-info">0</span>
         </a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link">
-          Success <span class="float-right badge bg-success">12</span>
+          Success <span class="float-right badge bg-success">0</span>
         </a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link">
-          Rata-Rata Rating <span class="float-right badge bg-danger">842</span>
+          Rata-Rata Rating <span class="float-right badge bg-danger">0</span>
         </a>
       </li>
     </ul>
@@ -273,22 +273,22 @@ $v = random_int(1, 100);
     <ul class="nav flex-column">
       <li class="nav-item">
         <a href="#" class="nav-link">
-          Total Order <span class="float-right badge bg-primary">31</span>
+          Total Order <span class="float-right badge bg-primary">0</span>
         </a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link">
-          Pending <span class="float-right badge bg-info">5</span>
+          Pending <span class="float-right badge bg-info">0</span>
         </a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link">
-          Success <span class="float-right badge bg-success">12</span>
+          Success <span class="float-right badge bg-success">0</span>
         </a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link">
-          Total Seluruh Followers <span class="float-right badge bg-danger">842</span>
+          Total Seluruh Followers <span class="float-right badge bg-danger">0</span>
         </a>
       </li>
     </ul>

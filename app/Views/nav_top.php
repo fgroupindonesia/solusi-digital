@@ -53,7 +53,7 @@
                             <li>
                                <a href="#" id="wa-help-bantuan-teknis" data-phone="6285795569337" class="dropdown-item d-flex align-items-center" >
                                 <i class="fab fa-whatsapp text-success me-2" aria-hidden="true"></i>
-                                <span>Bantuan Teknis</span>
+                                <span>Tim CS</span>
                               </a>
                             </li>
 
